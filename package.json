@@ -1,0 +1,14 @@
+{
+  "name": "podcast-intelligence-inbox-render",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Private read-only Podcast Intelligence Inbox",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test/indexer.test.js && node test/server.test.js",
+    "check": "node --check server.js && node --check src/indexer.js && node --check public/app.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

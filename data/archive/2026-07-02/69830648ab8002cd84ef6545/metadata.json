@@ -1,0 +1,14 @@
+{
+  "stable_id": "69830648ab8002cd84ef6545",
+  "tier": "Tier A",
+  "materiality": "high",
+  "term": "Invest Like the Best",
+  "show": "Invest Like the Best with Patrick O'Shaughnessy",
+  "title": "Etched - Building AI Hardware to Make Inference Faster and Cheaper - [Invest Like the Best, EP.480]",
+  "published": "2026-06-30T15:00:00+00:00",
+  "duration": "5241",
+  "url": "https://colossus.com/episode/the-future-of-ai-hardware/",
+  "audio_url": "https://traffic.megaphone.fm/CLS8561569864.mp3",
+  "feed_url": "https://feeds.megaphone.fm/CLS2859450455",
+  "description": "My guests today are Gavin Uberti and Rob Wachen, the founders of Etched. A few years ago, when they set out to build a better AI chip than the largest companies in the world, almost everyone I called told me it could not be done. They have since done it, taping out a working chip on their first attempt and becoming the first hardware company founded after ChatGPT to do so. They already have more than a billion dollars of customer demand for their first product, and have raised eight hundred million dollars to build it. Etched builds chips and systems designed to run AI models faster and at lower cost. They started the company in 2023, and that product is a complete rack for inference, the chip along with the boards, the power delivery, the interconnects, and the manufacturing to produce it all. We talk about the technical bets behind their architecture, how they hired industry legends an"
+}
