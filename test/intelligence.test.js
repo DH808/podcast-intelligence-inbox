@@ -28,6 +28,7 @@ assert.deepStrictEqual(extractEntities({ title: 'Cerebras Cerebras', note: 'Cere
 assert.deepStrictEqual(names({ title: "China's Belt and Road Problem - Sarah Paine" }), ['Sarah Paine']);
 assert.deepStrictEqual(names({ title: 'Alignment with Awakening: Davidad on Moral Realism' }), ['Davidad Dalrymple']);
 assert.deepStrictEqual(names({ title: 'General relativity from first principles – Adam Brown' }), ['Adam Brown']);
+assert.strictEqual(extractEntities({ title: 'Davidad on moral realism', note: 'OpenAI and Anthropic' })[0].name, 'Davidad Dalrymple', 'title-grounded entities must precede note-only entities');
 
 assert.strictEqual(classifySource('Invest Like the Best with Patrick O’Shaughnessy').tier, 'core');
 assert.strictEqual(classifySource('Training Data by Sequoia Capital').tier, 'core');

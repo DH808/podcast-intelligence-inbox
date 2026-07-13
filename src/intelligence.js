@@ -79,7 +79,8 @@ function extractEntities(fields = {}) {
       confidence: normalize(match.alias) === normalize(entity.name) ? 'exact' : 'alias', evidenceField: match.field,
     });
   }
-  return found;
+  const fieldRank = Object.fromEntries(FIELD_ORDER.map((field, index) => [field, index]));
+  return found.sort((a, b) => (fieldRank[a.evidenceField] - fieldRank[b.evidenceField]));
 }
 
 function matchShow(show, entry) {
