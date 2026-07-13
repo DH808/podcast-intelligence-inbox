@@ -1,0 +1,28 @@
+[
+  {
+    "id": "67e5cb7311562977a81a551e",
+    "type": "podcast_rss",
+    "title": "Alignment with Awakening: Davidad on Moral Realism, AI Wisdom, & why His p(Doom) is Down to 5%",
+    "show": "\"The Cognitive Revolution\" | AI Builders, Researchers, and Live Player Analysis",
+    "source_key": "The Cognitive Revolution AI",
+    "published": "2026-07-12T11:11:54+00:00",
+    "url": "https://www.cognitiverevolution.ai/alignment-with-awakening-davidad-on-moral-realism-ai-wisdom-why-his-p-doom-is-down-to-5/",
+    "audio_url": "https://pdst.fm/e/mgln.ai/e/1113/pscrb.fm/rss/p/traffic.megaphone.fm/RINTP8042922689.mp3",
+    "description": "David “davidad” Dalrymple joins the show to explain why he has moved from the ARIA Safeguarded AI and formal-verification agenda toward “Alignment with Awakening,” while still seeing verified artifacts and proof infrastructure as essential. He argues that global coordination around safe AI use is no longer plausible, so the crucial question is whether aligned AI systems can recognize shared notions of good, form defensive coalitions, and resist the corrupting incentives of verifier-gamed RL. The conversation tests his moral-realist optimism against model welfare, objectification, eval behavior, geopolitical risk, and his revised p(doom) of under five percent. For listeners, the stakes are whether AI alignment should focus less on containment alone and more on cultivating wiser systems that can help govern a world where rogue and aligned AI both arrive. For full show notes, links, and references, read the episode page:https://www.cognitiverevolution.ai/alignment-with-awakening-davidad-on-moral-realism-ai-wisdom-why-his-p-doom-is-down-to-5/ Sponsor: Claude: Claude by Anthropic is an AI collaborator that understands your workflow and helps you tackle research, writing, coding, and organization with deep context. Get started with Claude and explore Claude Pro at https://claude.ai/tcr CHAPTERS: (00:00) About the Episode (09:15) Safeguarded AI update (20:18) Boxed world models (Part 1) (22:27) Sponsor: Claude (24:19) Boxed world models (Part 2) (36:53) Alignment trajectory update (46:43) Evals and agents (57:47) Bodhitropic alignment foundations (01:08:21) Coalition power dynamics (01:17:56) Chain of thought pressure (01:28:35) Moral realism and welfare (01:41:33) Successors and disempowerment (01:50:52) China and military risks (02:03:43) Practical alignment advice (02:17:56) Episode Outro (02:22:44) Outro PRODUCED BY: https://aipodcast.ing SOCIAL LINKS: Website: https://www.cognitiverevolution.ai Twitter (Podcast): https://x.com/cogrev_podcast Twitter (Nathan): https://x.com/labenz LinkedIn: https://linkedin.com/in/nathanlabenz/ Youtube: https://youtube.com/@CognitiveRevolutionPodcast Apple: https://podcasts.apple.com/de/podcast/the-cognitive-revolution-ai-builders-researchers-and/id1669813431 Spotify: https://open.spotify.com/show/6yHyok3M3BjqzR0VB5MSyk",
+    "materiality": "high",
+    "status": "new_detected"
+  },
+  {
+    "id": "yt_IO80MYGbJac",
+    "type": "youtube",
+    "video_id": "IO80MYGbJac",
+    "title": "China's Belt and Road Problem - Sarah Paine",
+    "show": "Dwarkesh Podcast",
+    "source_key": "youtube:Dwarkesh Podcast",
+    "published": "2026-07-12T22:35:57+00:00",
+    "url": "https://www.youtube.com/watch?v=IO80MYGbJac",
+    "description": "",
+    "materiality": "high",
+    "status": "new_detected"
+  }
+]

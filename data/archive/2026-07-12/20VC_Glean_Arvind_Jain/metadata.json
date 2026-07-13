@@ -1,0 +1,28 @@
+{
+  "id": "yt_jX-Uq8JJ_j8",
+  "title": "Why OpenAI and Anthropic Won't Win the App Layer | Glean Founder",
+  "show": "20VC",
+  "source_key": "youtube:20VC",
+  "video_id": "jX-Uq8JJ_j8",
+  "published": "2026-07-11T14:00:39+00:00",
+  "url": "https://www.youtube.com/watch?v=jX-Uq8JJ_j8",
+  "duration": "1:00:00",
+  "segment_count": 1616,
+  "transcript_status": "official_youtube_captions_via_youtube_transcript_api",
+  "source_boundary": "YouTube captions fetched directly via youtube-transcript-api; not an official human-edited transcript",
+  "artifacts": {
+    "raw_transcript_json": "[podcast-archive]/2026-07-12/20VC_Glean_Arvind_Jain/transcript_raw.json",
+    "timestamped_transcript": "[podcast-archive]/2026-07-12/20VC_Glean_Arvind_Jain/transcript_timestamped.txt",
+    "plain_transcript": "[podcast-archive]/2026-07-12/20VC_Glean_Arvind_Jain/transcript_plain.txt",
+    "notes_md": "[podcast-archive]/2026-07-12/20VC_Glean_Arvind_Jain/notes_cn_source_faithful.md",
+    "notes_docx": "[podcast-archive]/2026-07-12/20VC_Glean_Arvind_Jain/notes_cn_source_faithful.docx",
+    "qc": "[podcast-archive]/2026-07-12/20VC_Glean_Arvind_Jain/notes_cn_source_faithful.qc.json"
+  },
+  "sha256": {
+    "transcript_raw.json": "11fdfa48222b1906ab126e3656f6ad0f45bdaac1088d5a1abb048dbe0859a19d",
+    "transcript_timestamped.txt": "bfdc13cca547f820e1d66241c5f224ed28890759a010282e30d615914e4d9a85",
+    "transcript_plain.txt": "1d609ede33160b1de3d6bef320638537ac4cbb091eb1a80671b9575ae164885e",
+    "notes_cn_source_faithful.md": "676c914fc1d53d79a16a954eb51bcb2e1cb7b94860f2fd375afaabf00c64cfcc",
+    "notes_cn_source_faithful.docx": "fe031829901a2d9da2587c961a914e9bffe9e4eddf54a9495c02d451787747ec"
+  }
+}

@@ -10,8 +10,9 @@ function fixture() {
   const day = path.join(root, '2026-07-11');
   write(path.join(root, 'state.json'), { sources: { latent: { show_title: 'Latent Space', tier: 'Tier A', last_status: 200 } } });
   write(path.join(day, 'candidates.json'), [
-    { id: 'yt_SERVER1234', video_id: 'SERVER1234', type: 'youtube', title: 'Open Models for Enterprise Agents', show: 'Latent Space', source_key: 'latent', url: 'https://youtube.com/watch?v=SERVER1234', description: 'High signal AI infrastructure discussion', materiality: 'high', status: 'new_detected' },
+    { id: 'yt_SERVER1234', video_id: 'SERVER1234', type: 'youtube', title: 'Open Models for Enterprise Agents', show: 'Latent Space', source_key: 'latent', url: 'https://youtube.com/watch?v=SERVER1234', description: 'High signal NVIDIA AI infrastructure discussion', materiality: 'high', status: 'new_detected' },
     { id: 'new-2', title: 'Market Structure Weekly', show: 'Odd Lots', url: 'https://example.com/two', description: 'Macro markets', materiality: 'selective', status: 'new_detected' },
+    { id: 'new-3', title: 'Short update', show: 'Unknown Daily', url: 'https://example.com/three', description: 'Brief', materiality: 'monitor', status: 'new_detected' },
   ]);
   const episode = path.join(day, 'Open_Models');
   write(path.join(episode, 'metadata.json'), { video_id: 'SERVER1234', title: 'Open Models for Enterprise Agents', channel: 'Latent Space', url: 'https://youtube.com/watch?v=SERVER1234', source_boundary: 'Third-party transcript' });
@@ -35,9 +36,17 @@ function req(handler, route, options = {}) {
   try {
     const health = req(handler, '/api/health'); assert.strictEqual(health.status, 200); assert(!health.text.includes(root));
     const stateRes = req(handler, '/api/state'); const state = stateRes.json();
-    assert.strictEqual(state.days[0].candidateCount, 2); assert(!stateRes.text.includes(root)); assert(!stateRes.text.includes('Only-in-full-note'));
+    assert.strictEqual(state.days[0].candidateCount, 3); assert(!stateRes.text.includes(root)); assert(!stateRes.text.includes('Only-in-full-note'));
+    assert(state.sources.some(source => source.title === 'Invest Like the Best' && source.sourceTier === 'core' && source.candidateCount === 0));
     const listRes = req(handler, '/api/episodes?date=2026-07-11&status=qc_passed&theme=AI%20Agents&materiality=high&limit=1');
     const list = listRes.json(); assert.strictEqual(list.total, 1); assert.strictEqual(list.episodes.length, 1); assert(!listRes.text.includes(root));
+    assert.strictEqual(list.episodes[0].sourceTier, 'core');
+    assert(Array.isArray(list.episodes[0].entities));
+    assert.strictEqual(req(handler, '/api/episodes?sourceTier=core').json().total, 2);
+    assert.strictEqual(req(handler, '/api/episodes?entity=nvidia').json().total, 1);
+    assert.strictEqual(req(handler, '/api/episodes?lowInformation=true').json().total, 1);
+    assert.strictEqual(req(handler, '/api/episodes?lowInformation=false').json().total, 2);
+    const entities = req(handler, '/api/entities').json(); assert(Array.isArray(entities.entities));
     const id = list.episodes[0].id;
     const detailRes = req(handler, '/api/episodes/' + id); const detail = detailRes.json();
     assert.match(detail.noteMarkdown, /Only-in-full-note/); assert.strictEqual(detail.productionStatus, 'qc_passed'); assert(!detailRes.text.includes(root));

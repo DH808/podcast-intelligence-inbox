@@ -4,7 +4,7 @@ const app = document.querySelector('#app');
 const pageTitle = document.querySelector('#pageTitle');
 let state = null;
 let loadError = false;
-const filters = { status: '', materiality: '', q: '', date: '', show: '', theme: '' };
+const filters = { status: '', materiality: '', q: '', date: '', show: '', theme: '', entity: '', sourceTier: '', lowInformation: '' };
 
 const statusMeta = {
   new: ['仅发现', 'neutral'], selected: ['已选中', 'violet'], transcript_ready: ['转录就绪', 'amber'], note_ready: ['深度纪要', 'blue'], qc_passed: ['QC 通过', 'green'],
@@ -32,11 +32,18 @@ function updateNavigation(name) {
     if (selected) link.setAttribute('aria-current', 'page'); else link.removeAttribute('aria-current');
   });
 }
-function tags(values) { return (values || []).slice(0, 3).map(value => `<span class="tag">${esc(value)}</span>`).join(''); }
+function themeTags(values) {
+  const clean = (values || []).filter(value => value !== 'General'); const shown = clean.slice(0, 2);
+  return shown.map(value => `<span class="tag theme">${esc(value)}</span>`).join('') + (clean.length > shown.length ? `<span class="tag-overflow">+${clean.length - shown.length}</span>` : '');
+}
+function entityTags(values, limit = 3) {
+  const shown = (values || []).slice(0, limit);
+  return shown.map(entity => `<span class="tag entity ${entity.type === 'person' ? 'person' : 'company'}">${esc(entity.name)}</span>`).join('') + ((values || []).length > shown.length ? `<span class="tag-overflow">+${values.length - shown.length}</span>` : '');
+}
 function statusBadge(status) { const meta = statusMeta[status] || [status, 'neutral']; return `<span class="status ${meta[1]}"><i></i>${esc(meta[0])}</span>`; }
 function empty(title, copy) { return `<section class="state-card"><h2>${esc(title)}</h2><p>${esc(copy)}</p></section>`; }
 function sectionHead(title, aside = '') { return `<div class="section-head"><h2>${esc(title)}</h2>${aside ? `<span>${esc(aside)}</span>` : ''}</div>`; }
-function episodeCard(episode, compact = false) {
+function episodeCard(episode, compact = false, showRouting = false) {
   const desc = episode.whyItMatters || episode.description || (episode.artifactOnly ? '已识别到来源保真成品，但未匹配到候选记录。' : '尚无内容简介。');
   const actionLabel = episode.productionStatus === 'qc_passed' || episode.productionStatus === 'note_ready'
     ? '阅读深度纪要'
@@ -47,7 +54,8 @@ function episodeCard(episode, compact = false) {
     <div class="card-kicker"><span>${esc(episode.show)}</span>${statusBadge(episode.productionStatus)}</div>
     <h3><a href="#/episode/${encodeURIComponent(episode.id)}">${esc(episode.title)}</a></h3>
     ${compact ? '' : `<p>${esc(desc)}</p>`}
-    <div class="tag-row">${episode.materiality !== 'unknown' ? `<span class="tag priority">${esc(materialityLabels[episode.materiality] || episode.materiality)}</span>` : ''}${tags(episode.themes)}</div>
+    <div class="tag-row">${entityTags(episode.entities)}${themeTags(episode.themes)}</div>
+    ${showRouting ? `<p class="routing-reason"><strong>${esc(episode.routingLabel || '研究路由优先级')}</strong> · ${esc(episode.routingReason)}</p>` : ''}
     <footer><span>${esc(dateText(episode.publishedAt || episode.dateDetected))}</span><a class="text-link" href="#/episode/${encodeURIComponent(episode.id)}">${actionLabel} <span aria-hidden="true">→</span></a></footer>
   </article>`;
 }
@@ -56,18 +64,17 @@ function latestEpisodes() { const date = state.days[0]?.date; return state.episo
 function renderToday() {
   const day = state.days[0];
   if (!day) return empty('还没有可用数据', '索引中尚未发现日期目录。');
-  const today = latestEpisodes();
-  const top = [...today].sort((a, b) => {
-    const rank = { qc_passed: 5, note_ready: 4, transcript_ready: 3, selected: 2, new: 1 };
-    return (rank[b.productionStatus] - rank[a.productionStatus]) || ((b.materiality === 'high') - (a.materiality === 'high'));
-  }).slice(0, 4);
-  const remaining = today.filter(e => !top.includes(e));
+  const today = latestEpisodes(); const visible = today.filter(episode => episode.todayVisible !== false); const hidden = today.length - visible.length;
+  const ordered = [...visible].sort((a, b) => b.routingScore - a.routingScore || a.title.localeCompare(b.title));
+  const top = ordered.slice(0, 4);
+  const remaining = ordered.slice(4);
   return `<section class="today-intro">
-    <div><p class="overline">${esc(day.date)} · 索引于 ${esc(new Date(state.generatedAt).toLocaleString('zh-CN'))}</p><h2>今天值得关注什么</h2><p>先看完成纪要与高优先级候选，再处理其余新节目。</p></div>
-    <dl class="metric-grid"><div><dt>今日节目</dt><dd>${day.itemCount}</dd></div><div><dt>高优先级</dt><dd>${day.highMaterialityCount}</dd></div><div><dt>转录完成</dt><dd>${day.transcriptReadyCount}</dd></div><div><dt>深度纪要</dt><dd>${day.noteReadyCount}</dd></div></dl>
+    <div><p class="overline">${esc(day.date)} · 索引于 ${esc(new Date(state.generatedAt).toLocaleString('zh-CN'))}</p><h2>今天值得关注什么</h2><p>公开演示快照仅含脱敏候选与深度纪要；原始音频和完整转录保留在私有站。</p></div>
+    <dl class="metric-grid"><div><dt>今日节目</dt><dd>${day.itemCount}</dd></div><div><dt>高优先级</dt><dd>${day.highMaterialityCount}</dd></div><div><dt>公开转录</dt><dd>${day.transcriptReadyCount}</dd></div><div><dt>深度纪要</dt><dd>${day.noteReadyCount}</dd></div></dl>
   </section>
   ${state.pipelineAlerts.length ? `<aside class="alert" role="status"><strong>流水线提醒</strong><span>${esc(state.pipelineAlerts.join('；'))}</span></aside>` : ''}
-  ${sectionHead('今日首选阅读', `${top.length} 项`)}<div class="card-grid featured">${top.map(e => episodeCard(e)).join('')}</div>
+  ${hidden ? `<aside class="low-info-note" role="status">Today 已隐藏 ${hidden} 条低信息候选；数据未删除，可在收件箱选择“低信息候选”查看。</aside>` : ''}
+  ${sectionHead('今日首选阅读', `${top.length} 项 · 按研究路由优先级排序`)}<div class="card-grid featured">${top.map(e => episodeCard(e, false, true)).join('')}</div>
   ${sectionHead('待处理收件箱', `${remaining.length} 项`)}${remaining.length ? `<div class="card-grid">${remaining.map(e => episodeCard(e, true)).join('')}</div>` : empty('今日收件箱已清空', '没有剩余候选。')}`;
 }
 function optionList(values, selected, placeholder) {
@@ -75,14 +82,14 @@ function optionList(values, selected, placeholder) {
 }
 function filterEpisodes(source) {
   const q = filters.q.trim().toLocaleLowerCase();
-  return source.filter(e => (!filters.status || e.productionStatus === filters.status) && (!filters.materiality || e.materiality === filters.materiality) && (!filters.date || e.dateDetected === filters.date) && (!filters.show || e.show === filters.show) && (!filters.theme || e.themes.includes(filters.theme)) && (!q || [e.title, e.show, e.description, e.whyItMatters, ...(e.themes || [])].join(' ').toLocaleLowerCase().includes(q)));
+  return source.filter(e => (!filters.status || e.productionStatus === filters.status) && (!filters.materiality || e.materiality === filters.materiality) && (!filters.date || e.dateDetected === filters.date) && (!filters.show || e.show === filters.show) && (!filters.theme || e.themes.includes(filters.theme)) && (!filters.entity || e.entities.some(entity => entity.id === filters.entity)) && (!filters.sourceTier || e.sourceTier === filters.sourceTier) && (!filters.lowInformation || String(e.lowInformation) === filters.lowInformation) && (!q || [e.title, e.show, e.description, e.whyItMatters, ...(e.themes || []), ...e.entities.map(entity => entity.name)].join(' ').toLocaleLowerCase().includes(q)));
 }
 function filterBar(showStatus = true) {
   const shows = [...new Set(state.episodes.map(e => e.show))].sort();
   return `<form class="filters" id="filterForm">
-    <label class="search-field"><span class="sr-only">搜索</span><input type="search" name="q" value="${esc(filters.q)}" placeholder="搜索标题、节目、主题"></label>
+    <label class="search-field"><span class="sr-only">搜索</span><input type="search" name="q" value="${esc(filters.q)}" placeholder="搜索标题、节目、实体或主题"></label>
     ${showStatus ? `<div class="chips" aria-label="生产状态"><button type="button" data-filter-status="" class="${!filters.status ? 'active' : ''}">全部</button>${Object.entries(statusMeta).map(([key, meta]) => `<button type="button" data-filter-status="${key}" class="${filters.status === key ? 'active' : ''}">${meta[0]}</button>`).join('')}</div>` : ''}
-    <div class="select-row"><label>日期<select name="date">${optionList(state.days.map(d => d.date), filters.date, '全部日期')}</select></label><label>节目<select name="show">${optionList(shows, filters.show, '全部节目')}</select></label><label>主题<select name="theme">${optionList(state.themes.map(t => t.label), filters.theme, '全部主题')}</select></label><label>优先级<select name="materiality">${optionList(['high', 'selective', 'monitor'], filters.materiality, '全部优先级').replace(/>high</, '>高优先级<').replace(/>selective</, '>选择性关注<').replace(/>monitor</, '>持续观察<')}</select></label></div>
+    <div class="select-row"><label>日期<select name="date">${optionList(state.days.map(d => d.date), filters.date, '全部日期')}</select></label><label>节目<select name="show">${optionList(shows, filters.show, '全部节目')}</select></label><label>实体<select name="entity">${optionList(state.entities.map(e => e.id), filters.entity, '全部公司与人物').replace(/<option value="([^"]+)"([^>]*)>\1<\/option>/g, (match, id, attrs) => `<option value="${esc(id)}"${attrs}>${esc(state.entities.find(entity => entity.id === id)?.name || id)}</option>`)}</select></label><label>来源层级<select name="sourceTier">${optionList(['core', 'priority', 'standard'], filters.sourceTier, '全部来源').replace(/>core</, '>核心节目<').replace(/>priority</, '>优先节目<').replace(/>standard</, '>标准节目<')}</select></label><label>信息状态<select name="lowInformation">${optionList(['true', 'false'], filters.lowInformation, '全部信息状态').replace(/>true</, '>低信息候选<').replace(/>false</, '>信息较完整<')}</select></label><label>主题<select name="theme">${optionList(state.themes.map(t => t.label), filters.theme, '全部主题')}</select></label><label>优先级<select name="materiality">${optionList(['high', 'selective', 'monitor'], filters.materiality, '全部优先级').replace(/>high</, '>高优先级<').replace(/>selective</, '>选择性关注<').replace(/>monitor</, '>持续观察<')}</select></label></div>
   </form>`;
 }
 function renderInbox() {
@@ -101,7 +108,7 @@ function renderThemes() {
   }).join('')}</div>`;
 }
 function renderShows() {
-  return `${sectionHead('节目覆盖', `${state.sources.length} 个来源`)}<div class="show-list">${state.sources.map(show => `<article><div class="show-avatar">${esc(show.title.slice(0, 2).toUpperCase())}</div><div class="show-main"><h2>${esc(show.title)}</h2><p>${esc(show.tier)} · 最近扫描 ${esc(show.lastScanAt ? new Date(show.lastScanAt).toLocaleString('zh-CN') : '未记录')}</p><small>${show.latestEpisode ? `最近一期：${esc(show.latestEpisode)}` : '暂无本地节目记录'}</small></div><dl><div><dt>候选</dt><dd>${show.candidateCount}</dd></div><div><dt>纪要</dt><dd>${show.noteCount}</dd></div></dl><span class="health ${show.health === '正常' ? 'ok' : show.health === '待检查' ? 'warn' : ''}">${esc(show.health)}</span></article>`).join('')}</div>`;
+  return `${sectionHead('节目覆盖', `${state.sources.length} 个来源 · 核心节目优先展示`)}<p class="source-prior-note">来源层级仅作为研究路由先验，不代表单集内容质量。</p><div class="show-list">${state.sources.map(show => `<article><div class="show-avatar">${esc(show.title.slice(0, 2).toUpperCase())}</div><div class="show-main"><h2>${esc(show.title)}</h2><p><span class="source-tier ${esc(show.sourceTier)}">${esc(show.sourceQualityLabel)}</span> · 最近扫描 ${esc(show.lastScanAt ? new Date(show.lastScanAt).toLocaleString('zh-CN') : '未记录')}</p><small>${show.latestEpisode ? `最近一期：${esc(show.latestEpisode)}` : '暂无本地节目记录'}</small></div><dl><div><dt>候选</dt><dd>${show.candidateCount}</dd></div><div><dt>纪要</dt><dd>${show.noteCount}</dd></div></dl><span class="health ${show.health === '正常' ? 'ok' : show.health === '待检查' ? 'warn' : ''}">${esc(show.health)}</span></article>`).join('')}</div>`;
 }
 
 function markdownToHtml(markdown) {
@@ -135,9 +142,10 @@ async function renderEpisode(id) {
     if (!response.ok) throw new Error();
     const e = await response.json();
     app.innerHTML = `<button class="back-link quiet-button" id="backButton" type="button">← 返回</button>
-      <article class="episode-detail"><header><div class="detail-meta">${statusBadge(e.productionStatus)}<span>${esc(e.show)}</span><span>${esc(dateText(e.publishedAt || e.dateDetected))}</span><span>${esc(materialityLabels[e.materiality] || '优先级未标注')}</span></div><h2>${esc(e.title)}</h2><div class="tag-row">${tags(e.themes)}</div></header>
+      <article class="episode-detail"><header><div class="detail-meta">${statusBadge(e.productionStatus)}<span>${esc(e.show)}</span><span>${esc(e.sourceQualityLabel)}</span><span>${esc(dateText(e.publishedAt || e.dateDetected))}</span><span>${esc(materialityLabels[e.materiality] || '优先级未标注')}</span></div><h2>${esc(e.title)}</h2><div class="tag-row">${entityTags(e.entities)}${themeTags(e.themes)}</div></header>
       <section class="production"><h3>生产状态</h3>${stepper(e.productionStatus)}</section>
       <div class="detail-columns"><section><h3>为什么值得关注</h3><p>${esc(e.whyItMatters || e.description || '尚未提供价值说明。')}</p></section><section><h3>来源与转录边界</h3><p>${esc(e.transcriptBoundary || '来源边界尚未记录。')}</p></section></div>
+      <section class="entity-section"><h3>关键公司与人物</h3>${e.entities.length ? `<div class="entity-groups"><div><strong>公司 / 组织 / 资产</strong><div class="tag-row">${entityTags(e.entities.filter(entity => entity.type !== 'person'), Number.POSITIVE_INFINITY) || '<span class="muted">无可靠匹配</span>'}</div></div><div><strong>人物</strong><div class="tag-row">${entityTags(e.entities.filter(entity => entity.type === 'person'), Number.POSITIVE_INFINITY) || '<span class="muted">无可靠匹配</span>'}</div></div></div>` : '<p class="muted">未识别到可靠实体</p>'}<p class="evidence-boundary">实体来自标题、简介、元数据或来源保真纪要中的确定文本匹配，不代表背书、持仓或投资建议。</p></section>
       <div class="detail-actions">${e.originalUrl ? `<a class="button primary" href="${esc(e.originalUrl)}" target="_blank" rel="noreferrer">打开原始来源</a>` : ''}${e.audioUrl ? `<a class="button" href="${esc(e.audioUrl)}" target="_blank" rel="noreferrer">收听音频</a>` : ''}${e.files.docx ? `<a class="button" href="${fileHref(e.id, 'docx')}">下载 Word</a>` : ''}${e.files.transcript ? `<a class="button" href="${fileHref(e.id, 'transcript')}">下载转录</a>` : ''}</div></article>
       <div class="reading-layout"><article class="note"><div class="note-label">来源保真中文深度纪要</div>${e.noteMarkdown ? markdownToHtml(e.noteMarkdown) : empty('深度纪要尚未生成', '可先查看转录或原始来源。')}</article><aside><section><h3>QC 信息</h3>${e.qcPassed ? `<p>已发现 QC 成品记录。</p><dl class="qc-list">${Object.entries(e.qcSummary || {}).filter(([, value]) => typeof value !== 'object').map(([key, value]) => `<div><dt>${esc(key)}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl>` : '<p>尚无 QC 记录。</p>'}</section><section><h3>投资提取</h3>${e.investmentExtraction ? `<p>${esc(typeof e.investmentExtraction === 'string' ? e.investmentExtraction : JSON.stringify(e.investmentExtraction, null, 2))}</p>` : '<p>尚未生成。此区域不会用来源纪要自动冒充投资结论。</p>'}</section></aside></div>`;
     document.querySelector('#backButton').addEventListener('click', () => history.back());

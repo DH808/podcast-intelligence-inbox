@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const { CORE_SHOWS, extractEntities, classifySource, computeRouting } = require('./intelligence');
 
 function readJson(file, fallback = null) {
   try { return JSON.parse(fs.readFileSync(file, 'utf8')); } catch (_) { return fallback; }
@@ -49,7 +50,7 @@ function extractThemes(text) {
     ['Product / GTM', /(product|growth|gtm|distribution|sales|pricing|monetization|pmf|产品|增长|定价|商业模式)/],
   ];
   const found = rules.filter(([, re]) => re.test(t)).map(([label]) => label);
-  return found.length ? found.slice(0, 5) : ['General'];
+  return found.slice(0, 5);
 }
 
 function parseDailyMarkdownItems(markdown) {
@@ -178,25 +179,33 @@ function productionStatus(candidate, artifact) {
   if (artifact?.transcriptPath) return 'transcript_ready';
   return /selected|processing|chosen/i.test(candidate?.status || '') ? 'selected' : 'new';
 }
-function makeEpisode(date, candidate = {}, artifact = null, artifactOnly = false) {
+function makeEpisode(date, candidate = {}, artifact = null, artifactOnly = false, sourceTierHint = '') {
   const title = candidate.title || artifact?.title || '未命名节目';
   const originalUrl = candidate.url || artifact?.url || '';
   const candidateId = candidate.id || '';
   const stable = candidateId || artifact?.videoId || canonicalUrl(originalUrl) || `${date}:${normalizeTitle(title)}:${artifact?.dir || ''}`;
   const description = compactText(candidate.description || '', 560);
-  const themes = extractThemes([title, candidate.show, description, artifact?.whyItMatters, artifact?.notePath ? fs.readFileSync(artifact.notePath, 'utf8').slice(0, 5000) : ''].join(' '));
+  const noteText = artifact?.notePath ? fs.readFileSync(artifact.notePath, 'utf8') : '';
+  const metadataText = artifact?.metadata ? JSON.stringify(artifact.metadata) : '';
+  const whyItMatters = artifact?.whyItMatters || description;
+  const themes = extractThemes([title, candidate.show, description, whyItMatters, noteText.slice(0, 5000)].join(' '));
   const status = productionStatus(candidate, artifact);
-  return {
+  const source = classifySource(candidate.show || artifact?.show || '未知节目', sourceTierHint);
+  const entities = extractEntities({ title, description: [description, whyItMatters].join(' '), note: noteText, metadata: metadataText });
+  const episode = {
     id: `${date}-${shortHash(stable)}`, candidateId, dateDetected: date, date,
     title, show: candidate.show || artifact?.show || '未知节目', sourceKey: candidate.source_key || '', mediaType: candidate.type || (artifact?.videoId ? 'youtube' : 'unknown'),
     publishedAt: candidate.published || artifact?.publishedAt || '', originalUrl, audioUrl: candidate.audio_url || '', description,
     materiality: candidate.materiality || 'unknown', candidateStatus: candidate.status || (artifactOnly ? 'artifact_only' : 'new_detected'), productionStatus: status,
     transcriptStatus: artifact?.transcriptPath ? 'ready' : 'missing', transcriptBoundary: artifact?.transcriptBoundary || '', duration: artifact?.duration || '', themes,
-    whyItMatters: artifact?.whyItMatters || description, noteChars: artifact?.noteChars || 0, qcPassed: Boolean(artifact?.qcPath), qcSummary: artifact?.qc || null,
+    whyItMatters, noteChars: artifact?.noteChars || 0, qcPassed: Boolean(artifact?.qcPath), qcSummary: artifact?.qc || null,
+    entities, sourceTier: source.tier, sourceQualityLabel: source.label,
     artifactOnly, videoId: candidate.video_id || artifact?.videoId || videoId(originalUrl),
     notePath: artifact?.notePath || null, transcriptPath: artifact?.transcriptPath || null, docxPath: artifact?.docxPath || null, pdfPath: artifact?.pdfPath || null,
     qcPath: artifact?.qcPath || null, metadataPath: artifact?.metadataPath || null, audioPath: artifact?.audioPath || null, investmentExtractionPath: artifact?.investmentExtractionPath || null,
   };
+  Object.assign(episode, computeRouting(episode));
+  return episode;
 }
 
 function candidateRows(dayDir) {
@@ -229,20 +238,40 @@ function buildIndex(rootDir) {
       const match = matchArtifact(candidate, artifacts, used);
       const artifact = match >= 0 ? artifacts[match] : null;
       if (match >= 0) used.add(match);
-      dayEpisodes.push(makeEpisode(date, candidate, artifact));
+      const source = sourceState.sources?.[candidate.source_key] || Object.values(sourceState.sources || {}).find(value => normalizeTitle(value.show_title || value.collectionName) === normalizeTitle(candidate.show));
+      dayEpisodes.push(makeEpisode(date, candidate, artifact, false, source?.tier || ''));
     }
-    artifacts.forEach((artifact, i) => { if (!used.has(i)) dayEpisodes.push(makeEpisode(date, {}, artifact, true)); });
+    artifacts.forEach((artifact, i) => {
+      if (used.has(i)) return;
+      const source = Object.values(sourceState.sources || {}).find(value => normalizeTitle(value.show_title || value.collectionName) === normalizeTitle(artifact.show));
+      dayEpisodes.push(makeEpisode(date, {}, artifact, true, source?.tier || ''));
+    });
     episodes.push(...dayEpisodes);
     const counts = statusCounts(dayEpisodes);
     const scan = readJson(path.join(dayDir, 'scan_report.json'), {});
-    days.push({ date, itemCount: dayEpisodes.length, candidateCount: candidates.length, highMaterialityCount: candidates.filter(c => c.materiality === 'high').length, ...counts, themes: [...new Set(dayEpisodes.flatMap(e => e.themes))], itemIds: dayEpisodes.map(e => e.id), updatedAt: scan.now || null });
+    days.push({ date, itemCount: dayEpisodes.length, candidateCount: candidates.length, highMaterialityCount: candidates.filter(c => c.materiality === 'high').length, lowInformationCount: dayEpisodes.filter(e => e.lowInformation).length, ...counts, themes: [...new Set(dayEpisodes.flatMap(e => e.themes))], itemIds: dayEpisodes.map(e => e.id), updatedAt: scan.now || null });
   }
-  const sources = Object.entries(sourceState.sources || {}).map(([key, source]) => {
-    const related = episodes.filter(e => e.sourceKey === key || normalizeTitle(e.show) === normalizeTitle(source.show_title || key));
-    return { key, title: source.show_title || source.collectionName || key, tier: source.tier || '未分类', lastScanAt: source.last_scan_at || null, candidateCount: related.filter(e => !e.artifactOnly).length, noteCount: related.filter(e => ['note_ready', 'qc_passed'].includes(e.productionStatus)).length, latestEpisode: related.sort((a, b) => String(b.publishedAt).localeCompare(String(a.publishedAt)))[0]?.title || '', health: source.last_status === 200 ? '正常' : source.last_status == null ? '无近期更新' : '待检查' };
-  }).sort((a, b) => a.title.localeCompare(b.title));
+  const sourceRows = [
+    ...CORE_SHOWS.map(show => [show.id, { show_title: show.name, coreRegistry: true }]),
+    ...Object.entries(sourceState.sources || {}),
+    ...episodes.map(episode => [episode.sourceKey || `episode:${episode.show}`, { show_title: episode.show }]),
+  ];
+  const sourceMap = new Map();
+  for (const [key, source] of sourceRows) {
+    const title = source.show_title || source.collectionName || key;
+    const classification = classifySource(title, source.tier || '');
+    const canonicalKey = classification.tier === 'core' ? classification.sourceId : normalizeTitle(title);
+    const previous = sourceMap.get(canonicalKey) || {};
+    sourceMap.set(canonicalKey, { ...previous, ...source, key: previous.key || key, title: classification.sourceName || title, sourceTier: classification.tier, sourceQualityLabel: classification.label });
+  }
+  const sources = [...sourceMap.values()].map(source => {
+    const related = episodes.filter(e => e.sourceKey === source.key || normalizeTitle(e.show) === normalizeTitle(source.title) || (source.sourceTier === 'core' && classifySource(e.show).sourceId === classifySource(source.title).sourceId));
+    const recent = [...related].sort((a, b) => String(b.publishedAt || b.dateDetected).localeCompare(String(a.publishedAt || a.dateDetected)))[0];
+    return { key: source.key, title: source.title, sourceTier: source.sourceTier, sourceQualityLabel: source.sourceQualityLabel, lastScanAt: source.last_scan_at || null, candidateCount: related.filter(e => !e.artifactOnly).length, noteCount: related.filter(e => ['note_ready', 'qc_passed'].includes(e.productionStatus)).length, latestEpisode: recent?.title || '', health: source.last_status === 200 ? '正常' : source.last_status == null ? '无近期更新' : '待检查' };
+  }).sort((a, b) => ({ core: 0, priority: 1, standard: 2 }[a.sourceTier] - { core: 0, priority: 1, standard: 2 }[b.sourceTier]) || a.title.localeCompare(b.title));
   const themes = [...new Set(episodes.flatMap(e => e.themes))].sort().map(label => ({ label, count: episodes.filter(e => e.themes.includes(label)).length }));
-  return { generatedAt: new Date().toISOString(), root, days, episodes, items: episodes, sources, themes, stats: { dayCount: days.length, episodeCount: episodes.length, itemCount: episodes.length, sourceCount: sources.length } };
+  const entities = [...new Map(episodes.flatMap(episode => episode.entities).map(entity => [entity.id, entity])).values()].map(entity => ({ id: entity.id, name: entity.name, type: entity.type, count: episodes.filter(episode => episode.entities.some(value => value.id === entity.id)).length })).sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+  return { generatedAt: new Date().toISOString(), root, days, episodes, items: episodes, sources, themes, entities, stats: { dayCount: days.length, episodeCount: episodes.length, itemCount: episodes.length, sourceCount: sources.length, lowInformationCount: episodes.filter(e => e.lowInformation).length } };
 }
 function statusCounts(episodes) {
   return {

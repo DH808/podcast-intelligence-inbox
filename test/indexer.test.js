@@ -3,7 +3,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
-const { buildIndex, safeResolvePodcastPath, normalizeTitle, canonicalUrl } = require('../src/indexer');
+const { buildIndex, safeResolvePodcastPath, normalizeTitle, canonicalUrl, extractThemes } = require('../src/indexer');
 
 function write(file, value) {
   fs.mkdirSync(path.dirname(file), { recursive: true });
@@ -14,7 +14,7 @@ function makeFixture() {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'podcast-inbox-indexer-'));
   const day = path.join(root, '2026-07-11');
   const candidates = [
-    { id: 'yt_ALPHA123456', video_id: 'ALPHA123456', type: 'youtube', title: 'Open Source Wins and AGI Is Here', show: 'Latent Space', source_key: 'youtube:Latent Space', published: '2026-07-10T01:00:00Z', url: 'https://youtu.be/ALPHA123456', materiality: 'high', status: 'new_detected' },
+    { id: 'yt_ALPHA123456', video_id: 'ALPHA123456', type: 'youtube', title: 'Cerebras and Black Forest Labs with Andrew Feldman', show: 'Latent Space', source_key: 'youtube:Latent Space', published: '2026-07-10T01:00:00Z', url: 'https://youtu.be/ALPHA123456', materiality: 'high', status: 'new_detected' },
     { id: 'url-match', type: 'podcast_rss', title: 'Enterprise AI Field Notes', show: '20VC', url: 'https://example.com/episodes/enterprise?utm_source=rss', materiality: 'selective', status: 'new_detected' },
     { id: 'title-match', type: 'podcast_rss', title: 'General Relativity From First Principles', show: 'Dwarkesh Podcast', url: '', materiality: 'monitor', status: 'new_detected' },
     { id: 'new-only', type: 'podcast_rss', title: 'Only Discovered Today', show: 'Odd Lots', url: 'https://example.com/new', materiality: 'high', status: 'new_detected' },
@@ -50,6 +50,7 @@ function makeFixture() {
 function run() {
   assert.strictEqual(normalizeTitle('The AI—Show!'), 'ai');
   assert.strictEqual(canonicalUrl('https://youtu.be/ALPHA123456?t=2'), 'youtube:ALPHA123456');
+  assert.deepStrictEqual(extractThemes('unclassified conversation'), [], 'General must never be emitted');
 
   const root = makeFixture();
   const index = buildIndex(root);
@@ -62,6 +63,10 @@ function run() {
   assert(alpha, 'candidate must match artifact by explicit/video ID');
   assert.strictEqual(alpha.productionStatus, 'qc_passed');
   assert.strictEqual(alpha.transcriptStatus, 'ready');
+  assert.deepStrictEqual(alpha.entities.map(entity => entity.name), ['Cerebras', 'Black Forest Labs', 'Andrew Feldman']);
+  assert.strictEqual(alpha.sourceTier, 'core');
+  assert.strictEqual(alpha.lowInformation, false);
+  assert.match(alpha.routingReason || alpha.reason, /深度纪要完成/);
   assert(alpha.notePath.endsWith('notes_cn_source_faithful.md'));
   assert(alpha.docxPath.endsWith('.docx'));
   assert(alpha.qcPath.endsWith('.qc.json'));
@@ -71,6 +76,9 @@ function run() {
   assert.strictEqual(index.episodes.find(e => e.candidateId === 'title-match').productionStatus, 'note_ready', 'normalized title match must merge note');
   assert.strictEqual(index.episodes.find(e => e.candidateId === 'new-only').productionStatus, 'new');
   assert(index.episodes.some(e => e.artifactOnly && e.title.includes('AIE, AGI')), 'unmatched nested note must remain visible');
+  assert(index.sources[0].sourceTier === 'core', 'core shows must be pinned first');
+  assert(index.sources.some(source => source.title === 'Invest Like the Best' && source.sourceTier === 'core'), 'absent core shows must remain projected');
+  assert(!index.themes.some(theme => theme.label === 'General'));
 
   const full = fs.readFileSync(safeResolvePodcastPath(root, alpha.notePath), 'utf8');
   assert.match(full, /searchable evidence/);

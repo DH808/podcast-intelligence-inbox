@@ -1,0 +1,28 @@
+{
+  "id": "67e5cb7311562977a81a551e",
+  "type": "podcast_rss",
+  "title": "Alignment with Awakening: Davidad on Moral Realism, AI Wisdom, & why His p(Doom) is Down to 5%",
+  "show": "The Cognitive Revolution",
+  "published": "2026-07-12T11:11:54+00:00",
+  "url": "https://www.cognitiverevolution.ai/alignment-with-awakening-davidad-on-moral-realism-ai-wisdom-why-his-p-doom-is-down-to-5/",
+  "audio_url": "https://pdst.fm/e/mgln.ai/e/1113/pscrb.fm/rss/p/traffic.megaphone.fm/RINTP8042922689.mp3",
+  "duration": "2:22:45 including outro",
+  "transcript_status": "official_web_auto_generated_transcript",
+  "source_boundary": "Official episode webpage auto-generated transcript; not human-edited; ASR errors possible",
+  "artifacts": {
+    "raw_transcript_json": "[podcast-archive]/2026-07-13/Cognitive_Davidad/transcript_raw.json",
+    "timestamped_transcript": "[podcast-archive]/2026-07-13/Cognitive_Davidad/transcript_timestamped_official_web_asr.txt",
+    "plain_transcript": "[podcast-archive]/2026-07-13/Cognitive_Davidad/transcript_plain.txt",
+    "notes_md": "[podcast-archive]/2026-07-13/Cognitive_Davidad/notes_cn_source_faithful.md",
+    "notes_docx": "[podcast-archive]/2026-07-13/Cognitive_Davidad/notes_cn_source_faithful.docx",
+    "qc": "[podcast-archive]/2026-07-13/Cognitive_Davidad/notes_cn_source_faithful.qc.json",
+    "source_page_html": "[podcast-archive]/2026-07-13/cognitive_davidad_page.html"
+  },
+  "sha256": {
+    "transcript_raw.json": "2be8446c334ea9e04a2fe79e62f903d95787b87ae9ac885c4f04c55543b5b54b",
+    "transcript_timestamped_official_web_asr.txt": "51a8f14e230b899964b890a4199a945d42b3c648e45de005afea243c07f317d8",
+    "transcript_plain.txt": "3931c10db732e26c65fa367e10eeb8f77bd3aec6223b71ea2b0bb2822a565890",
+    "notes_cn_source_faithful.md": "3a08fc096606f56cb96ae586e1aea0b1fed3c9b3471f18126aba62b46a61790d",
+    "notes_cn_source_faithful.docx": "5634dac95edf140b3f267377c8b5856cbd44a97349641d9537c52c22cf335b1f"
+  }
+}

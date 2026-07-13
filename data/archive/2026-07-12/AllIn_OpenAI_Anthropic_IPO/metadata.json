@@ -1,0 +1,28 @@
+{
+  "id": "yt_PHL1j2ti420",
+  "title": "OpenAI vs Anthropic IPOs, Anthropic $3T, Zuck's Price War, China Ends Open Source?, Trump Accounts",
+  "show": "All-In Podcast",
+  "source_key": "youtube:All-In Podcast",
+  "video_id": "PHL1j2ti420",
+  "published": "2026-07-11T02:39:34+00:00",
+  "url": "https://www.youtube.com/watch?v=PHL1j2ti420",
+  "duration": "1:42:04",
+  "segment_count": 2854,
+  "transcript_status": "official_youtube_captions_via_youtube_transcript_api",
+  "source_boundary": "YouTube captions fetched directly via youtube-transcript-api; not an official human-edited transcript",
+  "artifacts": {
+    "raw_transcript_json": "[podcast-archive]/2026-07-12/AllIn_OpenAI_Anthropic_IPO/transcript_raw.json",
+    "timestamped_transcript": "[podcast-archive]/2026-07-12/AllIn_OpenAI_Anthropic_IPO/transcript_timestamped.txt",
+    "plain_transcript": "[podcast-archive]/2026-07-12/AllIn_OpenAI_Anthropic_IPO/transcript_plain.txt",
+    "notes_md": "[podcast-archive]/2026-07-12/AllIn_OpenAI_Anthropic_IPO/notes_cn_source_faithful.md",
+    "notes_docx": "[podcast-archive]/2026-07-12/AllIn_OpenAI_Anthropic_IPO/notes_cn_source_faithful.docx",
+    "qc": "[podcast-archive]/2026-07-12/AllIn_OpenAI_Anthropic_IPO/notes_cn_source_faithful.qc.json"
+  },
+  "sha256": {
+    "transcript_raw.json": "0809724b734c9bfecb09b0999672e34b56ac7d06ccc0185f1b28e3f2e80e2149",
+    "transcript_timestamped.txt": "97c8d6ba8f4258d0c87dbdc0201cc2c6ba2b0b23ec5f3bc834b0a06e535c1388",
+    "transcript_plain.txt": "bcb699788fa65625798394a682014f3d77c179b780a8500d80859eb5db058fb5",
+    "notes_cn_source_faithful.md": "7b6edface7a320faad634527362c0ad6aa9c519878e18a1d6fa3ac7fbca7f63f",
+    "notes_cn_source_faithful.docx": "c3dc46f62bce541133a1ac95b4bb863c6c3183e30770e8cde72cb524343988b3"
+  }
+}

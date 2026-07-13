@@ -31,6 +31,9 @@ function publicEpisode(episode, detail = false) {
     description: episode.description, materiality: episode.materiality, candidateStatus: episode.candidateStatus, productionStatus: episode.productionStatus,
     transcriptStatus: episode.transcriptStatus, transcriptBoundary: episode.transcriptBoundary, duration: episode.duration, themes: episode.themes,
     whyItMatters: episode.whyItMatters, noteChars: episode.noteChars, qcPassed: episode.qcPassed, artifactOnly: episode.artifactOnly,
+    entities: episode.entities, sourceTier: episode.sourceTier, sourceQualityLabel: episode.sourceQualityLabel,
+    routingLabel: episode.label, routingScore: episode.routingScore, routingReason: episode.routingReason,
+    lowInformation: episode.lowInformation, todayVisible: episode.todayVisible, informationPending: episode.informationPending,
     files: { markdown: Boolean(episode.notePath), docx: Boolean(episode.docxPath), pdf: Boolean(episode.pdfPath), transcript: Boolean(episode.transcriptPath), audio: Boolean(episode.audioPath), qc: Boolean(episode.qcPath), investmentExtraction: Boolean(episode.investmentExtractionPath) },
   };
   if (detail) value.qcSummary = safeQc(episode.qcSummary);
@@ -46,7 +49,7 @@ function readInvestmentExtraction(episode) {
 function matchQuery(episode, query, includeNote = false) {
   const q = String(query || '').trim().toLocaleLowerCase();
   if (!q) return true;
-  let haystack = [episode.title, episode.show, episode.description, episode.whyItMatters, ...(episode.themes || [])].join(' ').toLocaleLowerCase();
+  let haystack = [episode.title, episode.show, episode.description, episode.whyItMatters, ...(episode.themes || []), ...(episode.entities || []).map(entity => entity.name)].join(' ').toLocaleLowerCase();
   if (includeNote && episode.notePath) haystack += ' ' + readNote(episode).toLocaleLowerCase();
   return haystack.includes(q);
 }
@@ -83,16 +86,24 @@ function createRequestHandler(options = {}) {
         if (latest && latest.candidateCount === 0) alerts.push('最近日期尚未发现候选节目');
         const unhealthy = idx.sources.filter(source => source.health === '待检查').length;
         if (unhealthy) alerts.push(`${unhealthy} 个节目源待检查`);
-        return json(res, 200, { generatedAt: idx.generatedAt, days: idx.days, episodes: idx.episodes.map(e => publicEpisode(e)), sources: idx.sources, themes: idx.themes, stats: idx.stats, pipelineAlerts: alerts });
+        return json(res, 200, { generatedAt: idx.generatedAt, days: idx.days, episodes: idx.episodes.map(e => publicEpisode(e)), sources: idx.sources, themes: idx.themes, entities: idx.entities, stats: idx.stats, pipelineAlerts: alerts });
+      }
+      if (pathname === '/api/entities') {
+        const idx = getIndex();
+        return json(res, 200, { total: idx.entities.length, entities: idx.entities });
       }
       if (pathname === '/api/episodes') {
         const idx = getIndex(); let episodes = idx.episodes;
-        const filters = Object.fromEntries(['date', 'status', 'theme', 'show', 'materiality', 'q'].map(key => [key, url.searchParams.get(key) || '']));
+        const filters = Object.fromEntries(['date', 'status', 'theme', 'show', 'materiality', 'entity', 'sourceTier', 'lowInformation', 'q'].map(key => [key, url.searchParams.get(key) || '']));
         if (filters.date) episodes = episodes.filter(e => e.dateDetected === filters.date);
         if (filters.status) { const statuses = filters.status.split(','); episodes = episodes.filter(e => statuses.includes(e.productionStatus)); }
         if (filters.theme) episodes = episodes.filter(e => e.themes.includes(filters.theme));
         if (filters.show) episodes = episodes.filter(e => e.show === filters.show);
         if (filters.materiality) episodes = episodes.filter(e => e.materiality === filters.materiality);
+        if (filters.entity) { const entity = filters.entity.toLocaleLowerCase(); episodes = episodes.filter(e => e.entities.some(value => value.id.toLocaleLowerCase() === entity || value.name.toLocaleLowerCase() === entity)); }
+        if (filters.sourceTier) episodes = episodes.filter(e => e.sourceTier === filters.sourceTier);
+        if (filters.lowInformation === 'true') episodes = episodes.filter(e => e.lowInformation);
+        if (filters.lowInformation === 'false') episodes = episodes.filter(e => !e.lowInformation);
         if (filters.q) episodes = episodes.filter(e => matchQuery(e, filters.q));
         const total = episodes.length; const limit = parseBoundedInt(url.searchParams.get('limit'), 50, 100); const offset = parseBoundedInt(url.searchParams.get('offset'), 0, 1_000_000);
         return json(res, 200, { total, limit, offset, episodes: episodes.slice(offset, offset + limit).map(e => publicEpisode(e)) });
