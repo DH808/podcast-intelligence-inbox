@@ -2,7 +2,7 @@
   "name": "podcast-intelligence-inbox-render",
   "version": "1.1.0",
   "private": true,
-  "description": "Private read-only Podcast Intelligence Inbox",
+  "description": "Read-only, QC-passed Podcast Intelligence reading product",
   "scripts": {
     "start": "node server.js",
     "test": "node test/intelligence.test.js && node test/indexer.test.js && node test/server.test.js",

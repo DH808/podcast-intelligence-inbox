@@ -31,6 +31,7 @@ function publicEpisode(episode, detail = false) {
     description: episode.description, materiality: episode.materiality, candidateStatus: episode.candidateStatus, productionStatus: episode.productionStatus,
     transcriptStatus: episode.transcriptStatus, transcriptBoundary: episode.transcriptBoundary, duration: episode.duration, themes: episode.themes,
     whyItMatters: episode.whyItMatters, noteChars: episode.noteChars, qcPassed: episode.qcPassed, artifactOnly: episode.artifactOnly,
+    presentationReady: episode.presentationReady, publicReady: episode.publicReady, publicationQc: episode.publicationQc,
     entities: episode.entities, sourceTier: episode.sourceTier, sourceQualityLabel: episode.sourceQualityLabel,
     routingLabel: episode.label, routingScore: episode.routingScore, routingReason: episode.routingReason,
     lowInformation: episode.lowInformation, todayVisible: episode.todayVisible, informationPending: episode.informationPending,
@@ -83,17 +84,18 @@ function createRequestHandler(options = {}) {
         const idx = getIndex(url.searchParams.get('refresh') === '1');
         const latest = idx.days[0] || null;
         const alerts = [];
-        if (latest && latest.candidateCount === 0) alerts.push('最近日期尚未发现候选节目');
+        if (!latest) alerts.push('当前没有通过内容完整性 QC 的可读节目');
         const unhealthy = idx.sources.filter(source => source.health === '待检查').length;
         if (unhealthy) alerts.push(`${unhealthy} 个节目源待检查`);
-        return json(res, 200, { generatedAt: idx.generatedAt, days: idx.days, episodes: idx.episodes.map(e => publicEpisode(e)), sources: idx.sources, themes: idx.themes, entities: idx.entities, stats: idx.stats, pipelineAlerts: alerts });
+        return json(res, 200, { generatedAt: idx.generatedAt, days: idx.days, episodes: idx.readyEpisodes.map(e => publicEpisode(e)), sources: idx.sources, themes: idx.themes, entities: idx.entities, stats: idx.stats, audit: idx.audit, pipelineAlerts: alerts });
       }
+      if (pathname === '/api/audit') return json(res, 200, getIndex().audit);
       if (pathname === '/api/entities') {
         const idx = getIndex();
         return json(res, 200, { total: idx.entities.length, entities: idx.entities });
       }
       if (pathname === '/api/episodes') {
-        const idx = getIndex(); let episodes = idx.episodes;
+        const idx = getIndex(); let episodes = idx.readyEpisodes;
         const filters = Object.fromEntries(['date', 'status', 'theme', 'show', 'materiality', 'entity', 'sourceTier', 'lowInformation', 'q'].map(key => [key, url.searchParams.get(key) || '']));
         if (filters.date) episodes = episodes.filter(e => e.dateDetected === filters.date);
         if (filters.status) { const statuses = filters.status.split(','); episodes = episodes.filter(e => statuses.includes(e.productionStatus)); }
@@ -111,12 +113,12 @@ function createRequestHandler(options = {}) {
       if (pathname === '/api/search') {
         const q = url.searchParams.get('q') || ''; const limit = parseBoundedInt(url.searchParams.get('limit'), 20, 50);
         if (!q.trim()) return json(res, 200, { query: '', total: 0, episodes: [] });
-        const found = getIndex().episodes.filter(e => matchQuery(e, q, true));
+        const found = getIndex().readyEpisodes.filter(e => matchQuery(e, q, true));
         return json(res, 200, { query: q, total: found.length, episodes: found.slice(0, limit).map(e => publicEpisode(e)) });
       }
       const fileMatch = pathname.match(/^\/api\/episodes\/([^/]+)\/files\/([^/]+)$/);
       if (fileMatch) {
-        const episode = getIndex().episodes.find(e => e.id === decodeURIComponent(fileMatch[1]));
+        const episode = getIndex().readyEpisodes.find(e => e.id === decodeURIComponent(fileMatch[1]));
         if (!episode) return json(res, 404, { error: 'episode_not_found' });
         const file = fileForKind(episode, decodeURIComponent(fileMatch[2]));
         if (!file) return json(res, 404, { error: 'file_not_found' });
@@ -124,13 +126,15 @@ function createRequestHandler(options = {}) {
       }
       const detailMatch = pathname.match(/^\/api\/episodes\/([^/]+)$/);
       if (detailMatch) {
-        const episode = getIndex().episodes.find(e => e.id === decodeURIComponent(detailMatch[1]));
+        const episode = getIndex().readyEpisodes.find(e => e.id === decodeURIComponent(detailMatch[1]));
         if (!episode) return json(res, 404, { error: 'episode_not_found' });
         return json(res, 200, { ...publicEpisode(episode, true), noteMarkdown: readNote(episode), investmentExtraction: readInvestmentExtraction(episode) });
       }
       if (pathname === '/api/file' || pathname === '/api/raw') {
         const result = safeFile(url.searchParams.get('path'));
         if (!result.file) return json(res, result.status, { error: result.error });
+        const allowed = getIndex().readyEpisodes.some(episode => ['markdown', 'docx', 'pdf', 'transcript', 'audio', 'qc', 'investment'].some(kind => fileForKind(episode, kind) === result.file));
+        if (!allowed) return json(res, 404, { error: 'file_not_found' });
         if (pathname === '/api/raw') {
           if (!/\.(md|txt|json)$/i.test(result.file)) return json(res, 415, { error: 'unsupported_raw_file' });
           return send(res, 200, fs.readFileSync(result.file, 'utf8'), { 'content-type': mime(result.file), 'cache-control': 'no-store' });
