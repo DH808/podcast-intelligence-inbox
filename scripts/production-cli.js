@@ -18,11 +18,12 @@ const { DEFAULT_DB_PATH } = require('../src/library-database');
 const { acquireAndStoreTranscript } = require('../src/transcript-acquisition');
 const { generateWorkPacket, validateAgentOutputs } = require('../src/production-validation');
 const { releaseEpisode } = require('../src/production-release');
+const { promoteEpisode, stageEpisode } = require('../src/production-staging');
 const { copyAdditive, sha256File } = require('../src/production-files');
 
 function argumentsFrom(values) {
   const result = { command: values[0] || '', keepAudio: false, dryRun: false, attachedOnly: false };
-  const paths = new Set(['--db', '--ledger', '--archive-root', '--radar-root', '--queries-root', '--raw-reports-root', '--reports-dir', '--transcript-path', '--destination-root']);
+  const paths = new Set(['--db', '--ledger', '--archive-root', '--radar-root', '--queries-root', '--raw-reports-root', '--reports-dir', '--transcript-path', '--destination-root', '--staging-root']);
   const strings = new Set(['--since', '--episode', '--worker', '--third-party-template', '--asr-model', '--asr-device', '--source-label']);
   const numbers = new Set(['--lease-seconds', '--limit', '--maximum-audio-bytes', '--maximum-asr-wall-seconds', '--maximum-asr-duration-seconds']);
   for (let index = 1; index < values.length; index += 1) {
@@ -200,6 +201,18 @@ function main(argv = process.argv.slice(2)) {
     const ledger = buildProductionPlan(config); print({ ok: true, ledgerPath: config.ledgerPath, metrics: ledger.metrics,
       planFingerprint: ledger.planFingerprint, episodeIds: ledger.episodes.map(episode => episode.id) });
   } else if (args.command === 'status') print({ ok: true, ...productionStatus(config.ledgerPath) });
+  else if (args.command === 'select') {
+    const ledger = readLedger(config.ledgerPath, { required: true });
+    const eligible = episode => episode.currentStage !== 'released' && episode.nextAction !== 'released';
+    const workPacketReady = ledger.episodes.find(episode => eligible(episode) && episode.currentStage === 'work_packet_ready');
+    const acquireTranscript = ledger.episodes.find(episode => eligible(episode) && episode.currentStage === 'acquire_transcript'
+      && (!episode.retry?.nextAt || new Date(episode.retry.nextAt).getTime() <= Date.now()));
+    print({ ok: true, allReleased: ledger.episodes.every(episode => !eligible(episode)),
+      workPacketReady: workPacketReady ? { episodeId: workPacketReady.id, publishedDate: workPacketReady.publishedDate,
+        show: workPacketReady.show, title: workPacketReady.title } : null,
+      acquireTranscript: acquireTranscript ? { episodeId: acquireTranscript.id, publishedDate: acquireTranscript.publishedDate,
+        show: acquireTranscript.show, title: acquireTranscript.title } : null });
+  }
   else if (args.command === 'next') {
     recoverStaleClaims(config.ledgerPath);
     print({ ok: true, next: claimNextEpisode(config.ledgerPath, { workerId: args.worker, leaseSeconds: args.leaseSeconds }) });
@@ -208,10 +221,12 @@ function main(argv = process.argv.slice(2)) {
     print(acquireOne(args, config, args.episode, args.attachedOnly));
   } else if (args.command === 'validate') print(validateCommand(args, config));
   else if (args.command === 'packets') print(packetsCommand(args, config));
+  else if (args.command === 'stage') print(stageEpisode({ ...config, ...args, episodeId: args.episode }));
+  else if (args.command === 'promote') print(promoteEpisode({ ...config, ...args, episodeId: args.episode }));
   else if (args.command === 'handoff') print(handoffCommand(args, config));
   else if (args.command === 'release') {
     print(releaseEpisode({ ...config, ...args, episodeId: args.episode, radarRoot: args.radarRoot || config.archiveRoot }));
-  } else throw new Error('usage: production-cli.js <plan|status|next|acquire|validate|packets|handoff|release> [--episode ID] [--since YYYY-MM-DD]');
+  } else throw new Error('usage: production-cli.js <plan|status|next|acquire|validate|packets|stage|promote|handoff|release> [--episode ID] [--since YYYY-MM-DD]');
 }
 
 if (require.main === module) {

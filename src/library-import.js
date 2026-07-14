@@ -3,8 +3,8 @@
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
-const { buildIndex } = require('./indexer');
-const { CORE_SHOWS, PRIORITY_SHOWS, extractEntities } = require('./intelligence');
+const { buildIndex, canonicalUrl, noteFacts, youtubeSourceRecords } = require('./indexer');
+const { CORE_SHOWS, PRIORITY_SHOWS, extractEntities, sameSourceIdentity, stripInvisibleUnicode } = require('./intelligence');
 const { APP_DIR, DEFAULT_DB_PATH, openDatabase, migrateDatabase, verifyDatabase, sha256 } = require('./library-database');
 const { LibraryRepository } = require('./library-repository');
 
@@ -45,7 +45,7 @@ function walk(root, predicate = () => true) {
 }
 function stableId(prefix, value) { return `${prefix}_${crypto.createHash('sha256').update(String(value)).digest('hex').slice(0, 20)}`; }
 function normalizeText(value) {
-  return String(value || '').normalize('NFKC').toLocaleLowerCase().replace(/&amp;/g, ' and ').replace(/[’‘]/g, "'")
+  return stripInvisibleUnicode(value).toLocaleLowerCase().replace(/&amp;/g, ' and ').replace(/[’‘]/g, "'")
     .replace(/\b(?:podcast|episode|ep)\b/g, ' ').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
 }
 function slugify(value) { return normalizeText(value).replace(/\s+/g, '-').slice(0, 90) || stableId('show', value).slice(5); }
@@ -179,6 +179,8 @@ function officialRssEpisodeSourceUrl(input = {}) {
 function evaluateLibraryReadiness(input = {}) {
   const reasons = [];
   const note = String(input.noteText || ''); const plain = stripMarkdown(note);
+  const facts = noteFacts(note); const noteShow = input.noteShow || input.noteMetadataShow || facts.show;
+  const noteSourceUrl = input.noteSourceUrl || facts.url; const sourceUrlShow = input.sourceUrlShow || '';
   if (!input.canonical) reasons.push('canonical_note_not_selected');
   if (!input.notePath || !exists(input.notePath)) reasons.push('source_note_missing');
   if (plain.length < NOTE_MIN_CHARS) reasons.push('source_note_too_short');
@@ -191,6 +193,13 @@ function evaluateLibraryReadiness(input = {}) {
   if (!validOriginalUrl(officialRssEpisodeSourceUrl(input))) reasons.push('original_source_url_invalid');
   if (String(input.sourceBoundary || '').trim().length < 12) reasons.push('source_boundary_missing');
   if (String(input.whyItMatters || '').trim().length < 40) reasons.push('why_it_matters_missing');
+  if (noteShow && !sameSourceIdentity(input.show, noteShow)) reasons.push('note_show_identity_mismatch');
+  if (sourceUrlShow && !sameSourceIdentity(input.show, sourceUrlShow)) reasons.push('source_url_show_identity_mismatch');
+  if (noteShow && sourceUrlShow && !sameSourceIdentity(noteShow, sourceUrlShow)) reasons.push('note_source_show_identity_mismatch');
+  if (noteSourceUrl) {
+    const acceptedUrls = [officialRssEpisodeSourceUrl(input), ...(input.identityUrls || [])].filter(Boolean).map(canonicalUrl);
+    if (!acceptedUrls.includes(canonicalUrl(noteSourceUrl))) reasons.push('note_source_url_identity_mismatch');
+  }
   if (input.notePath && exists(input.notePath)) {
     const actual = sha256(fs.readFileSync(input.notePath));
     if (!input.expectedSha256 || actual !== input.expectedSha256) reasons.push('artifact_hash_mismatch');
@@ -301,6 +310,7 @@ class EpisodeBuilder {
     this.showFilter = (options.shows || []).map(normalizeText);
     this.shows = new Map(); this.aliases = new Map(); this.episodes = new Map(); this.identities = new Map();
     this.mergeLedger = []; this.warnings = []; this.candidateReview = []; this.rawRss = new Map();
+    this.videoShows = new Map();
     this.counts = { monitoredShows: 0, officialSinceCutoff: 0, candidateRows: 0, candidateAliasesMerged: 0,
       radarIndexed: 0, radarReadyImported: 0, iltbCanonicalSobridgeMarkdown: 0, iltbVersions: 0,
       genericReviewed: 0, genericExcluded: 0, attachedArtifacts: 0, importedClaims: 0 };
@@ -326,8 +336,32 @@ class EpisodeBuilder {
     return show;
   }
 
+  addShowAlias(show, alias, sourceType = 'controlled_alias', confidence = 0.95) {
+    const normalized = normalizeText(alias);
+    if (!show || !normalized) return;
+    if (!show.aliases.some(value => value.normalized === normalized)) show.aliases.push({ alias, normalized, sourceType, confidence });
+    if (!this.aliases.has(normalized)) this.aliases.set(normalized, show.id);
+  }
+
+  registerVideoShow(videoId, show, evidence, rank = 0) {
+    if (!videoId || !show) return;
+    const previous = this.videoShows.get(videoId);
+    if (previous && previous.showId !== show.id && previous.rank === rank) {
+      this.warnings.push({ code: 'youtube_source_identity_conflict', videoId, existingShowId: previous.showId, incomingShowId: show.id, evidence });
+      this.videoShows.delete(videoId);
+      return;
+    }
+    if (!previous || rank > previous.rank) this.videoShows.set(videoId, { showId: show.id, evidence, rank });
+  }
+
+  showForVideo(videoId) {
+    const identity = this.videoShows.get(String(videoId || ''));
+    return identity ? this.shows.get(identity.showId) : null;
+  }
+
   resolveShow(value) {
     const normalized = normalizeText(value);
+    if (!normalized) return null;
     if (this.aliases.has(normalized)) return this.shows.get(this.aliases.get(normalized));
     const candidates = [...this.aliases.entries()].filter(([alias]) => normalized.includes(alias) || alias.includes(normalized)).sort((a, b) => b[0].length - a[0].length);
     return candidates.length ? this.shows.get(candidates[0][1]) : null;
@@ -378,7 +412,7 @@ class EpisodeBuilder {
         publishedDate: date.date, durationSeconds: meta.durationSeconds ?? null, durationText: meta.durationText || '', description: meta.description || '',
         originalUrl: cleanUrl(meta.originalUrl), audioUrl: cleanUrl(meta.audioUrl), mediaType: meta.mediaType || 'podcast', materiality: meta.materiality || 'unknown',
         canonicalSourceType: meta.sourceType || 'discovery', episodeNumber: String(meta.episodeNumber || episodeNumber(meta.title) || ''),
-        externalIds: [], artifacts: [], notes: [], claims: [], sourceRecords: [] };
+        externalIds: [], artifacts: [], notes: [], claims: [], sourceRecords: [], sourceUrlShow: meta.sourceUrlShow || '' };
       this.episodes.set(id, episode);
     } else if (options.recordMerge !== false) {
       this.mergeLedger.push({ canonicalEpisodeId: episode.id, incomingSource: meta.source || meta.sourceType || 'unknown',
@@ -396,6 +430,7 @@ class EpisodeBuilder {
       episode.publishedAt ||= date.at; episode.publishedDate ||= date.date; episode.durationSeconds ??= meta.durationSeconds ?? null; episode.durationText ||= meta.durationText || '';
     }
     if (meta.materiality && episode.materiality === 'unknown') episode.materiality = meta.materiality;
+    episode.sourceUrlShow ||= meta.sourceUrlShow || '';
     for (const [type, value] of pairs) {
       const key = `${type}:${value}`; const owner = this.identities.get(key);
       if (owner && owner !== episode.id) { this.warnings.push({ code: 'identity_conflict', type, value, owner, incoming: episode.id }); continue; }
@@ -420,10 +455,12 @@ class EpisodeBuilder {
     if (!episode || !exists(file) || episode.notes.some(note => note.path === file)) return null;
     const artifact = this.addArtifact(episode, file, 'note_md', options.sourceLayer || 'historical', 'reader');
     const text = fs.readFileSync(file, 'utf8');
+    const identity = noteFacts(text);
     const note = { id: stableId('note', path.resolve(file)), episodeId: episode.id, artifactId: artifact.id, path: path.resolve(file), text,
       versionLabel: options.versionLabel || noteLabel(file), writingStyle: options.writingStyle || noteLabel(file), rank: options.rank ?? noteRank(file),
       charCount: stripMarkdown(text).length, language: (text.match(/[\u3400-\u9fff]/g) || []).length >= 80 ? 'zh-CN' : 'unknown',
       sourceBoundary: options.sourceBoundary || sourceBoundaryFromNote(text), whyItMatters: options.whyItMatters || whyItMattersFromNote(text),
+      noteShow: identity.show, noteSourceUrl: identity.url,
       deterministicQcPassed: options.deterministicQcPassed !== false, importedAt: new Date().toISOString() };
     episode.notes.push(note); return note;
   }
@@ -453,6 +490,20 @@ function importOfficialRss(builder, radarRoot) {
     }
   }
 }
+function importYoutubeSources(builder, radarRoot) {
+  const state = readJson(path.join(radarRoot, 'state.json'), {});
+  for (const [sourceKey, source] of Object.entries(state.youtube_sources || state.youtubeSources || {})) {
+    let show = builder.resolveShow(sourceKey);
+    if (!show) show = builder.addShow(`youtube:${sourceKey}`, { ...source, show_title: sourceKey, collectionName: sourceKey, tier: source.tier || 'priority' });
+    if (!show) continue;
+    builder.addShowAlias(show, sourceKey, 'youtube_source_registry', 1);
+    builder.addShowAlias(show, `youtube:${sourceKey}`, 'youtube_source_registry', 1);
+  }
+  for (const [videoId, source] of youtubeSourceRecords(state)) {
+    const show = builder.resolveShow(source.sourceKey || source.show);
+    if (show) builder.registerVideoShow(videoId, show, source.evidence, source.rank);
+  }
+}
 function candidateArrays(value) {
   if (Array.isArray(value)) return value;
   for (const key of ['candidates', 'items', 'results', 'episodes']) if (Array.isArray(value?.[key])) return value[key];
@@ -467,11 +518,12 @@ function importCandidates(builder, radarRoot) {
     if (seen.has(unique)) continue; seen.add(unique); builder.counts.candidateRows += 1;
     const date = published(candidate.published || candidate.published_at || candidate.date || path.basename(path.dirname(file)));
     if (date.date && date.date < builder.since) continue;
-    const show = builder.resolveShow(candidate.source_key || candidate.show || candidate.channel);
+    const video = candidate.video_id || youtubeId(candidate.url);
+    const show = builder.showForVideo(video) || builder.resolveShow(candidate.source_key || candidate.show || candidate.channel);
     if (!show) { builder.candidateReview.push({ candidateId: id, reason: 'show_unresolved', source: file }); continue; }
     const episode = builder.addEpisode({ showId: show.id, title: candidate.title, publishedAt: candidate.published || candidate.published_at,
       description: candidate.description, originalUrl: candidate.url || candidate.link, audioUrl: candidate.audio_url,
-      candidateId: id, youtubeId: candidate.video_id || youtubeId(candidate.url), materiality: candidate.materiality,
+      candidateId: id, youtubeId: video, materiality: candidate.materiality, sourceUrlShow: builder.showForVideo(video)?.canonicalName || '',
       mediaType: candidate.type || 'podcast', sourceType: 'radar_candidate', source: file }, { create: false });
     if (episode) builder.counts.candidateAliasesMerged += 1;
     else builder.candidateReview.push({ candidateId: id, title: candidate.title || '', show: show.canonicalName, publishedDate: date.date,
@@ -483,7 +535,8 @@ function importRadarArchive(builder, radarRoot) {
   const index = buildIndex(radarRoot);
   builder.counts.radarIndexed = index.episodes.length;
   for (const item of index.episodes) {
-    const show = builder.resolveShow(item.sourceKey || item.show); if (!show) continue;
+    const video = item.videoId || youtubeId(item.originalUrl);
+    const show = builder.showForVideo(video) || builder.resolveShow(item.sourceKey || item.show); if (!show) continue;
     let episode = item.metadata?.episode_id ? builder.episodes.get(String(item.metadata.episode_id)) : null;
     if (item.metadata?.episode_id && episode) {
       const incomingUrl = cleanUrl(item.originalUrl);
@@ -501,7 +554,8 @@ function importRadarArchive(builder, radarRoot) {
     }
     episode ||= builder.addEpisode({ showId: show.id, title: item.title, publishedAt: item.publishedAt || item.dateDetected,
       description: item.description, originalUrl: item.originalUrl, audioUrl: item.audioUrl, candidateId: item.candidateId,
-      youtubeId: youtubeId(item.originalUrl), materiality: item.materiality, mediaType: item.mediaType, sourceType: 'radar_archive',
+      youtubeId: video, materiality: item.materiality, mediaType: item.mediaType, sourceType: 'radar_archive',
+      sourceUrlShow: builder.showForVideo(video)?.canonicalName || item.sourceUrlShow || '',
       source: item.metadataPath || item.dateDetected }, { create: Boolean(item.presentationReady) });
     if (!episode) continue;
     for (const [key, hint] of [['transcriptPath', 'transcript_txt'], ['audioPath', 'audio'], ['qcPath', 'qc_json'], ['docxPath', 'docx'], ['pdfPath', 'pdf'],
@@ -629,8 +683,23 @@ function extractThemes(text) {
   return rules.filter(([, pattern]) => pattern.test(source)).map(([name]) => name).slice(0, 6);
 }
 function guestEntity(title) {
-  const value = String(title || '').split(/\s[-–—|｜:]\s|\s*｜\s*/)[0].replace(/^\s*(?:Invest Like the Best\s*)?(?:EP\.?\d+\s*)?/i, '').trim();
-  return value && value.length <= 80 && /[A-Za-z\u3400-\u9fff]/.test(value) && !/^(?:how|why|the|what|episode)/i.test(value) ? value : '';
+  const clean = stripInvisibleUnicode(title).trim();
+  const divided = clean.match(/^(.{2,80}?)\s+[-–—]\s+.+\[\s*Invest Like the Best\s*,\s*EP\.?\s*\d+\s*\]\s*$/i);
+  if (!divided) return '';
+  const value = divided[1].replace(/^\s*(?:Invest Like the Best\s*)?(?:EP\.?\d+\s*)?/i, '').trim();
+  if (!value || /\d|[^\p{L}\p{M}'’.\s-]/u.test(value) || /^(?:how|why|the|what|episode|special edition|wtt|ai|open source|podcast)/i.test(value)) return '';
+  if (/^[\u3400-\u9fff]{2,4}$/u.test(value)) return value;
+  const tokens = value.split(/\s+/);
+  return tokens.length >= 2 && tokens.length <= 5 && tokens.every(token => /^\p{Lu}[\p{L}\p{M}'’.-]*$/u.test(token)) ? value : '';
+}
+
+function episodeIdentityUrls(episode) {
+  const urls = [episode.originalUrl, episode.audioUrl];
+  for (const identity of episode.externalIds) {
+    if (identity.type === 'canonical_url' || identity.type === 'enclosure_url') urls.push(identity.value);
+    else if (identity.type === 'youtube_id') urls.push(`https://www.youtube.com/watch?v=${identity.value}`);
+  }
+  return urls.filter(Boolean);
 }
 
 function canonicalize(builder) {
@@ -639,10 +708,12 @@ function canonicalize(builder) {
     episode.notes.forEach((note, index) => { note.canonical = index === 0 ? 1 : 0; note.superseded = index === 0 ? 0 : 1;
       const artifact = episode.artifacts.find(item => item.id === note.artifactId); artifact.canonical = note.canonical; });
     const canonical = episode.notes[0]; const show = builder.shows.get(episode.showId);
+    const sourceUrlShow = builder.showForVideo(youtubeId(canonical?.noteSourceUrl || episode.originalUrl))?.canonicalName || episode.sourceUrlShow;
     const readiness = canonical ? evaluateLibraryReadiness({ title: episode.title, show: show.canonicalName, publishedDate: episode.publishedDate,
       originalUrl: episode.originalUrl, noteText: canonical.text, notePath: canonical.path, expectedSha256: episode.artifacts.find(item => item.id === canonical.artifactId).sha256,
       sourceBoundary: canonical.sourceBoundary, whyItMatters: canonical.whyItMatters, canonical: true,
-      deterministicQcPassed: canonical.deterministicQcPassed }) : { ready: false, gateVersion: LIBRARY_GATE_VERSION,
+      deterministicQcPassed: canonical.deterministicQcPassed, noteShow: canonical.noteShow, noteSourceUrl: canonical.noteSourceUrl,
+      sourceUrlShow, identityUrls: episodeIdentityUrls(episode) }) : { ready: false, gateVersion: LIBRARY_GATE_VERSION,
       reasons: ['canonical_note_missing', 'deterministic_qc_failed', 'source_boundary_missing', 'why_it_matters_missing'], metrics: {} };
     episode.readiness = readiness;
     const transcript = episode.artifacts.some(artifact => ['transcript_txt', 'transcript_json'].includes(artifact.type));
@@ -699,7 +770,10 @@ function insertBuilder(db, builder, run, inventory) {
         note.sourceBoundary, note.whyItMatters, note.text, note.canonical, note.superseded, note.importedAt);
       const result = note.canonical ? episode.readiness : evaluateLibraryReadiness({ title: episode.title, show: show.canonicalName, publishedDate: episode.publishedDate,
         originalUrl: episode.originalUrl, noteText: note.text, notePath: note.path, expectedSha256: episode.artifacts.find(item => item.id === note.artifactId).sha256,
-        sourceBoundary: note.sourceBoundary, whyItMatters: note.whyItMatters, canonical: false, deterministicQcPassed: note.deterministicQcPassed });
+        sourceBoundary: note.sourceBoundary, whyItMatters: note.whyItMatters, canonical: false, deterministicQcPassed: note.deterministicQcPassed,
+        noteShow: note.noteShow, noteSourceUrl: note.noteSourceUrl,
+        sourceUrlShow: builder.showForVideo(youtubeId(note.noteSourceUrl || episode.originalUrl))?.canonicalName || episode.sourceUrlShow,
+        identityUrls: episodeIdentityUrls(episode) });
       qcStatement.run(stableId('qc', `${note.id}:${LIBRARY_GATE_VERSION}:import-v1`), episode.id, note.artifactId, LIBRARY_GATE_VERSION,
         result.ready ? 1 : 0, JSON.stringify(result.reasons), JSON.stringify(result.metrics), qcArtifact?.id || null, now, 'deterministic-import-v1');
     }
@@ -753,6 +827,7 @@ function rebuildLibrary(options = {}) {
   if (!validDate(config.since)) throw new Error(`invalid cutoff date: ${config.since}`);
   const inventory = inventoryAssets(config); const builder = new EpisodeBuilder(config);
   importOfficialRss(builder, config.radarRoot);
+  importYoutubeSources(builder, config.radarRoot);
   importCandidates(builder, config.radarRoot);
   importRadarArchive(builder, config.radarRoot);
   importIltbNotes(builder, config.queriesRoot);
@@ -842,4 +917,4 @@ function exportSanitizedSnapshot(options = {}) {
 
 module.exports = { LIBRARY_GATE_VERSION, DEFAULT_SINCE, DEFAULT_RADAR_ROOT, DEFAULT_QUERIES_ROOT, DEFAULT_RAW_REPORTS_ROOT, DEFAULT_REPORTS_DIR,
   parseRss, cleanUrl, officialRssEpisodeSourceUrl, inventoryAssets, genericHistoricalDiscovery, evaluateLibraryReadiness, rebuildLibrary, verifyLibrary, exportSanitizedSnapshot,
-  sourceBoundaryFromNote, whyItMattersFromNote };
+  sourceBoundaryFromNote, whyItMattersFromNote, guestEntity };

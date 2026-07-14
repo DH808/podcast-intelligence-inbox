@@ -3,7 +3,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
-const { buildIndex, safeResolvePodcastPath, normalizeTitle, canonicalUrl, extractThemes, evaluatePublicationReadiness, PUBLICATION_GATE_VERSION } = require('../src/indexer');
+const { buildIndex, safeResolvePodcastPath, normalizeTitle, canonicalUrl, noteFacts, extractThemes, evaluatePublicationReadiness, PUBLICATION_GATE_VERSION } = require('../src/indexer');
 
 function write(file, value) {
   fs.mkdirSync(path.dirname(file), { recursive: true });
@@ -54,6 +54,7 @@ function makeFixture() {
 function run() {
   assert.strictEqual(normalizeTitle('The AI—Show!'), 'ai');
   assert.strictEqual(canonicalUrl('https://youtu.be/ALPHA123456?t=2'), 'youtube:ALPHA123456');
+  assert.strictEqual(noteFacts('- **视频**：https://www.youtube.com/watch?v=jX-Uq8JJ_j8').url, 'https://www.youtube.com/watch?v=jX-Uq8JJ_j8', 'YouTube identity punctuation must survive Markdown parsing');
   assert.deepStrictEqual(extractThemes('unclassified conversation'), [], 'General must never be emitted');
 
   const root = makeFixture();
@@ -117,6 +118,15 @@ function run() {
     transcriptBoundary: 'Official transcript with a clearly recorded source boundary.', qcSummary: { passed: true }, qcPath: '/archive/qc.json',
   }, '# Source faithful note\n\n' + 'Long English transcript summary with concrete claims and source-order analysis. '.repeat(30));
   assert(englishOnly.reasons.includes('source_note_not_substantive_chinese'));
+  const identityFailure = evaluatePublicationReadiness({
+    productionStatus: 'qc_passed', title: 'Usable title', show: 'Latent Space', publishedAt: '2026-07-10', notePath: '/archive/note.md',
+    originalUrl: 'https://www.youtube.com/watch?v=Y7p4rUCdqi0', noteMetadataShow: 'All-In Podcast',
+    noteSourceUrl: 'https://www.youtube.com/watch?v=Y7p4rUCdqi0', sourceUrlShow: 'All-In Podcast',
+    whyItMatters: '这是一段足够具体且非占位的研究价值说明，明确说明该访谈为什么值得阅读以及读者可以从中获得什么。',
+    transcriptBoundary: '官方网页自动生成逐字稿，可能存在识别错误。', qcSummary: { passed: true }, qcPath: '/archive/qc.json',
+  }, completeNote());
+  assert(identityFailure.reasons.includes('note_show_identity_mismatch'));
+  assert(identityFailure.reasons.includes('source_url_show_identity_mismatch'));
 
   const full = fs.readFileSync(safeResolvePodcastPath(root, alpha.notePath), 'utf8');
   assert.match(full, /searchable evidence/);

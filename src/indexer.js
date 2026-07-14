@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
-const { CORE_SHOWS, extractEntities, classifySource, computeRouting } = require('./intelligence');
+const { CORE_SHOWS, extractEntities, classifySource, sameSourceIdentity, stripInvisibleUnicode, computeRouting } = require('./intelligence');
 
 function readJson(file, fallback = null) {
   try { return JSON.parse(fs.readFileSync(file, 'utf8')); } catch (_) { return fallback; }
@@ -12,9 +12,9 @@ function listDirs(root) {
   return fs.readdirSync(root, { withFileTypes: true }).filter(e => e.isDirectory() && /^\d{4}-\d{2}-\d{2}$/.test(e.name)).map(e => e.name).sort().reverse();
 }
 function shortHash(value) { return crypto.createHash('sha1').update(String(value)).digest('hex').slice(0, 12); }
-function compactText(value, limit = 360) { return String(value || '').replace(/\s+/g, ' ').trim().slice(0, limit); }
+function compactText(value, limit = 360) { return stripInvisibleUnicode(value).replace(/\s+/g, ' ').trim().slice(0, limit); }
 function stripMd(value) {
-  return String(value || '').replace(/`([^`]+)`/g, '$1').replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[*_]{1,3}/g, '').replace(/^#+\s*/gm, '').replace(/<[^>]+>/g, '').trim();
+  return stripInvisibleUnicode(value).replace(/`([^`]+)`/g, '$1').replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[*_]{1,3}/g, '').replace(/^#+\s*/gm, '').replace(/<[^>]+>/g, '').trim();
 }
 
 const PUBLICATION_GATE_VERSION = 'presentation-ready-v1';
@@ -64,12 +64,16 @@ function evaluatePublicationReadiness(episode, noteText = '') {
   if (!meaningfulText(episode.title, 4) || /^(?:未命名|unknown|untitled)/i.test(String(episode.title))) reasons.push('title_unusable');
   if (!meaningfulText(episode.show, 2) || /^(?:未知节目|unknown|untitled)/i.test(String(episode.show))) reasons.push('show_unusable');
   if (!usableDate(episode.publishedAt || episode.dateDetected)) reasons.push('date_unusable');
+  if (episode.noteMetadataShow && !sameSourceIdentity(episode.show, episode.noteMetadataShow)) reasons.push('note_show_identity_mismatch');
+  if (episode.sourceUrlShow && !sameSourceIdentity(episode.show, episode.sourceUrlShow)) reasons.push('source_url_show_identity_mismatch');
+  if (episode.noteMetadataShow && episode.sourceUrlShow && !sameSourceIdentity(episode.noteMetadataShow, episode.sourceUrlShow)) reasons.push('note_source_show_identity_mismatch');
+  if (episode.noteSourceUrl && canonicalUrl(episode.noteSourceUrl) !== canonicalUrl(episode.originalUrl)) reasons.push('note_source_url_identity_mismatch');
   return { ready: reasons.length === 0, reasons, gateVersion: PUBLICATION_GATE_VERSION };
 }
 
 const TITLE_STOP = new Set(['the', 'and', 'with', 'from', 'this', 'that', 'podcast', 'show', 'episode', 'how', 'why', 'what', 'for']);
 function normalizeTitle(value) {
-  return String(value || '').normalize('NFKD').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim().split(/\s+/).filter(t => t && !TITLE_STOP.has(t)).join(' ');
+  return stripInvisibleUnicode(value).normalize('NFKD').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim().split(/\s+/).filter(t => t && !TITLE_STOP.has(t)).join(' ');
 }
 function videoId(value) {
   const s = String(value || '');
@@ -150,19 +154,56 @@ function firstFile(dir, patterns) {
 function noteFacts(note) {
   const text = String(note || '');
   const heading = (text.match(/^#\s+(.+)$/m) || [])[1] || '';
-  const field = names => {
+  const rawField = names => {
     const re = new RegExp(`^-\\s*(?:\\*\\*)?(?:${names})(?:\\*\\*)?[：:]\\s*(.+)$`, 'mi');
-    return stripMd((text.match(re) || [])[1] || '');
+    return (text.match(re) || [])[1] || '';
   };
+  const field = names => stripMd(rawField(names));
   const section = names => compactText((text.match(new RegExp(`^##\\s+(?:${names})[^\\n]*\\n+([\\s\\S]{0,1400}?)(?=\\n#{1,2}\\s|\\n---|$)`, 'mi')) || [])[1], 560);
   return {
     title: field('原题|Original title') || stripMd(heading).replace(/[：:]?.{0,12}深度纪要.*$/i, '').trim(),
     show: field('来源|节目 \/ 嘉宾|节目|Source'),
-    url: (field('视频|URL|链接') || '').match(/https?:\/\/\S+/)?.[0] || '',
+    url: stripInvisibleUnicode(rawField('视频|URL|链接')).match(/https?:\/\/\S+/)?.[0] || '',
     publishedAt: field('发布日期|发布时间'),
     sourceBoundary: field('Source boundary|来源边界'),
     whyItMatters: section('(?:一页定位[：:]?\\s*)?为什么|一页导读|核心定位(?:与[^\\n]*)?|对\\s*投资研究用户\\s*的投资相关性'),
   };
+}
+
+function youtubeSourceRecords(state = {}) {
+  const processed = Array.isArray(state.processed) ? state.processed : Object.values(state.processed || {});
+  const sources = Object.entries(state.youtube_sources || state.youtubeSources || {});
+  const records = new Map();
+  const record = (id, value) => {
+    const previous = records.get(id);
+    if (!previous || value.rank > previous.rank) records.set(id, value);
+    else if (value.rank === previous.rank && !sameSourceIdentity(value.show, previous.show)) records.set(id, { conflict: true, rank: value.rank });
+  };
+  for (const item of processed) {
+    const id = item?.video_id || videoId(item?.url);
+    if (!id || !item.show) continue;
+    record(id, { show: item.show, sourceKey: item.source_key || `youtube:${item.show}`, channelId: item.channel_id || '', evidence: 'processed_state', rank: 50 });
+  }
+  for (const [sourceKey, source] of sources) {
+    if (!source?.last_raw_path || !exists(source.last_raw_path)) continue;
+    const xml = fs.readFileSync(source.last_raw_path, 'utf8');
+    for (const match of xml.matchAll(/<entry\b[^>]*>([\s\S]*?)<\/entry>/gi)) {
+      const entry = match[1];
+      const id = (entry.match(/<yt:videoId>([^<]+)<\/yt:videoId>/i) || [])[1] || '';
+      const channelId = (entry.match(/<yt:channelId>([^<]+)<\/yt:channelId>/i) || [])[1] || '';
+      const author = stripMd((entry.match(/<author\b[^>]*>[\s\S]*?<name>([\s\S]*?)<\/name>[\s\S]*?<\/author>/i) || [])[1] || '');
+      if (!id || !channelId || channelId !== String(source.channel_id || '') || (author && !sameSourceIdentity(author, sourceKey))) continue;
+      record(id, { show: author || sourceKey, sourceKey: `youtube:${sourceKey}`, channelId, evidence: 'official_youtube_feed', rank: 100 });
+    }
+  }
+  return records;
+}
+function normalizeYoutubeRecord(record, sources) {
+  const id = record?.video_id || record?.videoId || videoId(record?.url);
+  const source = id ? sources.get(id) : null;
+  if (!source || source.conflict) return record;
+  return { ...record, show: source.show, channel: source.show, source_key: source.sourceKey, sourceKey: source.sourceKey,
+    sourceUrlShow: source.show, youtubeChannelId: source.channelId, youtubeIdentityEvidence: source.evidence };
 }
 
 function scanArtifacts(dayDir) {
@@ -195,6 +236,7 @@ function scanArtifacts(dayDir) {
       transcriptBoundary: metadata.source_boundary || metadata.transcript_boundary || facts.sourceBoundary || metadata.transcript_status || '',
       transcriptStatusRaw: metadata.transcript_status || '', duration: metadata.duration_approx || metadata.duration || metadata.duration_sec || '',
       whyItMatters: facts.whyItMatters,
+      noteMetadataShow: facts.show, noteSourceUrl: facts.url,
       qc: qcPath ? readJson(qcPath, {}) : null,
     };
   }).filter(Boolean);
@@ -256,6 +298,8 @@ function makeEpisode(date, candidate = {}, artifact = null, artifactOnly = false
     notePath: artifact?.notePath || null, transcriptPath: artifact?.transcriptPath || null, docxPath: artifact?.docxPath || null, pdfPath: artifact?.pdfPath || null,
     qcPath: artifact?.qcPath || null, metadataPath: artifact?.metadataPath || null, sourceManifestPath: artifact?.sourceManifestPath || null,
     metadata: artifact?.metadata || null, audioPath: artifact?.audioPath || null, investmentExtractionPath: artifact?.investmentExtractionPath || null,
+    noteMetadataShow: artifact?.noteMetadataShow || '', noteSourceUrl: artifact?.noteSourceUrl || '',
+    sourceUrlShow: candidate.sourceUrlShow || artifact?.sourceUrlShow || '', youtubeChannelId: candidate.youtubeChannelId || artifact?.youtubeChannelId || '',
   };
   Object.assign(episode, computeRouting(episode));
   episode.publicationQc = evaluatePublicationReadiness(episode, noteText);
@@ -285,11 +329,12 @@ function dedupeCandidates(rows) {
 function buildIndex(rootDir) {
   const root = path.resolve(rootDir);
   const sourceState = readJson(path.join(root, 'state.json'), { sources: {} });
+  const youtubeSources = youtubeSourceRecords(sourceState);
   const episodes = []; const productionDays = [];
   for (const date of listDirs(root)) {
     const dayDir = path.join(root, date);
-    const candidates = dedupeCandidates(candidateRows(dayDir));
-    const artifacts = scanArtifacts(dayDir); const used = new Set(); const dayEpisodes = [];
+    const candidates = dedupeCandidates(candidateRows(dayDir).map(candidate => normalizeYoutubeRecord(candidate, youtubeSources)));
+    const artifacts = scanArtifacts(dayDir).map(artifact => normalizeYoutubeRecord(artifact, youtubeSources)); const used = new Set(); const dayEpisodes = [];
     for (const candidate of candidates) {
       const match = matchArtifact(candidate, artifacts, used);
       const artifact = match >= 0 ? artifacts[match] : null;
@@ -355,4 +400,4 @@ function safeResolvePodcastPath(rootDir, requestedPath) {
   return resolved;
 }
 
-module.exports = { extractThemes, parseDailyMarkdownItems, normalizeTitle, canonicalUrl, buildIndex, safeResolvePodcastPath, readJson, statusCounts, evaluatePublicationReadiness, qcArtifactPasses, PUBLICATION_GATE_VERSION, MIN_SOURCE_NOTE_CHARS };
+module.exports = { extractThemes, parseDailyMarkdownItems, normalizeTitle, canonicalUrl, noteFacts, youtubeSourceRecords, buildIndex, safeResolvePodcastPath, readJson, statusCounts, evaluatePublicationReadiness, qcArtifactPasses, PUBLICATION_GATE_VERSION, MIN_SOURCE_NOTE_CHARS };

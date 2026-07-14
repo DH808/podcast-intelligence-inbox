@@ -5,6 +5,7 @@ const {
   classifySource,
   computeRouting,
   CORE_SHOWS,
+  stripInvisibleUnicode,
 } = require('../src/intelligence');
 
 function names(textByField) {
@@ -29,6 +30,7 @@ assert.deepStrictEqual(names({ title: "China's Belt and Road Problem - Sarah Pai
 assert.deepStrictEqual(names({ title: 'Alignment with Awakening: Davidad on Moral Realism' }), ['Davidad Dalrymple']);
 assert.deepStrictEqual(names({ title: 'General relativity from first principles – Adam Brown' }), ['Adam Brown']);
 assert.strictEqual(extractEntities({ title: 'Davidad on moral realism', note: 'OpenAI and Anthropic' })[0].name, 'Davidad Dalrymple', 'title-grounded entities must precede note-only entities');
+assert.strictEqual(stripInvisibleUnicode('\u2060Why OpenAI'), 'Why OpenAI', 'default-ignorable Unicode must not survive identity normalization');
 
 assert.strictEqual(classifySource('Invest Like the Best with Patrick O’Shaughnessy').tier, 'core');
 assert.strictEqual(classifySource('Training Data by Sequoia Capital').tier, 'core');

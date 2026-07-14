@@ -50,8 +50,11 @@ const PRIORITY_SHOWS = Object.freeze([
 const SOURCE_LABELS = Object.freeze({ core: '核心节目', priority: '优先节目', standard: '标准节目' });
 const FIELD_ORDER = ['title', 'description', 'note', 'metadata'];
 
+function stripInvisibleUnicode(value) {
+  return String(value || '').normalize('NFKC').replace(/\p{Default_Ignorable_Code_Point}+/gu, '').replace(/[\p{Cc}\p{Cs}]+/gu, ' ');
+}
 function normalize(value) {
-  return String(value || '').normalize('NFKC').toLocaleLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g, ' ').trim();
+  return stripInvisibleUnicode(value).toLocaleLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g, ' ').trim();
 }
 function escapeRegex(value) { return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
 function exactAliasMatch(text, alias) {
@@ -99,6 +102,10 @@ function classifySource(show, legacyTier = '') {
   }
   return { sourceId: `source-${normalize(show).replace(/[^\p{L}\p{N}]+/gu, '-')}`, sourceName: show || '未知节目', tier: 'standard', label: SOURCE_LABELS.standard };
 }
+function sameSourceIdentity(left, right) {
+  if (!normalize(left) || !normalize(right)) return false;
+  return classifySource(left).sourceId === classifySource(right).sourceId;
+}
 
 function isComplete(value) { return normalize(value).length >= 60; }
 function computeRouting(episode = {}) {
@@ -123,4 +130,4 @@ function computeRouting(episode = {}) {
   return { label: '研究路由优先级', score, reason, routingScore: score, routingReason: reason, lowInformation, todayVisible: !lowInformation, informationPending: episode.sourceTier === 'core' && !hasNote && !hasTranscript && sparse };
 }
 
-module.exports = { ENTITY_REGISTRY, CORE_SHOWS, PRIORITY_SHOWS, SOURCE_LABELS, extractEntities, classifySource, computeRouting };
+module.exports = { ENTITY_REGISTRY, CORE_SHOWS, PRIORITY_SHOWS, SOURCE_LABELS, stripInvisibleUnicode, extractEntities, classifySource, sameSourceIdentity, computeRouting };
