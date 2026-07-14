@@ -5,5 +5,4 @@ data/index.json
 node_modules/
 .env
 data/private/
-data/public/
 data/reports/
