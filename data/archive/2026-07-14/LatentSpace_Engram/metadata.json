@@ -1,0 +1,27 @@
+{
+  "id": "yt_jhpmMTus5a0",
+  "type": "youtube",
+  "video_id": "jhpmMTus5a0",
+  "title": "The AI Memory Problem: Why Long Context Isn’t Enough — Dan Biderman, Engram Co-founder & CEO",
+  "show": "Latent Space",
+  "published": "2026-07-13T18:21:40+00:00",
+  "url": "https://www.youtube.com/watch?v=jhpmMTus5a0",
+  "duration": "49:45",
+  "transcript_status": "youtube_captions_via_youtube_transcript_api",
+  "source_boundary": "YouTube caption-derived transcript via youtube-transcript-api; not a human-edited official transcript; ASR/caption errors possible",
+  "artifacts": {
+    "raw_transcript_json": "[podcast-archive]/2026-07-14/LatentSpace_Engram/transcript_raw.json",
+    "timestamped_transcript": "[podcast-archive]/2026-07-14/LatentSpace_Engram/transcript_timestamped.txt",
+    "plain_transcript": "[podcast-archive]/2026-07-14/LatentSpace_Engram/transcript_plain.txt",
+    "notes_md": "[podcast-archive]/2026-07-14/LatentSpace_Engram/notes_cn_source_faithful.md",
+    "notes_docx": "[podcast-archive]/2026-07-14/LatentSpace_Engram/notes_cn_source_faithful.docx",
+    "qc": "[podcast-archive]/2026-07-14/LatentSpace_Engram/notes_cn_source_faithful.qc.json"
+  },
+  "sha256": {
+    "transcript_raw.json": "71c7ffeca2ea32237aee4e011def13d5c2891f275bfef557329d591d32a9ff8a",
+    "transcript_timestamped.txt": "8bb14a0ed54c87fbb11b06ec700d1ed8561419006a7cda377e472c7373a75e2e",
+    "transcript_plain.txt": "3f8b69f0c45db0c90d9f52fa79722b45f68f3ec4f5d970bd8dd75ac2b80df724",
+    "notes_cn_source_faithful.md": "74f5778f53a2e0318195807d65da91d0cfc41a31bbca30c0902c3aa734913f31",
+    "notes_cn_source_faithful.docx": "b4d9ed77ca686a4e0158c6a5b69fe614f19bda204f9d0a0b2aaf5430947b0c08"
+  }
+}
