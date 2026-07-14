@@ -1,9 +1,9 @@
 {
   "format": "podcast-library-sanitized-v1",
-  "generatedAt": "2026-07-14T17:18:47.733Z",
+  "generatedAt": "2026-07-14T17:34:04.502Z",
   "gateVersion": "library-ready-v2",
   "counts": {
-    "episodes": 26
+    "episodes": 28
   },
   "audit": {
     "gateVersion": "library-ready-v2",
@@ -12,47 +12,197 @@
     "foreignKeyViolations": 0,
     "duplicates": 0,
     "orphans": 0,
-    "total": 77,
-    "ready": 26,
-    "blocked": 51,
-    "publicReady": 26,
+    "total": 78,
+    "ready": 28,
+    "blocked": 50,
+    "publicReady": 28,
     "reasonCounts": {
-      "canonical_note_missing": 51,
-      "deterministic_qc_failed": 51,
-      "source_boundary_missing": 51,
-      "why_it_matters_missing": 51
+      "canonical_note_missing": 50,
+      "deterministic_qc_failed": 50,
+      "source_boundary_missing": 50,
+      "why_it_matters_missing": 50
     },
     "ingest": {
-      "id": "ingest_a5b3593d7f6e758ac314",
-      "startedAt": "2026-07-14T17:18:47.385Z",
-      "completedAt": "2026-07-14T17:18:47.387Z",
+      "id": "ingest_4ed318322352d5948857",
+      "startedAt": "2026-07-14T17:34:04.170Z",
+      "completedAt": "2026-07-14T17:34:04.172Z",
       "status": "completed",
       "sourceCounts": {
         "monitoredShows": 19,
         "officialSinceCutoff": 49,
         "candidateRows": 114,
-        "candidateAliasesMerged": 55,
+        "candidateAliasesMerged": 56,
         "radarIndexed": 118,
         "radarReadyImported": 7,
         "iltbCanonicalSobridgeMarkdown": 16,
         "iltbVersions": 32,
         "genericReviewed": 8,
         "genericExcluded": 9,
-        "attachedArtifacts": 392,
+        "attachedArtifacts": 402,
         "importedClaims": 374,
         "inventoryFiles": 8010,
-        "canonicalEpisodes": 77,
-        "readyEpisodes": 26
+        "canonicalEpisodes": 78,
+        "readyEpisodes": 28
       },
       "inserted": 0,
-      "updated": 77,
-      "deduped": 104,
+      "updated": 78,
+      "deduped": 105,
       "warnings": 0,
       "errorSummary": null,
       "codeVersion": "task-004-v1"
     }
   },
   "episodes": [
+    {
+      "id": "ep_d50fd6bbd592865605af",
+      "showId": "show_d243fcc00a13e40ed763",
+      "show": "The Twenty Minute VC (20VC): Venture Capital | Startup Funding | The Pitch",
+      "title": "20VC: Wix's Founder on What Wall St Gets Wrong About AI and Wix | Will Base44 Win the Vibe Coding Wars | The Truth About the Economics of Vibe-Coding | The Buyback Disaster: Lessons Learned with Avishai Abrahami",
+      "publishedAt": "2026-07-13T07:07:00.000Z",
+      "publishedDate": "2026-07-13",
+      "durationSeconds": 3440,
+      "duration": "57:20",
+      "description": "Avishai Abrahami is the Co-Founder and CEO of Wix, the NASDAQ-listed website creation platform serving millions of businesses worldwide. Today, Wix generates more than $2BN in ARR and has a market capitalization of approximately $2.1BN, after reaching a peak valuation of $17BN over the past two years. The company also acquired Base44, one of the fastest-growing AI application-building platforms, scaling it to $150M in ARR in record time. AGENDA: 00:00 The SaaS Apocalypse: What Does Wall Street Still Not Understand About Wix? 07:00 Is the Market Valuing Wix's Core Business at Less Than Zero? 12:55 Will AI Kill Wix... or Make Base44 Bigger Than the Entire Company? 19:15 \"You Are NOT Going to Vibe Code Shopify\" — Why Everyone Is Getting AI Wrong 23:00 Would You Really Pay $80M for a One-Person Startup? 24:15 The Buyback Disaster: Would Avishai Do It All Again? 31:00 Why Every AI Customer Support Startup Keeps Failing (According to Wix) 37:00 Should a 22-Year-Old Still Learn to Code in the Age of AI? 42:20 Has AI Been Overhyped? Avishai's Most Controversial Prediction Yet 49:00 The Hardest Lessons on Leadership, Marriage & Building Through Chaos",
+      "originalUrl": "https://thetwentyminutevc.libsyn.com/20vc-wixs-founder-on-what-wall-st-gets-wrong-about-ai-and-wix-will-base44-win-the-vibe-coding-wars-the-truth-about-the-economics-of-vibe-coding-the-buyback-disaster-lessons-learned-with-avishai-abrahami",
+      "mediaType": "podcast",
+      "materiality": "high",
+      "productionStatus": "qc_passed",
+      "readerReady": true,
+      "publicReady": true,
+      "gateVersion": "library-ready-v2",
+      "noteMarkdown": "# 20VC × Wix：Avishai Abrahami 谈 SaaS 重估、Base44、vibe coding 经济性与 AI 的真实边界\n\n> **节目**：20VC — *Wix Founder: Will Base44 Win the Vibe-Coding Wars? | The Truth About the Economics of Vibe-Coding*  \n> **嘉宾**：Avishai Abrahami，Wix 联合创始人兼 CEO  \n> **链接**：https://www.youtube.com/watch?v=TdQyVXN0GF8  \n> **时长**：1:04:28  \n> **Source boundary**：通过 `youtube-transcript-api` 取得的 YouTube 英文字幕，属于 **YouTube caption-derived transcript**，并非人工校订官方逐字稿；人名、公司名及个别数字可能有 ASR 错误。以下按原始问答顺序整理，压缩寒暄、广告和重复口头语，不改变嘉宾观点。\n\n## 一、研究导读：为什么值得关注\n\n- 这是一个少见的“被 AI 叙事重估的上市 SaaS CEO”一手样本。主持人给出的开场数字是：Wix 市值约 **28 亿美元**、收入约 **21 亿美元**；Base44 已超过 **1.5 亿美元 ARR**。Abrahami 的核心判断不是“AI 无影响”，而是市场把所有 SaaS 的受损概率用同一把尺子定价，忽略了**信任、业务栈复杂度、客户技术能力和垂直工作流**的差异。\n- Base44 提供了 Wix 的双边对冲：如果 SMB 继续购买封装好的业务系统，留在 Wix；如果部分客户转向自然语言构建定制软件，Wix 又拥有 Base44。但他明确承认 Base44 当前的**毛利率、留存和交付稳定性都不如 Wix**。\n- 对 AI 应用投资最有价值的部分，是他以真实采购方身份直言：多家外部 AI 客服产品在 Wix 的复杂场景中反复测试失败，最终不得不自建；AI 很强，但行业常把演示能力外推成端到端生产能力。\n- 他对模型层的观点很务实：Wix/Base44 训练专用模型，主要不是追求通用前沿能力，而是利用产品反馈数据获得更高质量、更低成本、更快迭代；在复杂任务中，自有模型相对前沿模型的成本可能降至其 **1%–30%**（字幕语义如此，具体口径需以公司披露复核），但在新市场阶段仍会优先质量而非省 20% 成本。\n\n## 二、逐段深度纪要\n\n### 1. 04:25–08:58｜为什么 Wix 被重估？SaaS 的价值不只是界面和 CRUD\n\n**主持人问：Wix 市值约 28 亿美元、收入约 21 亿美元，市场究竟漏看了什么？**\n\nAbrahami 先把问题放到整个 SaaS 板块：AI 出现后，市场不知道该如何量化 SaaS 的被替代风险，于是倍数整体被压低。他同意某些公司确实危险，但不同公司的风险差异很大，最终只能由时间验证。\n\n主持人进一步指出，若 Base44 单独已约 1.4亿–1.5 亿美元收入，按 vibe-coding 同业倍数可能已占据 Wix 大部分甚至全部市值，等于核心 Wix 业务被赋予零或负价值。Abrahami 回答得更激进：如果给 Base44 同类公司的估值倍数，它自己可能值约 **80 亿美元**，所以当前市值对核心业务隐含的不是零，而是负值。不过他不试图解释短期股价逻辑：长期跟踪公司会发现，市场有时完全正确、有时完全错误，且会周期性切换。\n\n他用 Salesforce 解释为何“应用容易重写”不等于“企业 SaaS 没价值”：\n\n- Salesforce 最大的价值并非 CRM 界面，而是大型银行和企业愿意把客户数据交给它；\n- JPMorgan 等机构不会因为一个可快速生成的 cloud-code 项目，就把核心客户数据迁移出去；\n- Marketplace 和功能生态也重要，但“可信托管者”才是最难复制的资产；\n- 即使未来 agent 可以读取 Salesforce 数据并换一个界面，底层仍存在客户只信任少数平台的事实。若有人认为 Salesforce 会沦为无差别数据管道，就必须先回答：JPMorgan 还会信任谁？\n\n他承认这不是所有 SaaS 都拥有的护城河。Atlassian 反而是他个人更担心的持仓：其客户本身就是开发者，更有能力用代码替代 ticket/workflow 管理栈。讽刺的是，主持人说 Atlassian 股价已恢复，说明即使作为股东和行业人士，他也可能同时看错业务风险和市场价格。\n\n### 2. 09:09–13:12｜为什么 Wix 的 SMB 客户不会马上自己“vibe code”完整业务栈\n\nWix 的典型客户不是工程团队，而是家附近的披萨店、理发店或其他小企业。他们的主业是经营，不会自然地转成软件开发者。\n\nWix 在收购 Base44 后做过直接测试：让专业开发团队用 Base44 搭建一个理发店所需的完整业务逻辑。第一支团队做了一周只完成很小一部分；后来换上 Wix 内部原本写过该业务系统的更强团队，两周后仍未完成。因为真正的 SMB 系统不只是一个网站，还包括配送、预约、排班、员工管理、支付及各种边界条件。\n\n他的判断不是“没人会做”：已经有部分客户会用 Base44，而且 Base44 比纯代码生成工具提供更多开箱即用能力；但多数披萨店老板不会为了做披萨而亲自重建整个运营系统。未来几年更可能出现三类客户：\n\n1. **继续留在 Wix**：不愿投入时间构建，购买成熟业务栈；\n2. **转向 Base44**：希望高度定制，且 Base44 已把自然语言开发门槛降得足够低；\n3. **中间混合态**：在 Wix 的标准化能力和 Base44 的定制能力之间组合使用。\n\n主持人提出 TAM 可能减少 20%。Abrahami 的回应是：即使客户离开传统 Wix，他们可能转向 Lovable、Replit 或 Base44，而 Wix 已经拥有 Base44。因此公司是在主动覆盖“模型明天会更强”的情形，而不是否认它。\n\n### 3. 13:13–18:29｜Base44 的毛利、留存与自研专用模型\n\n**毛利和留存的真实差距。** Abrahami 明确说 Wix 比 Base44 “高利润得多”：生成和托管一个 Wix 网站的边际成本几乎可以忽略；而 Base44 每次生成、修改和运行应用都消耗模型资源。Wix 的留存也更好，因为传统网站/业务系统一旦建成，客户已投入大量设置成本，迁移意愿较低。Base44 则处于更早、更不稳定的产品阶段。\n\n不过 Base44 单位成本在持续下降。团队已发布自己的 AI 模型：对多个模型微调并组合，目标是在 Base44 的特定任务上达到顶级模型相近的效果，同时把成本大幅压低。\n\n**为什么做专用模型：**\n\n- Base44 能看到用户想构建什么、在哪一步失败、怎样用不准确的 prompt 表达真实意图；\n- 这些交互形成持续反馈数据，可训练一个更懂“应用构建意图”的模型；\n- 通用前沿模型必须学习中国诗歌等海量知识，Base44 不需要这些广度，只需要更准确理解诸如“给我做一个任务管理器来管理家庭事务”背后的产品意图；\n- 因此公司并非挑战通用前沿模型，而是在狭窄任务上做到更好、更快、更便宜。\n\nWix 已在网站生成上验证同样路径：目前生成 Wix 网站时使用自训模型，速度更快、成本更低、错误更少；通过用户是否接受生成结果，形成每周再训练和持续改善的闭环。\n\n主持人问自有模型比前沿模型便宜多少。字幕中 Abrahami 的回答是成本约为其 **1%–30%**；随后又补充，若复杂度较高，不一定能达到极端倍数，但做到约 **5% 或 10%** 的成本是可能的。这里口径较容易受字幕影响，应当视为方向性信息，不能直接当作公司审计指标。\n\n现阶段公司并未把成本优化放在质量之前：如果可选“质量提高 20%”和“成本降低 20%”，他会选质量。原因是 vibe coding 仍是新市场，首先要把体验做好；过早挤毛利可能损害产品形成。\n\n### 4. 18:29–20:21｜为什么 Wix 主动把合作伙伴导向利润率更低的 Base44\n\nBase44 的数字并非完全不披露，只是不按周或月拆分。Abrahami 说同业通常也只在融资时公布指标；Wix 还会在两个平台间主动迁移和交叉导流客户，因此季度层面强行拆分未必反映业务实质。\n\nWix 正在鼓励 agencies 和合作伙伴学习 Base44。主持人追问：既然 Base44 毛利更差，为什么不把客户尽量留在 Wix？Abrahami 的理由是，公司要为未来准备完整工具箱。复杂项目里，纯聊天式 vibe coding 在视觉编辑上仍很难用，未来更可能是可视化/结构化编辑与自然语言生成的组合，而不是单一路径。\n\n他的原话式判断是：Base44 几乎肯定是未来的一部分，但 Wix 也同样会存在；**“你不可能把 Shopify 整个 vibe code 出来，业务栈太复杂。”** 这不是说界面不能生成，而是生产级业务系统包含大量长期沉淀、可靠性、支付、权限、合规和异常处理。\n\n### 5. 20:24–26:46｜股价、M&A 与 8000 万美元收购“一人公司”Base44\n\nAbrahami 不把个人情绪绑定股价。他每天只关注能控制的业务；当前 Wix 股价更容易被 OpenAI、Anthropic、Google 对行业的表态驱动，而不是 Wix 自身新闻。即使股价上涨时，他仍更关心尚未解决的执行问题。\n\n低股价确实会削弱上市公司的股票收购货币，但他认为 Wix 当前做 M&A 的真正瓶颈不是钱，而是整合和执行。Base44 收购时实质上是一家“一人公司”，Wix 必须围绕创始人 Maor Shlomo 补齐团队和运营；即使创始人很强，同时再做一个同等难度的整合也会超出组织负荷。公司还计划次月推出另一款内部新产品，因此短期约束是管理带宽。\n\n主持人问，如何向董事会提议用 **8000 万美元**收购一个一人创业项目。Abrahami 回忆，审批反而很顺利：董事会没有纠结“为什么一个人值这么多”，而是问真正的商业问题——内部营销怎么做、团队怎么搭、为什么比 Replit 或 Lovable 更好、如何把产品融入 Wix。只要商业逻辑和整合计划说清楚，人数不是资产价值的核心。\n\n主持人称 Base44 收购后收入可能已达到收购价约两倍。Abrahami没有否定该量级，但仍把成功归因于收购后围绕产品投入团队，而非“一人公司天然能无限扩张”。\n\n### 6. 25:06–31:11｜现金流、回购失误与股权激励\n\nAbrahami 没给净现金的精确值，因为公司同时有现金、债务和贷款；但称 Wix 每年产生约 **4 亿美元自由现金流**。字幕在 Base44 投入额处有明显冲突：开场听起来像“2亿多美元”，正文 25:29 又像“2000多万美元”；该数字必须回看公司财报，不能据字幕下结论。\n\n对私有化问题，他认为作为上市公司 CEO 不适合评论；投资者若相信资产被错价，可以自行买入，若相信 AI 将摧毁一切，则应回避。\n\n关于此前回购，他坦率承认“时点很差”。当时公司账上约有 **15 亿美元**，又判断短期不会做大型收购，因为组织正聚焦 Base44 和新产品；既然股价低，便决定回购。随后股价先涨再大跌。对他而言，不能用过去三个月判定回购成败，要看三年后。\n\n他仍坚定支持回购，理由是：\n\n- 科技公司持续给员工发股，会不断稀释股东；\n- 成熟公司产生现金后，资本用途无非是 M&A、增加研发投入、分红/回购；\n- 多数并购失败，且组织同时能整合的项目有限；\n- 回购可在公司有能力时对冲股权激励稀释，本质上类似向股东返还资本。\n\n主持人担忧 Snap 等公司的 SBC 已高到破坏外部股东回报。Abrahami 回应，争夺和留住顶尖人才时几乎没有替代方案；员工在建设公司，应分享公司上行。他甚至认为非科技行业和政府也可更多使用结果挂钩的权益机制。关键不是取消 SBC，而是在公司产生现金后用回购平衡稀释。\n\n### 7. 31:12–38:20｜股价下跌后的留才，以及“AI 客服公司为什么反复失败”\n\nWix 尊重投资者、客户和员工三方，但“市场”不是一个可直接对话的人，而是数百万意见不同的参与者，CEO 无法把每次价格变化都纳入经营决策。\n\n对 SaaS 股价下跌造成的员工流失，他不提供虚假安慰：所有公司都会失去人才，Wix 也在流失；没有魔法解法。关键不是确保无人离开，而是确保留下和新加入的人仍以顶尖人才为主。过去 15 年股价上涨、老员工长期不走，反而让公司习惯了不自然的稳定；组织要重新发现新一代尚未被看见的人才。当然，对最关键的人仍要尽全力保留。\n\n人员数字：Base44 约 **400 人**；Wix 合计约 **3500 人**，最大的部门是客户支持，因为服务覆盖 **192 个国家**。\n\n主持人认为 AI 会把客服人数迅速压到接近零。Abrahami直接否定。他说 Wix 自己做了客服 AI，因为外部产品“不能用”。公司不是一开始就想自建，而是测试过许多供应商，反复出现“试了不行、再试还不行”，最终才继续投入内部方案。\n\n他对 AI 客服创业公司的批评机制很具体：年轻公司用 agent 很快做出可演示的 proof，随后大量招销售；但进入 Wix、Airwallex、Clerk、Navan 这类复杂客户时，买方内部已有更强、更贴近流程的工程团队，甚至仅支持客服系统的工程资源就可能多于供应商全部技术人员。通用创业产品在复杂权限、产品知识、全球语言、例外情况和系统集成上不够深。五年后也许不同，但他拒绝假装知道准确时间。\n\n三年后团队是否缩到 2000 人？他愿意想象 Base44 1000 人、Wix 1000 人，其余由 agent 完成，但并不相信现在能可靠预测。AI 非常强大，但每深入到生产细节，限制就会变大；行业给 AI 的能力“记了过多信用”。\n\n### 8. 38:20–47:43｜AI 不会立刻替代人，但会迅速放大小企业能力；适用边界在任务而不在行业\n\n他的乐观愿景不是“客服全消失”，而是 AI 让小企业在明年就能更高效获客、排班、销售附加产品和管理运营。例如健身房或个人教练可以借助 AI 做此前无力完成的客户触达和后台工作，增长和利润都可能提高。\n\n这与他对 AI 的谨慎并不矛盾：**通用模型在受约束、工具正确、目标清晰的任务上可以非常强；把它直接放进复杂端到端流程就容易失败。**\n\n他举了个人例子：让 Claude 为某项测试写安全协议，模型列出六项必测门槛；逐项追问依据后，五项被模型自己承认夸大，并从“必须检查”降级成“未来可留意”。风险在于用户对流畅回答产生过度信任。\n\n但语音对话等能力又是实质进步：四五年前无法自然地在驾车时与模型讨论问题，现在已成为可用工具。若把 AI 配上适当技能和系统接口，用于订单、排班、客户沟通，就能形成显著生产力。\n\n**对年轻人的建议。** 他不认为当前 LLM 会很快替代所有白领岗位：它仍会犯低级错误，推理并不稳定，更擅长聚合和重述信息。但若算法再出现两三次跃迁，人类相对能力的位置可能发生根本变化。\n\n**不同领域的适用性：**\n\n- 法律与代码相似，核心材料高度文本化，且存在海量案例和文书，因此是 LLM 很适合发挥的领域；\n- 医疗诊断与医学研究不能混为一谈。K Health 等在常见症状诊断上可能超过普通医生，因为问题分布重复、可统计；\n- 用通用 LLM 做前沿医学研究则危险：模型可能把 Reddit 帖子和 Nature 论文混在同一个语义池中，并不真正运行科学模拟；\n- 天体物理、蛋白质等科研需要与模拟器、专用架构和科学模型连接。DeepMind 的蛋白质折叠突破不是“纯聊天 LLM 读文本”完成的。\n\n因此，未来前沿模型可能成为编排层，但复杂科学能力仍需 Isomorphic Labs 等专用模型/系统，而非假设规模更大的通用 LLM 自动解决一切。\n\n### 9. 48:01–59:59｜领导者的韧性、财富与压力管理\n\nAbrahami 认为财富最重要的价值是**自由**：免于基本生计恐惧，也知道自己留在 CEO 位置、面对股价暴跌和舆论压力，是主动选择，不是被迫。这种选择感反过来要求他全情投入。财富减少恐惧后能让决策更理性，但也可能让人更懒或对服务标准更不耐烦。\n\n他给“如何为风暴做准备”的建议不是技巧清单：\n\n1. 先接受风暴一定会来，而且通常是某个普通星期三突然发生；疫情、战争、市场崩盘都不会按线性路径预告；\n2. 到事发时，你拥有的团队和武器就是那些，焦虑不会临时增加资源；\n3. 诚实问自己是否已在可控范围内做到最好。如果答案是肯定的，很多压力会下降；\n4. 冥想和 NLP 对他个人有帮助；\n5. 幸福与财富并非线性相关，最坏也可以换一种生活——他用“可以搬去巴西”提醒自己选择仍然存在。\n\n家庭方面，他过去也会把工作问题带回家、缺乏耐心。后来学会先关掉工作思考，陪伴家人后再在深夜集中处理；这也是他常到清晨五点睡觉的原因。对子女，重点不是累计时长，而是陪伴时真正快乐、专注，不是一边看手机一边制造冲突。\n\n### 10. 59:15–1:04:25｜快问快答：他对 AI 替代速度变得更谨慎\n\n过去一年他最大的改观，是认为人类被 AI 替代会比此前预计更慢。早期行业说 AGI 将能与人共同解决物理学等重大问题；后来在现有模型仍做不到这些事时，市场却开始说“我们已经达到 AGI”，实质上是修改定义来适配现状。模型非常强，但距快速替代人仍远。\n\n他最敬佩的非直接竞争者是 **Figma**：产品理解和体验极强，设计师近乎宗教式热爱，甚至愿意用 Figma 写购物清单；这种爱不是功能堆叠，而是极高产品技艺的结果。\n\n当前最大担忧仍是执行：计划和点子很多，难的是让团队更高效、更有雄心、持续完成。Base44 两年后可能达到 **800–1000 人**，且多数是工程师，但取决于 AI 能把团队效率提升到什么程度。\n\n## 三、投资含义与待验证点\n\n1. **SaaS 重估不能只看界面可复制性。** 数据信任、合规身份、垂直业务栈和非技术客户分布，会显著改变 AI 替代速度。\n2. **vibe-coding 的收入增速与经济质量应分开看。** Base44 高增长，但当前毛利和留存均弱于 Wix；专用模型、推理成本下降和混合编辑体验是改善路径。\n3. **应用数据闭环是专用模型的资产。** 价值不在训练一个通用大模型，而在记录用户意图、失败模式和接受/拒绝反馈，并快速微调。\n4. **AI 客服创业公司面临“demo—production gap”。** 采购方内部团队、深系统集成和例外处理能力可能决定最终赢家，而非单轮回答分数。\n5. **Wix 的组合结构类似自我颠覆期权。** 核心 Wix 提供现金流和高毛利，Base44覆盖自然语言软件构建；但组织扩张到 400 人后，需验证增长是否保持以及毛利改善速度。\n6. **需复核数字。** 市值、ARR、Base44 投入额及自有模型成本比例均来自机器字幕和节目口述，应以 Wix 最新财报、电话会和 Base44 官方披露交叉验证。",
+      "sourceBoundary": "YouTube caption-derived transcript via youtube-transcript-api; not a human-edited official transcript; ASR/caption errors possible",
+      "whyItMatters": "这是一个少见的“被 AI 叙事重估的上市 SaaS CEO”一手样本。主持人给出的开场数字是：Wix 市值约 28 亿美元 、收入约 21 亿美元 ；Base44 已超过 1.5 亿美元 ARR 。Abrahami 的核心判断不是“AI 无影响”，而是市场把所有 SaaS 的受损概率用同一把尺子定价，忽略了 信任、业务栈复杂度、客户技术能力和垂直工作流 的差异。 Base44 提供了 Wix 的双边对冲：如果 SMB 继续购买封装好的业务系统，留在 Wix；如果部分客户转向自然语言构建定制软件，Wix 又拥有 Base44。但他明确承认 Base44 当前的 毛利率、留存和交付稳定性都不如 Wix 。 对 AI 应用投资最有价值的部分，是他以真实采购方身份直言：多家外部 AI 客服产品在 Wix 的复杂场景中反复测试失败，最终不得不自建；AI 很强，但行业常把演示能力外推成端到端生产能力。 他对模型层的观点很务实：Wix/Base44 训练专用模型，主要不是追求通用前沿能力，而是利用产品反馈数据获得更高质量、更低成本、更快迭代；在复杂任务中，自有模型相对前沿模型的成本可能降至其 1%–30% （字幕语义如此，具体口径需以公司披露复核），但在新市场阶段仍会优先质量而非省 20% 成本。",
+      "themes": [
+        {
+          "id": "theme_e748f8750672ca8b04b2",
+          "name": "AI Agents",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_693b1c2b5c9e35f47d43",
+          "name": "Enterprise AI",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_a195f19d0d5b9fd1f975",
+          "name": "Health / Biotech",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_b4d7581efc05d1db8fe0",
+          "name": "Markets / Macro",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_7e5743d68b4cb5c76b9d",
+          "name": "Product / GTM",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_f1991dbc4cf3c8fe3860",
+          "name": "Venture / Pre-IPO",
+          "provenance": "deterministic-keyword-v1"
+        }
+      ],
+      "entities": [
+        {
+          "id": "entity_1ad9baa389d2b038b89f",
+          "type": "company",
+          "name": "Alphabet / Google",
+          "evidenceSource": "note",
+          "confidence": 0.9
+        },
+        {
+          "id": "entity_572c531059ad7c8ca7a2",
+          "type": "company",
+          "name": "Anthropic",
+          "evidenceSource": "note",
+          "confidence": 1
+        },
+        {
+          "id": "entity_54f40d6e1ebcc63523d3",
+          "type": "organization",
+          "name": "OpenAI",
+          "evidenceSource": "note",
+          "confidence": 1
+        }
+      ],
+      "noteVersions": [
+        {
+          "versionLabel": "source-faithful",
+          "writingStyle": "source-faithful",
+          "charCount": 7802,
+          "language": "zh-CN",
+          "canonical": true,
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "ep_6ac611cbdec96c22810c",
+      "showId": "show_ab61c3866a2f58f78b82",
+      "show": "Latent Space: The AI Engineer Podcast",
+      "title": "The AI Memory Problem: Why Long Context Isn’t Enough — Dan Biderman, Engram Co-founder & CEO",
+      "publishedAt": "2026-07-13T18:21:40.000Z",
+      "publishedDate": "2026-07-13",
+      "durationSeconds": null,
+      "duration": "",
+      "description": "",
+      "originalUrl": "https://www.youtube.com/watch?v=jhpmMTus5a0",
+      "mediaType": "youtube",
+      "materiality": "high",
+      "productionStatus": "qc_passed",
+      "readerReady": true,
+      "publicReady": true,
+      "gateVersion": "library-ready-v2",
+      "noteMarkdown": "# Latent Space × Engram：为什么长上下文不等于记忆——Dan Biderman 谈 cartridges、持续学习与企业 AI 基础设施\n\n> **节目**：Latent Space — *The AI Memory Problem: Why Long Context Isn’t Enough*  \n> **嘉宾**：Dan Biderman，Engram 联合创始人兼 CEO  \n> **链接**：https://www.youtube.com/watch?v=jhpmMTus5a0  \n> **时长**：49:45  \n> **Source boundary**：通过 `youtube-transcript-api` 取得的 YouTube 英文字幕，属于 **YouTube caption-derived transcript**，并非人工校订官方逐字稿；字幕把部分技术名词、人名和模型名识别得不稳定。以下保留原始论证顺序与例子，烹饪过程仅在其作为“文本知识 vs. 内化直觉”的类比时保留。\n\n## 一、研究导读：核心命题\n\n- Engram 的赌注不是简单做更好的 RAG，而是：随着企业内部 agent 生成海量代码、文档、演示和操作轨迹，企业知识库可能在约 **18 个月**内扩张到万亿 token 级别；每次让前沿模型从头读取，即使上下文窗口足够长，也会遭遇成本、KV cache、context rot 和整体推理准确率问题。\n- 公司提出 **cartridge（知识盒/知识胶囊）**：先让模型对某个语料库“学习、自己提问、做测验、解决问题”，再通过梯度下降把知识压缩到可装卸的参数/权重状态。Biderman 声称这种表示可比原始文本压缩约 **1000 倍**，并让模型用更少 token、更少 prefill、更低混乱度完成任务。\n- 他不主张权重记忆替代文本。理想系统同时拥有：可审计的笔记/RAG、上下文压缩、路由，以及类似人类神经系统的参数化直觉。Chef 既需要菜谱和实验日志，也需要手感、味觉和不必每次重读菜谱的内化技能。\n- 商业落点优先在企业：Harvey 这类法律工作流拥有高密度、难检索、需整体理解的知识。长期愿景则是每个人拥有自己控制的权重/适配器，模型随着使用持续变得“更适合这个人”，最终部分个性化推理可能在个人设备运行。\n- 基础设施含义很重：若每个人、团队都有独立适配器，就需要管理数百万参数端点，在磁盘与 HBM 间高速装载、交换、更新；这不是单一算法产品，而是新的训练—存储—推理调度层。\n\n## 二、按原始流程的深度纪要\n\n### 1. 01:45–07:12｜从以色列特种作战、计算神经科学到创办 AI 研究公司\n\nBiderman 回顾，其职业路径事后看连贯，实时经历却并非预先规划。他在特拉维夫长大，曾任海军特种作战军官。那段经历很像创业：寻找看似疯狂但可行的任务，研究可行性，向组织争取预算与人员，再通过高强度执行把设想变成现实。\n\n退役后，他在以色列学习认知神经科学，对大脑、人类行为和统计产生兴趣；之后到纽约攻读计算神经科学博士。这个学术群体在神经网络尚未成为产业热点前几十年就一直研究相关问题，结合统计、物理、生物来理解神经网络、动物行为和大脑。\n\nChatGPT 出现后，他决定深入 LLM：先在 Mosaic 工作并参与 LoRA 相关研究，后来到 Stanford 与 Chris Ré、Scott Linderman 合作；现公司的其他联合创始人来自 Stanford、Cornell、Berkeley 等研究网络。\n\n主持人问，以色列特种部队为何持续产生 Wiz 等创业者。Biderman 不把它神化为“军队训练创业”：关键是在 18 岁就承担真实责任、接触成年人、争取资源和预算，不再只是为考试做项目，因此会提前训练社会能力、成熟度和团队协作。他也强调这是 package deal，服役耗时且有代价，并不建议所有国家照搬。\n\n他认为以色列社会给人多次“重新发牌”：高中不突出，可能在军队找到位置；军队一般，仍可在大学发现科学天赋；因此一次早期失败不会永久封闭路径。他自己 24 岁才进大学，进入美国博士项目时年龄更大，但此前经历也带来成熟度。\n\n### 2. 07:12–10:28｜问题起点：效率、半监督学习与让模型“预先学习”语料库\n\n他的博士研究聚焦当时不流行、但他认为会重新重要的**半监督学习**：没有万亿 token，而只有很少样本时，怎样高效外推。其论文常有同一种图：横轴是成本/资源，纵轴是准确率，寻找 Pareto frontier。这个训练塑造了他“用更少资源做更多事”的研究直觉。\n\n在 Chris Ré 实验室，他研究 agent 和 Minions 类思路：让子 agent 经济地处理大型知识语料。随后团队继续追问，除 agent orchestration 外，能否利用训练本身，使模型不必每次重新读完大量 token。\n\n多个联合创始人并行形成相似思路：\n\n1. 给模型一个很大的知识库；\n2. 不立即提问，而是让模型提前“学习”——自我提问、自我测验、尝试解决问题；\n3. 再像预训练一样用梯度下降，把学习结果压缩为参数状态；\n4. 形成可加载、卸载的 **cartridge**，代表某个语料库、任务或技能。\n\nBiderman 把 cartridge 描述为模型的“脑状态”：相对原始上下文可压缩约 1000 倍；加载后模型不必重新消费全部 token，理论上更少困惑、更准确、更经济。\n\n### 3. 10:29–14:15｜Chef 类比：RAG 是菜谱，参数化记忆是厨师的神经系统\n\nCartridge 可以是 corpus-specific，例如某企业全部内部文档；也可以是 task-specific，例如某种技能。\n\n他用现场做菜解释文本表示的边界：拥有 Thomas Keller 等人的顶级菜谱，不等于真正拥有顶级厨师能力。当前 LLM 像每次第一次进厨房，边读教科书边机械测量、执行；它缺乏厨师抓盐、揉面、尝味以及根据经验创造新菜的直觉。\n\n主持人问，这与 RAG 从菜谱检索最相关片段有何不同。Biderman 明确说他不押注“笔记不再需要”：顶级厨师也写菜谱、日志，记录实验成功和失败；文本表示可解释、可追踪，仍然重要。但厨师还有大脑、手、舌头和内化经验，可以不每次重读同一页，并能在原菜谱之外创新。\n\n因此目标是二者结合：\n\n- **外部化知识**：文档、wiki、日志、RAG，便于审计和精确回溯；\n- **内部化知识**：数字/参数形式的关联、直觉和技能；\n- 只让知识工作者写笔记而每天抹掉其大脑，会严重损害工作；只凭记忆而不写笔记也同样低效。\n\n### 4. 14:16–18:00｜为什么企业数据会快到“互联网规模”，长窗口仍解决不了\n\nBiderman 认为市场低估 agent 对企业知识空间的放大：agent 会持续生成代码、文档、演示、分析和操作记录。约 18 个月后，真正 AI-native 的公司可能拥有万亿 token 级别的内部专有数据。两三年前在 Mosaic，这已被称作互联网规模的预训练数据；未来单个企业可能达到类似数量级。\n\n即使今天还能用文本 wiki 和索引管理，规模扩大后会出现：\n\n- 如何持续把万亿 token 压成及时更新的知识库；\n- 索引本身会有多大；\n- 一个对公司一无所知的前沿模型，每次处理这些知识要消耗多少 token 和成本；\n- 更关键的是，模型读得越多不必然懂得越多，context rot 会让准确率下降。\n\n他预计这种问题即使上下文扩大到 **1000 万 token**仍存在。能把 token 塞进窗口，只代表接口没有报错，不代表模型能对全部信息进行整体、稳定、因果一致的推理。\n\n### 5. 18:01–22:40｜长上下文、compaction 与 neural memory trace 各自解决什么\n\n主持人提出反方：企业数据也许没大到必须写入权重；RAG、便宜开源模型、上下文压缩是否足够？Biderman 承认，研究界很难构造一个“只有 in-weight training 能做、in-context learning 必然失败”的纯理论例子，因为反方总可以假设下一代模型有 1000 万甚至无限窗口。\n\n他把 continual learning 和 memory 看作“伪装的长上下文问题”：如果模型真的能看见全公司数据，限制主要有两类。\n\n**第一，context rot。** 输入越长，模型越容易混淆，不能保证整体推理质量。\n\n**第二，资源效率。** 即便理论上答得出来，每次 prefill 海量上下文仍浪费计算和显存。\n\nCompaction 会让模型自行管理上下文、丢弃部分 token、保留部分 token。Biderman 认为它肯定是解决方案的一部分，而且每天进步；但它天然有损，且目前通常是较离散的“保留/丢弃”。会话足够长后，模型仍可能忘记早期关键事实或把压缩后的摘要当成完整事实。\n\nEngram 设想另一部分是 **neural memory trace**：同样有损、同样选择性遗忘，但不是保存成文本摘要，而是保存到参数/权重表示。\n\n公司目前先解决较窄问题：让模型对大语料用更少 token、更少资源、更少混乱地推理。更长期才是让模型在科学、工程、国防等长期任务中边做边通过梯度更新——可被称为 test-time compute、test-time training 或持续学习的不同变体。\n\n### 6. 22:40–24:20｜系统瓶颈：一篇 Wikipedia 文章为什么能占约 80GB“脑状态”\n\nBiderman 用 Llama 70B 做量级类比：\n\n- 一篇 Wikipedia 文章可能只有几十 KB；\n- 让模型把它放入上下文后，其 KV cache/运行时 brain state 可能占约 **80GB GPU HBM**；\n- 模型全部参数以 FP16 表示约 **140GB**量级，却能以有损方式编码接近整个互联网的统计知识；\n- 结果是一篇 Taylor Swift 文章的运行时状态，与“整个模型参数所代表的世界知识”处在相近显存数量级，极不高效。\n\n他把这称为 KV cache monstrosity，芯片、kernel 和软件团队都在努力解决。Engram 的另一种系统解释是：**把反复 prefill 的读取工作提前转化为训练计算**。某个时间点先把语料压进 cartridge，推理时加载后直接 decode，或只需要很短 prefill。\n\n这与数据中心把 prefill 和 decode 解耦、放到不同专用卡上的趋势相容：Engram 不是简单让每次 prefill 更快，而是试图减少“每次都要 prefill”的需求。\n\n### 7. 24:20–27:02｜Harvey/法律案例：RAG 很难回答“哪些交易没有完成”\n\n主持人要求具体企业案例。Biderman以法律/投行文件系统为例：大量客户事项涉及融资、并购、借贷和交易材料。Engram 与 Harvey 合作处理非常大的文件系统。\n\n许多真正有价值的问题不是搜索一个存在的句子，而是寻找**不存在或未闭环的状态**。例如：“今年哪些 M&A 交易还没有完成？”\n\n要回答它，agent 必须：\n\n1. 逐个查看客户事项；\n2. 阅读相关文件和进度；\n3. 判断哪些交易已形成闭环；\n4. 对那些没有任何文档明确写着“未完成”的事项做负向推断。\n\nRAG 很难搜索“没有出现的完成事件”。前沿模型加 compaction 可以暴力完成，但一次看似普通的企业查询可能花费**数千美元**，而熟悉全局的员工直觉上可以回答。\n\n这类“整体大于部分之和”的问题正是训练式知识表示的目标。预训练之所以在整个 Web 上训练，而不是仅给模型一个全网 RAG 目录，是因为参数学习能建立跨文档关联、概括、插值和外推。Engram 想把同样机制缩小到企业或个人知识域。\n\n### 8. 27:02–29:17｜长期产品形态：每个人拥有自己的权重\n\n主持人问，是否为每家公司做 LoRA 式参数高效微调。Biderman说短期确实会利用 LoRA、cartridge、memory layer 等参数高效方法，但长期愿景更个人化：\n\n- 每个人拥有一个模型、模型的一部分或一组权重，代表个人知识和专业能力；\n- 与模型相处越久、授权的数据越多，模型越懂这个人；\n- 这组权重由个人控制，而非只给通用提供商贡献反馈；\n- 用户像养 Tamagotchi 一样有动力“喂养”它，因为收益直接回到自己的模型；\n- 极长期，个人设备可能运行这些个性化部分。\n\n他称新一代个人电脑的硬件正接近运行“接近万亿参数模型推理”的能力（这里可能是稀疏/MoE 或特定量化口径，需等待官方技术文档，不宜按稠密模型显存直接理解）。\n\n短期仍优先企业，因为企业拥有高密度专业知识，是人工作时间最多、AI 使用最真实的场所。Engram 计划把参数记忆与可审计的上下文管理结合，而不是让不可解释权重单独承担全部事实。\n\n### 9. 30:02–34:20｜什么应写入权重、什么应保留为文本？遗忘本身是必要能力\n\nBiderman承认这是公司和整个记忆科学的开放问题。人脑也必须区分内部化与外部化：记住见过的一切并不一定是优势，超强自传式记忆可能带来干扰甚至痛苦；适度遗忘是健康的。\n\n直觉上的分配原则包括频率、显著性和可供性：今晚酒店房号不如家庭地址或伴侣电话值得长期内化。但手工写规则会变成 whack-a-mole：不同企业、员工、任务的高价值信息完全不同，无法靠静态启发式决定进出。\n\n他的“holy grail”是让模型自己学习：\n\n- 同时拥有 notebook/文本笔记和参数化 associative brain；\n- 判断哪些信息应从脑中直接调用，哪些应查笔记；\n- 用户可明确说“记住/不要记住”，系统应尊重；\n- 但不能依赖用户逐步监督，否则产品不可用。\n\n与通用聊天产品的 thumbs up/down 不同，Engram 希望用户知道反馈会直接触发针对自己的额外计算和练习，让模型对这个用户变好，而不是不确定地进入下一版全局模型训练。\n\n同时，用户反馈并非 ground truth。用户会自信地说错，未来模型在某些领域比用户更强，因此系统还须判断哪些反馈值得学习、哪些应忽略。这涉及目标函数和自主学习机制，仍需研究突破。\n\n### 10. 34:20–37:57｜衡量智能的新角度：不是堆更多 token，而是用更少能量完成更难任务\n\n公司暂未公开全部结果，计划未来数周/月逐步披露。Biderman愿意公开的主线是 **token efficiency**：模型能否更快找到需要的信息、用更少能量解决更难问题。\n\n主持人问到模型路由：便宜模型不一定真便宜——若小模型反复尝试耗掉 100 美元，而强模型一次解决，后者反而更经济。Biderman同意路由必不可少：许多任务不需要最强模型，但高难任务必须知道何时升级。\n\nEngram 不认为一个个性化模型会取代全部模型、更不认为因此可以“关闭 Stargate”。系统会是多模型的：\n\n- 个性化/企业记忆层像长期员工或最了解你的朋友，始终观察上下文；\n- 它知道该去哪里、应聚焦什么；\n- 遇到高难任务时，把更精确、更富上下文的问题路由给顶级模型，让顶级模型工作数小时或数天；\n- 真正困难在于模型版本持续变化，如何按正确时间、成本、准确率选择正确模型仍未解决。\n\n### 11. 38:07–43:00｜团队构成与研究公司的产品纪律\n\n团队高度专业化于记忆、持续学习、把知识写入权重，因此从普通意义看并不“多元”——很多人都是研究者；但能力倾向互补：有人偏数学和统计，有人偏系统，有人研究人机闭环和 AI 领导行为。\n\n组织方式是把有多年直觉的博士/资深研究者，与刚进入领域、思路新鲜且执行力强的年轻研究者配对。前者帮助避开反复验证过的兔子洞，后者避免团队被既有范式锁死。\n\n公司在 2025 年秋冬前沿实验室抢人和 AGI 焦虑最强时成立。联合创始人从一开始就强调，这不能只是 research club：缺的不是更多论文，而是产品；产品必须被分发，只有卖出用户真正喜爱的东西，才赢得继续做研究的权利。\n\n### 12. 43:01–46:55｜真正的基础设施工作量：数百万适配器如何在磁盘与 HBM 间流动\n\n招聘方面，公司需要两大类人：\n\n1. **LLM performance / research engineers**：解决持续学习时如何不破坏基础模型、如何控制成本、该学哪些数据，并把模型跑快；\n2. **基础设施、API 和数据库工程师**：若每个人/团队都有参数高效适配器，就会产生数百万独立端点，存放在不同位置，需从磁盘高效加载到 HBM，在推理时快速切换、更新和持久化。\n\n字幕提到团队中有来自 Databricks、参与 vLLM 的推理负责人，但姓名识别可能不准，应以官网为准。\n\nBiderman强调，如果方案成立，计算足迹不会因为“效率”而变小到无关紧要，反而会因任务边界扩张而非常大。提高效率不是做低端廉价产品；**效率与智能不可分离**。当前 scaling 范式是 more with more，已经走得很远也会继续；下一范式会加入 more with less，因为只有单位任务更高效，系统才能承接更长 horizon、更高难度的科学和工程任务。\n\n## 三、投资映射：Engram 可能处在哪一层\n\n### 1. 产品层\n\n不是普通向量数据库，也不只是企业搜索。其差异化主张是把企业/个人语料预先训练成可装卸权重，并与 RAG、compaction、路由组合。近期可卖点应是成本、延迟和长语料整体问题准确率；远期才是自主持续学习。\n\n### 2. 数据与护城河\n\n潜在数据资产来自：企业语料、用户反馈、任务完成轨迹，以及“什么值得内化、什么值得检索”的学习信号。真正护城河要看 cartridge 是否能跨模型迁移、是否在模型版本升级后保持价值，以及能否证明相对 RAG/长上下文的稳定收益。\n\n### 3. 基础设施与供应链\n\n如果每位用户拥有独立 adapter，需求会从“少量大模型常驻显存”转向“大量小参数状态频繁装载”。这可能拉动：\n\n- 高带宽内存与更高效 KV/权重管理；\n- prefill/decode 分离；\n- adapter caching、NVMe—DRAM—HBM 分层；\n- 多租户隔离、加密、权限、版本和删除权；\n- 训练与推理混合调度。\n\n### 4. 主要待验证风险\n\n- **技术可证伪性**：Biderman承认很难证明某任务只有 in-weight learning 能做；更强上下文、compaction 和 RAG 可能持续缩小差距。\n- **灾难性遗忘与错误固化**：如何持续更新而不破坏已有能力，如何避免把用户错误反馈写进权重，是核心未解问题。\n- **审计与合规**：参数记忆比文本难解释、难逐条删除；企业是否接受权重中潜藏敏感事实，需要清晰数据治理。\n- **更新频率与成本**：若企业知识快速变化，cartridge 多久重训一次、旧状态如何失效，将决定经济性。\n- **模型依赖**：专用适配器能否跨基础模型版本复用，还是每次前沿模型升级都需重做。\n- **数字需复核**：约 1000 倍压缩、80GB KV 状态、万亿 token 企业语料及个人设备万亿参数推理均为节目口述或字幕转录，应等待论文、benchmark、产品文档和官方融资材料验证。\n\n## 四、一句话结论\n\nEngram 的核心押注是：AI 时代真正稀缺的不是更长的“临时工作记忆”，而是能把企业和个人经验持续内化、按需装卸、又与可审计文本协同的“长期参数记忆”；若成立，它将同时是模型算法、企业数据产品和新型推理基础设施问题。",
+      "sourceBoundary": "YouTube caption-derived transcript via youtube-transcript-api; not a human-edited official transcript; ASR/caption errors possible",
+      "whyItMatters": "Engram 的核心押注是：AI 时代真正稀缺的不是更长的“临时工作记忆”，而是能把企业和个人经验持续内化、按需装卸、又与可审计文本协同的“长期参数记忆”；若成立，它将同时是模型算法、企业数据产品和新型推理基础设施问题。",
+      "themes": [
+        {
+          "id": "theme_e748f8750672ca8b04b2",
+          "name": "AI Agents",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_ebbd5f51fefc7fcabdf4",
+          "name": "AI Infra",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_693b1c2b5c9e35f47d43",
+          "name": "Enterprise AI",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_b4d7581efc05d1db8fe0",
+          "name": "Markets / Macro",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_7e5743d68b4cb5c76b9d",
+          "name": "Product / GTM",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_f1991dbc4cf3c8fe3860",
+          "name": "Venture / Pre-IPO",
+          "provenance": "deterministic-keyword-v1"
+        }
+      ],
+      "entities": [],
+      "noteVersions": [
+        {
+          "versionLabel": "source-faithful",
+          "writingStyle": "source-faithful",
+          "charCount": 7976,
+          "language": "zh-CN",
+          "canonical": true,
+          "superseded": false
+        }
+      ]
+    },
     {
       "id": "ep_c00baafcec7cfac713cf",
       "showId": "show_0857315c584b9c1f0d7a",
@@ -2785,7 +2935,7 @@
       "name": "Latent Space: The AI Engineer Podcast",
       "slug": "latent-space",
       "tier": "Tier A",
-      "readyCount": 2
+      "readyCount": 3
     },
     {
       "id": "show_f9022c3635cf95b54bb9",
@@ -2820,7 +2970,7 @@
       "name": "The Twenty Minute VC (20VC): Venture Capital | Startup Funding | The Pitch",
       "slug": "20vc",
       "tier": "Tier A",
-      "readyCount": 2
+      "readyCount": 3
     },
     {
       "id": "show_66323af571a19fdabe95",
@@ -2841,11 +2991,11 @@
     "since": "2026-07-01",
     "totals": {
       "officialEpisodes": 49,
-      "noteReady": 3,
-      "transcriptReady": 7,
-      "qcReady": 3,
-      "queued": 46,
-      "candidateAliasesMerged": 60
+      "noteReady": 4,
+      "transcriptReady": 8,
+      "qcReady": 4,
+      "queued": 45,
+      "candidateAliasesMerged": 62
     },
     "shows": [
       {
@@ -3063,11 +3213,11 @@
         "tier": "Tier A",
         "active": true,
         "officialEpisodes": 6,
-        "noteReady": 0,
-        "transcriptReady": 2,
-        "qcReady": 0,
-        "queued": 6,
-        "candidateAliasesMerged": 8
+        "noteReady": 1,
+        "transcriptReady": 3,
+        "qcReady": 1,
+        "queued": 5,
+        "candidateAliasesMerged": 10
       },
       {
         "id": "show_66323af571a19fdabe95",
@@ -3100,8 +3250,8 @@
       {
         "month": "2026-07",
         "officialEpisodes": 49,
-        "noteReady": 3,
-        "queued": 46
+        "noteReady": 4,
+        "queued": 45
       }
     ]
   }

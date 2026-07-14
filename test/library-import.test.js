@@ -150,4 +150,83 @@ assert.strictEqual(guestEntity('\u2060Why OpenAI and Anthropic Won\'t Win the Ap
 assert.strictEqual(guestEntity('Outsmarting Uber: Why Bolt Wins in Europe'), '', 'topical title fragments must not become people');
 assert.strictEqual(guestEntity('Jeremy Giffon - The Billion Dollar PDF - [Invest Like the Best, EP.481]'), 'Jeremy Giffon');
 fs.rmSync(identityTemp, { recursive: true, force: true });
+
+const relationshipTemp = fs.mkdtempSync(path.join(os.tmpdir(), 'podcast-library-relationships-'));
+const relationshipRadar = path.join(relationshipTemp, 'radar'); const relationshipQueries = path.join(relationshipTemp, 'queries');
+const relationshipRaw = path.join(relationshipTemp, 'raw'); const relationshipReports = path.join(relationshipTemp, 'reports');
+for (const dir of [relationshipRadar, relationshipQueries, relationshipRaw, relationshipReports]) fs.mkdirSync(dir, { recursive: true });
+const relationshipDay = path.join(relationshipRadar, '2026-07-14'); fs.mkdirSync(relationshipDay);
+const wixOfficialTitle = "20VC: Wix's Founder on What Wall St Gets Wrong About AI and Wix | Will Base44 Win the Vibe Coding Wars";
+const wixOfficialUrl = 'https://thetwentyminutevc.example/20vc-wix-founder-base44';
+const wixYoutubeTitle = 'Wix Founder: Will Base44 Win the Vibe-Coding Wars? | The Truth About the Economics of Vibe-Coding';
+const engramTitle = 'The AI Memory Problem: Why Long Context Isn’t Enough — Dan Biderman, Engram Co-founder & CEO';
+const twentyVcName = 'The Twenty Minute VC (20VC): Venture Capital | Startup Funding | The Pitch';
+const twentyVcRss = path.join(relationshipDay, '20VC.rss.xml');
+fs.writeFileSync(twentyVcRss, `<?xml version="1.0"?><rss><channel><title>${twentyVcName}</title><item><title>${wixOfficialTitle}</title>
+<link>${wixOfficialUrl}</link><pubDate>Mon, 13 Jul 2026 07:07:00 +0000</pubDate><guid>wix-official-guid</guid>
+<enclosure url="https://cdn.example.com/wix.mp3" type="audio/mpeg"/></item></channel></rss>`);
+const latentRss = path.join(relationshipDay, 'Latent_Space.rss.xml');
+fs.writeFileSync(latentRss, '<?xml version="1.0"?><rss><channel><title>Latent Space</title></channel></rss>');
+fs.writeFileSync(path.join(relationshipRadar, 'state.json'), JSON.stringify({ sources: {
+  '20VC': { collectionName: twentyVcName, show_title: twentyVcName, feed_url: 'https://example.com/20vc.xml', last_raw_path: twentyVcRss },
+  'Latent Space': { collectionName: 'Latent Space', show_title: 'Latent Space', feed_url: 'https://example.com/latent.xml', last_raw_path: latentRss },
+}, youtube_sources: {
+  '20VC': { channel_id: 'UC20VC', feed_url: 'https://www.youtube.com/feeds/videos.xml?channel_id=UC20VC' },
+  'Latent Space': { channel_id: 'UCLATENT', feed_url: 'https://www.youtube.com/feeds/videos.xml?channel_id=UCLATENT' },
+} }));
+const wixRssCandidate = { id: '9ddd413fff822f2bff674b34', type: 'podcast_rss', title: wixOfficialTitle, show: twentyVcName,
+  source_key: '20VC', published: '2026-07-13T07:07:00+00:00', url: wixOfficialUrl, materiality: 'high', status: 'new_detected' };
+const wixYoutubeCandidate = { id: 'yt_TdQyVXN0GF8', type: 'youtube', video_id: 'TdQyVXN0GF8', title: wixYoutubeTitle, show: '20VC',
+  source_key: 'youtube:20VC', published: '2026-07-13T13:58:39+00:00', url: 'https://www.youtube.com/watch?v=TdQyVXN0GF8', materiality: 'high', status: 'new_detected' };
+const engramCandidate = { id: 'yt_jhpmMTus5a0', type: 'youtube', video_id: 'jhpmMTus5a0', title: engramTitle, show: 'Latent Space',
+  source_key: 'youtube:Latent Space', published: '2026-07-13T18:21:40+00:00', url: 'https://www.youtube.com/watch?v=jhpmMTus5a0', materiality: 'high', status: 'new_detected' };
+const crossShowCandidate = { ...wixYoutubeCandidate, id: 'yt_CROSSSHOW1', video_id: 'CROSSSHOW1', title: wixOfficialTitle, show: 'Latent Space',
+  source_key: 'youtube:Latent Space', url: 'https://www.youtube.com/watch?v=CROSSSHOW1' };
+const invalidCandidate = { ...engramCandidate, id: 'yt_INVALIDMETA1', video_id: 'INVALIDMETA1', title: 'Invalid metadata must stay out',
+  url: 'https://www.youtube.com/watch?v=INVALIDMETA1' };
+const relationshipCandidates = [wixRssCandidate, wixYoutubeCandidate, engramCandidate, crossShowCandidate, invalidCandidate];
+fs.writeFileSync(path.join(relationshipDay, 'candidates.json'), JSON.stringify(relationshipCandidates));
+function completedCandidateArtifact(name, candidate, whyHeading, metadata = {}) {
+  const dir = path.join(relationshipDay, name); fs.mkdirSync(dir);
+  fs.writeFileSync(path.join(dir, 'metadata.json'), JSON.stringify({ id: candidate.id, type: candidate.type, video_id: candidate.video_id,
+    title: candidate.title, show: candidate.show, published: candidate.published, url: candidate.url,
+    source_boundary: 'YouTube caption-derived transcript; not a human-edited official transcript.', ...metadata }));
+  fs.writeFileSync(path.join(dir, 'notes_cn_source_faithful.md'), `# ${candidate.title}\n\n- **节目**：${candidate.show}\n- **视频**：${candidate.url}\n\n## Source boundary\n本纪要严格依据完整的 YouTube 字幕衍生转写，字幕并非人工校订官方逐字稿，专名和数字仍需复核。\n\n## ${whyHeading}\n这期完整访谈提供了可核验的产品、市场与技术论证，并保留嘉宾的条件限定、反例和风险边界，适合作为研究阅读材料。\n\n## 完整正文\n${'这是依据完整字幕整理的来源保真中文内容，保留原始论证顺序、数字语境、异议和关键限定。'.repeat(45)}`);
+  fs.writeFileSync(path.join(dir, 'notes_cn_source_faithful.qc.json'), JSON.stringify({ passed: true, md_chars: 2600, nonempty_paragraphs: 20 }));
+  fs.writeFileSync(path.join(dir, 'notes_cn_source_faithful.docx'), 'fixture docx');
+  fs.writeFileSync(path.join(dir, 'transcript_timestamped.txt'), '00:00 complete source transcript');
+  return dir;
+}
+const wixArtifactDir = completedCandidateArtifact('20VC_Wix', wixYoutubeCandidate, '一、研究导读：为什么值得关注');
+const engramArtifactDir = completedCandidateArtifact('LatentSpace_Engram', engramCandidate, '一句话结论');
+const invalidArtifactDir = completedCandidateArtifact('Invalid_Metadata', invalidCandidate, '为什么对研究重要', { title: 'mismatched metadata title' });
+fs.writeFileSync(path.join(relationshipDay, 'processing_decisions.json'), JSON.stringify([
+  { ...wixRssCandidate, decision: 'duplicate_of_youtube_full_episode', duplicate_of: wixYoutubeCandidate.id },
+  { ...wixYoutubeCandidate, decision: 'processed_full_note', artifact_dir: wixArtifactDir },
+  { ...engramCandidate, decision: 'processed_full_note', artifact_dir: engramArtifactDir },
+  { ...invalidCandidate, decision: 'processed_full_note', artifact_dir: invalidArtifactDir },
+]));
+const relationshipDbPath = path.join(relationshipTemp, 'library.sqlite');
+const relationshipBuild = rebuildLibrary({ dbPath: relationshipDbPath, radarRoot: relationshipRadar, queriesRoot: relationshipQueries,
+  rawReportsRoot: relationshipRaw, reportsDir: relationshipReports, since: '2026-07-01' });
+assert.strictEqual(relationshipBuild.counts.canonicalEpisodes, 2, 'Wix must merge and only the valid candidate-only Engram episode may be added');
+assert.strictEqual(relationshipBuild.counts.readyEpisodes, 2, 'both complete relationship fixtures must pass library-ready-v2');
+const relationshipDb = openDatabase(relationshipDbPath, { readOnly: true });
+const relationshipIds = relationshipDb.prepare(`SELECT x.id_type,x.id_value,x.episode_id,e.canonical_source_type,e.reader_ready,e.canonical_title
+  FROM episode_external_ids x JOIN episodes e ON e.id=x.episode_id
+  WHERE x.id_value IN ('9ddd413fff822f2bff674b34','yt_TdQyVXN0GF8','TdQyVXN0GF8','yt_jhpmMTus5a0','jhpmMTus5a0')`).all();
+const wixEpisodeIds = new Set(relationshipIds.filter(row => ['9ddd413fff822f2bff674b34', 'yt_TdQyVXN0GF8', 'TdQyVXN0GF8'].includes(row.id_value)).map(row => row.episode_id));
+assert.strictEqual(wixEpisodeIds.size, 1, 'the explicit Wix duplicate relationship must attach every identity to one canonical RSS episode');
+const wixRelationshipRow = relationshipIds.find(row => row.id_value === 'yt_TdQyVXN0GF8');
+assert.strictEqual(wixRelationshipRow.canonical_source_type, 'official_rss');
+assert.strictEqual(wixRelationshipRow.canonical_title, wixOfficialTitle);
+assert.strictEqual(wixRelationshipRow.reader_ready, 1);
+const engramRelationshipRow = relationshipIds.find(row => row.id_value === 'yt_jhpmMTus5a0');
+assert.strictEqual(engramRelationshipRow.canonical_source_type, 'radar_archive');
+assert.strictEqual(engramRelationshipRow.reader_ready, 1);
+assert.strictEqual(relationshipDb.prepare(`SELECT COUNT(*) AS count FROM episode_external_ids WHERE id_value IN ('yt_CROSSSHOW1','yt_INVALIDMETA1')`).get().count, 0,
+  'same-title cross-show candidates and metadata identity mismatches must not enter the catalog');
+assert.strictEqual(relationshipDb.prepare('SELECT COUNT(*) AS count FROM episodes').get().count, 2);
+relationshipDb.close();
+fs.rmSync(relationshipTemp, { recursive: true, force: true });
 console.log('library import tests passed');

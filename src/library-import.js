@@ -156,7 +156,7 @@ function sourceBoundaryFromNote(markdown) {
 }
 function whyItMattersFromNote(markdown) {
   const patterns = [/一句话.*(?:thesis|结论|定位)/i, /one[- ]sentence\s+thesis/i, /executive\s+(?:readout|read-through|summary)/i,
-    /为什么.*(?:重要|值得研究)/i, /为何重要/i, /why\s+it\s+matters/i, /受访对象与通话定位/i, /受访者.*(?:背景|场景)/i,
+    /为什么.*(?:重要|值得(?:研究|关注))/i, /为何重要/i, /why\s+it\s+matters/i, /受访对象与通话定位/i, /受访者.*(?:背景|场景)/i,
     /嘉宾.*(?:背景|使用说明)/i, /访谈元数据/i, /guest.*background/i, /reading protocol/i];
   return sectionByHeading(markdown, patterns, 28).slice(0, 1800);
 }
@@ -310,7 +310,7 @@ class EpisodeBuilder {
     this.showFilter = (options.shows || []).map(normalizeText);
     this.shows = new Map(); this.aliases = new Map(); this.episodes = new Map(); this.identities = new Map();
     this.mergeLedger = []; this.warnings = []; this.candidateReview = []; this.rawRss = new Map();
-    this.videoShows = new Map();
+    this.videoShows = new Map(); this.candidateDirectives = new Map();
     this.counts = { monitoredShows: 0, officialSinceCutoff: 0, candidateRows: 0, candidateAliasesMerged: 0,
       radarIndexed: 0, radarReadyImported: 0, iltbCanonicalSobridgeMarkdown: 0, iltbVersions: 0,
       genericReviewed: 0, genericExcluded: 0, attachedArtifacts: 0, importedClaims: 0 };
@@ -367,6 +367,11 @@ class EpisodeBuilder {
     return candidates.length ? this.shows.get(candidates[0][1]) : null;
   }
 
+  resolveExactShow(value) {
+    const id = this.aliases.get(normalizeText(value));
+    return id ? this.shows.get(id) : null;
+  }
+
   identityPairs(meta, show) {
     const pairs = [];
     if (meta.guid) pairs.push(['rss_guid', String(meta.guid).trim()]);
@@ -401,7 +406,16 @@ class EpisodeBuilder {
     if (!show) { if (options.warn !== false) this.warnings.push({ code: 'show_unresolved', source: meta.source || '', title: meta.title || '', show: meta.show || '' }); return null; }
     const date = meta.publishedDate ? { at: meta.publishedAt || `${meta.publishedDate}T00:00:00.000Z`, date: meta.publishedDate } : published(meta.publishedAt);
     const pairs = this.identityPairs(meta, show);
-    const match = this.findEpisode({ ...meta, publishedDate: date.date }, show, pairs);
+    let match;
+    if (options.explicitEpisodeId) {
+      const explicit = this.episodes.get(options.explicitEpisodeId);
+      if (!explicit || explicit.showId !== show.id) {
+        this.warnings.push({ code: 'explicit_candidate_episode_mismatch', episodeId: options.explicitEpisodeId || '',
+          source: meta.source || '', title: meta.title || '' });
+        return null;
+      }
+      match = { episode: explicit, evidence: options.explicitEvidence || 'explicit_candidate_relationship' };
+    } else match = this.findEpisode({ ...meta, publishedDate: date.date }, show, pairs);
     let episode = match?.episode;
     if (!episode && options.create === false) return null;
     if (!episode) {
@@ -531,13 +545,109 @@ function importCandidates(builder, radarRoot) {
   }
 }
 
+function exactValue(left, right) {
+  const a = String(left || '').trim(); const b = String(right || '').trim();
+  return Boolean(a) && a === b;
+}
+function exactYoutubeIdentity(record) {
+  const explicit = String(record?.video_id || '').trim();
+  return explicit && youtubeId(record?.url) === explicit ? explicit : '';
+}
+function exactCandidateDecision(candidate, decision) {
+  if (!candidate || !decision || !exactValue(candidate.id, decision.id) || !exactValue(candidate.title, decision.title)
+    || !exactValue(candidate.show, decision.show) || !exactValue(candidate.url, decision.url)
+    || !exactValue(candidate.type, decision.type)) return false;
+  if (String(candidate.type || '') !== 'youtube') return true;
+  const candidateVideo = exactYoutubeIdentity(candidate); const decisionVideo = exactYoutubeIdentity(decision);
+  return Boolean(candidateVideo && candidateVideo === decisionVideo);
+}
+function exactOfficialCandidateEpisode(builder, candidate, show, episode) {
+  if (!episode || !['official_rss', 'historical_official_rss'].includes(episode.canonicalSourceType) || episode.showId !== show.id) return false;
+  const date = published(candidate.published || candidate.published_at).date;
+  return exactValue(candidate.title, episode.title) && cleanUrl(candidate.url) === episode.originalUrl && (!date || date === episode.publishedDate);
+}
+function exactOfficialTitleExists(builder, candidate, show) {
+  const date = published(candidate.published || candidate.published_at).date;
+  return [...builder.episodes.values()].some(episode => ['official_rss', 'historical_official_rss'].includes(episode.canonicalSourceType)
+    && episode.showId === show.id && exactValue(candidate.title, episode.title) && (!date || date === episode.publishedDate));
+}
+function decisionKey(day, candidateId) { return `${day}:${candidateId}`; }
+function importDailyCandidateDecisions(builder, radarRoot) {
+  const files = walk(radarRoot, file => /(?:^|\/)processing_decisions\.json$/i.test(file));
+  for (const file of files) {
+    const dayDir = path.dirname(file); const day = path.basename(dayDir);
+    const candidates = candidateArrays(readJson(path.join(dayDir, 'candidates.json'), []));
+    const decisions = candidateArrays(readJson(file, []));
+    const candidateGroups = new Map();
+    for (const candidate of candidates) {
+      const id = String(candidate?.id || candidate?.candidate_id || '');
+      if (!id) continue;
+      if (!candidateGroups.has(id)) candidateGroups.set(id, []);
+      candidateGroups.get(id).push(candidate);
+    }
+    for (const targetDecision of decisions.filter(row => row?.decision === 'processed_full_note')) {
+      const targetId = String(targetDecision.id || ''); const key = decisionKey(day, targetId);
+      const directive = { valid: false, candidate: null, decision: targetDecision, episodeId: '', standalone: false, source: file };
+      builder.candidateDirectives.set(key, directive);
+      const targetRows = candidateGroups.get(targetId) || [];
+      if (targetRows.length !== 1 || !exactCandidateDecision(targetRows[0], targetDecision)) continue;
+      const candidate = targetRows[0]; directive.candidate = candidate;
+      const video = exactYoutubeIdentity(candidate);
+      const targetShow = builder.resolveExactShow(candidate.show);
+      if (!video || candidate.materiality !== 'high' || !targetShow) continue;
+      directive.targetShowId = targetShow.id;
+      const artifactDir = path.resolve(String(targetDecision.artifact_dir || ''));
+      const relativeArtifactDir = path.relative(dayDir, artifactDir);
+      if (!targetDecision.artifact_dir || !relativeArtifactDir || relativeArtifactDir.startsWith('..') || path.isAbsolute(relativeArtifactDir)) continue;
+      directive.artifactDir = artifactDir;
+      const duplicateSources = decisions.filter(row => String(row?.duplicate_of || '') === targetId);
+      if (duplicateSources.length > 1) continue;
+      if (duplicateSources.length === 1) {
+        const sourceDecision = duplicateSources[0]; const sourceRows = candidateGroups.get(String(sourceDecision.id || '')) || [];
+        if (sourceRows.length !== 1 || !exactCandidateDecision(sourceRows[0], sourceDecision)) continue;
+        const sourceCandidate = sourceRows[0]; const sourceShow = builder.resolveExactShow(sourceCandidate.show);
+        const episodeId = builder.identities.get(`candidate_id:${sourceCandidate.id}`); const episode = builder.episodes.get(episodeId);
+        if (sourceCandidate.type !== 'podcast_rss' || !sourceShow || sourceShow.id !== targetShow.id
+          || !exactOfficialCandidateEpisode(builder, sourceCandidate, sourceShow, episode)) continue;
+        directive.episodeId = episode.id;
+      } else {
+        const owner = builder.episodes.get(builder.identities.get(`candidate_id:${candidate.id}`));
+        if (owner || exactOfficialTitleExists(builder, candidate, targetShow)) continue;
+        directive.standalone = true;
+      }
+      directive.valid = true;
+    }
+  }
+}
+function exactProcessedArtifactIdentity(item, directive) {
+  const candidate = directive.candidate; const metadata = item.metadata || {};
+  if (!directive.valid || !candidate || !item.metadataPath || path.dirname(path.resolve(item.metadataPath)) !== directive.artifactDir
+    || !item.notePath || !item.qcPath || !item.qcPassed || !exactValue(item.candidateId, candidate.id)
+    || !exactValue(metadata.id, candidate.id) || !exactValue(metadata.title, candidate.title)
+    || !exactValue(metadata.show, candidate.show) || !exactValue(metadata.url, candidate.url)
+    || !exactValue(metadata.published, candidate.published)) return false;
+  const candidateVideo = exactYoutubeIdentity(candidate); const metadataVideo = exactYoutubeIdentity(metadata);
+  return Boolean(candidateVideo && candidateVideo === metadataVideo && item.videoId === candidateVideo);
+}
+
 function importRadarArchive(builder, radarRoot) {
   const index = buildIndex(radarRoot);
   builder.counts.radarIndexed = index.episodes.length;
   for (const item of index.episodes) {
     const video = item.videoId || youtubeId(item.originalUrl);
     const show = builder.showForVideo(video) || builder.resolveShow(item.sourceKey || item.show); if (!show) continue;
-    let episode = item.metadata?.episode_id ? builder.episodes.get(String(item.metadata.episode_id)) : null;
+    const directive = builder.candidateDirectives.get(decisionKey(item.dateDetected, item.candidateId));
+    if (directive && (directive.targetShowId !== show.id || !exactProcessedArtifactIdentity(item, directive))) {
+      builder.warnings.push({ code: 'processed_candidate_artifact_identity_mismatch', candidateId: item.candidateId,
+        source: item.metadataPath || item.dateDetected });
+      continue;
+    }
+    let episode = directive?.episodeId ? builder.addEpisode({ showId: show.id, title: directive.candidate.title,
+      publishedAt: directive.candidate.published, description: directive.candidate.description, originalUrl: directive.candidate.url,
+      candidateId: directive.candidate.id, youtubeId: video, materiality: directive.candidate.materiality,
+      mediaType: directive.candidate.type, sourceType: 'radar_archive', sourceUrlShow: directive.candidate.show,
+      source: directive.source }, { create: false, explicitEpisodeId: directive.episodeId, explicitEvidence: 'daily_candidate_duplicate_of' })
+      : item.metadata?.episode_id ? builder.episodes.get(String(item.metadata.episode_id)) : null;
     if (item.metadata?.episode_id && episode) {
       const incomingUrl = cleanUrl(item.originalUrl);
       const sameUrl = Boolean(incomingUrl && episode.originalUrl && incomingUrl === episode.originalUrl);
@@ -556,8 +666,11 @@ function importRadarArchive(builder, radarRoot) {
       description: item.description, originalUrl: item.originalUrl, audioUrl: item.audioUrl, candidateId: item.candidateId,
       youtubeId: video, materiality: item.materiality, mediaType: item.mediaType, sourceType: 'radar_archive',
       sourceUrlShow: builder.showForVideo(video)?.canonicalName || item.sourceUrlShow || '',
-      source: item.metadataPath || item.dateDetected }, { create: Boolean(item.presentationReady) });
+      source: item.metadataPath || item.dateDetected }, { create: Boolean(directive?.standalone || item.presentationReady) });
     if (!episode) continue;
+    if (directive) builder.candidateReview = builder.candidateReview.filter(row => !(row.candidateId === item.candidateId
+      && path.dirname(row.source || '') === path.dirname(directive.source)));
+    if (directive?.episodeId) builder.counts.candidateAliasesMerged += 1;
     for (const [key, hint] of [['transcriptPath', 'transcript_txt'], ['audioPath', 'audio'], ['qcPath', 'qc_json'], ['docxPath', 'docx'], ['pdfPath', 'pdf'],
       ['investmentExtractionPath', 'investment_extraction'], ['metadataPath', 'source_manifest'], ['sourceManifestPath', 'source_manifest']])
       if (item[key]) builder.addArtifact(episode, item[key], hint, 'radar_archive');
@@ -829,6 +942,7 @@ function rebuildLibrary(options = {}) {
   importOfficialRss(builder, config.radarRoot);
   importYoutubeSources(builder, config.radarRoot);
   importCandidates(builder, config.radarRoot);
+  importDailyCandidateDecisions(builder, config.radarRoot);
   importRadarArchive(builder, config.radarRoot);
   importIltbNotes(builder, config.queriesRoot);
   importIltbRawArtifacts(builder, config.rawReportsRoot);
