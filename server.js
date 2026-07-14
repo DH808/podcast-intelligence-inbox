@@ -3,6 +3,8 @@ const fs = require('fs');
 const path = require('path');
 const { URL } = require('url');
 const { buildIndex, safeResolvePodcastPath } = require('./src/indexer');
+const { DEFAULT_DB_PATH, openDatabase } = require('./src/library-database');
+const { LibraryRepository } = require('./src/library-repository');
 
 const APP_DIR = __dirname;
 const PUBLIC_DIR = path.join(APP_DIR, 'public');
@@ -59,8 +61,154 @@ function fileForKind(episode, kind) {
 }
 function parseBoundedInt(value, fallback, max) { const n = Number.parseInt(value, 10); return Number.isFinite(n) && n >= 0 ? Math.min(n, max) : fallback; }
 
+function createSnapshotRequestHandler(options = {}) {
+  const snapshotPath = path.resolve(options.snapshotPath || process.env.PODCAST_LIBRARY_SNAPSHOT || path.join(APP_DIR, 'data', 'public', 'podcast_library_snapshot.json'));
+  const basePath = options.basePath ?? process.env.BASE_PATH ?? '';
+  let cache = null; let cacheMtime = 0;
+  function snapshot() {
+    const mtime = fs.statSync(snapshotPath).mtimeMs;
+    if (!cache || mtime !== cacheMtime) { cache = JSON.parse(fs.readFileSync(snapshotPath, 'utf8')); cacheMtime = mtime; }
+    return cache;
+  }
+  function summary(episode) {
+    return { id: episode.id, showId: episode.showId, show: episode.show, title: episode.title, publishedAt: episode.publishedAt,
+      publishedDate: episode.publishedDate, durationSeconds: episode.durationSeconds, duration: episode.duration, description: episode.description,
+      originalUrl: episode.originalUrl, mediaType: episode.mediaType, materiality: episode.materiality, productionStatus: episode.productionStatus,
+      readerReady: true, publicReady: true, gateVersion: episode.gateVersion, blockReasons: [], transcriptReady: false,
+      canonicalNoteAvailable: true, qcReady: true, noteChars: String(episode.noteMarkdown || '').length,
+      whyItMatters: episode.whyItMatters, detailUrl: `/api/episodes/${encodeURIComponent(episode.id)}` };
+  }
+  function staticResponse(res, pathname) {
+    const relative = (pathname === '/' ? 'index.html' : pathname).replace(/^\/+/, ''); const file = path.resolve(PUBLIC_DIR, relative);
+    if (!(file === PUBLIC_DIR || file.startsWith(PUBLIC_DIR + path.sep)) || !fs.existsSync(file) || !fs.statSync(file).isFile()) return send(res, 404, 'Not Found', { 'content-type': 'text/plain; charset=utf-8' });
+    return send(res, 200, fs.readFileSync(file), { 'content-type': mime(file), 'cache-control': 'no-cache' });
+  }
+  function handleApi(req, res, pathname, url) {
+    if (!['GET', 'HEAD'].includes(req.method || 'GET')) return json(res, 405, { error: 'method_not_allowed' });
+    try {
+      const data = snapshot(); const episodes = data.episodes || []; const summaries = episodes.map(summary);
+      const audit = { gateVersion: data.gateVersion, integrity: 'ok', ok: true, foreignKeyViolations: 0, duplicates: 0, orphans: 0,
+        total: data.audit?.total ?? episodes.length, ready: episodes.length, blocked: data.audit?.blocked ?? 0, publicReady: episodes.length,
+        reasonCounts: data.audit?.reasonCounts || {} };
+      if (pathname === '/api/health') return json(res, 200, { ok: true, snapshot: true, publicMode: true, audit });
+      if (pathname === '/api/state') return json(res, 200, { generatedAt: data.generatedAt, episodes: summaries, libraryTotal: episodes.length,
+        shows: data.shows || [], coverage: data.coverage, audit, privateMode: false });
+      if (pathname === '/api/audit') return json(res, 200, audit);
+      if (pathname === '/api/coverage') return json(res, 200, data.coverage);
+      if (pathname === '/api/catalog' || pathname === '/api/queue' || pathname === '/api/file' || pathname === '/api/raw') return json(res, 404, { error: 'not_found' });
+      if (pathname === '/api/library' || pathname === '/api/episodes') {
+        const query = String(url.searchParams.get('q') || '').toLocaleLowerCase();
+        const filtered = summaries.filter(episode => !query || [episode.title, episode.show, episode.description, episode.whyItMatters].join(' ').toLocaleLowerCase().includes(query));
+        const limit = parseBoundedInt(url.searchParams.get('limit'), 50, 100); const offset = parseBoundedInt(url.searchParams.get('offset'), 0, 1_000_000);
+        return json(res, 200, { total: filtered.length, limit, offset, episodes: filtered.slice(offset, offset + limit) });
+      }
+      if (pathname === '/api/search') {
+        const query = String(url.searchParams.get('q') || '').trim(); const lower = query.toLocaleLowerCase(); const limit = parseBoundedInt(url.searchParams.get('limit'), 20, 100);
+        const found = episodes.filter(episode => lower && [episode.title, episode.show, episode.description, episode.whyItMatters, episode.noteMarkdown,
+          ...(episode.entities || []).map(entity => entity.name), ...(episode.themes || []).map(theme => theme.name)].join(' ').toLocaleLowerCase().includes(lower));
+        return json(res, 200, { query, total: found.length, internal: false, episodes: found.slice(0, limit).map(summary) });
+      }
+      const showMatch = pathname.match(/^\/api\/shows\/([^/]+)$/);
+      if (showMatch) {
+        const id = decodeURIComponent(showMatch[1]); const show = (data.shows || []).find(value => value.id === id || value.slug === id);
+        if (!show) return json(res, 404, { error: 'show_not_found' });
+        const readyNotes = summaries.filter(episode => episode.showId === show.id);
+        return json(res, 200, { id: show.id, name: show.name, slug: show.slug, tier: show.tier, aliases: [], readyNotes,
+          catalog: readyNotes, counts: { ready: readyNotes.length, catalog: readyNotes.length } });
+      }
+      if (/^\/api\/episodes\/[^/]+\/files\/[^/]+$/.test(pathname)) return json(res, 404, { error: 'file_not_found' });
+      const episodeMatch = pathname.match(/^\/api\/episodes\/([^/]+)$/);
+      if (episodeMatch) {
+        const episode = episodes.find(value => value.id === decodeURIComponent(episodeMatch[1]));
+        return episode ? json(res, 200, { ...summary(episode), noteMarkdown: episode.noteMarkdown, sourceBoundary: episode.sourceBoundary,
+          whyItMatters: episode.whyItMatters, noteVersions: episode.noteVersions || [], themes: episode.themes || [], entities: episode.entities || [], artifacts: [], claims: [] })
+          : json(res, 404, { error: 'episode_not_found' });
+      }
+      return json(res, 404, { error: 'api_not_found' });
+    } catch (_) { return json(res, 500, { error: 'internal_error' }); }
+  }
+  return function snapshotHandler(req, res) {
+    let url; try { url = new URL(req.url, `http://${req.headers?.host || 'localhost'}`); } catch (_) { return json(res, 400, { error: 'invalid_request' }); }
+    let pathname; try { pathname = stripBase(decodeURIComponent(url.pathname), basePath); } catch (_) { return json(res, 400, { error: 'invalid_path' }); }
+    if (pathname.startsWith('/api/')) return handleApi(req, res, pathname, url);
+    return staticResponse(res, pathname);
+  };
+}
+
+function createDatabaseRequestHandler(options = {}) {
+  const dbPath = path.resolve(options.dbPath || process.env.PODCAST_LIBRARY_DB || DEFAULT_DB_PATH);
+  const basePath = options.basePath ?? process.env.BASE_PATH ?? '';
+  const publicMode = options.publicMode ?? /^(?:1|true|yes)$/i.test(process.env.PUBLIC_MODE || process.env.RENDER || '');
+  function staticResponse(res, pathname) {
+    const relative = (pathname === '/' ? 'index.html' : pathname).replace(/^\/+/, '');
+    const file = path.resolve(PUBLIC_DIR, relative);
+    if (!(file === PUBLIC_DIR || file.startsWith(PUBLIC_DIR + path.sep)) || !fs.existsSync(file) || !fs.statSync(file).isFile()) return send(res, 404, 'Not Found', { 'content-type': 'text/plain; charset=utf-8' });
+    return send(res, 200, fs.readFileSync(file), { 'content-type': mime(file), 'cache-control': 'no-cache' });
+  }
+  function handleApi(req, res, pathname, url) {
+    if (!['GET', 'HEAD'].includes(req.method || 'GET')) return json(res, 405, { error: 'method_not_allowed' });
+    let db;
+    try {
+      db = openDatabase(dbPath, { readOnly: true }); const repository = new LibraryRepository(db, { publicMode });
+      if (pathname === '/api/health') return json(res, 200, { ok: true, database: true, publicMode, audit: repository.audit() });
+      if (pathname === '/api/state') return json(res, 200, repository.state());
+      if (pathname === '/api/audit') return json(res, 200, repository.audit());
+      if (pathname === '/api/library' || pathname === '/api/episodes') return json(res, 200, repository.library({
+        limit: url.searchParams.get('limit'), offset: url.searchParams.get('offset'), showId: url.searchParams.get('show'),
+        month: url.searchParams.get('month'), theme: url.searchParams.get('theme'), entity: url.searchParams.get('entity'), q: url.searchParams.get('q') }));
+      if (pathname === '/api/catalog') {
+        if (publicMode) return json(res, 404, { error: 'not_found' });
+        return json(res, 200, repository.catalog({ limit: url.searchParams.get('limit'), offset: url.searchParams.get('offset'),
+          showId: url.searchParams.get('show'), status: url.searchParams.get('status'), ready: url.searchParams.get('ready'), since: url.searchParams.get('since') }));
+      }
+      if (pathname === '/api/coverage') return json(res, 200, repository.coverage({ since: url.searchParams.get('since') || undefined }));
+      if (pathname === '/api/queue') {
+        if (publicMode) return json(res, 404, { error: 'not_found' });
+        return json(res, 200, repository.queue({ limit: url.searchParams.get('limit'), offset: url.searchParams.get('offset') }));
+      }
+      if (pathname === '/api/search') return json(res, 200, repository.search(url.searchParams.get('q') || '', {
+        limit: url.searchParams.get('limit'), internal: url.searchParams.get('internal') === '1' }));
+      const showMatch = pathname.match(/^\/api\/shows\/([^/]+)$/);
+      if (showMatch) {
+        const show = repository.show(decodeURIComponent(showMatch[1]));
+        return show ? json(res, 200, show) : json(res, 404, { error: 'show_not_found' });
+      }
+      const fileMatch = pathname.match(/^\/api\/episodes\/([^/]+)\/files\/([^/]+)$/);
+      if (fileMatch) {
+        const artifact = repository.fileArtifact(decodeURIComponent(fileMatch[1]), decodeURIComponent(fileMatch[2]));
+        if (!artifact || !fs.existsSync(artifact.origin_path) || !fs.statSync(artifact.origin_path).isFile()) return json(res, 404, { error: 'file_not_found' });
+        const name = attachmentName(artifact.safe_download_name);
+        return send(res, 200, fs.readFileSync(artifact.origin_path), { 'content-type': artifact.mime_type || mime(artifact.origin_path),
+          'cache-control': 'private, max-age=60', 'content-disposition': `attachment; filename="${encodeURIComponent(name)}"; filename*=UTF-8''${encodeURIComponent(name)}` });
+      }
+      const episodeMatch = pathname.match(/^\/api\/episodes\/([^/]+)$/);
+      if (episodeMatch) {
+        const episode = repository.episode(decodeURIComponent(episodeMatch[1]));
+        return episode ? json(res, 200, episode) : json(res, 404, { error: 'episode_not_found' });
+      }
+      if (pathname === '/api/file' || pathname === '/api/raw') return json(res, 404, { error: 'file_not_found' });
+      return json(res, 404, { error: 'api_not_found' });
+    } catch (error) {
+      if (options.exposeErrors) return json(res, 500, { error: 'internal_error', message: error.message });
+      return json(res, 500, { error: 'internal_error' });
+    } finally { try { db?.close(); } catch (_) {} }
+  }
+  return function databaseHandler(req, res) {
+    let url;
+    try { url = new URL(req.url, `http://${req.headers?.host || 'localhost'}`); } catch (_) { return json(res, 400, { error: 'invalid_request' }); }
+    let pathname;
+    try { pathname = stripBase(decodeURIComponent(url.pathname), basePath); } catch (_) { return json(res, 400, { error: 'invalid_path' }); }
+    if (pathname.startsWith('/api/')) return handleApi(req, res, pathname, url);
+    return staticResponse(res, pathname);
+  };
+}
+
 function createRequestHandler(options = {}) {
-  const root = path.resolve(options.root || process.env.PODCAST_RADAR_ROOT || path.join(APP_DIR, 'data', 'archive'));
+  const databasePath = path.resolve(options.dbPath || process.env.PODCAST_LIBRARY_DB || DEFAULT_DB_PATH);
+  const snapshotPath = path.resolve(options.snapshotPath || process.env.PODCAST_LIBRARY_SNAPSHOT || path.join(APP_DIR, 'data', 'public', 'podcast_library_snapshot.json'));
+  if (options.snapshotPath || (!options.root && !fs.existsSync(databasePath) && fs.existsSync(snapshotPath))) return createSnapshotRequestHandler({ ...options, snapshotPath });
+  if (options.dbPath || (!options.root && fs.existsSync(databasePath))) return createDatabaseRequestHandler({ ...options, dbPath: databasePath });
+  const root = path.resolve(options.root || process.env.PODCAST_RADAR_ROOT || '[podcast-archive]');
   const basePath = options.basePath ?? process.env.BASE_PATH ?? '';
   let cache = null; let cacheTime = 0;
   function getIndex(force = false) {
@@ -166,4 +314,4 @@ function startServer() {
 }
 if (require.main === module) startServer();
 
-module.exports = { createRequestHandler, startServer, publicEpisode, stripBase };
+module.exports = { createRequestHandler, createDatabaseRequestHandler, createSnapshotRequestHandler, startServer, publicEpisode, stripBase };

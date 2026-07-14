@@ -1,14 +1,19 @@
 {
   "name": "podcast-intelligence-inbox-render",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "private": true,
   "description": "Read-only, QC-passed Podcast Intelligence reading product",
   "scripts": {
     "start": "node server.js",
-    "test": "node test/intelligence.test.js && node test/indexer.test.js && node test/server.test.js",
-    "check": "node --check server.js && node --check src/indexer.js && node --check public/app.js"
+    "db:migrate": "node scripts/library-cli.js migrate",
+    "library:inventory": "node scripts/library-cli.js inventory",
+    "library:rebuild": "node scripts/library-cli.js rebuild",
+    "library:verify": "node scripts/library-cli.js verify",
+    "library:export": "node scripts/library-cli.js export",
+    "test": "node test/intelligence.test.js && node test/indexer.test.js && node test/library-database.test.js && node test/library-import.test.js && node test/library-api.test.js && node test/server.test.js",
+    "check": "node --check server.js && node --check src/indexer.js && node --check src/intelligence.js && node --check src/library-database.js && node --check src/library-import.js && node --check src/library-repository.js && node --check scripts/library-cli.js && node --check public/app.js"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   }
 }

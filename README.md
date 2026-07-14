@@ -1,6 +1,6 @@
-# Podcast Intelligence Inbox — sanitized demo snapshot
+# Podcast Intelligence Library — sanitized public snapshot
 
-Read-only Render snapshot generated from public podcast metadata and selected
-source-faithful notes. Raw audio, raw transcripts, credentials, local paths,
-logs, and Hermes state are excluded. Source tier is a research-routing prior,
-not an investment or content-quality score.
+Read-only Render projection containing only database-backed, QC-passed podcast
+notes. The private catalog, production queue, raw audio/transcripts, credentials,
+local paths, claims, logs, and Hermes state are excluded. Every visible episode
+passes `library-ready-v2`; source tier is not a publication override.

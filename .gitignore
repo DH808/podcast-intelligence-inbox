@@ -4,3 +4,6 @@ data/index.json
 .DS_Store
 node_modules/
 .env
+data/private/
+data/public/
+data/reports/

@@ -10,3 +10,7 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      - key: PUBLIC_MODE
+        value: "true"
+      - key: PODCAST_LIBRARY_SNAPSHOT
+        value: data/public/podcast_library_snapshot.json
