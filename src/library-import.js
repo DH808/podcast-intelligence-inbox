@@ -156,13 +156,25 @@ function sourceBoundaryFromNote(markdown) {
 }
 function whyItMattersFromNote(markdown) {
   const patterns = [/一句话.*(?:thesis|结论|定位)/i, /one[- ]sentence\s+thesis/i, /executive\s+(?:readout|read-through|summary)/i,
-    /为什么值得研究/i, /受访对象与通话定位/i, /受访者.*(?:背景|场景)/i, /嘉宾.*(?:背景|使用说明)/i, /访谈元数据/i, /guest.*background/i, /reading protocol/i];
+    /为什么.*(?:重要|值得研究)/i, /为何重要/i, /why\s+it\s+matters/i, /受访对象与通话定位/i, /受访者.*(?:背景|场景)/i,
+    /嘉宾.*(?:背景|使用说明)/i, /访谈元数据/i, /guest.*background/i, /reading protocol/i];
   return sectionByHeading(markdown, patterns, 28).slice(0, 1800);
 }
 function validDate(value) { return /^\d{4}-\d{2}-\d{2}$/.test(String(value || '')) && !Number.isNaN(new Date(`${value}T00:00:00Z`).getTime()); }
 function validOriginalUrl(value) {
   try { const url = new URL(String(value || '')); return ['http:', 'https:'].includes(url.protocol) && Boolean(url.hostname) && !url.username && !url.password; }
   catch (_) { return false; }
+}
+function officialRssEpisodeSourceUrl(input = {}) {
+  const original = String(input.originalUrl ?? input.link ?? '').trim();
+  if (original) return validOriginalUrl(original) ? cleanUrl(original) : '';
+  const sourceType = String(input.canonicalSourceType || input.sourceType || '');
+  if (!['official_rss', 'historical_official_rss'].includes(sourceType)) return '';
+  const enclosure = String(input.officialRssEnclosureUrl ?? input.enclosureUrl ?? '').trim();
+  const enclosureType = String(input.officialRssEnclosureType ?? input.enclosureType ?? '');
+  const verifiedOfficialAudio = input.officialRssEnclosure === true || /^audio\//i.test(enclosureType);
+  if (!verifiedOfficialAudio || !validOriginalUrl(enclosure)) return '';
+  return cleanUrl(enclosure);
 }
 function evaluateLibraryReadiness(input = {}) {
   const reasons = [];
@@ -176,7 +188,7 @@ function evaluateLibraryReadiness(input = {}) {
   if (!String(input.title || '').trim() || /^(?:unknown|untitled|未命名)/i.test(input.title)) reasons.push('title_unusable');
   if (!String(input.show || '').trim() || /^(?:unknown|untitled|未知)/i.test(input.show)) reasons.push('show_unusable');
   if (!validDate(input.publishedDate)) reasons.push('date_unusable');
-  if (!validOriginalUrl(input.originalUrl)) reasons.push('original_source_url_invalid');
+  if (!validOriginalUrl(officialRssEpisodeSourceUrl(input))) reasons.push('original_source_url_invalid');
   if (String(input.sourceBoundary || '').trim().length < 12) reasons.push('source_boundary_missing');
   if (String(input.whyItMatters || '').trim().length < 40) reasons.push('why_it_matters_missing');
   if (input.notePath && exists(input.notePath)) {
@@ -433,7 +445,9 @@ function importOfficialRss(builder, radarRoot) {
       const date = published(item.publishedAt);
       if (!date.date || date.date < builder.since) continue;
       builder.addEpisode({ showId: show.id, title: item.title, publishedAt: item.publishedAt, description: item.description,
-        originalUrl: item.link, audioUrl: item.enclosureUrl, guid: item.guid, episodeNumber: item.episodeNumber,
+        originalUrl: officialRssEpisodeSourceUrl({ originalUrl: item.link, sourceType: 'official_rss',
+          officialRssEnclosureUrl: item.enclosureUrl, officialRssEnclosureType: item.enclosureType }),
+        audioUrl: item.enclosureUrl, guid: item.guid, episodeNumber: item.episodeNumber,
         durationSeconds: item.durationSeconds, durationText: item.durationText, sourceType: 'official_rss', source: rssPath });
       builder.counts.officialSinceCutoff += 1;
     }
@@ -470,13 +484,29 @@ function importRadarArchive(builder, radarRoot) {
   builder.counts.radarIndexed = index.episodes.length;
   for (const item of index.episodes) {
     const show = builder.resolveShow(item.sourceKey || item.show); if (!show) continue;
-    const episode = builder.addEpisode({ showId: show.id, title: item.title, publishedAt: item.publishedAt || item.dateDetected,
+    let episode = item.metadata?.episode_id ? builder.episodes.get(String(item.metadata.episode_id)) : null;
+    if (item.metadata?.episode_id && episode) {
+      const incomingUrl = cleanUrl(item.originalUrl);
+      const sameUrl = Boolean(incomingUrl && episode.originalUrl && incomingUrl === episode.originalUrl);
+      if (episode.showId !== show.id || (!sameUrl && titleSimilarity(item.title, episode.title) < 0.55)) {
+        builder.warnings.push({ code: 'radar_canonical_episode_id_mismatch', episodeId: String(item.metadata.episode_id),
+          source: item.metadataPath || item.dateDetected, title: item.title });
+        continue;
+      }
+    }
+    if (item.metadata?.episode_id && !episode) {
+      builder.warnings.push({ code: 'radar_canonical_episode_id_not_found', episodeId: String(item.metadata.episode_id),
+        source: item.metadataPath || item.dateDetected });
+      continue;
+    }
+    episode ||= builder.addEpisode({ showId: show.id, title: item.title, publishedAt: item.publishedAt || item.dateDetected,
       description: item.description, originalUrl: item.originalUrl, audioUrl: item.audioUrl, candidateId: item.candidateId,
       youtubeId: youtubeId(item.originalUrl), materiality: item.materiality, mediaType: item.mediaType, sourceType: 'radar_archive',
       source: item.metadataPath || item.dateDetected }, { create: Boolean(item.presentationReady) });
     if (!episode) continue;
     for (const [key, hint] of [['transcriptPath', 'transcript_txt'], ['audioPath', 'audio'], ['qcPath', 'qc_json'], ['docxPath', 'docx'], ['pdfPath', 'pdf'],
-      ['investmentExtractionPath', 'investment_extraction']]) if (item[key]) builder.addArtifact(episode, item[key], hint, 'radar_archive');
+      ['investmentExtractionPath', 'investment_extraction'], ['metadataPath', 'source_manifest'], ['sourceManifestPath', 'source_manifest']])
+      if (item[key]) builder.addArtifact(episode, item[key], hint, 'radar_archive');
     if (item.notePath) builder.addNote(episode, item.notePath, { versionLabel: 'source-faithful', writingStyle: 'source-faithful', rank: 95,
       sourceLayer: 'radar_archive', sourceBoundary: item.transcriptBoundary, whyItMatters: item.whyItMatters, deterministicQcPassed: Boolean(item.qcPassed) });
     if (item.presentationReady) builder.counts.radarReadyImported += 1;
@@ -491,7 +521,9 @@ function iltbRssItem(builder, number) {
 function ensureIltbEpisode(builder, number, source) {
   const show = iltbShow(builder); const item = iltbRssItem(builder, number);
   if (!show || !item) { builder.warnings.push({ code: 'iltb_official_metadata_not_found', episodeNumber: number, source }); return null; }
-  return builder.addEpisode({ showId: show.id, title: item.title, publishedAt: item.publishedAt, description: item.description, originalUrl: item.link,
+  return builder.addEpisode({ showId: show.id, title: item.title, publishedAt: item.publishedAt, description: item.description,
+    originalUrl: officialRssEpisodeSourceUrl({ originalUrl: item.link, sourceType: 'historical_official_rss',
+      officialRssEnclosureUrl: item.enclosureUrl, officialRssEnclosureType: item.enclosureType }),
     audioUrl: item.enclosureUrl, guid: item.guid, episodeNumber: item.episodeNumber || number, durationSeconds: item.durationSeconds,
     durationText: item.durationText, sourceType: 'historical_official_rss', source }, { recordMerge: false });
 }
@@ -745,6 +777,7 @@ function rebuildLibrary(options = {}) {
     let counts;
     try { counts = insertBuilder(db, builder, run, inventory); db.exec('COMMIT'); } catch (error) { db.exec('ROLLBACK'); throw error; }
     const verification = verifyDatabase(db); if (!verification.ok) throw new Error(`staged database verification failed: ${JSON.stringify(verification)}`);
+    if (typeof options.validateStaged === 'function') options.validateStaged(db, { ...counts, insertedEpisodes: run.insertedEpisodes });
     const reports = reportsFromDatabase(db, builder, inventory, counts, config, run);
     db.close(); db = null;
     fs.rmSync(`${config.dbPath}-wal`, { force: true }); fs.rmSync(`${config.dbPath}-shm`, { force: true });
@@ -808,5 +841,5 @@ function exportSanitizedSnapshot(options = {}) {
 }
 
 module.exports = { LIBRARY_GATE_VERSION, DEFAULT_SINCE, DEFAULT_RADAR_ROOT, DEFAULT_QUERIES_ROOT, DEFAULT_RAW_REPORTS_ROOT, DEFAULT_REPORTS_DIR,
-  parseRss, cleanUrl, inventoryAssets, genericHistoricalDiscovery, evaluateLibraryReadiness, rebuildLibrary, verifyLibrary, exportSanitizedSnapshot,
+  parseRss, cleanUrl, officialRssEpisodeSourceUrl, inventoryAssets, genericHistoricalDiscovery, evaluateLibraryReadiness, rebuildLibrary, verifyLibrary, exportSanitizedSnapshot,
   sourceBoundaryFromNote, whyItMattersFromNote };

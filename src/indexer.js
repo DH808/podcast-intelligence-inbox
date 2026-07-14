@@ -166,10 +166,11 @@ function noteFacts(note) {
 }
 
 function scanArtifacts(dayDir) {
-  const files = findAllRecursive(dayDir, (_, name) => name === 'metadata.json' || name === 'notes_cn_source_faithful.md');
+  const files = findAllRecursive(dayDir, (_, name) => ['metadata.json', 'source_manifest.json', 'notes_cn_source_faithful.md'].includes(name));
   const dirs = [...new Set(files.map(path.dirname))];
   return dirs.map(dir => {
     const metadataPath = exists(path.join(dir, 'metadata.json')) ? path.join(dir, 'metadata.json') : null;
+    const sourceManifestPath = exists(path.join(dir, 'source_manifest.json')) ? path.join(dir, 'source_manifest.json') : null;
     const notePath = exists(path.join(dir, 'notes_cn_source_faithful.md')) ? path.join(dir, 'notes_cn_source_faithful.md') : null;
     const metadata = metadataPath ? readJson(metadataPath, {}) : {};
     const note = notePath ? fs.readFileSync(notePath, 'utf8') : '';
@@ -182,7 +183,7 @@ function scanArtifacts(dayDir) {
     const audioPath = firstFile(dir, [/\.(mp3|m4a|wav)$/i]);
     if (!notePath && !transcriptPath) return null;
     return {
-      dir, metadataPath, notePath, transcriptPath, docxPath, qcPath, pdfPath, audioPath, investmentExtractionPath,
+      dir, metadataPath, sourceManifestPath, notePath, transcriptPath, docxPath, qcPath, pdfPath, audioPath, investmentExtractionPath,
       metadata, noteChars: note.length,
       candidateId: metadata.candidate_id || metadata.candidateId || '',
       videoId: metadata.video_id || videoId(metadata.url || facts.url),
@@ -253,7 +254,8 @@ function makeEpisode(date, candidate = {}, artifact = null, artifactOnly = false
     entities, sourceTier: source.tier, sourceQualityLabel: source.label,
     artifactOnly, videoId: candidate.video_id || artifact?.videoId || videoId(originalUrl),
     notePath: artifact?.notePath || null, transcriptPath: artifact?.transcriptPath || null, docxPath: artifact?.docxPath || null, pdfPath: artifact?.pdfPath || null,
-    qcPath: artifact?.qcPath || null, metadataPath: artifact?.metadataPath || null, audioPath: artifact?.audioPath || null, investmentExtractionPath: artifact?.investmentExtractionPath || null,
+    qcPath: artifact?.qcPath || null, metadataPath: artifact?.metadataPath || null, sourceManifestPath: artifact?.sourceManifestPath || null,
+    metadata: artifact?.metadata || null, audioPath: artifact?.audioPath || null, investmentExtractionPath: artifact?.investmentExtractionPath || null,
   };
   Object.assign(episode, computeRouting(episode));
   episode.publicationQc = evaluatePublicationReadiness(episode, noteText);

@@ -10,8 +10,16 @@
     "library:rebuild": "node scripts/library-cli.js rebuild",
     "library:verify": "node scripts/library-cli.js verify",
     "library:export": "node scripts/library-cli.js export",
+    "production:plan": "node scripts/production-cli.js plan",
+    "production:status": "node scripts/production-cli.js status",
+    "production:next": "node scripts/production-cli.js next",
+    "production:acquire": "node scripts/production-cli.js acquire",
+    "production:validate": "node scripts/production-cli.js validate",
+    "production:packets": "node scripts/production-cli.js packets",
+    "production:handoff": "node scripts/production-cli.js handoff",
+    "production:release": "node scripts/production-cli.js release",
     "test": "node test/intelligence.test.js && node test/indexer.test.js && node test/library-database.test.js && node test/library-import.test.js && node test/library-api.test.js && node test/server.test.js",
-    "check": "node --check server.js && node --check src/indexer.js && node --check src/intelligence.js && node --check src/library-database.js && node --check src/library-import.js && node --check src/library-repository.js && node --check scripts/library-cli.js && node --check public/app.js"
+    "check": "node --check server.js && node --check src/indexer.js && node --check src/intelligence.js && node --check src/library-database.js && node --check src/library-import.js && node --check src/library-repository.js && node --check src/production-files.js && node --check src/production-ledger.js && node --check src/transcript-acquisition.js && node --check src/production-validation.js && node --check src/production-release.js && node --check scripts/library-cli.js && node --check scripts/production-cli.js && node --check public/app.js && PYTHONPYCACHEPREFIX=/tmp/podcast-radar-pycache python3 -m py_compile scripts/youtube-transcript.py scripts/faster-whisper-asr.py"
   },
   "engines": {
     "node": ">=22"

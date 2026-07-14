@@ -14,7 +14,7 @@ function request(handler, route) {
 }
 
 const rss = `<?xml version="1.0"?><rss><channel><title>Invest Like the Best with Patrick O'Shaughnessy</title>
-<item><title>Jeremy Giffon - The Billion Dollar PDF - [Invest Like the Best, EP.481]</title><link>https://example.com/jeremy/?utm_source=x</link><description>Official description</description><pubDate>Tue, 07 Jul 2026 08:00:00 -0000</pubDate><itunes:episode>481</itunes:episode><itunes:duration>01:02:03</itunes:duration><guid>guid-481</guid><enclosure url="https://cdn.example.com/481.mp3?utm_source=x" type="audio/mpeg"/></item>
+<item><title>Jeremy Giffon - The Billion Dollar PDF - [Invest Like the Best, EP.481]</title><link></link><description>Official description</description><pubDate>Tue, 07 Jul 2026 08:00:00 -0000</pubDate><itunes:episode>481</itunes:episode><itunes:duration>01:02:03</itunes:duration><guid>guid-481</guid><enclosure url="https://cdn.example.com/481.mp3?utm_source=x" type="audio/mpeg"/></item>
 <item><title>Earlier episode</title><link>https://example.com/old</link><pubDate>Tue, 30 Jun 2026 08:00:00 -0000</pubDate><guid>old-guid</guid></item>
 </channel></rss>`;
 const parsed = parseRss(rss);
@@ -51,6 +51,7 @@ const library = repo.library({ limit: 10, offset: 0 });
 assert.strictEqual(library.total, 1);
 assert.strictEqual(library.episodes[0].detailUrl.startsWith('/api/episodes/'), true);
 const episodeId = library.episodes[0].id;
+assert.strictEqual(repo.episode(episodeId).originalUrl, 'https://cdn.example.com/481.mp3');
 assert.strictEqual(repo.episode(episodeId).noteMarkdown.includes('来源保真'), true);
 assert.strictEqual(repo.search('内容分发').total, 1, 'FTS must index canonical note text');
 assert.strictEqual(repo.catalog({ limit: 10, offset: 0 }).episodes[0].readerReady, true);
