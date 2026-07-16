@@ -55,7 +55,21 @@ function run() {
   assert.strictEqual(normalizeTitle('The AI—Show!'), 'ai');
   assert.strictEqual(canonicalUrl('https://youtu.be/ALPHA123456?t=2'), 'youtube:ALPHA123456');
   assert.strictEqual(noteFacts('- **视频**：https://www.youtube.com/watch?v=jX-Uq8JJ_j8').url, 'https://www.youtube.com/watch?v=jX-Uq8JJ_j8', 'YouTube identity punctuation must survive Markdown parsing');
+  assert.match(noteFacts('## 一句话主线与 投资研究用户 关注点\n\n这期内容解释了为什么该访谈对投资研究重要，并保留了数字、机制、争议和需要继续核验的边界。').whyItMatters, /投资研究重要/, 'daily radar orientation heading must satisfy the shared why-it-matters contract');
   assert.deepStrictEqual(extractThemes('unclassified conversation'), [], 'General must never be emitted');
+
+  const bridgeRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'podcast-radar-bridge-'));
+  const bridgeDir = path.join(bridgeRoot, '2026-07-16', 'AllIn_Intel_Lovable');
+  const bridgeUrl = 'https://www.youtube.com/watch?v=-ILKiOU5iAQ';
+  write(path.join(bridgeRoot, 'state.json'), { sources: {} });
+  write(path.join(bridgeDir, 'metadata.json'), { id: 'yt_-ILKiOU5iAQ', video_id: '-ILKiOU5iAQ', title: 'Intel and Lovable', show: 'All-In Podcast', published: '2026-07-15T21:27:56Z', url: bridgeUrl, source_boundary: 'YouTube automatic-caption-derived transcript; not human edited.' });
+  write(path.join(bridgeDir, 'notes_cn_source_faithful.md'), `# Intel and Lovable\n\n- **节目**：All-In Podcast\n- **链接**：${bridgeUrl}\n- **Source boundary**：YouTube 自动字幕，经接口取得；非人工校订，专有名词和数字可能有识别误差。\n\n## 一句话主线与 投资研究用户 关注点\n\n这期访谈解释了 Intel 的组织与制造失误，以及 AI 原生软件如何侵蚀传统 SaaS；正文保留原始数字、机制、分歧和待核验边界。\n\n## 详细纪要\n\n${'这是依据逐字稿整理的来源保真中文内容，保留主持人提问、嘉宾回答、数字语境、异议与限定条件。'.repeat(40)}`);
+  write(path.join(bridgeDir, 'notes_cn_source_faithful.qc.json'), { passed: true, paragraph_count: 30 });
+  write(path.join(bridgeDir, 'transcript_timestamped.txt'), '00:00 transcript');
+  const bridged = buildIndex(bridgeRoot).episodes.find(episode => episode.videoId === '-ILKiOU5iAQ');
+  assert(bridged, 'complete daily radar artifact must enter the shared index without a duplicate writing pass');
+  assert.strictEqual(bridged.candidateId, 'yt_-ILKiOU5iAQ', 'metadata.id must bind the artifact to its candidate identity');
+  assert.strictEqual(bridged.presentationReady, true, 'complete daily radar artifact must pass the presentation gate');
 
   const root = makeFixture();
   const index = buildIndex(root);

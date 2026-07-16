@@ -166,7 +166,7 @@ function noteFacts(note) {
     url: stripInvisibleUnicode(rawField('视频|URL|链接')).match(/https?:\/\/\S+/)?.[0] || '',
     publishedAt: field('发布日期|发布时间'),
     sourceBoundary: field('Source boundary|来源边界'),
-    whyItMatters: section('(?:一页定位[：:]?\\s*)?为什么|一页导读|核心定位(?:与[^\\n]*)?|对\\s*投资研究用户\\s*的投资相关性'),
+    whyItMatters: section('(?:一页定位[：:]?\\s*)?为什么|一页导读|一句话主线与\\s*投资研究用户\\s*关注点|核心定位(?:与[^\\n]*)?|对\\s*投资研究用户\\s*的投资相关性'),
   };
 }
 
@@ -226,7 +226,7 @@ function scanArtifacts(dayDir) {
     return {
       dir, metadataPath, sourceManifestPath, notePath, transcriptPath, docxPath, qcPath, pdfPath, audioPath, investmentExtractionPath,
       metadata, noteChars: note.length,
-      candidateId: metadata.candidate_id || metadata.candidateId || '',
+      candidateId: metadata.candidate_id || metadata.candidateId || metadata.id || '',
       videoId: metadata.video_id || videoId(metadata.url || facts.url),
       title: metadata.title || facts.title || path.basename(dir).replace(/[_-]+/g, ' '),
       show: metadata.show || metadata.source || metadata.channel || facts.show || '',
@@ -276,7 +276,7 @@ function productionStatus(candidate, artifact) {
 function makeEpisode(date, candidate = {}, artifact = null, artifactOnly = false, sourceTierHint = '') {
   const title = candidate.title || artifact?.title || '未命名节目';
   const originalUrl = candidate.url || artifact?.url || '';
-  const candidateId = candidate.id || '';
+  const candidateId = candidate.id || artifact?.candidateId || '';
   const stable = candidateId || artifact?.videoId || canonicalUrl(originalUrl) || `${date}:${normalizeTitle(title)}:${artifact?.dir || ''}`;
   const description = compactText(candidate.description || '', 560);
   const noteText = artifact?.notePath ? fs.readFileSync(artifact.notePath, 'utf8') : '';

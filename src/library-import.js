@@ -594,7 +594,7 @@ function importDailyCandidateDecisions(builder, radarRoot) {
       const candidate = targetRows[0]; directive.candidate = candidate;
       const video = exactYoutubeIdentity(candidate);
       const targetShow = builder.resolveExactShow(candidate.show);
-      if (!video || candidate.materiality !== 'high' || !targetShow) continue;
+      if (!video || !targetShow) continue;
       directive.targetShowId = targetShow.id;
       const artifactDir = path.resolve(String(targetDecision.artifact_dir || ''));
       const relativeArtifactDir = path.relative(dayDir, artifactDir);
