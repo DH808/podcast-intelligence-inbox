@@ -110,7 +110,8 @@ async function renderEpisode(id) {
   if (!response.ok) { app.innerHTML = empty('内容不存在或尚未通过 QC', '未完成节目没有可点击详情页。'); return; }
   const episode = await response.json();
   const versions = episode.noteVersions.map(version => `<li><strong>${esc(version.versionLabel)}</strong> · ${version.charCount.toLocaleString()} 字符${version.canonical ? ' · canonical' : ' · superseded'}</li>`).join('');
-  const artifacts = episode.artifacts.filter(artifact => ['docx', 'pdf', 'note_md'].includes(artifact.type)).map(artifact => `<a class="button" href="${api(artifact.downloadUrl)}">下载 ${esc(artifact.type.toUpperCase())}</a>`).join('');
+  const artifactLabels = { note_md: 'Markdown', docx: 'DOCX', pdf: 'PDF' };
+  const artifacts = episode.artifacts.filter(artifact => ['docx', 'pdf', 'note_md'].includes(artifact.type)).map(artifact => `<a class="button" href="${api(artifact.downloadUrl)}">下载 ${esc(artifactLabels[artifact.type] || artifact.type.toUpperCase())}</a>`).join('');
   const claims = episode.claims.length ? `<section><h3>Claim ledger</h3><ul class="claim-list">${episode.claims.slice(0, 30).map(claim => `<li><strong>${esc(claim.speaker)}</strong>${claim.timestamp ? ` · ${esc(claim.timestamp)}` : ''}<p>${esc(claim.claim)}</p>${claim.implication ? `<small>${esc(claim.implication)}</small>` : ''}</li>`).join('')}</ul></section>` : '';
   app.innerHTML = `<a class="back-link" href="#/library">← 返回纪要库</a><article class="episode-detail"><header><div class="detail-meta">${statusBadge(episode)}<span>${esc(episode.show)}</span><span>${esc(dateText(episode.publishedDate))}</span></div><h2>${esc(episode.title)}</h2></header>
     <div class="detail-columns"><section><h3>为什么值得关注</h3><p>${esc(episode.whyItMatters)}</p></section><section><h3>来源与转录边界</h3><p>${esc(episode.sourceBoundary)}</p></section></div>
@@ -130,7 +131,7 @@ async function renderRoute() {
     app.innerHTML = loadError ? empty('无法加载研究库', '数据库暂时不可用。') : '<div class="state-card" role="status">正在读取播客研究数据库…</div>'; return;
   }
   document.querySelectorAll('[data-private]').forEach(element => { element.hidden = !state.privateMode; });
-  const titles = { today: '今日', library: '纪要库', catalog: '全部节目', coverage: '覆盖率', shows: '节目', show: '节目详情', episode: '纪要详情' };
+  const titles = { today: '今日', library: '纪要库', catalog: '全部单集', coverage: '覆盖率', shows: '节目源', show: '节目详情', episode: '纪要详情' };
   pageTitle.textContent = titles[current.name] || '今日';
   if (current.name === 'catalog') return renderCatalog();
   if (current.name === 'show') return renderShow(current.id);
