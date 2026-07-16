@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f7f7f5">
   <title>Podcast Intelligence — 播客研究库</title>
-  <link rel="stylesheet" href="style.css?v=20260714-4">
+  <link rel="stylesheet" href="style.css?v=20260715-1">
 </head>
 <body>
   <div class="shell">
@@ -32,8 +32,27 @@
     </div>
   </div>
   <nav class="mobile-nav" aria-label="移动端主导航">
-    <a href="#/today" data-route="today">今日</a><a href="#/library" data-route="library">纪要库</a><a href="#/catalog" data-route="catalog" data-private>全部节目</a><a href="#/coverage" data-route="coverage">覆盖率</a><a href="#/shows" data-route="shows">节目</a>
+    <a href="#/today" data-route="today">
+      <svg class="mobile-nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8.5 12 3l7 5.5V20h-5v-6h-4v6H5Z"/></svg>
+      <span class="mobile-nav-label">今日</span>
+    </a>
+    <a href="#/library" data-route="library">
+      <svg class="mobile-nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h9l3 3V20.5H6Z"/><path d="M9 10h6M9 14h6M9 18h4"/></svg>
+      <span class="mobile-nav-label">纪要库</span>
+    </a>
+    <a href="#/catalog" data-route="catalog" data-private aria-label="全部节目 · 单集目录">
+      <svg class="mobile-nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 6h13M7 12h13M7 18h13"/><circle cx="3.5" cy="6" r=".75"/><circle cx="3.5" cy="12" r=".75"/><circle cx="3.5" cy="18" r=".75"/></svg>
+      <span class="mobile-nav-label">全部单集</span>
+    </a>
+    <a href="#/coverage" data-route="coverage">
+      <svg class="mobile-nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V11h4v9M10 20V5h4v15M16 20v-7h4v7M3 20.5h18"/></svg>
+      <span class="mobile-nav-label">覆盖率</span>
+    </a>
+    <a href="#/shows" data-route="shows" aria-label="节目 · 节目来源">
+      <svg class="mobile-nav-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7M5.5 5.5a9 9 0 0 0 0 13M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+      <span class="mobile-nav-label">节目源</span>
+    </a>
   </nav>
-  <script src="app.js?v=20260714-4"></script>
+  <script src="app.js?v=20260715-1"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 {
   "format": "podcast-library-sanitized-v1",
-  "generatedAt": "2026-07-15T02:15:12.342Z",
+  "generatedAt": "2026-07-16T02:15:25.656Z",
   "gateVersion": "library-ready-v2",
   "counts": {
     "episodes": 32
@@ -12,27 +12,27 @@
     "foreignKeyViolations": 0,
     "duplicates": 0,
     "orphans": 0,
-    "total": 83,
+    "total": 85,
     "ready": 32,
-    "blocked": 51,
+    "blocked": 53,
     "publicReady": 32,
     "reasonCounts": {
-      "canonical_note_missing": 51,
-      "deterministic_qc_failed": 51,
-      "source_boundary_missing": 51,
-      "why_it_matters_missing": 51
+      "canonical_note_missing": 53,
+      "deterministic_qc_failed": 53,
+      "source_boundary_missing": 53,
+      "why_it_matters_missing": 53
     },
     "ingest": {
-      "id": "ingest_d8226a9ad9d1c7adf6cd",
-      "startedAt": "2026-07-15T02:15:11.985Z",
-      "completedAt": "2026-07-15T02:15:11.988Z",
+      "id": "ingest_11986b4dfe474da1debe",
+      "startedAt": "2026-07-16T02:15:25.302Z",
+      "completedAt": "2026-07-16T02:15:25.305Z",
       "status": "completed",
       "sourceCounts": {
         "monitoredShows": 19,
-        "officialSinceCutoff": 53,
-        "candidateRows": 125,
-        "candidateAliasesMerged": 60,
-        "radarIndexed": 130,
+        "officialSinceCutoff": 55,
+        "candidateRows": 131,
+        "candidateAliasesMerged": 62,
+        "radarIndexed": 136,
         "radarReadyImported": 10,
         "iltbCanonicalSobridgeMarkdown": 16,
         "iltbVersions": 32,
@@ -40,14 +40,14 @@
         "genericExcluded": 9,
         "attachedArtifacts": 418,
         "importedClaims": 374,
-        "inventoryFiles": 8081,
-        "canonicalEpisodes": 83,
+        "inventoryFiles": 8146,
+        "canonicalEpisodes": 85,
         "readyEpisodes": 32
       },
-      "inserted": 5,
-      "updated": 78,
-      "deduped": 113,
-      "warnings": 1,
+      "inserted": 2,
+      "updated": 83,
+      "deduped": 117,
+      "warnings": 2,
       "errorSummary": null,
       "codeVersion": "task-004-v1"
     }
@@ -3179,17 +3179,17 @@
           "superseded": false
         },
         {
-          "versionLabel": "historical",
-          "writingStyle": "historical",
-          "charCount": 12903,
+          "versionLabel": "source-brief",
+          "writingStyle": "source-brief",
+          "charCount": 6735,
           "language": "zh-CN",
           "canonical": false,
           "superseded": true
         },
         {
-          "versionLabel": "source-brief",
-          "writingStyle": "source-brief",
-          "charCount": 6735,
+          "versionLabel": "historical",
+          "writingStyle": "historical",
+          "charCount": 12903,
           "language": "zh-CN",
           "canonical": false,
           "superseded": true
@@ -3335,12 +3335,12 @@
   "coverage": {
     "since": "2026-07-01",
     "totals": {
-      "officialEpisodes": 53,
+      "officialEpisodes": 55,
       "noteReady": 7,
       "transcriptReady": 9,
       "qcReady": 7,
-      "queued": 46,
-      "candidateAliasesMerged": 67
+      "queued": 48,
+      "candidateAliasesMerged": 69
     },
     "shows": [
       {
@@ -3531,12 +3531,12 @@
         "slug": "odd-lots",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 6,
+        "officialEpisodes": 7,
         "noteReady": 0,
         "transcriptReady": 0,
         "qcReady": 0,
-        "queued": 6,
-        "candidateAliasesMerged": 8
+        "queued": 7,
+        "candidateAliasesMerged": 9
       },
       {
         "id": "show_8058fbf55a596a5862ec",
@@ -3570,12 +3570,12 @@
         "slug": "a16z",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 10,
+        "officialEpisodes": 11,
         "noteReady": 1,
         "transcriptReady": 1,
         "qcReady": 1,
-        "queued": 9,
-        "candidateAliasesMerged": 13
+        "queued": 10,
+        "candidateAliasesMerged": 14
       },
       {
         "id": "show_155f53f5f64931d8bb8a",
@@ -3594,9 +3594,9 @@
     "months": [
       {
         "month": "2026-07",
-        "officialEpisodes": 53,
+        "officialEpisodes": 55,
         "noteReady": 7,
-        "queued": 46
+        "queued": 48
       }
     ]
   }

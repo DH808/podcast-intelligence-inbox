@@ -23,7 +23,7 @@ function statusBadge(episode) {
 function empty(title, body) { return `<section class="state-card"><h2>${esc(title)}</h2><p>${esc(body)}</p></section>`; }
 function sectionHead(title, aside = '') { return `<div class="section-head"><h2>${esc(title)}</h2>${aside ? `<span>${esc(aside)}</span>` : ''}</div>`; }
 function updateNavigation(name) {
-  const active = name === 'episode' || name === 'show' ? '' : name;
+  const active = name === 'episode' ? 'library' : name === 'show' ? 'shows' : name;
   document.querySelectorAll('[data-route]').forEach(link => {
     const selected = link.dataset.route === active; link.classList.toggle('active', selected);
     if (selected) link.setAttribute('aria-current', 'page'); else link.removeAttribute('aria-current');
