@@ -2,6 +2,7 @@ const APP_BASE = location.pathname === '/podcast' || location.pathname.startsWit
 const api = value => APP_BASE + value;
 const app = document.querySelector('#app');
 const pageTitle = document.querySelector('#pageTitle');
+const backToTop = document.querySelector('#backToTop');
 let state = null;
 let loadError = false;
 let searchValue = '';
@@ -88,27 +89,42 @@ async function renderShow(id) {
     ${sectionHead('完整纪要', `${show.readyNotes.length} 篇`)}${show.readyNotes.length ? `<div class="card-grid">${show.readyNotes.map(episodeCard).join('')}</div>` : empty('暂无完整纪要', '该节目还没有通过 QC 的纪要。')}
     ${state.privateMode && show.catalog.some(episode => !episode.readerReady) ? `${sectionHead('未完成节目', '仅元数据，不可点击')}<div class="catalog-list">${show.catalog.filter(episode => !episode.readerReady).map(catalogRow).join('')}</div>` : ''}`;
 }
-function markdownToHtml(markdown) {
+function plainHeading(value) {
+  return String(value || '').replace(/\*\*|`/g, '').replace(/\[([^\]]+)\]\([^)]*\)/g, '$1').trim();
+}
+function markdownToDocument(markdown) {
   const inline = value => esc(value).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/`([^`]+)`/g, '<code>$1</code>')
     .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noreferrer">$1</a>');
-  const lines = String(markdown || '').split(/\r?\n/); let result = ''; let paragraph = []; let list = false;
+  const lines = String(markdown || '').split(/\r?\n/); let result = ''; let paragraph = []; let list = false; const headings = [];
   const flush = () => { if (paragraph.length) { result += `<p>${paragraph.map(inline).join('<br>')}</p>`; paragraph = []; } };
   const closeList = () => { if (list) { result += '</ul>'; list = false; } };
   for (const line of lines) {
     const heading = line.match(/^(#{1,4})\s+(.+)/); const bullet = line.match(/^\s*[-*]\s+(.+)/);
-    if (heading) { flush(); closeList(); const level = Math.min(heading[1].length + 1, 5); result += `<h${level}>${inline(heading[2])}</h${level}>`; }
+    if (heading) { flush(); closeList(); const level = Math.min(heading[1].length + 1, 5); const id = `note-section-${headings.length + 1}`; headings.push({ id, level, text: plainHeading(heading[2]) }); result += `<h${level} id="${id}" class="note-heading">${inline(heading[2])}</h${level}>`; }
     else if (bullet) { flush(); if (!list) { result += '<ul>'; list = true; } result += `<li>${inline(bullet[1])}</li>`; }
     else if (!line.trim()) { flush(); closeList(); }
     else if (/^---+$/.test(line.trim())) { flush(); closeList(); result += '<hr>'; }
     else paragraph.push(line);
   }
-  flush(); closeList(); return result;
+  flush(); closeList(); return { html: result, headings };
+}
+function tocHtml(headings, className = '') {
+  if (!headings.length) return '';
+  return `<nav class="note-toc ${className}" aria-label="本文目录">${headings.map(heading => `<button type="button" class="toc-link level-${heading.level}" data-note-target="${heading.id}">${esc(heading.text)}</button>`).join('')}</nav>`;
+}
+function bindNoteNavigation() {
+  document.querySelectorAll('[data-note-target]').forEach(control => control.addEventListener('click', () => {
+    const target = document.querySelector(`#${control.dataset.noteTarget}`);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }));
 }
 async function renderEpisode(id) {
   app.innerHTML = '<div class="state-card" role="status">正在读取完整纪要…</div>';
   const response = await fetch(api(`/api/episodes/${encodeURIComponent(id)}`));
   if (!response.ok) { app.innerHTML = empty('内容不存在或尚未通过 QC', '未完成节目没有可点击详情页。'); return; }
   const episode = await response.json();
+  const noteDocument = markdownToDocument(episode.noteMarkdown);
+  const toc = tocHtml(noteDocument.headings);
   const versions = episode.noteVersions.map(version => `<li><strong>${esc(version.versionLabel)}</strong> · ${version.charCount.toLocaleString()} 字符${version.canonical ? ' · canonical' : ' · superseded'}</li>`).join('');
   const artifactLabels = { note_md: 'Markdown', docx: 'DOCX', pdf: 'PDF' };
   const artifacts = episode.artifacts.filter(artifact => ['docx', 'pdf', 'note_md'].includes(artifact.type)).map(artifact => `<a class="button" href="${api(artifact.downloadUrl)}">下载 ${esc(artifactLabels[artifact.type] || artifact.type.toUpperCase())}</a>`).join('');
@@ -117,8 +133,11 @@ async function renderEpisode(id) {
     <div class="detail-columns"><section><h3>为什么值得关注</h3><p>${esc(episode.whyItMatters)}</p></section><section><h3>来源与转录边界</h3><p>${esc(episode.sourceBoundary)}</p></section></div>
     <div class="tag-row">${episode.entities.map(entity => `<span class="tag entity ${esc(entity.type)}">${esc(entity.name)}</span>`).join('')}${episode.themes.map(theme => `<span class="tag theme">${esc(theme.name)}</span>`).join('')}</div>
     <div class="detail-actions"><a class="button primary" href="${esc(episode.originalUrl)}" target="_blank" rel="noreferrer">打开官方来源</a>${artifacts}</div></article>
-    <div class="reading-layout"><article class="note"><div class="note-label">完整来源保真纪要 · ${episode.noteChars.toLocaleString()} 字符</div>${markdownToHtml(episode.noteMarkdown)}</article>
-    <aside><section><h3>版本来源</h3><ul class="version-list">${versions}</ul></section>${claims}</aside></div>`;
+    ${toc ? `<details class="note-toc-mobile"><summary>本文目录 · ${noteDocument.headings.length} 节</summary>${toc}</details>` : ''}
+    <div class="reading-layout"><article class="note"><div class="note-label">完整来源保真纪要 · ${episode.noteChars.toLocaleString()} 字符</div>${noteDocument.html}</article>
+    <aside>${toc ? `<section class="note-toc-panel"><h3>本文目录</h3>${tocHtml(noteDocument.headings, 'desktop-toc')}</section>` : ''}<section><h3>版本来源</h3><ul class="version-list">${versions}</ul></section>${claims}</aside></div>`;
+  bindNoteNavigation();
+  window.scrollTo({ top: 0, behavior: 'instant' });
 }
 function bindLibrarySearch() {
   const input = document.querySelector('#librarySearch input'); if (!input) return;
@@ -149,4 +168,8 @@ async function load() {
 
 window.addEventListener('hashchange', () => renderRoute());
 document.querySelector('#refreshButton').addEventListener('click', load);
+function updateScrollControls() { if (backToTop) backToTop.hidden = Number(window.scrollY || 0) < 700; }
+window.addEventListener('scroll', updateScrollControls, { passive: true });
+backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+updateScrollControls();
 load();

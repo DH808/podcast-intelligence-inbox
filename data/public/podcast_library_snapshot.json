@@ -1,6 +1,6 @@
 {
   "format": "podcast-library-sanitized-v1",
-  "generatedAt": "2026-07-16T17:40:45.226Z",
+  "generatedAt": "2026-07-16T17:49:22.918Z",
   "gateVersion": "library-ready-v2",
   "counts": {
     "episodes": 32
@@ -23,9 +23,9 @@
       "why_it_matters_missing": 54
     },
     "ingest": {
-      "id": "ingest_1cbb3b5f9511b05e5042",
-      "startedAt": "2026-07-16T17:40:44.881Z",
-      "completedAt": "2026-07-16T17:40:44.883Z",
+      "id": "ingest_e48f0a6bff7bde815324",
+      "startedAt": "2026-07-16T17:49:22.584Z",
+      "completedAt": "2026-07-16T17:49:22.586Z",
       "status": "completed",
       "sourceCounts": {
         "monitoredShows": 19,
