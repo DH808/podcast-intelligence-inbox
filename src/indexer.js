@@ -38,8 +38,8 @@ function usableDate(value) {
 }
 function qcArtifactPasses(qc) {
   if (!qc || typeof qc !== 'object' || Array.isArray(qc) || !Object.keys(qc).length) return false;
-  if (qc.passed === false || qc.exists === false || /(?:fail|error|invalid|reject)/i.test(String(qc.status || ''))) return false;
-  if (qc.passed === true || /(?:pass|success|ok|complete)/i.test(String(qc.status || ''))) return true;
+  if (qc.passed === false || qc.ready === false || qc.exists === false || /(?:fail|error|invalid|reject)/i.test(String(qc.status || ''))) return false;
+  if (qc.passed === true || qc.ready === true || /(?:pass|success|ok|complete)/i.test(String(qc.status || ''))) return true;
   const paragraphs = Number(qc.nonempty_paragraphs ?? qc.paragraph_count ?? qc.paragraphs ?? 0);
   const bytes = Number(qc.bytes ?? 0);
   const markdownChars = Number(qc.md_chars ?? 0);

@@ -3,7 +3,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
-const { buildIndex, safeResolvePodcastPath, normalizeTitle, canonicalUrl, noteFacts, extractThemes, evaluatePublicationReadiness, PUBLICATION_GATE_VERSION } = require('../src/indexer');
+const { buildIndex, safeResolvePodcastPath, normalizeTitle, canonicalUrl, noteFacts, extractThemes, evaluatePublicationReadiness, qcArtifactPasses, PUBLICATION_GATE_VERSION } = require('../src/indexer');
 
 function write(file, value) {
   fs.mkdirSync(path.dirname(file), { recursive: true });
@@ -141,6 +141,8 @@ function run() {
   }, completeNote());
   assert(identityFailure.reasons.includes('note_show_identity_mismatch'));
   assert(identityFailure.reasons.includes('source_url_show_identity_mismatch'));
+  assert.strictEqual(qcArtifactPasses({ ready: true, gate_version: 'podcast-radar-source-faithful-v2' }), true,
+    'the shared Radar QC contract uses ready=true and must be accepted by the Intelligence importer');
 
   const full = fs.readFileSync(safeResolvePodcastPath(root, alpha.notePath), 'utf8');
   assert.match(full, /searchable evidence/);
