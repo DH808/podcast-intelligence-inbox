@@ -1,6 +1,6 @@
 {
   "format": "podcast-library-sanitized-v1",
-  "generatedAt": "2026-07-17T09:10:35.939Z",
+  "generatedAt": "2026-07-17T09:11:36.793Z",
   "gateVersion": "library-ready-v2",
   "counts": {
     "episodes": 34
@@ -23,9 +23,9 @@
       "why_it_matters_missing": 60
     },
     "ingest": {
-      "id": "ingest_0dd27443819884c8bd21",
-      "startedAt": "2026-07-17T09:10:35.596Z",
-      "completedAt": "2026-07-17T09:10:35.598Z",
+      "id": "ingest_e3c6010cebeb2072a339",
+      "startedAt": "2026-07-17T09:11:36.411Z",
+      "completedAt": "2026-07-17T09:11:36.416Z",
       "status": "completed",
       "sourceCounts": {
         "monitoredShows": 19,
@@ -3372,17 +3372,17 @@
           "superseded": false
         },
         {
-          "versionLabel": "historical",
-          "writingStyle": "historical",
-          "charCount": 12903,
+          "versionLabel": "source-brief",
+          "writingStyle": "source-brief",
+          "charCount": 6735,
           "language": "zh-CN",
           "canonical": false,
           "superseded": true
         },
         {
-          "versionLabel": "source-brief",
-          "writingStyle": "source-brief",
-          "charCount": 6735,
+          "versionLabel": "historical",
+          "writingStyle": "historical",
+          "charCount": 12903,
           "language": "zh-CN",
           "canonical": false,
           "superseded": true
