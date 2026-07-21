@@ -592,14 +592,24 @@ function importDailyCandidateDecisions(builder, radarRoot) {
       const targetRows = candidateGroups.get(targetId) || [];
       if (targetRows.length !== 1 || !exactCandidateDecision(targetRows[0], targetDecision)) continue;
       const candidate = targetRows[0]; directive.candidate = candidate;
-      const video = exactYoutubeIdentity(candidate);
       const targetShow = builder.resolveExactShow(candidate.show);
-      if (!video || !targetShow) continue;
+      if (!targetShow) continue;
       directive.targetShowId = targetShow.id;
       const artifactDir = path.resolve(String(targetDecision.artifact_dir || ''));
       const relativeArtifactDir = path.relative(dayDir, artifactDir);
       if (!targetDecision.artifact_dir || !relativeArtifactDir || relativeArtifactDir.startsWith('..') || path.isAbsolute(relativeArtifactDir)) continue;
       directive.artifactDir = artifactDir;
+      if (candidate.type === 'podcast_rss') {
+        const owner = builder.episodes.get(builder.identities.get(`candidate_id:${candidate.id}`));
+        const episode = owner && exactOfficialCandidateEpisode(builder, candidate, targetShow, owner) ? owner
+          : [...builder.episodes.values()].find(item => exactOfficialCandidateEpisode(builder, candidate, targetShow, item));
+        if (!episode) continue;
+        directive.episodeId = episode.id;
+        directive.valid = true;
+        continue;
+      }
+      const video = exactYoutubeIdentity(candidate);
+      if (!video) continue;
       const duplicateSources = decisions.filter(row => String(row?.duplicate_of || '') === targetId);
       if (duplicateSources.length > 1) continue;
       if (duplicateSources.length === 1) {
@@ -627,6 +637,7 @@ function exactProcessedArtifactIdentity(item, directive) {
     || !exactValue(metadata.show, candidate.show) || !exactValue(metadata.url, candidate.url)
     || !exactValue(metadata.published, candidate.published)) return false;
   const candidateVideo = exactYoutubeIdentity(candidate); const metadataVideo = exactYoutubeIdentity(metadata);
+  if (candidate.type === 'podcast_rss') return !metadataVideo && !item.videoId;
   return Boolean(candidateVideo && candidateVideo === metadataVideo && item.videoId === candidateVideo);
 }
 

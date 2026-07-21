@@ -158,13 +158,17 @@ for (const dir of [relationshipRadar, relationshipQueries, relationshipRaw, rela
 const relationshipDay = path.join(relationshipRadar, '2026-07-14'); fs.mkdirSync(relationshipDay);
 const wixOfficialTitle = "20VC: Wix's Founder on What Wall St Gets Wrong About AI and Wix | Will Base44 Win the Vibe Coding Wars";
 const wixOfficialUrl = 'https://thetwentyminutevc.example/20vc-wix-founder-base44';
+const rssOnlyTitle = 'Direct RSS Kimi K3 expert discussion';
+const rssOnlyUrl = 'https://thetwentyminutevc.example/direct-rss-kimi-k3';
 const wixYoutubeTitle = 'Wix Founder: Will Base44 Win the Vibe-Coding Wars? | The Truth About the Economics of Vibe-Coding';
 const engramTitle = 'The AI Memory Problem: Why Long Context Isn’t Enough — Dan Biderman, Engram Co-founder & CEO';
 const twentyVcName = 'The Twenty Minute VC (20VC): Venture Capital | Startup Funding | The Pitch';
 const twentyVcRss = path.join(relationshipDay, '20VC.rss.xml');
 fs.writeFileSync(twentyVcRss, `<?xml version="1.0"?><rss><channel><title>${twentyVcName}</title><item><title>${wixOfficialTitle}</title>
 <link>${wixOfficialUrl}</link><pubDate>Mon, 13 Jul 2026 07:07:00 +0000</pubDate><guid>wix-official-guid</guid>
-<enclosure url="https://cdn.example.com/wix.mp3" type="audio/mpeg"/></item></channel></rss>`);
+<enclosure url="https://cdn.example.com/wix.mp3" type="audio/mpeg"/></item>
+<item><title>${rssOnlyTitle}</title><link>${rssOnlyUrl}</link><pubDate>Mon, 13 Jul 2026 18:30:00 +0000</pubDate><guid>rss-only-guid</guid>
+<enclosure url="https://cdn.example.com/rss-only.mp3" type="audio/mpeg"/></item></channel></rss>`);
 const latentRss = path.join(relationshipDay, 'Latent_Space.rss.xml');
 fs.writeFileSync(latentRss, '<?xml version="1.0"?><rss><channel><title>Latent Space</title></channel></rss>');
 fs.writeFileSync(path.join(relationshipRadar, 'state.json'), JSON.stringify({ sources: {
@@ -176,6 +180,8 @@ fs.writeFileSync(path.join(relationshipRadar, 'state.json'), JSON.stringify({ so
 } }));
 const wixRssCandidate = { id: '9ddd413fff822f2bff674b34', type: 'podcast_rss', title: wixOfficialTitle, show: twentyVcName,
   source_key: '20VC', published: '2026-07-13T07:07:00+00:00', url: wixOfficialUrl, materiality: 'high', status: 'new_detected' };
+const rssOnlyCandidate = { id: 'rss-direct-kimi-k3', type: 'podcast_rss', title: rssOnlyTitle, show: twentyVcName,
+  source_key: '20VC', published: '2026-07-13T18:30:00+00:00', url: rssOnlyUrl, materiality: 'high', status: 'new_detected' };
 const wixYoutubeCandidate = { id: 'yt_TdQyVXN0GF8', type: 'youtube', video_id: 'TdQyVXN0GF8', title: wixYoutubeTitle, show: '20VC',
   source_key: 'youtube:20VC', published: '2026-07-13T13:58:39+00:00', url: 'https://www.youtube.com/watch?v=TdQyVXN0GF8', materiality: 'high', status: 'new_detected' };
 const engramCandidate = { id: 'yt_jhpmMTus5a0', type: 'youtube', video_id: 'jhpmMTus5a0', title: engramTitle, show: 'Latent Space',
@@ -184,7 +190,7 @@ const crossShowCandidate = { ...wixYoutubeCandidate, id: 'yt_CROSSSHOW1', video_
   source_key: 'youtube:Latent Space', url: 'https://www.youtube.com/watch?v=CROSSSHOW1' };
 const invalidCandidate = { ...engramCandidate, id: 'yt_INVALIDMETA1', video_id: 'INVALIDMETA1', title: 'Invalid metadata must stay out',
   url: 'https://www.youtube.com/watch?v=INVALIDMETA1' };
-const relationshipCandidates = [wixRssCandidate, wixYoutubeCandidate, engramCandidate, crossShowCandidate, invalidCandidate];
+const relationshipCandidates = [wixRssCandidate, rssOnlyCandidate, wixYoutubeCandidate, engramCandidate, crossShowCandidate, invalidCandidate];
 fs.writeFileSync(path.join(relationshipDay, 'candidates.json'), JSON.stringify(relationshipCandidates));
 function completedCandidateArtifact(name, candidate, whyHeading, metadata = {}) {
   const dir = path.join(relationshipDay, name); fs.mkdirSync(dir);
@@ -198,35 +204,41 @@ function completedCandidateArtifact(name, candidate, whyHeading, metadata = {}) 
   return dir;
 }
 const wixArtifactDir = completedCandidateArtifact('20VC_Wix', wixYoutubeCandidate, '一、研究导读：为什么值得关注');
+const rssOnlyArtifactDir = completedCandidateArtifact('20VC_Rss_Only_Kimi', rssOnlyCandidate, '为什么对研究重要');
 const engramArtifactDir = completedCandidateArtifact('LatentSpace_Engram', engramCandidate, '一句话结论');
 const invalidArtifactDir = completedCandidateArtifact('Invalid_Metadata', invalidCandidate, '为什么对研究重要', { title: 'mismatched metadata title' });
 fs.writeFileSync(path.join(relationshipDay, 'processing_decisions.json'), JSON.stringify([
   { ...wixRssCandidate, decision: 'duplicate_of_youtube_full_episode', duplicate_of: wixYoutubeCandidate.id },
   { ...wixYoutubeCandidate, decision: 'processed_full_note', artifact_dir: wixArtifactDir },
+  { ...rssOnlyCandidate, decision: 'processed_full_note', artifact_dir: rssOnlyArtifactDir },
   { ...engramCandidate, decision: 'processed_full_note', artifact_dir: engramArtifactDir },
   { ...invalidCandidate, decision: 'processed_full_note', artifact_dir: invalidArtifactDir },
 ]));
 const relationshipDbPath = path.join(relationshipTemp, 'library.sqlite');
 const relationshipBuild = rebuildLibrary({ dbPath: relationshipDbPath, radarRoot: relationshipRadar, queriesRoot: relationshipQueries,
   rawReportsRoot: relationshipRaw, reportsDir: relationshipReports, since: '2026-07-01' });
-assert.strictEqual(relationshipBuild.counts.canonicalEpisodes, 2, 'Wix must merge and only the valid candidate-only Engram episode may be added');
-assert.strictEqual(relationshipBuild.counts.readyEpisodes, 2, 'both complete relationship fixtures must pass library-ready-v2');
+assert.strictEqual(relationshipBuild.counts.canonicalEpisodes, 3, 'Wix and direct RSS notes must merge while only valid candidate-only Engram may be added');
+assert.strictEqual(relationshipBuild.counts.readyEpisodes, 3, 'YouTube-linked, direct RSS and candidate-only fixtures must pass library-ready-v2');
 const relationshipDb = openDatabase(relationshipDbPath, { readOnly: true });
 const relationshipIds = relationshipDb.prepare(`SELECT x.id_type,x.id_value,x.episode_id,e.canonical_source_type,e.reader_ready,e.canonical_title
   FROM episode_external_ids x JOIN episodes e ON e.id=x.episode_id
-  WHERE x.id_value IN ('9ddd413fff822f2bff674b34','yt_TdQyVXN0GF8','TdQyVXN0GF8','yt_jhpmMTus5a0','jhpmMTus5a0')`).all();
+  WHERE x.id_value IN ('9ddd413fff822f2bff674b34','rss-direct-kimi-k3','yt_TdQyVXN0GF8','TdQyVXN0GF8','yt_jhpmMTus5a0','jhpmMTus5a0')`).all();
 const wixEpisodeIds = new Set(relationshipIds.filter(row => ['9ddd413fff822f2bff674b34', 'yt_TdQyVXN0GF8', 'TdQyVXN0GF8'].includes(row.id_value)).map(row => row.episode_id));
 assert.strictEqual(wixEpisodeIds.size, 1, 'the explicit Wix duplicate relationship must attach every identity to one canonical RSS episode');
 const wixRelationshipRow = relationshipIds.find(row => row.id_value === 'yt_TdQyVXN0GF8');
 assert.strictEqual(wixRelationshipRow.canonical_source_type, 'official_rss');
 assert.strictEqual(wixRelationshipRow.canonical_title, wixOfficialTitle);
 assert.strictEqual(wixRelationshipRow.reader_ready, 1);
+const rssOnlyRelationshipRow = relationshipIds.find(row => row.id_value === 'rss-direct-kimi-k3');
+assert.strictEqual(rssOnlyRelationshipRow.canonical_source_type, 'official_rss');
+assert.strictEqual(rssOnlyRelationshipRow.canonical_title, rssOnlyTitle);
+assert.strictEqual(rssOnlyRelationshipRow.reader_ready, 1, 'a candidate-exact direct RSS artifact must attach to its official episode');
 const engramRelationshipRow = relationshipIds.find(row => row.id_value === 'yt_jhpmMTus5a0');
 assert.strictEqual(engramRelationshipRow.canonical_source_type, 'radar_archive');
 assert.strictEqual(engramRelationshipRow.reader_ready, 1);
 assert.strictEqual(relationshipDb.prepare(`SELECT COUNT(*) AS count FROM episode_external_ids WHERE id_value IN ('yt_CROSSSHOW1','yt_INVALIDMETA1')`).get().count, 0,
   'same-title cross-show candidates and metadata identity mismatches must not enter the catalog');
-assert.strictEqual(relationshipDb.prepare('SELECT COUNT(*) AS count FROM episodes').get().count, 2);
+assert.strictEqual(relationshipDb.prepare('SELECT COUNT(*) AS count FROM episodes').get().count, 3);
 relationshipDb.close();
 fs.rmSync(relationshipTemp, { recursive: true, force: true });
 console.log('library import tests passed');
