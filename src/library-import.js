@@ -621,9 +621,17 @@ function importDailyCandidateDecisions(builder, radarRoot) {
           || !exactOfficialCandidateEpisode(builder, sourceCandidate, sourceShow, episode)) continue;
         directive.episodeId = episode.id;
       } else {
-        const owner = builder.episodes.get(builder.identities.get(`candidate_id:${candidate.id}`));
-        if (owner || exactOfficialTitleExists(builder, candidate, targetShow)) continue;
-        directive.standalone = true;
+        const owner = builder.episodes.get(builder.identities.get(`candidate_id:${candidate.id}`))
+          || builder.episodes.get(builder.identities.get(`youtube_id:${video}`));
+        if (owner) {
+          const date = published(candidate.published || candidate.published_at).date;
+          if (owner.showId !== targetShow.id || youtubeId(owner.originalUrl) !== video || !exactValue(owner.title, candidate.title)
+            || (date && date !== owner.publishedDate)) continue;
+          directive.episodeId = owner.id;
+        } else {
+          if (exactOfficialTitleExists(builder, candidate, targetShow)) continue;
+          directive.standalone = true;
+        }
       }
       directive.valid = true;
     }

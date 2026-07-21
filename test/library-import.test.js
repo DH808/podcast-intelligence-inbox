@@ -171,12 +171,17 @@ fs.writeFileSync(twentyVcRss, `<?xml version="1.0"?><rss><channel><title>${twent
 <enclosure url="https://cdn.example.com/rss-only.mp3" type="audio/mpeg"/></item></channel></rss>`);
 const latentRss = path.join(relationshipDay, 'Latent_Space.rss.xml');
 fs.writeFileSync(latentRss, '<?xml version="1.0"?><rss><channel><title>Latent Space</title></channel></rss>');
+const latentYoutube = path.join(relationshipDay, 'Latent_Space.youtube.xml');
+fs.writeFileSync(latentYoutube, `<?xml version="1.0"?><feed xmlns:yt="http://www.youtube.com/xml/schemas/2015">
+<author><name>Latent Space</name></author><entry><yt:videoId>jhpmMTus5a0</yt:videoId><yt:channelId>UCLATENT</yt:channelId>
+<title>${engramTitle}</title><published>2026-07-13T18:21:40+00:00</published><link href="https://www.youtube.com/watch?v=jhpmMTus5a0"/>
+<author><name>Latent Space</name></author></entry></feed>`);
 fs.writeFileSync(path.join(relationshipRadar, 'state.json'), JSON.stringify({ sources: {
   '20VC': { collectionName: twentyVcName, show_title: twentyVcName, feed_url: 'https://example.com/20vc.xml', last_raw_path: twentyVcRss },
   'Latent Space': { collectionName: 'Latent Space', show_title: 'Latent Space', feed_url: 'https://example.com/latent.xml', last_raw_path: latentRss },
 }, youtube_sources: {
   '20VC': { channel_id: 'UC20VC', feed_url: 'https://www.youtube.com/feeds/videos.xml?channel_id=UC20VC' },
-  'Latent Space': { channel_id: 'UCLATENT', feed_url: 'https://www.youtube.com/feeds/videos.xml?channel_id=UCLATENT' },
+  'Latent Space': { channel_id: 'UCLATENT', feed_url: 'https://www.youtube.com/feeds/videos.xml?channel_id=UCLATENT', last_raw_path: latentYoutube },
 } }));
 const wixRssCandidate = { id: '9ddd413fff822f2bff674b34', type: 'podcast_rss', title: wixOfficialTitle, show: twentyVcName,
   source_key: '20VC', published: '2026-07-13T07:07:00+00:00', url: wixOfficialUrl, materiality: 'high', status: 'new_detected' };
@@ -241,4 +246,40 @@ assert.strictEqual(relationshipDb.prepare(`SELECT COUNT(*) AS count FROM episode
 assert.strictEqual(relationshipDb.prepare('SELECT COUNT(*) AS count FROM episodes').get().count, 3);
 relationshipDb.close();
 fs.rmSync(relationshipTemp, { recursive: true, force: true });
+
+const directYoutubeTemp = fs.mkdtempSync(path.join(os.tmpdir(), 'podcast-library-direct-youtube-'));
+const directYoutubeRadar = path.join(directYoutubeTemp, 'radar'); const directYoutubeQueries = path.join(directYoutubeTemp, 'queries');
+const directYoutubeRaw = path.join(directYoutubeTemp, 'raw'); const directYoutubeReports = path.join(directYoutubeTemp, 'reports');
+for (const dir of [directYoutubeRadar, directYoutubeQueries, directYoutubeRaw, directYoutubeReports]) fs.mkdirSync(dir, { recursive: true });
+const directYoutubeDay = path.join(directYoutubeRadar, '2026-07-19'); fs.mkdirSync(directYoutubeDay);
+const directVideoId = '9IMwRIei-Xc'; const directTitle = 'Can the AI Industry Regulate Itself?';
+const directUrl = `https://www.youtube.com/watch?v=${directVideoId}`;
+const directFeed = path.join(directYoutubeDay, 'All-In_Podcast.youtube.xml');
+fs.writeFileSync(directFeed, `<?xml version="1.0"?><feed xmlns:yt="http://www.youtube.com/xml/schemas/2015">
+<author><name>All-In Podcast</name></author><entry><yt:videoId>${directVideoId}</yt:videoId><yt:channelId>UCALLIN</yt:channelId>
+<title>${directTitle}</title><published>2026-07-18T00:54:40+00:00</published><link href="${directUrl}"/>
+<author><name>All-In Podcast</name></author></entry></feed>`);
+fs.writeFileSync(path.join(directYoutubeRadar, 'state.json'), JSON.stringify({ sources: {}, youtube_sources: {
+  'All-In Podcast': { channel_id: 'UCALLIN', feed_url: 'https://www.youtube.com/feeds/videos.xml?channel_id=UCALLIN', last_raw_path: directFeed },
+} }));
+const directCandidate = { id: `yt_${directVideoId}`, type: 'youtube', video_id: directVideoId, title: directTitle,
+  show: 'All-In Podcast', source_key: 'youtube:All-In Podcast', published: '2026-07-18T00:54:40+00:00', url: directUrl,
+  materiality: 'high', status: 'new_detected' };
+fs.writeFileSync(path.join(directYoutubeDay, 'candidates.json'), JSON.stringify([directCandidate]));
+const directArtifact = path.join(directYoutubeDay, 'AllIn_Direct'); fs.mkdirSync(directArtifact);
+fs.writeFileSync(path.join(directArtifact, 'metadata.json'), JSON.stringify({ id: directCandidate.id, candidate_id: directCandidate.id,
+  video_id: directVideoId, title: directTitle, show: directCandidate.show, published: directCandidate.published, url: directUrl,
+  source_boundary: 'YouTube caption-derived transcript; not a human-edited official transcript.' }));
+fs.writeFileSync(path.join(directArtifact, 'notes_cn_source_faithful.md'), `# ${directTitle}\n\n- **节目**：All-In Podcast\n- **视频**：${directUrl}\n\n## Source boundary\n本纪要依据完整YouTube字幕。\n\n## 为什么对研究重要\n这期节目提供了可核验的模型、监管、企业成本和市场讨论，并完整保留不同主持人的分歧、条件限定与后续验证问题，足以支持研究者继续核对事实和投资含义。\n\n## 完整正文\n${'来源保真中文内容，保留论证顺序、数字、异议和限定。'.repeat(100)}`);
+fs.writeFileSync(path.join(directArtifact, 'notes_cn_source_faithful.qc.json'), JSON.stringify({ passed: true, ready: true }));
+fs.writeFileSync(path.join(directArtifact, 'transcript_timestamped.txt'), '00:00 complete source transcript');
+fs.writeFileSync(path.join(directYoutubeDay, 'processing_decisions.json'), JSON.stringify([
+  { ...directCandidate, decision: 'processed_full_note', artifact_dir: directArtifact },
+]));
+const directYoutubeDbPath = path.join(directYoutubeTemp, 'library.sqlite');
+const directYoutubeBuild = rebuildLibrary({ dbPath: directYoutubeDbPath, radarRoot: directYoutubeRadar, queriesRoot: directYoutubeQueries,
+  rawReportsRoot: directYoutubeRaw, reportsDir: directYoutubeReports, since: '2026-07-01' });
+assert.strictEqual(directYoutubeBuild.counts.canonicalEpisodes, 1);
+assert.strictEqual(directYoutubeBuild.counts.readyEpisodes, 1, 'a candidate-exact YouTube artifact must attach to its official feed episode');
+fs.rmSync(directYoutubeTemp, { recursive: true, force: true });
 console.log('library import tests passed');
