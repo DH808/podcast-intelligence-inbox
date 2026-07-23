@@ -1,9 +1,9 @@
 {
   "format": "podcast-library-sanitized-v1",
-  "generatedAt": "2026-07-22T23:01:02.579Z",
+  "generatedAt": "2026-07-23T23:00:51.901Z",
   "gateVersion": "library-ready-v2",
   "counts": {
-    "episodes": 37
+    "episodes": 38
   },
   "audit": {
     "gateVersion": "library-ready-v2",
@@ -12,48 +12,155 @@
     "foreignKeyViolations": 0,
     "duplicates": 0,
     "orphans": 0,
-    "total": 120,
-    "ready": 37,
-    "blocked": 83,
-    "publicReady": 37,
+    "total": 126,
+    "ready": 38,
+    "blocked": 88,
+    "publicReady": 38,
     "reasonCounts": {
-      "canonical_note_missing": 82,
-      "deterministic_qc_failed": 82,
-      "source_boundary_missing": 82,
+      "canonical_note_missing": 87,
+      "deterministic_qc_failed": 87,
+      "source_boundary_missing": 87,
       "source_note_placeholder_or_error": 1,
-      "why_it_matters_missing": 82
+      "why_it_matters_missing": 87
     },
     "ingest": {
-      "id": "ingest_751865de664f8837f635",
-      "startedAt": "2026-07-22T23:01:02.208Z",
-      "completedAt": "2026-07-22T23:01:02.210Z",
+      "id": "ingest_22613fde36556e9e579f",
+      "startedAt": "2026-07-23T23:00:51.535Z",
+      "completedAt": "2026-07-23T23:00:51.538Z",
       "status": "completed",
       "sourceCounts": {
         "monitoredShows": 20,
-        "officialSinceCutoff": 87,
-        "candidateRows": 200,
-        "candidateAliasesMerged": 93,
-        "radarIndexed": 208,
-        "radarReadyImported": 15,
+        "officialSinceCutoff": 92,
+        "candidateRows": 213,
+        "candidateAliasesMerged": 100,
+        "radarIndexed": 220,
+        "radarReadyImported": 16,
         "iltbCanonicalSobridgeMarkdown": 16,
         "iltbVersions": 32,
         "genericReviewed": 9,
         "genericExcluded": 10,
-        "attachedArtifacts": 446,
+        "attachedArtifacts": 451,
         "importedClaims": 374,
-        "inventoryFiles": 8947,
-        "canonicalEpisodes": 120,
-        "readyEpisodes": 37
+        "inventoryFiles": 9107,
+        "canonicalEpisodes": 126,
+        "readyEpisodes": 38
       },
-      "inserted": 4,
-      "updated": 116,
-      "deduped": 172,
-      "warnings": 7,
+      "inserted": 7,
+      "updated": 119,
+      "deduped": 183,
+      "warnings": 9,
       "errorSummary": null,
       "codeVersion": "task-004-v1"
     }
   },
   "episodes": [
+    {
+      "id": "ep_332a6a6e82e043c677f9",
+      "showId": "show_ab61c3866a2f58f78b82",
+      "show": "Latent Space: The AI Engineer Podcast",
+      "title": "Poolside’s Model Factory, Laguna S, Open Models, and the Race to AGI — Eiso Kant, Poolside AI",
+      "publishedAt": "2026-07-22T20:46:43.000Z",
+      "publishedDate": "2026-07-22",
+      "durationSeconds": null,
+      "duration": "",
+      "description": "",
+      "originalUrl": "https://www.youtube.com/watch?v=9_0hs2sxHHo",
+      "mediaType": "youtube",
+      "materiality": "high",
+      "productionStatus": "qc_passed",
+      "readerReady": true,
+      "publicReady": true,
+      "gateVersion": "library-ready-v2",
+      "noteMarkdown": "# Podcast Radar｜Poolside 的模型工厂、Laguna S、开放模型与 AGI 竞赛\n\n节目：Latent Space\n原题/标题：Poolside’s Model Factory, Laguna S, Open Models, and the Race to AGI — Eiso Kant, Poolside AI\n发布时间：2026-07-22T20:46:43+00:00\n原始链接：https://www.youtube.com/watch?v=9_0hs2sxHHo\nSource boundary：YouTube caption-derived transcript fetched via youtube-transcript-api from the official Latent Space upload; automatic captions are not a human-edited official transcript and may contain speaker/name/technical-term errors. The official YouTube item is the canonical candidate identity because the RSS feed was unreachable in this run.\n\n## 为什么对研究重要\n\n这期访谈的研究价值不只在于 Poolside 发布了一款新的开放权重代码模型，而在于 Eiso Kant 给出了一套相对完整的“基础模型公司生产函数”：模型能力如何从数据、算力效率、训练系统、实验纪律、后训练行为、agent harness 与组织设计共同产生；为什么真正稀缺的未必是某一次 hero run 的 GPU 小时，而是让研究想法可靠、快速、可复现地进入下一次训练的整套工厂；以及当这种工厂开始被 agent 自身使用时，递归自我改进会以何种朴素、工程化的形态先出现。\n\n它也把几个通常分开讨论的问题串成一条因果链。Laguna S 的参数规模、稀疏结构和本地部署能力，只有放进“用后训练塑造坚持、验证、回退等行为”的框架里才有意义；开放权重的政治经济论证，只有放进训练与推理成本曲线、模型商品化和算力供应链里才完整；开发者工作流里的 MCP、工具调用、容器和写代码，也不是产品层面的偏好，而是 Poolside 以长时程编码任务通往 AGI 的研究假设。\n\n对做产业与资本开支判断的人，这期还提供了重要限定：单次预训练账单可以看起来不高，但不能代表建设模型公司的总成本；训练阶段依赖高带宽互联与大规模 GPU，RL 又受到任务数量和 batch size 的不同约束；推理端则可能因小模型行为改善而出现“够用即下沉”的尺寸分层。这使 GPU、网络、低精度、prefill/decode 解耦、自有硬件和开放权重部署成为同一张经济图上的不同节点。\n\n## 一页导读\n\n- **模型工厂是主角，模型只是产物。** Poolside 从创立起把模型建设视为约 90% 的工程问题：把抓取、过滤、转换、数据混合、分布式训练、中期训练、SFT、RL、评测和发布做成端到端、可追踪、可复现的工业流程。核心指标不是单次 benchmark，而是“研究想法到可信实验结果，再到下一次正式训练”的壁钟时间。\n- **工厂同时服务科学纪律与 agent 自动化。** 不可变数据层、代码版本、实验即代码、逐 token lineage，使两年前的 run 仍可复现；同样的 API 化基础设施又让 agent 能写代码、发任务、读结果、改管线。Kant 把这看成递归自我改进最早的“微光”，但明确说人仍提出想法并处理困难调试。\n- **Laguna S 的卖点是行为，不只是智力或参数。** 转录称其为 118B 总参数、8B 激活的稀疏模型，可放入 DGX Spark，约 30–40 token/s；Poolside 认为其超预期表现主要来自后训练塑造的持续验证、不轻易宣布成功、出错后回退和长时间坚持。Kant 同时强调，大模型仍更聪明，Poolside 必须继续扩规模，不能把“小模型之王”当作逃避前沿竞争的借口。\n- **预训练远未结束。** 他认为 RL 会越来越早进入训练；今天所谓 mid-training 常只是粗糙的两段式 curriculum。Web 含有人类知识，但质量方差极大，纯 next-token prediction 尚未榨出其潜力。未来更像从 token 0 开始的连续课程，而非组织边界制造的 stage 2、3、4。\n- **开放权重是竞争结构选择，不是无条件教条。** Kant 宁愿生活在有 100 家基础模型公司的世界，而不是 5 家，即使自己属于那 5 家。他承认开放商业模式、误用、政府反应都没有完整答案，也明确拒绝“永远全部开放”的极端；当前能力水平不应限制开放模型，但未来真实风险出现时应基于能力、评测和民主治理调整。\n- **开发者界面的方向是“让模型写代码”。** Poolside 支持 MCP、工具调用与并行工具调用，但 Kant 认为给 system prompt 塞几十个工具是过渡形态。更通用的路径是给模型一个最小 harness、容器、shell、代码库、API key、数据源和文档，让它用脚本、循环与条件控制完成复杂任务。\n- **训练经济不能只看最后一次 run。** 新 Laguna M 的预训练计划为 39 天；Poolside 当时称自己约有 10,000 张 H200，并将继续扩张。Kant说真正昂贵的是此前多年的 R&D、数据、基础设施和失败实验，而正式开跑反而只是 Slack 里一条平淡消息。\n- **RL 的系统瓶颈不同于预训练。** 预训练面对整个 Web，batch 更容易扩；RL 的任务集合有限，batch size 受约束，不能简单靠加 GPU 线性缩短时间。他看好把推理中的 prefill/decode 异构解耦带入 RL，以及更低精度训练；当时 Poolside 的 RL 仍用 FP8，并期待 Blackwell 与 NVFP4。\n- **组织设计与技术系统同构。** 高频、端到端训练减少“半年一次、所有改动混成一锅汤”的不可归因问题；高 agency 人才需要共同目标和清楚边界，而不是无限探索。Poolside 的边界是长时程推理、编码和 RL，视觉将加入，音频暂不投入。\n\n## 一句话主线与 投资研究用户 关注点\n\n**一句话主线：**Poolside 的核心赌注是，把基础模型研发变成一个低壁钟时间、可复现、可被 agent 操作的“模型工厂”，再用持续扩大的预训练与强化学习把坚持、验证、回退等长时程行为注入开放权重模型，从而既追赶 AGI 前沿，又降低多家模型公司和本地部署参与竞争的门槛。\n\n**投资研究用户 关注点：**不要只比较 Laguna S 的榜单分数；应跟踪工厂的模型迭代周期、实验吞吐和可归因性，训练与 RL 的 GPU/网络利用率，8B active 稀疏模型在本地与托管推理中的真实 token 成本，不同 harness 的迁移损失，开放权重许可与硬件内存约束，以及“更小模型靠行为变强”是否真的把知识工作最优尺寸曲线向左移动。\n\n## 完整详细纪要\n\n### 1. 冷开场：为什么 MCP 与几十个工具可能只是过渡层（0:00–1:41）\n\n节目先截取 Kant 最尖锐的观点作为冷开场：复杂任务会越来越长、越来越需要外部数据和某种虚拟机中的软件。既然模型本来就能写代码并直接操作系统，在中间再塞一层 MCP 或大量离散工具调用，可能是在限制模型。他观察到 Laguna S 以及前沿模型正从“system prompt 里放 50 个工具”转向“给你一台装好二进制的虚拟机、一套可操作代码库和一个可写记忆的目录”；模型用代码组合条件、循环和多步操作，而不只是串三次函数调用。其后是订阅提示，正文从 1:42 开始。\n\n### 2. 从 2015 年代码语言模型失败，到重新相信开放研究（1:42–9:39）\n\n主持人从 Kant 十年前谈“AI 民主化”问起：他的履历并不显然会导向今天的开放模型。Kant 将起点归功于 Andrej Karpathy 2015 年的文章《The Unreasonable Effectiveness of Recurrent Neural Networks》。字符级 RNN 生成莎士比亚、Paul Graham 风格文本的例子，让他一夜之间把当时创业公司转向 RNN、LSTM，后来再转向 Transformer，用语言模型写代码。他建立 source{d}（名称据上下文，字幕可能写作 sourced），投入四五年；团队约 40 人、消耗投资人约 1,200 万美元。期间试过把卷积网络用于代码结构、把 attention 接到 LSTM 等，但最大的漏判是没有持续扩大规模。今天 scaling law 看似常识，2015–2019 年并非如此。\n\n这段经历被他称为职业生涯最大失败。2019 年末项目结束后，他因家庭重心转移，两年几乎没再看语言模型；ChatGPT 出现时，旧同事和朋友重新翻出他的演示稿，那既像迟来的验证，也提醒他早期一直相信能力更强的智能应当开放。\n\n但 Poolside 创立时并没有把开源放在路线中心。最初有两条逆共识假设：第一，模型能力会持续复利，当时许多人仍以“随机鹦鹉”解释 LLM；第二，强化学习会成为能力增长的最大驱动力，三年多前 OpenAI、Google、Anthropic 等也未把它作为主导方向。团队没有从既有实验室整建制出走，而是读论文、从零写代码、边做边建立知识。因此早期目标很直白：到达 AGI、支持富足世界，并希望第一个到达。\n\n到 2026 年初，他和联合创始人 Jason 才重新严肃讨论开放。触发点不是突然转念，而是逐渐感到世界正在走向一个分岔：如果未来所有智能由三五家公司生产，这更像反乌托邦小说。Poolside 尚未到前沿，资本与既有承诺还没大到无法改向，所以当时是少数仍能作出选择的窗口。他列出未解难题：开放基础模型如何挣钱、何时误用风险会迫使停止开放、政府会如何回应。但最终价值判断是：“我宁愿活在有 100 家基础模型公司的世界，而不是只有 5 家，即使我是那 5 家之一。”[9:18–9:24] 因而先开放研究和权重，再沿途寻找商业答案。\n\n### 3. 为什么权重不等于开放研究；美国公司与全球人才路线（9:40–17:24）\n\n主持人把 Poolside 放进约 20 家“neo-lab”的新群体，并指出当时开放创新很大比例来自中国实验室；Poolside 不只放权重，还发布建模过程和技术报告。Kant 回应，所有模型都从相似数据之井取水，却会形成不同的有意或无意偏差。既然开放模型会进入 token economy，企业、国家与个人就应能选择最信任、最一致的提供者。权重只是二进制工件，无法让别人重建能力；真正可传承的是花费数万次实验得到的方法、失败和研究结论。数据集有版权等发布障碍，但“怎么做”的研究应尽量公开。\n\n他也纠正“Poolside 从法国起家”的说法：公司从 day zero 就是美国公司，只是早期有意识地不把研究招聘限定在湾区，而从美国中部、西雅图、塞尔维亚、台湾、新加坡等地找人才，后来在巴黎、伦敦设办公室并形成全远程组织。其判断是模型人才战必然发生，而最有创造力的人不会只在一个地理集群。早期远程和从零建设确实减慢速度，却塑造了后来的韧性与独立直觉。\n\n训练代码库不是 fork。公司约五人时，团队曾用三周追一个 optimizer 稳定性 bug，一度怀疑是否该直接 fork 开源仓库。字幕把优化器识别为“atom”，语境很可能是 Adam，属 ASR 待核；Kant 记得问题涉及分母中的 epsilon。早期 Llama 论文等把 epsilon 设得较高，但这在直觉上像向优化器加入不必要噪声；修好 bug 后，他们不再需要把 epsilon “加得那么猛”。他明确说已不记得精确 bug，因此不能把这段当成可复现技术结论。真正的教训是：从头查清问题会建立自己的直觉，而模型训练是实验科学，最初直觉会被数据反复击碎，有时能解释，有时不能。\n\n### 4. Model Factory：把基础模型研发定义为工业流程（17:25–24:28）\n\n主持人请他从新模型技术报告谈经验。Kant 的起点是“模型建设最终有 90% 是工程”[17:49–17:57]：研究者日常大量时间本来就在写代码和看数据。三年前行业常见状态是 Bash、Slurm、拼接式训练代码与临时数据管线；Poolside 则把原始 Web 数据的抓取、过滤、清洗、变换、分析，大规模分布式训练，后来的 mid-training、post-training、RL 都视为一条工业流水线，每段都有专门机器与可靠性要求。\n\n他们从 day zero 就让顶尖分布式系统工程师进入研究流程，而不是等研究规模变大再“补基础设施”。Model Factory 从少数组件成长到数千组件。Kant 用富士康比喻：若亲历工厂十年建设，就理解每个决策的 lineage，能重建复杂系统；今天直接走进成熟工厂，只看到结果，不知道为什么这样组织。Poolside 优化的核心指标是：研究者的想法多快变成可信实验结果，又多快进入下一次模型训练。\n\n当时团队少于 70 名研究者、另约 35 名工程师，每月运行远超 10,000 次、可能约 10,000–20,000 次实验（Kant 明说没查最新数，应视为口述范围）。这种规模下，实验可信度本身就是基础设施问题。Laguna XS2 从预训练开始到发布约 5 周；本期讨论的 Laguna S 从头到发布约 8 周；S 的后训练完成后，计算资源次日就移交给更大的 Laguna M。模型不该被当作孤立“作品”，而应是流程在某个时刻的工件，类似 SpaceX 真正难的是可重复造火箭的工厂，之后每次发射不再是一次性英雄事件。\n\n更重要的是，API 良好的端到端工厂天然适合 agent。Kant 在每月线下聚会绕看研究者屏幕时，默认画面已是多个 agent 同时写代码、启动 job、评估 run 结果并修改管线。人仍掌舵：提出想法、判断方向、参与调试；但数据侧——预训练、后训练、合成数据——的自动化尤其明显，架构侧也开始出现。他称之为 RSI（recursive self-improvement）将如何出现的“微光”，而不是宣称已经实现自主研究。\n\n工厂允许昨日已有实验支持的改动今天就进入正式 run，不需要提前 90 天冻结。可靠性指标也很具体：Laguna S 整个训练没有 on-call 事件；按他记忆，2026 年以来没有需要夜间叫醒人的重大 on-call。限定是每次新 run 的最初约 6 小时仍常因配置或小错误需要干预，但发生在正常值守时段。迭代因此产生复利：当前模型发布时，团队已经在下一款上工作。\n\n### 5. 流式数据、Blender 与“实验即代码”的可复现科学（24:29–32:17）\n\n主持人指出技术报告第二页最醒目的不是 benchmark，而是“从零到交付小模型只用 5 周”，以及 agent 可调用的训练软件、数据与系统原则。Kant 以数据流为例：传统做法先制备完整训练集、tokenize、repack，再复制到训练集群和所有节点；数据越大，甚至要用 torrent 式分发。任何修改都迫使重新物化与搬运，造成大量等待。Poolside 反过来问：训练 job 每秒消耗的 token 对数据运输而言并不算大，为什么不 just-in-time 流入？\n\n于是训练集群与可运行 Spark 等大数据管线的内部服务层解耦，训练可在其余数据仍物化时开始。数据混合也从搬文件变成配置：名为 Blender 的服务可指定某来源 20%、另一来源 10%、重复多少 epoch、如何 shuffle。底层被设计为不可变数据层，代码始终版本化；因此可追到单个 token 在哪个 cursor、用哪版代码进入训练。\n\n团队第一年只知道工程要强，却尚未理解工程最终服务于严谨科学；小团队有很多“YOLO 点子和 YOLO run”，只是为这些冲动实验造了很好基础设施。约一年到一年半后，他们意识到不可变数据、版本化代码、端到端 trace 与完美复现能把每次实验变成真正 ablation。Kant 称两年前的 run 今天仍可复现。来自 Yandex、长期做语言模型的应用研究联合负责人 Nikolai（姓名据字幕，待正式资料核对）也推动更高实验纪律。报告还提到 automixer：训练 8 个小模型、外推尺度后选择预训练数据混合，显示“挑数据”本身已被系统化。\n\nPoolside 过去认为尚未到前沿就没有“赢得写论文的权利”，因为每小时都应拿来追赶；这次只给团队约三四天、且不停止本职工作，把积累写出。现在开放研究成为公司使命的一部分，他们会更主动发布。Kant 同时向中国实验室致谢：Poolside 是开放研究的受益者，拿到别人分享的成果就有回馈义务。被问最敬佩的中国实验室时，字幕把名称识别得很不稳定（“Zeu”“GLM 5.2”等，ASR 待核）；可确定的论点是，他特别尊重在 ChatGPT 之前多年、尚会因相信 LLM 被嘲笑时就持续投入的团队，而不只是追捧最新模型。\n\n### 6. 建基础模型公司的 95%：数据与算力效率（32:18–37:24）\n\nKant 说每家基础模型公司都需要时间：Poolside 用三年到达将发布的模型，但之后模型间隔开始以周而不是月或年计。开放方法的窗口并非无限；一旦模型显著促进递归自我改进，后来者追赶可能变得不可行。因此他甚至鼓励有能力的研究者离职创办竞争对手，因为目标不是让 Poolside 成为第五或第六个赢家，而是让社会保有选择。\n\n面对“还有哪些外界看不到的难处”，他给出带明确星号的简化：模型建设 95% 可归入两件事——改善数据，或改善计算效率。看数据、造数据、清理与重混数据属于前者；推理优化、新架构、新 attention 多数归根结底是在同样预算下提高 compute efficiency。若有无限算力和无限快网络，也许现有方法已能很快到 AGI；他补充网络正在比纯计算更像瓶颈。这不是否认真正困难的理论突破，而是去神秘化：大量日常工作就是写好代码、看数据、跑实验、看图并修正直觉。\n\nModel Factory 也降低了从工程师变成研究者的门槛。他举例，一位原本开发 agent 的工程师在约 6 个月内成为能产生实际进展的 RL 研究者。这里的因果主张是：当发起实验、控制变量、取得可信结果的操作成本下降，“研究”不再只属于少数有既有实验室谱系的人。\n\n### 7. Laguna S：118B/8B active，以及“坚持”胜过更高裸智力的假设（37:25–44:41）\n\n主持人问 Poolside 是否已能用自己的模型反过来开发自己。Kant 说 Laguna S 是第一款开始有意义参与内部工作的发布模型，仍非世界最先进。应用研究联合负责人 Peng（字幕可能为 Penging，ASR 待核）在模型出来约 10 天后总结：提升不主要来自更高智力，而来自不同行为——更多验证、更少想当然、不早早宣布胜利、更加坚持；这些特征对成功的预测力有时比裸智力更强。Kant 将这段 7 月 5 日星期日收到的话视为理解模型的钥匙。\n\n按口述，Laguna S 为 118B 总参数、8B active 的 MoE 稀疏模型，可放入一台 DGX Spark，并约以 30–40 token/s 运行。它能独立解 Erdős 397（题目标识据字幕，待核）、做复杂编程；当天早上 Kant 让它在 Mac 上不用外部库写 Wi‑Fi 扫描器，它在无互联网情况下持续摸索 CoreWLAN API。他过去 10 天每天与模型相处约 8–10 小时，前一日 11 小时航班里有 10 小时在读 trajectory 和 trace。\n\n由此他提出一个经济学问题。更大模型确实更聪明，尤其科学突破需要把远距离概念结合起来，爱因斯坦与广义相对论是他的例子；但大多数约占全球经济 25%、约 25 万亿美元的知识工作，优秀表现更多来自遇到问题后查文档、回退、研究、试五种方案。若后训练能让较小模型获得这些行为，知识工作的“最佳模型尺寸”就可能比他原先以为的更早到达峰值。超过峰值后，更大模型带来的能力增量抵不过更高推理成本；日常编码不会调用某个未来的 quadrillion-parameter 模型。\n\n他试探性猜测峰值也许在 1 万亿、5 万亿或 10 万亿参数附近，而不是还需再放大两三个数量级；这不是预测，只是 Laguna S 让他重新开放这个问题。如果成立，它支持模型商品化，也支持开放模型在经济上获胜。但他反复加限定：这是自利且充满希望的论证；Poolside 仍必须把模型扩大到竞争者的规模，不能说只做开放小模型便够了。“小模型王国”可能只是回避真正前沿。Laguna S 与 SOTA 仍有长路，用户应看到的是行为带来的超尺寸能力，而非把它神化为最聪明模型。\n\n### 8. 预训练没有结束：RL 前移、Web curriculum 与环境的边界（44:42–52:25）\n\n主持人问上述行为是否来自 post-training，Kant 答“完全来自后训练”[44:42–44:47]；但预训练远未结束。每扩大一个数量级都会出现新的工程稳定性问题。他更不寻常的观点是，RL 会越来越早进入预训练，甚至不只是今天所谓 mid-training。模型很早刚获得语言能力时，就可能被诱导出推理；他把公开例子指向 DeepSeek Zero 论文，但对“约一年半前”的日期只凭记忆，应谨慎使用。\n\nWeb 可能编码了人类知识总体，却从垃圾到顶级论文、博客、访谈，质量方差巨大。Poolside 已研究数年如何让 Web 不只用于 next-token prediction，而更早教模型“思考”，但目前不准备披露方案。他把行业对 distillation 和更多 RL environments 的依赖戏称为“药”：确实有效，大家都会继续用，却不代表是通往 AGI 的唯一一般解。若每种现实任务都要造环境——连组装一张桌子也单独 environment——路线会无穷无尽；他怀疑 Web 本身还有更强的泛化学习信号。\n\n主持人指出 RL 常被理解为不新增多少知识，而是重塑分布与推理行为；很多 mid-training 也只是对医学等领域继续预训练，然后再 RL。Kant 同意，并进一步说 mid-training 只是“更好的数据”和非常粗糙的两阶段 curriculum。理想状态是从 token 0 到第 30 或 40 万亿个训练 token 都有连续、最优课程；今天分成 stage 2、3、4，是因为算力不足以消融完整 curriculum，也因为组织里已经出现“mid-training team”。Model Factory 想消除这种组织边界，让阶段趋于无限连续。几年后回看，今天几乎不排序 Web 数据的办法会显得天真。\n\n基础模型公司还必须平衡“确定有效的 table stakes recipe”与突破性纯研究，并根据自己在竞赛中的位置调比例。不同 neo-lab 可以押完全新架构或极低算力路线；Poolside 创立时的独特赌注是 code 上的 RL，当时很新，今天已成常识。新公司仍需自己的加速边。Kant 认为极限上许多架构都能工作，老式 RNN 若有无限算力也许能走很远，真正差异常是计算效率。\n\n### 9. 低精度、规模路线与 Laguna S 的结构细节（52:26–59:59）\n\nKant 最兴奋的方向之一是极低精度训练，包括 ternary 与主持人提到的 Bonsai（专名据字幕，待核）。直觉交易是：更大、低精度模型与更小、高精度模型之间如何换算；若解决内存和网络瓶颈，可能改变产业。Laguna S 预训练使用 FP8，只有 all-to-all 当次尚未全部转到 FP8；刚开始的下一次 run 则已把 all-to-all 也纳入 FP8。NVIDIA Nemotron 的 NVFP4 工作令他期待，但当时 Poolside 仍在 Hopper 上训练，尚不适合立刻采用。\n\n他口述 Poolside 当时是约 10,000 张 H200 的集群公司，并将“大幅”扩张；这既是事实陈述也是招聘口吻，不能据此推定已交付未来容量。Laguna S 用 8 周完成。它是 XS 架构的放大版，118B 总参数、8B active，采用约 3:1 的 sliding-window attention 与 global attention 比例。这个尺寸兼顾训练和推理成本，并能放入 DGX Spark。主持人把 128GB 级设备、Mac mini、单 H100 等称作本地 sweet spot。\n\nKant 称 S 在同重量级、甚至两三倍尺寸模型中可能达到 SOTA，一些 benchmark 也显得很强；但立即限定，世界最佳仍是其他前沿模型，字幕将具体名称识别为 “Fable”“5.6”等，无法可靠对应，故 ASR 待核。判断模型不能只看榜单，团队必须 dogfood 并有内部 eval。新 checkpoint 出来后约 30 分钟，有经验的人常已能“感觉”它是否不同；但他也用孩子比喻提醒开发者会爱上自己的模型，所以团队不断告诉自己：这会是“我们训练过的最差模型”，因为下一款必须更好。开放发布的另一回报是获得大量外部失败反馈。\n\n### 10. Harness polishing、跨框架迁移与模型公司边界（1:00:00–1:10:49）\n\n主持人问如何让模型同时适应 Pool CLI、OpenCode、Codex 等 harness。Kant 说小模型需要少量 multi-harness training，以把在自有 harness 中学到的行为迁移出去；内部称为 polishing。核心 RL 算力和合成数据仍投向自有 harness，因为端到端控制最强、变量最清楚、科学归因最好。迁移训练主要让模型在其他工具调用格式中诱导适当推理，而不是产生核心能力。\n\n他解释为何不能在一次 RL run 中塞 10 个 harness：额外工程复杂度会破坏一次只改一个变量的实验纪律；即使外部 harness 开源，理解其 sub-agent、prompt 和边缘行为也需要时间，而 Poolside 把日历时间视为竞赛的真正货币。他称 Laguna S 已在 OpenCode、Kilo Code 等环境测试良好，其他专名字幕不稳，ASR 待核。\n\nPoolside 自有 harness 很薄，约 6 个工具，字幕可辨的包括 shell、shell kill、shell wait、write、fetch web 等。它不是为了某个 benchmark 特制的 deep-research harness。复杂 harness 可用额外 prompt、数据源和工具显著抬升任何模型；反过来，Poolside 模型在自有编码 harness 中仍可能因 RL 对齐而略占优势。两边并不矛盾：模型公司用自有 harness 提升底层能力，专门 agent 公司则会用深度定制 harness 超越它。Harness 是模型现有能力与任务所需额外指令、工具、数据之间的“临时桥梁”；如同给普通聪明人一本精确手册，他可能比更聪明但只能自行摸索的人更高效。\n\n当主持人追问 Poolside 竞赛目标究竟是最佳代码模型、最佳模型加 harness，还是别的，Kant 回到 AGI：从 day zero 起，编码只是通往 AGI 的路径，因为长时程软件任务迫使模型解决持续推理、外部工具、外部数据和复杂环境交互。Laguna S 未专门训练 deep research，却在他体验中表现很好，说明技能可迁移。公司当前不追求把全球最强医学或法律知识都编码进去；一次内部 LegalBench 表现很好，但因没有充分复跑和检查，Poolside 决定不公开分数。这是其 eval 纪律的例子。\n\n他支持 Artificial Analysis、Vals 等第三方评测机构（名称据字幕，待核），认为行业需要更多高质量 eval，也需要少数能统一环境、检查作弊、保证竞争者同条件运行的标准机构。Poolside 自我定位仍是“模型公司”，不是 agent 产品公司；只是今天模型不可能脱离 harness 训练。主持人反驳：若真是模型公司，就应为 OpenCode 或更一般的 Hermes 做最佳模型，而非自有 Pool。Kant接受方向性意见，称会通过 polishing 与合作逐渐平衡，最终目标是通用能力在每个 harness 中都同样工作。\n\n### 11. “MCP 和工具很蠢”：真正主张是最小接口与代码自由度（1:10:50–1:14:22）\n\n谈到 Hermes、OpenClaw、Pi 等框架时，Kant 表达强意见：“我认为 MCP 和工具很蠢。”[1:11:13–1:11:18] 但紧接着澄清 Poolside 实际支持 MCP、普通工具，并在 Laguna S 首次支持并行工具调用；这不是兼容性政策，而是对长期抽象层的判断。\n\n长时程任务终究要操作数据源、虚拟机和安装的软件。若模型能写程序，中间把所有动作预枚举为 20、30、50 个 tool schema，既占 prompt 又限制组合性。RL 中模型会寻找最有效路径，于是自然倾向用 Python、shell、小脚本、if/for 与文件来组织状态。他主张最小 harness 加容器：里面放模型自己的代码库、所需 API key、数据源、小库和文档，让它自由完成任务。他预测 12 个月后不会再看到 system prompt 被几十个工具塞满。主持人不完全反对，但认为兼容旧工具形态会持续很久；Kant也承认现实支持仍必须做。故本段不是“MCP 立刻消失”的预测，而是“代码是比离散工具调用更一般的动作语言”。\n\n### 12. 视觉、音频、文本信息密度与研究取舍（1:14:23–1:19:57）\n\n主持人把开放 agent 所需能力列为 computer use/vision、持久性、百万 token 长上下文等。Kant 明确说当时 Laguna 模型还没有视觉理解，视觉是下一项重要工作；音频则很长时间内不会做。原因不是音频难，而是每项投入都会占用研究者与算力，Poolside 认为提高一般推理与更长任务时程更接近 AGI。音频在接近 AGI 时会成为必要模态，但现阶段不直接推进核心路线；视觉居中，既可能推进一般能力，也立刻有产品价值。\n\n主持人提到把文本 tokenizer 丢掉、仅以视觉输入做 OCR 的研究。Kant觉得很酷，却仍用 compute efficiency 判断：很多方案理论上可工作，关键是单位算力是否划算。Poolside 内部也长期讨论推理应在 latent space 还是 token 中进行；但 Kant、Peng 与 Nikolai 认同语言是极高密度的知识、推理和智能编码。一篇 20–30 页物理论文浓缩了大量人的思考；同样一堂 50 分钟讲座若作为原始视频训练，bit 数与信噪比远逊于文本。资源有限时，语言是更好的投资。\n\n这不是否认多模态最终会合流。他赞赏其他实验室从零训练音频、视觉和世界模型，也认可 Anthropic 式对语言与编码能力的专注。Poolside 的组织原则是戴着“马眼罩”追前沿：视觉加入，但不因每个新奇模态分散路线。\n\n### 13. Laguna M、39 天预训练与单次训练成本幻觉（1:19:58–1:25:07）\n\n新 Laguna M 在录制前一天开始训练，比上一代 M 大得多，预训练计划 39 天。主持人问为何能提前知道天数，答案隐含 Model Factory 对吞吐、规模与故障的可预测性。此前报告披露 GPU 小时后，外部可倒推正式 run 的直接成本，并发现并非天文数字。\n\nKant认为 DeepSeek 时刻让公众看到“能力很强的模型可以用不高的最终训练账单完成”，却也制造误解：正式 training run 不是最昂贵部分，甚至很反高潮——Slack 只发一句“模型开跑”和监控链接。真正成本是此前的 R&D、旧模型、基础设施、数据、失败实验和团队积累，像运动员比赛前多年训练。主持人以“DeepSeek 只花约 500 万美元”这种流行表述为例，双方都强调不能把边际 run 成本当总成本。\n\n路线图还会有 L 与 XL；S/M/L 是相对重量级，下一代 M 会比上一代 M 大很多，因此名字不能直接等同固定参数数。闲谈中他们笑称基础模型公司最难的是命名。Poolside 原拟名 Snowball Apps，因 Amazon 商标作罢；联合创始人又提 Bedrock，也恰是 Amazon 名称。早期三名核心成员尚未正式注册公司，却在一家大科技公司年会讨论类似 OpenAI–Microsoft 的算力换长期访问合作。对方首席科学家担心被偷听，建议移到“poolside”的餐厅；两位创始人当晚采用这个词。最终他们没有签那条容易的合作路径，把名字作为“不降低野心、遇到选择走更难路径”的提醒，而不只是“AGI 后大家坐在泳池边”的玩笑。\n\n### 14. 融资、智能商品与基础模型市场是否会成为寡头（1:25:08–1:29:09）\n\n主持人回忆 Kant 曾告诉他要融资 5 亿美元，后来真的完成，因而追问巨额融资如何说服 VC。Kant说约一年半前环境完全不同，很多投资者仍需被说服 LLM 不是随机鹦鹉、能力会继续进步；Anthropic 当年融资 5 亿美元也曾困难。此后相信 AGI 真实可达的人数超线性增长，OpenAI、Anthropic、Google 的收入与增长也使产品市场契合不再是核心疑问。\n\n若接受“智能将支撑未来几乎所有经济价值与科学进展”，投资逻辑就变成谁能成为生产这种商品的参与者。多年来，门槛已从模型本身扩展到基础设施。今日投资者分歧主要不是 AI 是否重要，而是智能生产会否锁定为寡头，以及后来公司能否打破寡头。有些资金更愿投应用层，因为资本回报结构不同；Kant承认会有很多优秀应用公司，但仍认为基础模型竞赛处在早局。\n\n他的市场判断是：智能将是全球需求最大的商品，边际利润和价格会商品化下降，但世界仍需要多种选择。把最终格局预设成两家公司很短视。过去数月，更多人意识到全球能消化远多于预期的智能，同时不希望模型被单一公司随意关停或施加限制。他尤其反感模型公司禁止客户用其模型开发其他基础模型：承认私营公司依法可对自己的产品这样做，但认为社会把这种集中控制视为正常很“疯狂”。\n\n### 15. 开放权重的边界：民主治理、能力限制与全球竞争（1:29:10–1:35:40）\n\n主持人把公司限制与白宫限制并置。Kant区分二者：能力越来越强时，社会应更多交给民主程序确定误用风险，单家公司单方面决策会把权力集中在少数人手里，缺乏制衡；这不是针对某一家现有实验室，而是制度偏好。政府决定未必每次都让他满意，但二十年尺度上民主会方向性纠错。他借主持人补全的 Churchill 名言说明：民主很糟，只是比试过的其他制度好。\n\n就当前模型能力，他认为“不应以任何形式限制开放模型”，否则会伤害创新。但主持人问是否存在改变观点的阈值，他明确答“有”。坚持所有能力永远无条件开放，与要求现在全部封闭同样极端。真实世界若出现可验证风险，可以重新评估训练方式、发布不同版本或限制部分能力。开放不是不负责任。\n\n他同时提醒，业界从 GPT‑2 起就反复预测开源会造成灾难，过去预测记录并不好，因此需要安全研究所和更好的能力 eval，而不是泛化恐惧。主持人为谨慎辩护：安全上宁可先保守再放开，因为泄露权重不可逆；另一位主持人指出全球竞争使“单边谨慎”失效，别国仍可继续。最终共识偏向按具体能力建立国际限制，而非简单回答“模型能否开放”。\n\nKant用禁烟广告作制度副作用类比：政策目标可以正确，却可能意外固化烟草寡头，因为新进入者再也不能有效获客。若 2026 年按当前能力筑起监管高墙，实质上决定未来只有两三家公司能造模型；这正是他最不愿看到的反乌托邦章节。理想未来是智能成为人人可得、越来越便宜的商品，没有单一公司能决定输出或开关。\n\n### 16. NVIDIA、网络与系统代际：模型扩展的硬件读法（1:35:41–1:38:32）\n\n主持人挑衅性地说，比美国政府更有权力的是 NVIDIA，因为算力分配决定谁能训练，再往下则是 TSMC。Kant没有直接接受权力排序，而先强调 NVIDIA 对行业的历史贡献：2015 年 source{d} 能把消费 GPU 装进服务器做实验，正因为 NVIDIA 的软硬件生态允许；基础模型能力与硬件、系统紧密共演。\n\n他给出尺度化例子：Hopper 系统可训练的模型与 GB300 系统可训练的模型，可能是 1 万亿参数对 5–6 万亿参数的差别。进步呈台阶状，不只是芯片 FLOPS，而是新一代网络和整机系统共同解锁。未来更重要的是模型、硬件与系统协同设计。\n\n他仍区分产业集中与监管封锁：再造 NVIDIA 极难，再造基础模型公司也极难，但市场至少应允许新人使用现有工具尝试；若政府规则事实上禁止新基础模型公司，则是制度上关闭赛道。GPU 出口也受政府规则约束，说明算力层并非脱离治理，但与直接限定谁能训练模型仍不同。\n\n### 17. RL 的壁钟瓶颈：batch size、异构硬件与 FP8/NVFP4（1:38:33–1:42:31）\n\n被问技术上最希望改变什么时，Kant转向 RL 系统。推理已经出现 prefill 与 decode 分离：两阶段计算形态不同，可分别放在通用 GPU 与更专用芯片上；字幕提及 Groq LPU 与 NVIDIA/GPU 的组合，专名关系有 ASR 不确定。Kant希望类似异构“mix and match”进入 RL。\n\n原因是 RL 与预训练的扩展约束不同。预训练拥有整个 Web，样本量巨大，batch size 可更灵活地扩；RL 只有若干百万任务，不能无限放大 batch，否则数据与学习动态受损。因此 RL 无法像预训练那样靠加 GPU 持续缩短时间。竞赛真正衡量的是 calendar time，不是 GPU 数量；若把 rollout、prefill、decode 等放到更匹配的硬件，可能显著减少 RL 壁钟时间。\n\nKant说当时从预训练、mid-training、SFT 到发布，最大壁钟瓶颈已经是 RL；不是没有更多 GPU，而是 batch-size 约束使 GPU 加不上去。他还提到录制前五天的一篇低精度 RL 博文，具体论文字幕未给出，不能据此定位。Poolside 当时 RL 仍用 FP8，计划迁移 Blackwell 后探索更低精度。主持人回忆一篇消融研究称 4-bit 可能是甜点，Kant提醒普通 4-bit 与 NVFP4 不同，后者在数值范围等方面的权衡值得重视；ternary 是更低端点，但稳定性与有效能力仍需实验。\n\n### 18. 小模型还能榨多少：大模型 recipe 向下迁移，而非反向套用（1:42:32–1:47:40）\n\n主持人从 XS 2.1、旧 Medium 到新 S 追问最小可行认知核心：3B/4B 推理模型、20–30B 端侧模型、约 100B 单 GPU 模型是否仍有巨大空间。Kant答“还有很多”。S 的训练经验可反哺 XS；S 发布后团队已经学到若干本可让 S 更好的东西。他再次强调这不是反对扩展，而是行为优化与规模扩展可同时成立。\n\n一个不对称经验是：小模型的 post-training recipe 往往不能直接套到大模型，规模变化后多数配方需重想；但为大模型建立的 post-training recipe 下放到小模型，通常是很强的改进基线，再做少量调整即可。因此扩大前沿模型也会产生快速改善小模型的杠杆。要同时推两个轴：模型能坚持推理多长时间，以及能否更高效地完成。\n\n主持人指出前沿实验室常先造不直接面向用户的超大模型，再 distill 成推理产品；Poolside 当时没有这样做。Kant解释其发布模型有双重用途：既是对 Model Factory 是否进步的端到端研究探针，也是给外界使用的产品。Poolside做过 distillation 实验，也承认有大量用户数据时可以走更远；但若当前目标是让研究组织学习，频繁从头训练完整模型比只蒸馏产品更有价值。\n\n这是从过去“每六个月只训一个更大模型”得到的教训。半年里数据、架构、优化器、系统同时改变，下一次结果像一锅汤，无法知道哪种成分有效。更高频的预训练与后训练让因果归因更清楚，进而形成可外推的 scaling insight 与 compute efficiency。Kant也谨慎地说，大语言模型深度学习还称不上成熟的“真正科学”，大家仍在从实验中逐步提炼规律。\n\n### 19. AI 时代如何衡量工程生产率：从价值想法到交付的 lead time（1:47:41–1:50:44）\n\n主持人回到 Kant 早年研究工程团队指标的经历，问今天如何衡量生产率。Kant先感叹这是黄金时代：一个想法可以交给 agent 隔夜实现。思考后，他仍回到传统但更本质的指标——从对最终用户有价值的想法、bug fix 或功能，到实际交付该价值的 lead time。\n\n模型正在同时压缩中间层级和时间。bug 两小时修好而不是在 backlog 躺三周；客户电话发现需求后，一周交付而不是一个月，这种迭代周期决定公司竞争力。代码行、PR 数、review 等只是领先指标，最终滞后指标始终是价值从识别到上线的周期；当 AI 把速度提高很多，反而可以直接看这个结果指标。\n\n新变量是单人能完成多少、价值传递中涉及多少人。AI-native 工程组织可能不是传统大团队，而是一个 builder 更接近客户并直接交付。理想方向是端到端时间更短、经手人数更少，而不是让更多代码或更多 PR 自身成为目标。\n\n### 20. 招聘看 agency，组织靠目标与边界把高能动性对齐（1:50:45–1:54:05）\n\n被问面试中如何评估人才，Kant给出的常见答案是 agency（能动性/自主行动力）。AI 越强，能主动发现路径、调动工具并完成结果的人越重要。Agency 可从过去行为判断，因为拥有它的人一定会在职业、个人项目或人生选择里实际展示；“有 agency 但从未行动”在定义上矛盾。\n\n主持人提出反面：高 agency 人都想走自己的路，难以对齐。Kant认为领导者的工作是围绕共同 outcome 与边界聚合他们。无限自由会把组织变成纯 exploration algorithm，像大科技公司某些研究部门，任何人都探索，随后政治竞争资源。Poolside则预先说清目标和禁区：追长时程能力与 RL，不把所有模态都做。边界内给极高自由，边界外明确不投入。\n\n他把约束视为创新来源。相较大实验室，Poolside用较少算力和资金，也很少购买外部数据；这些约束迫使团队在基础设施、自建数据与效率轴上变强。高 agency 人才应获得授权，但也要接受使命所需结果和不进入的车道；若最关心的恰是禁区，最好去别处。\n\n### 21. 招聘数字、个人影响与收尾（1:54:06–1:56:07）\n\nPoolside 当时招聘所有应用研究和工程角色，覆盖预训练、评测、后训练、架构等。Kant的招聘主张是个人影响比：少于 70 人构建了该模型；随后他说“少于 150”名工程与研究人员共同完成整体工作，但字幕在后一句又疑似出现“115”，数字相互不稳，故应以“模型核心团队少于 70、广义工程研究组织少于约 150，精确人数 ASR 待核”记录，不能合并为确定 headcount。\n\n开放发布、能够发表研究都是吸引力，但更核心的是分母：在超大基础模型公司，个人只是很多人之一；Poolside 组织仍小，因此单人对模型、系统和使命的可见影响更大。Kant认为最优秀的高 agency 人最终优化的是“影响力”和“是否认同使命”。主持人以嘉宾只有约四小时睡眠却完成长访谈作结，并称团队想尽快录下这款模型及其背后的故事。\n\n## 延伸分析，不是嘉宾原话\n\n以下是基于访谈材料的分析框架，**不是 Eiso Kant 或主持人的原话，也不代表 Poolside 已披露或承诺的事实**。\n\n### 1. Model factory：真正的护城河是“可信吞吐”，而不是实验总数\n\n每月 10,000–20,000 个实验很容易被理解为规模指标，但更关键的分母是有多少实验可归因、可复现并真正改变下一次训练。如果实验大量共享未版本化数据、多个变量同时变动，吞吐越高只会制造更多噪声。Poolside 所说的不可变数据、代码版本、逐 token lineage、昨日结论今日入 run，组合成一种“可信研究吞吐”。可跟踪指标应包括：idea-to-result 中位时长、失败 job 重试率、重复实验一致性、单次正式训练吸收的已验证改动数、从实验结论到生产 recipe 的转化率，以及训练最初六小时外的人工介入分钟数。\n\nModel factory 还有明显的路径依赖。它不是买一套 orchestration 软件就能复制；富士康比喻真正指向的是决策 lineage、故障知识和研究者与平台的共同语言。资本市场若只给训练 GPU 估值，而忽略数据 lineage、实验注册表、调度、观测、故障恢复与组织习惯，可能低估模型公司的软件资产；反之，“我们也有平台”若不能证明缩短壁钟时间，也可能只是基础设施叙事。\n\n### 2. 训练与推理 economics：小模型更强会改变需求分层，不会自动减少总算力\n\nLaguna S 的论证若成立，影响不是“大模型不需要了”，而是任务路由曲线变化。科学发现、跨领域综合与最困难规划仍调用最大模型；常规编码、法律检索、内部数据处理可能转向更小、持久、能回退的模型。单位任务推理成本下降会扩大使用量，并让本地、私有云、边缘设备出现新需求，所以总 token 与总算力可能反而上升，这是典型 Jevons 效应。\n\n需要把三类成本分开：训练某个 checkpoint 的边际 GPU 成本；多年 R&D、数据和工厂的固定成本；上线后按 token、延迟、并发和上下文增长的推理成本。Kant 对 DeepSeek“500 万美元”叙事的反驳正说明第一类不能代表第二类。开放权重商业模式则往往要从第三类回收前两类：托管服务、企业支持、私有部署、优化版本或硬件合作，而不是只出售权重访问。\n\n### 3. 开放权重部署约束：能下载不等于能经济运行\n\n118B 总参数、8B active 表明每 token 计算量较低，但完整权重仍需内存容纳；MoE 的“active 参数”不能直接当成部署内存。实际部署要看权重量化、KV cache、百万上下文是否真实使用、专家路由的内存带宽、batch 并发、跨卡通信、具体 DGX Spark 软件栈，以及 30–40 token/s 是何种量化、上下文与 batch 条件。访谈没有给出这些测试条件，所以不能把口述速度外推到企业吞吐。\n\n开放部署还受许可证、工具兼容、模型格式、推理引擎、量化质量、审计、安全补丁和数据治理约束。Poolside 的 multi-harness polishing 说明权重可移植性也不是二元属性：同一模型在自有 harness、OpenCode 或其他 agent 系统中的能力会有小但可测的迁移损失。评价“开放模型能否替代 API”应使用目标环境的端到端成功率和每成功任务成本，而非只看裸 benchmark。\n\n### 4. Developer workflow：代码作为动作语言，会把 agent 平台重心移到沙箱与可观测性\n\n若模型从 50 个预定义工具转向容器内写代码，平台并不会消失，只会下沉。新的关键层是权限最小化、secret 注入、网络策略、文件系统快照、进程限制、依赖供应链、资源配额、可回放 trace 与人类审批。MCP 也可能从模型直接阅读的大 schema 层，转为容器内生成轻量客户端或发现服务，而非彻底消失。\n\n代码比函数调用更有组合性，但也扩大攻击与失控面。高能力模型可用循环批量操作、写持久状态、动态下载依赖；因此“自由度”必须和 capability-based security 配套。Poolside 的最小 harness 主张对开发者体验很有吸引力，但企业采用将取决于是否能证明每次 shell、网络、secret 使用都可审计、回滚和复现。\n\n### 5. 数据与评测：行为能力需要轨迹级 eval，而不是答案级分数\n\n“坚持、验证、回退、不早宣告成功”不能只用最终答案衡量。更合适的评测应记录：首次错误后是否重新定位；无进展循环次数；验证命令是否真正覆盖改动；完成声明与测试结果是否一致；token/时间花在有效探索还是重复；在工具故障、文档缺失、网络禁用下能否恢复。还应区分“更长推理”与“更好推理”，否则高 token 消耗可能伪装成 persistence。\n\n第三方评测机构的价值来自环境标准化和反作弊，但也会形成新的 Goodhart 风险。模型公司若围绕公开 harness polishing，榜单上升未必等于通用迁移。较稳健的制度是公开集验证可重复性、私有集测泛化、真实用户任务测经济价值，并报告方差、失败类型与每成功任务成本，而不只发布平均分。\n\n### 6. GPU/capex read-through：网络、内存与日历时间比峰值 FLOPS 更值得追踪\n\n访谈对 GPU 产业链的读法有三层。第一，预训练继续放大，10,000 张 H200 只是当时口述基座，未来 M/L/XL 和更大模型仍要求更多集群。第二，Hopper 到 GB300 的价值来自整机网络、内存与系统，不只是芯片算力；若参数规模从约 1T 可行区间推到 5–6T，NVLink、交换、供电、冷却和数据中心建设都会同步受益。第三，RL 的瓶颈可能使采购结构异构化：rollout/prefill/decode 不同阶段由 GPU、LPU 或其他加速器承担，重点从“多少卡”转为“多少日历天完成一次可学习迭代”。\n\n因此 capex 判断不应简单从小模型效率推出 GPU 需求下降。更快工厂会提高训练频率；更便宜推理会扩大 token 需求；开放模型会把部分需求从少数 API 厂商迁到企业私有集群与本地设备。真正可能改变 NVIDIA 份额的变量，是异构 RL、低精度稳定性和软件生态能否让非 GPU 芯片承担可观比例工作，而不是单一 benchmark 上某款小模型变强。\n\n### 7. AGI 路线的可证伪点：编码技能是否真能一般化\n\nPoolside 把长时程编码当 AGI 路径，因为它迫使模型使用工具、外部数据、计划、验证与恢复。这个假设的可证伪点是：从代码 RL 学到的 persistence 是否迁移到法律、科学研究、运营和非文本环境，还是只对测试、编译器和明确 reward 特别有效。LegalBench 的未发布内部结果只是提示，不能成为证据；视觉加入后的跨模态长时程任务会是更强检验。\n\n另一个张力是“更多 environment 不是一般解”与“行为提升完全来自后训练”。若 Web curriculum 能更早教会推理，未来模型对大量专用 RL 环境的依赖应下降；若每个新领域仍需大规模专门环境，说明一般化尚未实现。研究上应持续观察预训练目标变化是否减少后训练样本需求，以及大模型 recipe 下放小模型的收益是否跨领域稳定。\n\n## 来源边界与核验提示\n\n本文只依据节目 metadata 与官方 YouTube 上传对应的自动字幕衍生时间戳转录，不引入外部网页、论文或公司公告来“修正”内容。节目时长 metadata 为 6,967 秒，约 1:56:07；正文按字幕时间顺序覆盖至 1:56:07，订阅口播与寒暄仅压缩处理。\n\n自动字幕不是人工校订正式逐字稿，专名尤其不稳定。文中已对 Peng/Penging、Nikolai、source{d}、Erdős 397、Vals、Artificial Analysis、Bonsai，以及字幕中的 Thinky、Fable、Zeu/GLM 等作出 ASR 待核或限制使用；涉及具体模型竞品的名称不应据本文直接引用。Adam/“atom”、epsilon 数值、少于 150/115 人等也存在字幕或嘉宾记忆不确定性。\n\n数字均应理解为访谈中的口述：118B 总参数/8B active、DGX Spark 上约 30–40 token/s、约 10,000 张 H200、每月约 10,000–20,000 次实验、Laguna XS2 约 5 周、Laguna S 约 8 周、新 M 预训练 39 天、知识工作约占全球经济 25%/25 万亿美元等，均未由本文以外部材料独立核验。尤其速度、成本和 benchmark 缺少完整测试条件，不能直接用于采购或投资模型。\n\n“延伸分析”一节是编辑分析，不是嘉宾原话；其关于 Jevons 效应、任务路由、部署内存、沙箱安全、评测设计与资本开支的推论，应与正文中的访谈主张严格区分。短引语均附时间戳，长段内容以忠实转述为主。\n",
+      "sourceBoundary": "YouTube caption-derived transcript fetched via youtube-transcript-api from the official Latent Space upload; automatic captions are not a human-edited official transcript and may contain speaker/name/technical-term errors. The official YouTube item is the canonical candidate identity because the RSS feed was unreachable in this run.",
+      "whyItMatters": "这期访谈的研究价值不只在于 Poolside 发布了一款新的开放权重代码模型,而在于 Eiso Kant 给出了一套相对完整的“基础模型公司生产函数”:模型能力如何从数据、算力效率、训练系统、实验纪律、后训练行为、agent harness 与组织设计共同产生;为什么真正稀缺的未必是某一次 hero run 的 GPU 小时,而是让研究想法可靠、快速、可复现地进入下一次训练的整套工厂;以及当这种工厂开始被 agent 自身使用时,递归自我改进会以何种朴素、工程化的形态先出现。",
+      "themes": [
+        {
+          "id": "theme_e748f8750672ca8b04b2",
+          "name": "AI Agents",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_ebbd5f51fefc7fcabdf4",
+          "name": "AI Infra",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_693b1c2b5c9e35f47d43",
+          "name": "Enterprise AI",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_b4d7581efc05d1db8fe0",
+          "name": "Markets / Macro",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_7e5743d68b4cb5c76b9d",
+          "name": "Product / GTM",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_f1991dbc4cf3c8fe3860",
+          "name": "Venture / Pre-IPO",
+          "provenance": "deterministic-keyword-v1"
+        }
+      ],
+      "entities": [
+        {
+          "id": "entity_1ad9baa389d2b038b89f",
+          "type": "company",
+          "name": "Alphabet / Google",
+          "evidenceSource": "note",
+          "confidence": 0.9
+        },
+        {
+          "id": "entity_c0948307254b62bd51b1",
+          "type": "company",
+          "name": "Amazon / AWS",
+          "evidenceSource": "note",
+          "confidence": 0.9
+        },
+        {
+          "id": "entity_572c531059ad7c8ca7a2",
+          "type": "company",
+          "name": "Anthropic",
+          "evidenceSource": "note",
+          "confidence": 1
+        },
+        {
+          "id": "entity_5a78804e3c678d5fb398",
+          "type": "company",
+          "name": "Microsoft",
+          "evidenceSource": "note",
+          "confidence": 1
+        },
+        {
+          "id": "entity_f9825526d30e513764a0",
+          "type": "company",
+          "name": "NVIDIA",
+          "evidenceSource": "note",
+          "confidence": 1
+        },
+        {
+          "id": "entity_54f40d6e1ebcc63523d3",
+          "type": "organization",
+          "name": "OpenAI",
+          "evidenceSource": "note",
+          "confidence": 1
+        }
+      ],
+      "noteVersions": [
+        {
+          "versionLabel": "source-faithful",
+          "writingStyle": "source-faithful",
+          "charCount": 22018,
+          "language": "zh-CN",
+          "canonical": true,
+          "superseded": false
+        }
+      ]
+    },
     {
       "id": "ep_05874cc6c76210cbff09",
       "showId": "show_21aa5c705384e983fae9",
@@ -3774,7 +3881,7 @@
       "name": "Latent Space: The AI Engineer Podcast",
       "slug": "latent-space",
       "tier": "Tier A",
-      "readyCount": 4
+      "readyCount": 5
     },
     {
       "id": "show_f9022c3635cf95b54bb9",
@@ -3829,12 +3936,12 @@
   "coverage": {
     "since": "2026-07-01",
     "totals": {
-      "officialEpisodes": 87,
+      "officialEpisodes": 92,
       "noteReady": 9,
       "transcriptReady": 10,
       "qcReady": 9,
-      "queued": 78,
-      "candidateAliasesMerged": 101
+      "queued": 83,
+      "candidateAliasesMerged": 110
     },
     "shows": [
       {
@@ -3908,12 +4015,12 @@
         "slug": "bloomberg-technology",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 15,
+        "officialEpisodes": 16,
         "noteReady": 1,
         "transcriptReady": 0,
         "qcReady": 1,
-        "queued": 14,
-        "candidateAliasesMerged": 15
+        "queued": 15,
+        "candidateAliasesMerged": 16
       },
       {
         "id": "show_f86bd475750778cc5df3",
@@ -3947,12 +4054,12 @@
         "slug": "decoder-with-nilay-patel",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 6,
+        "officialEpisodes": 7,
         "noteReady": 0,
         "transcriptReady": 0,
         "qcReady": 0,
-        "queued": 6,
-        "candidateAliasesMerged": 7
+        "queued": 7,
+        "candidateAliasesMerged": 8
       },
       {
         "id": "show_ea0877583838baf97fca",
@@ -4025,12 +4132,12 @@
         "slug": "no-priors",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 2,
+        "officialEpisodes": 3,
         "noteReady": 1,
         "transcriptReady": 1,
         "qcReady": 1,
-        "queued": 1,
-        "candidateAliasesMerged": 6
+        "queued": 2,
+        "candidateAliasesMerged": 9
       },
       {
         "id": "show_1cd6aecdd31c0ae82c2c",
@@ -4038,12 +4145,12 @@
         "slug": "odd-lots",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 10,
+        "officialEpisodes": 11,
         "noteReady": 0,
         "transcriptReady": 0,
         "qcReady": 0,
-        "queued": 10,
-        "candidateAliasesMerged": 12
+        "queued": 11,
+        "candidateAliasesMerged": 13
       },
       {
         "id": "show_8058fbf55a596a5862ec",
@@ -4064,12 +4171,12 @@
         "slug": "20vc",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 9,
+        "officialEpisodes": 10,
         "noteReady": 3,
         "transcriptReady": 4,
         "qcReady": 3,
-        "queued": 6,
-        "candidateAliasesMerged": 15
+        "queued": 7,
+        "candidateAliasesMerged": 18
       },
       {
         "id": "show_66323af571a19fdabe95",
@@ -4101,9 +4208,9 @@
     "months": [
       {
         "month": "2026-07",
-        "officialEpisodes": 87,
+        "officialEpisodes": 92,
         "noteReady": 9,
-        "queued": 78
+        "queued": 83
       }
     ]
   }
