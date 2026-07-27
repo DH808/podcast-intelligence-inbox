@@ -1,6 +1,6 @@
 {
   "format": "podcast-library-sanitized-v1",
-  "generatedAt": "2026-07-26T23:00:09.402Z",
+  "generatedAt": "2026-07-27T23:00:22.355Z",
   "gateVersion": "library-ready-v2",
   "counts": {
     "episodes": 40
@@ -24,16 +24,16 @@
       "why_it_matters_missing": 94
     },
     "ingest": {
-      "id": "ingest_2413f3c658bbe93fecb8",
-      "startedAt": "2026-07-26T23:00:09.028Z",
-      "completedAt": "2026-07-26T23:00:09.031Z",
+      "id": "ingest_70a758ff5606c3050aad",
+      "startedAt": "2026-07-27T23:00:21.986Z",
+      "completedAt": "2026-07-27T23:00:21.989Z",
       "status": "completed",
       "sourceCounts": {
         "monitoredShows": 20,
         "officialSinceCutoff": 101,
-        "candidateRows": 238,
+        "candidateRows": 252,
         "candidateAliasesMerged": 112,
-        "radarIndexed": 244,
+        "radarIndexed": 258,
         "radarReadyImported": 18,
         "iltbCanonicalSobridgeMarkdown": 16,
         "iltbVersions": 32,
@@ -41,14 +41,14 @@
         "genericExcluded": 10,
         "attachedArtifacts": 462,
         "importedClaims": 374,
-        "inventoryFiles": 9495,
+        "inventoryFiles": 9640,
         "canonicalEpisodes": 135,
         "readyEpisodes": 40
       },
-      "inserted": 3,
-      "updated": 132,
+      "inserted": 0,
+      "updated": 135,
       "deduped": 198,
-      "warnings": 13,
+      "warnings": 15,
       "errorSummary": null,
       "codeVersion": "task-004-v1"
     }
@@ -3980,17 +3980,17 @@
           "superseded": false
         },
         {
-          "versionLabel": "source-brief",
-          "writingStyle": "source-brief",
-          "charCount": 6735,
+          "versionLabel": "historical",
+          "writingStyle": "historical",
+          "charCount": 12903,
           "language": "zh-CN",
           "canonical": false,
           "superseded": true
         },
         {
-          "versionLabel": "historical",
-          "writingStyle": "historical",
-          "charCount": 12903,
+          "versionLabel": "source-brief",
+          "writingStyle": "source-brief",
+          "charCount": 6735,
           "language": "zh-CN",
           "canonical": false,
           "superseded": true
