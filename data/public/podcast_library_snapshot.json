@@ -1,6 +1,6 @@
 {
   "format": "podcast-library-sanitized-v1",
-  "generatedAt": "2026-08-03T23:00:47.057Z",
+  "generatedAt": "2026-08-04T23:00:28.080Z",
   "gateVersion": "library-ready-v2",
   "counts": {
     "episodes": 43
@@ -24,9 +24,9 @@
       "why_it_matters_missing": 94
     },
     "ingest": {
-      "id": "ingest_380aa76e0a4e5606d5e5",
-      "startedAt": "2026-08-03T23:00:46.654Z",
-      "completedAt": "2026-08-03T23:00:46.657Z",
+      "id": "ingest_e62071d9bf42d7502687",
+      "startedAt": "2026-08-04T23:00:27.526Z",
+      "completedAt": "2026-08-04T23:00:27.529Z",
       "status": "completed",
       "sourceCounts": {
         "monitoredShows": 20,
@@ -41,7 +41,7 @@
         "genericExcluded": 10,
         "attachedArtifacts": 477,
         "importedClaims": 374,
-        "inventoryFiles": 10723,
+        "inventoryFiles": 10745,
         "canonicalEpisodes": 138,
         "readyEpisodes": 43
       },
