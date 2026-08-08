@@ -1,9 +1,9 @@
 {
   "format": "podcast-library-sanitized-v1",
-  "generatedAt": "2026-08-07T23:00:42.506Z",
+  "generatedAt": "2026-08-08T23:00:07.720Z",
   "gateVersion": "library-ready-v2",
   "counts": {
-    "episodes": 54
+    "episodes": 55
   },
   "audit": {
     "gateVersion": "library-ready-v2",
@@ -12,48 +12,162 @@
     "foreignKeyViolations": 0,
     "duplicates": 0,
     "orphans": 0,
-    "total": 196,
-    "ready": 54,
-    "blocked": 142,
-    "publicReady": 54,
+    "total": 200,
+    "ready": 55,
+    "blocked": 145,
+    "publicReady": 55,
     "reasonCounts": {
-      "canonical_note_missing": 141,
-      "deterministic_qc_failed": 141,
-      "source_boundary_missing": 141,
+      "canonical_note_missing": 144,
+      "deterministic_qc_failed": 144,
+      "source_boundary_missing": 144,
       "source_note_placeholder_or_error": 1,
-      "why_it_matters_missing": 141
+      "why_it_matters_missing": 144
     },
     "ingest": {
-      "id": "ingest_f11aba27028e5f2cf551",
-      "startedAt": "2026-08-07T23:00:42.048Z",
-      "completedAt": "2026-08-07T23:00:42.050Z",
+      "id": "ingest_bc5c1e88eeae048106e8",
+      "startedAt": "2026-08-08T23:00:07.262Z",
+      "completedAt": "2026-08-08T23:00:07.264Z",
       "status": "completed",
       "sourceCounts": {
         "monitoredShows": 20,
-        "officialSinceCutoff": 160,
-        "candidateRows": 375,
-        "candidateAliasesMerged": 191,
-        "radarIndexed": 379,
-        "radarReadyImported": 32,
+        "officialSinceCutoff": 163,
+        "candidateRows": 382,
+        "candidateAliasesMerged": 195,
+        "radarIndexed": 385,
+        "radarReadyImported": 33,
         "iltbCanonicalSobridgeMarkdown": 16,
         "iltbVersions": 32,
         "genericReviewed": 9,
         "genericExcluded": 10,
-        "attachedArtifacts": 530,
+        "attachedArtifacts": 535,
         "importedClaims": 374,
-        "inventoryFiles": 11053,
-        "canonicalEpisodes": 196,
-        "readyEpisodes": 54
+        "inventoryFiles": 11201,
+        "canonicalEpisodes": 200,
+        "readyEpisodes": 55
       },
-      "inserted": 5,
-      "updated": 191,
-      "deduped": 323,
-      "warnings": 29,
+      "inserted": 4,
+      "updated": 196,
+      "deduped": 328,
+      "warnings": 31,
       "errorSummary": null,
       "codeVersion": "task-004-v1"
     }
   },
   "episodes": [
+    {
+      "id": "ep_8520357e99a9832fa09a",
+      "showId": "show_2d9b4906c612c38655af",
+      "show": "All-In Podcast",
+      "title": "Google’s AI Brain Drain, SpaceX's Huge Quarter, Airtable’s 90% Collapse, US Data Fuels China AI",
+      "publishedAt": "2026-08-08T01:33:14.000Z",
+      "publishedDate": "2026-08-08",
+      "durationSeconds": null,
+      "duration": "",
+      "description": "(0:00) Bestie intros! Brad Gerstner fills in for Chamath (2:16) Major shakeups at Google: AI brain drain or better strategy? (20:39) SpaceX's big quarter: Terafab, AI Capex, $1T revenue projection? (45:44) All-In Summit Speaker Announcements! (48:01) Airtable sells for a 90% discount: SaaSpocalypse? (1:05:56) Chinese AI labs are buying US training data to catch up Apply for Summit 2026: https://allin.com/events Follow Brad: https://x.com/altcap Follow the besties: https://x.com/chamath https://x.com/Jason https://x.com/DavidSacks https://x.com/friedberg ",
+      "originalUrl": "https://www.youtube.com/watch?v=muRIXCDw-k0",
+      "mediaType": "youtube",
+      "materiality": "high",
+      "productionStatus": "qc_passed",
+      "readerReady": true,
+      "publicReady": true,
+      "gateVersion": "library-ready-v2",
+      "noteMarkdown": "# Google AI 人才流失、SpaceX 巨额季度、Airtable 估值坍塌与美国数据助推中国 AI\n\n节目：All-In Podcast  \n原题/标题：Google’s AI Brain Drain, SpaceX's Huge Quarter, Airtable’s 90% Collapse, US Data Fuels China AI  \n发布时间：2026-08-08T01:33:14+00:00  \n原始链接：https://www.youtube.com/watch?v=muRIXCDw-k0  \n经核伴随链接：https://www.youtube.com/watch?v=muRIXCDw-k0  \nSource boundary: YouTube Transcript API auto-caption transcript from the verified official All-In Podcast video muRIXCDw-k0. This is not a human-edited transcript; speaker attribution, names, figures and technical terms may contain caption errors.\n\n## 为什么对研究重要\n\n这期节目的价值，不在于四条新闻各自的热度，而在于它把 AI 产业正在形成的资本结构连在了一起：模型公司争夺最前沿智能，云与基础设施公司把算力变成高确定性的资本回报，SpaceX 试图同时经营算力、模型、卫星通信和制造能力，传统 SaaS 则在产品范式与资本结构的双重压力下重新定价。四位讨论者并未形成单一结论：David Friedberg 强调算力基础设施相对模型研发的风险收益优势；David Sacks 坚持前沿智能并未商品化，而是正在形成 Anthropic/OpenAI 双寡头；Jason Calacanis 更看重 Google 的分发与开源模型“足够好”；客座嘉宾 Brad Gerstner 则同时认可前沿模型的领先、基础设施的回报和融资链条的脆弱性。\n\n最后关于中国 AI 购买美国训练数据的争论，又把产业分析推到政策边界：Sacks 主张只有真正专有、军民两用且能形成决定性优势的技术才应被精准限制，Jason 则认为美国专家生产的高质量反馈数据本身就是“秘密配方”，继续出售会加速中国追赶。它因此也是一份关于“什么才是 AI 时代的战略稀缺品”的现场辩论记录。\n\n## 一页导读\n\nGoogle 人事变化被 Friedberg 解读为资本配置而不只是人才流失：即时折旧和旺盛需求使数据中心投资具备较高确定性，而前沿模型需要数百亿美元、又面临开源权重快速追赶，回报更难预测。Brad 补充，Google Cloud 出租算力与内部团队争抢算力存在天然渠道冲突。Sacks 不同意“模型层全面商品化”，认为市场分成可收费的前沿智能与落后 6—12 个月、只能对推理和服务收费的商品化智能；Jason 则用 Google 的十亿级产品矩阵和自己的使用体验反驳，认为大多数工作不需要最前沿模型。Friedberg 给出的折中框架是：企业会编排多模型，简单工作流用低价开放权重，关键或专业任务用最佳模型。\n\nSpaceX 部分围绕一个多引擎资产展开：季度收入、算力出租、Grok/Cursor、Starlink、Starship 与所谓 Terafab（名称 ASR待核）共同支撑牛市叙事。Friedberg 认为 Starlink 本身就可能成为巨额自由现金流机器；Sacks 详解 V3 卫星与 Starship 如何让单次发射新增网络容量提升 20 倍以上。但真正的约束在融资和供应链：若来年从 2GW 扩至约 8GW，按每 GW 至少 500 亿美元计，需要约 3,000 亿美元新增资本；高达每瓦 30—50 美元的现货价格和一年以内回收期，可能只是供给极端紧缺时的阶段性结果。Brad 提醒，Nvidia 等卖方融资、SPV 与前沿实验室的承购承诺会放大周期，一旦需求滑落，整个板块会同步剧烈下跌。\n\nAirtable 以含现金约 22.5 亿美元、净交易价约 12.8 亿美元出售给 Bending Spoons，相比 2021 年 117 亿美元峰值缩水约 90%。Sacks 将其解释为人才把 AI 业务拆出、收购方接手“私募股权式”成熟资产：取消低效销售驱动增长，回归产品驱动并大幅削减成本。Brad 对 80%—90%利润率的乐观估算提出异议，指出增长停滞会引发士气、客户流失和人才流失的负反馈。众人随后区分了最易被 Claude 等智能体替代的无代码工具，与受身份、合规、数据和流程锁定保护的 Microsoft、Salesforce 等系统记录型软件。\n\n中国数据议题上，节目引用调查称中国头部六家实验室每年花约 5 亿美元购买美国公司制作的博士级内容、强化学习反馈和知识流水线。Sacks 认为普通标注和专家数据在中国可重建，全面禁售只会触发包括稀土在内的对等报复；Jason 坚持这类经过错误发现、专家修正和复核的数据包正在帮助中国模型快速追赶。Brad 的政策判断居中：美国领先时监管会保持克制，一旦领先地位逆转，同样的交易会受到更严厉审查。\n\n## 一句话主线与 投资研究用户 关注点\n\n一句话主线：AI 的核心竞争正从“谁有一个最好模型”转向模型溢价、算力资本回报、分发入口、专有数据和融资能力的组合竞争，而每一层的高增长都伴随渠道冲突、资本错配或政策反噬。\n\nDH 关注点：一是前沿智能是否真能维持可收费的质量差距；二是每瓦算力价格、利用率和回收期能否支撑 SpaceX 式超大规模扩张；三是 AI 对 SaaS 的影响应按产品类别和系统锁定程度拆分，而非笼统宣判“SaaS 末日”；四是高质量后训练数据是否会从普通服务升级为出口管制对象。\n\n## 关键数字总表\n\n| 主题 | 数字 | 节目中的含义 |\n|---|---:|---|\n| Google AI 资本开支 | 今年约 2,000 亿美元 | 数据中心、AI 基础设施建设；即时折旧强化税后回报 |\n| Google 股价反应 | 下跌 4%，约 2,000 亿美元市值 | 主持人将其与 Jeff Dean 等离职消息相关联 |\n| 企业税与折旧 | 假设税率 26%，每 1 美元资本开支当年约“省”26% | Brad 对即时费用化税收激励的表述 |\n| Microsoft 算力回报 | 投入资本回报率超过 30% | Brad 转述 Morgan Stanley 报告，指 tokens-as-a-service |\n| Polymarket 年末第一模型概率 | OpenAI 32%、Google 20%、Alibaba 14%；Moonshot、xAI、Meta、ByteDance 各约 10% | 主持人用来引出模型层是否商品化 |\n| Anthropic ARR | 年初约 100 亿美元，当前超过 800 亿；原指引年末 1,000 亿，讨论上修至 1,100亿—1,200亿以上 | Sacks 用作前沿模型可收溢价的证据；数值来自节目陈述 |\n| Google 产品分发 | 5 个产品各超 30 亿月活；共 13 个产品超 10 亿 | Jason 的 Google 分发优势论；列举 Android、Search、Gmail、Chrome、YouTube |\n| Gemini 月活 | Q2 超过 9.5 亿，同比增长约 3 倍 | Jason 预测 Google 将成为消费端使用量最大的 AI 公司 |\n| 消费订阅 | 每月约 20—40 美元 | Friedberg 认为消费者会为 ChatGPT、Gemini 或 Claude 的便利付费 |\n| SpaceX Q2 收入 | 78 亿美元，同比 +92%，环比 +67% | 上市后首份季报的核心数据 |\n| SpaceX AI 收入 | 26 亿美元，环比逾 3 倍 | 主持人称主要来自向 Anthropic、Google 出租 Colossus 算力，不含尚未完成的 Cursor 交易 |\n| SpaceX Q2 资本开支 | 184 亿美元，同比约 6 倍；年化约 750 亿 | 股价承压的主要担忧 |\n| SpaceX 市值 | 约 1.4 万亿美元；较 6 月上市后高点明显回落 | Brad 认为进入较合理的长期定价区间 |\n| SpaceX 收入目标 | 年末 ARR 1,000 亿美元；1 万亿美元 ARR 目标从 2031 提前到 2030 | Elon 在业绩会上的指引，按节目转述 |\n| Morgan Stanley 2030 预测 | 收入 3,250 亿美元 | 与 Elon 的 1 万亿美元目标形成上下界 |\n| SpaceX 算力 | 当前约 1.4GW，年末约 2GW；明年 5—10GW、偏近 10GW | Sacks 据业绩会推演扩张路径 |\n| 算力现货价 | 每瓦约 30—50 美元 | 2GW × 50 美元/瓦可对应约 1,000 亿美元 ARR；持续性是争论焦点 |\n| 数据中心造价 | 每 GW 至少约 500 亿美元 | 从 2GW 增至假设的 8GW，新增 6GW约需 3,000 亿美元 |\n| Starlink Q2 | 收入 43 亿美元、调整后 EBITDA 26 亿美元 | Friedberg 的“现金机器”论据 |\n| Starlink 用户 | 1,200 万，同比翻倍；ARPU 每月 66 美元；环比增长 20% | 推演用户和现金流继续扩张 |\n| Starlink 推演 | 年收入约 400 亿美元、自由现金流或约 300 亿美元；30 倍估值可近 1 万亿美元 | Friedberg 的牛市情景，不是公司指引 |\n| 卫星发射容量 | Falcon 9 每次约 27 颗 V2、增 2.6Tbps；Starship 每次约 60 颗 V3、增约 60Tbps | Sacks 称单次发射容量提升 20 倍以上；原字幕一处写“terabytes”，单位 ASR待核 |\n| Airtable | 年收入 4.8 亿美元、增长约 20%、现金近 10 亿美元 | 一家仍增长且有现金的 SaaS 也遭大幅重估 |\n| Airtable 交易 | 净价约 12.8 亿美元、含现金约 22.5 亿；2021 峰值估值 117 亿 | 约为峰值的 10% |\n| Airtable 销售达标率 | 仅约 30% | Sacks 据此判断销售驱动扩张不适配产品 |\n| Airtable 潜在利润 | 年 EBITDA 3亿—4亿美元；利润率可达 80%—90%的说法遭 Brad 质疑 | 收购方削减成本后的情景估算 |\n| 软件股表现 | IGV 近 6 个月 +20%、近 5 年 +20%；Snowflake 近 6 个月约 +88%—90% | 反驳“所有 SaaS 都被摧毁” |\n| 中国购买训练数据 | 中国头部六家 AI 实验室合计每年约 5 亿美元 | 节目转述 Forbes 调查 |\n| 数据供应商估值 | 两家公司均超 200 亿美元 | 字幕公司名为“Sergei”和“Meror”，应为 Surge AI、Mercor，ASR待核 |\n\n## 00:00–02:16｜暑期阵容与嘉宾到场\n\nJason 开场说明 Chamath 正在旅行，本期由 Brad Gerstner 补位，David Friedberg 和稍晚接入的 David Sacks 参加。众人围绕 Chamath 的旅行照片、白色高领衫和节目梗短暂调侃；这部分主要是节目惯常寒暄，没有实质议题。随后 Jason 宣布进入四条新闻。\n\n## 02:16–07:09｜Google AI 人事震荡：人才流失，还是资本配置转向\n\nJason 称 Google 在周三发生两项 AI 人事变化：Demis Hassabis 转任 DeepMind 董事长及 Google 首席科学家；外界有“退居二线/被升职架空”的描述，Google 则称之为晋升。Axios 的报道被转述为 Gemini 3.5 Pro 落后数月，部分内部人士归因于士气低落；Gemini 联合负责人等顶尖研究人员已流向竞争实验室。Jeff Dean 与另外三位 AI 研究者离职创办 Discovery Loop，方向是利用 AI 做深层科学突破。Jason 强调 Dean 是 Google 约第 30 号员工、1999 年加入并连续任职约 27 年；消息后 Google 股价跌约 4%，相当于约 2,000 亿美元市值，但这种因果关联只是主持人的新闻 framing。\n\nFriedberg 不把变化简单归为组织失败。他给出第三种解释：董事会和管理层正在比较两类资本用途。Google 今年承诺约 2,000 亿美元 AI 基础设施资本开支；美国当前对设备投资的加速/即时折旧带来显著税收优势，而算力需求极强、Google 又擅长运营基础设施，因此数据中心投入的回报路径相对清晰。与之相比，训练最先进的前沿模型同样需要数百亿美元，但开源和开放权重模型快速追赶，各前沿实验室也迅速拉平，模型本身能否产生匹配投入的利润更不确定。\n\n他回顾，Google 在 ChatGPT 发布前约一年已经有相当产品，却担心蚕食搜索而没有推出，后来 Sergey Brin 回归推动 AI 重启。如今 Google 拥有全球最强的企业和消费者安装基础之一，不必拥有绝对最佳模型也能经营优秀业务：它可以同时托管 Anthropic、OpenAI、开放权重模型，并利用对 Anthropic 及 SpaceX 的持股或合作关系。若内部科学家看到资本更多流向通用算力而非自己的模型，又能凭个人声誉拿着演示文稿按数十亿美元投前估值融资，出走创业就很合理。Friedberg 将二者概括为：数据中心资本开支是“高 alpha、低 beta”，模型研发可能高 alpha、但 beta 极高；理性的公司资本配置会偏向前者。\n\n## 07:09–12:32｜渠道冲突与 Sacks 的“前沿智能双寡头”\n\nBrad 基本认同 Friedberg。他转述 Microsoft/Morgan Stanley 的观察：tokens-as-a-service 的投入资本回报率超过 30%。但希望追求超级智能、治愈癌症或模型边界的科学家，会与 Google Cloud 发生资源冲突——云业务希望把算力租给 Anthropic，内部前沿团队则要用同一批算力与 Anthropic 竞争。类似冲突也存在于同时出租算力、又发展 Grok 和 Cursor 的 SpaceX，以及可能进入基础设施服务的 Meta；Anthropic 和 OpenAI 作为纯模型公司则没有这层冲突。Brad 认为 Google 的变化显示冲突正向基础设施业务倾斜。他还指出，按 26%公司税率和资本开支当年抵扣计算，每投入 1 美元相当于立即获得约 26%的税收回流。\n\nJason 展示 Polymarket 对年末“第一 AI 模型”的概率：OpenAI 32%、Google 20%、Alibaba 14%，Moonshot、xAI、Meta、ByteDance 各约 10%，并追问价值最终属于模型、token 供应还是应用层。Sacks 回答“现在只剩两个”：一年前约有五家公司竞逐前沿位置，如今前沿智能实质上成为 Anthropic 与 OpenAI 的双寡头；Elon 仍在追赶，Google 也会声称仍在赛道，但基础设施收益让其激励出现矛盾。\n\nSacks 不接受前沿模型已商品化。他认为市场会分成两层：真正的前沿智能可以收取溢价；落后约 6—12 个月的“商品化智能”仍有巨大市场，但模型权重本身无法收费，只能对算力、推理和集成咨询收费。他以 Anthropic 的增长作证：节目称其 ARR 从年初约 100 亿美元升至超过 800 亿，原本被认为不可能的年末 1,000 亿目标或会提前实现，估算甚至上调到 1,100亿—1,200亿美元以上；OpenAI 也在加速。其类比是 Apple 与 Android：开放平台可能用户更多，但利润聚集在愿意为高级体验付费的一端。\n\n## 12:32–16:11｜Jason 的分发论与“95%任务足够好”之争\n\nJason 从 Google Cloud 同比增长 82%讲起，认为 Google 仍可能是使用规模最大的 AI 公司。Android、Search、Gmail、Chrome、YouTube 五个产品各有超过 30 亿月活，且都在转成 AI-first；Google 共 13 个产品超过 10 亿用户，Gemini 也已加入。节目称 Gemini Q2 月活超过 9.5 亿、同比约增三倍，因此 Jason 预测其今年会远超同行成为消费端使用量最大的 AI 公司。\n\n他也以自身体验反驳必须购买前沿模型：自己几乎只用非前沿模型，95%的工作效果差距已可忽略。Elon 在社交媒体回复他称差距仍是“天壤之别”；Jason 则坚持，除极复杂任务或极端速度需求外，许多用户选择前沿模型只是企业已完成部署、开放模型实施仍较麻烦，而这个门槛会继续下降。因此他更看好开放模型与 Gemini 的使用领先。\n\nSacks 承认中档智能对 Jason 的任务足够，但用 iPhone/Android 再次说明“足够好”不等于无人支付溢价。对冲基金等高度竞争行业不会冒险使用次优智能；在 AI 用例尚不成熟、企业还在寻找价值时，发现高价值用例的回报远高于 token 的小额价差，也会促使其直接选最好模型。若员工没有因排行榜而无意义地“token maxing”，前沿模型的总成本未必构成主要障碍。\n\n## 16:11–20:39｜多模型编排：开放权重吃用量，前沿模型拿利润\n\nFriedberg 提出企业现实不会是单模型选择，而是组合：简单工作流、员工自建应用使用廉价开放权重；生命科学、基因组建模等高精度任务采用高价专业模型；媒体视频生成则选当时最好的 Gemini、Sora 或其他模型。消费者每月付 20—40 美元给 ChatGPT、Gemini 或 Claude 即可满足需求，企业却会持续编排通用、前沿和垂直模型。他也警告不能过早判定 Gemini 出局：Google 拥有最佳级别的视频和生命科学数据，DeepMind 在蛋白质折叠等领域积累更久，Demis 仍将负责 Isomorphic Labs；Google Cloud 若能提供模型混合，可能比单一模型供应商更有吸引力。\n\nJason 指出 OpenAI、Claude 已大幅下调 token 价格，企业工具也开始自动编排模型。Brad 将激烈竞争视为美国的优势：美国既有前沿实验室、国内开放模型，也面对中国开放模型，价格自然下行。他同意 Anthropic/OpenAI 是目前最强纯模型公司，却认为产业仅发展数年、Amazon、Microsoft、Google 尚在，不宜过早锁定“永久双寡头”。\n\nBrad 同时支持 Elon 的非共识判断：近两周市场普遍宣称中国开放模型已在智能水平与价格上追平，但 Elon 认为奇点临近、前沿模型领先程度远超表面基准；Jason 的普通用例不能代表最复杂训练和推理需求。Jensen Huang 的另一项反向论点是，闭源模型计入自建、微调、维护、安全和护栏成本后可能反而更便宜。Brad 的综合判断是：开放模型获得更多 token 用量，前沿实验室获得更多经济份额，类似 Android 与 iPhone 的分工。\n\n## 20:39–24:46｜SpaceX 上市首季：高增长与高资本开支同框\n\nJason 转入 SpaceX 上市后的首份季报：股价当日跌 13%，自 6 月上市以来约跌 30%，从超过 2 万亿美元的上市估值回落并稳定在约 1.4 万亿美元。Q2 收入 78 亿美元，同比增长 92%、环比增长 67%；AI 收入环比超过三倍至 26 亿美元。主持人把这部分称为“Elon Web Services”，主要是向 Anthropic、Google 出租 Colossus 算力，尚不包括未完成的 Cursor 收购。同期资本开支达到 184 亿美元，同比约六倍，简单年化接近 750 亿美元，这被认为是市场担忧的核心。\n\nBrad 先强调公司已创造 1.4 万亿美元价值，而科技 IPO 后六个月内从峰值回撤约 50%并不罕见。他认为季度扎实、指引惊人：年末 ARR 1,000 亿美元，1 万亿美元 ARR 目标从 2031 提前到 2030。对比之下，Morgan Stanley 对 2030 年收入预测为 3,250 亿美元，而公司去年收入仅 180 亿；无论采用哪组远期数字，当前价格都未完全计入。市场真正的问题有两类：第一，算力出租需要找到有能力承接 10—20GW（字幕称“gigs”，单位按上下文理解为 GW，ASR待核）的客户，且 GPU 租赁公司如 CoreWeave 通常估值倍数不高；第二，模型业务可能是被忽视的高倍数资产。节目称 Grok 7 月 token 量增长三倍，Cursor 原本就在从 30 亿美元向年末 100 亿美元收入路径前进，二者年末合计可能达到 100亿—200亿美元。Brad 建议重点观察 Grok/Cursor 年末收入，以及 Starlink 对传统移动运营商的替代进展。\n\n## 24:46–29:34｜Starship 解锁网络容量，Starlink 提供现金底盘\n\nSacks 认为这是一次“beat and raise”，对股价下跌感到意外。他特别关注成功的 Starship 测试：飞船在海上保持完整、隔热盾有效，使后续发射可以加速；Starship 又能部署带宽更高的 V3 卫星，从而扩大 Starlink 网络并支撑 direct-to-cell。AI 数据中心方面，他转述公司计划从约 1.4GW增至年末 2GW；若现货算力为每瓦 30—50 美元，则 1GW对应 300亿—500亿美元收入能力，2GW按每瓦 50 美元即可得到 1,000 亿美元 ARR，尚未计算 Starlink、发射和 Grok/Cursor。\n\nFriedberg 把 Starlink 称为难以置信的现金机器。SpaceX 按太空、连接和 AI 分部披露：连接业务季度收入约 43 亿美元、调整后 EBITDA 26 亿；太空约亏 2 亿，可近似视作盈亏平衡；AI 为正 11 亿美元。但 AI 出租价格可能因算力短缺和客户急迫而包含临时溢价，持续性不如 Starlink 清晰。Starlink 有 1,200 万订户、同比翻倍，ARPU 每月约 66 美元，季度增长 20%；若企业航空等业务同步扩张，Friedberg 推演它可能达到约 2,400 万用户年化速度、400 亿美元收入和约 300 亿美元自由现金流。以高续费订阅业务 30 倍估值，18—24个月内仅 Starlink 就可能接近 1 万亿美元市值，并为其余“科学项目”供血。\n\n他以自己过去在 Sonoma 农场使用 HughesNet（字幕拼写 ASR待核）每月约 200 美元且体验糟糕为例，说明传统卫星宽带已被 Starlink 重创；若手机直连推出，目前每季度新增约 200 万消费者的速度可能升至 400万—500万。美国约 4 亿移动订阅的市场空间，则使手机业务成为下一段增量。\n\n## 29:34–36:23｜Terafab、实体建造优势与公开市场的价格纪律\n\n讨论转向所谓 Terafab（项目名称 ASR待核）：如果 Elon 真能在美国建立节目所描述的超大半导体制造基地，就可能降低对台湾和中国供应链的依赖。Brad 赞扬这种资本配置的风险偏好：多数 CEO 面对可能价值 1万亿—2万亿美元的 Starlink，会停止承担新风险；Elon 却把现金投入晶圆厂、数据中心和自有模型等高风险但对美国重要的项目。他把这与部分公司选择回购、分红，以及 DoorDash、Google 因加大投资而被市场惩罚相对照，认为公开市场不应只奖励安全选择。\n\nJason 列出反方风险：token 和算力需求是否会一直增长；本地部署、桌面端和更小更好的开放模型是否会压低云端需求；Starlink 是否仍主要局限于缺少光纤的乡村地区。他本人倾向认为按需智能没有明显上限，并看好未来 Tesla 内置 Starlink、车辆成为周边手机的 Wi-Fi 节点，以及下一代卫星让手机直连。节目还设想 Tesla 与 SpaceX 完成某种合并后推进这一网络，属于讨论者推演，并非已确认事实。\n\n估值上，Jason 用“私募市场是投票机、公开市场是称重机”概括价格发现：上市时若按较小收入基数计算，SpaceX 一度约 160 倍市销率；收入快速增加后约降至 45 倍。Brad 认为 1.4 万亿美元使三至四年内实现约三倍回报具备可讨论性，但买入价格仍然关键；他回忆上市当天已表示想长期持有、却未必应在超过 2 万亿美元时立即买。Brad 又类比潜在的 Anthropic IPO：若年底 ARR 超过 1,000 亿美元、估值 1.5万亿—2万亿美元，相当于约 10—15 倍收入，对一家增长约十倍、据传 Q2 已盈利的公司不算极端。\n\nFriedberg 将 SpaceX 的独特优势归结为建造实体设施。软件服务终究依赖数据中心、晶圆厂和电力外壳，而 Elon 已通过全球超级工厂和火箭制造证明其工程交付能力。Sacks 转述 Elon 的说法：与造火箭相比，建数据中心“不是火箭科学”；把 SpaceX 的硬件能力迁移过去，解释了为何其建设速度超过 Microsoft、Google 等对手。\n\n## 36:23–40:22｜V3 卫星的 20 倍跃迁与 3,000 亿美元融资题\n\nSacks 进一步解释 Starship 对 Starlink 的机械作用。当前 V2 卫星由 Falcon 9 每次发射约 27 颗，单次增加约 2.6Tbps总网络容量；V3 单颗带宽约为 V2 的十倍，Starship 每次可部署约 60 颗，单次增加约 60Tbps，因此一次任务增加的网络容量超过 Falcon 9 的 20 倍。最近一次测试据称部署了约 20 颗 V3 测试星并成功建立连接、传回高清画面，随后按测试计划烧毁。下一里程碑是一次把约 60 颗 V3 送入正确轨道并真正加入网络。若持续扩容，Starlink 总带宽可提高十倍乃至百倍，direct-to-cell 才有充分容量。Gwynne Shotwell 关于地面站的暗示、可能收购 T-Mobile、最终承载全球约一半互联网流量，均是节目中的设想或转述，未被当作既成事实。\n\n随后 Sacks 把算力扩张写成资本问题：公司称年末约 2GW，明年 5—10GW且更接近 10；他取中间假设 8GW，即净增 6GW。若每 GW 数据中心至少需要 500 亿美元，就要约 3,000 亿美元资本。两个关键变量因此是：受内存约束推高的每瓦 50 美元现货价能维持多久；以及在公司不愿大规模发债或稀释股权时，谁来提供建设融资。节目转述 Elon 判断，明年内存产量可能只增约 20%，而需求增幅超过 200%，所以短期价格甚至可能上涨；公司声称回收期不超过一年，但这明显依赖当下现货价。Sacks 追问 Nvidia 是否会提供供应商融资。\n\n## 40:22–45:44｜承购、卖方融资与“需求滑落时的暴力下跌”\n\nBrad 确认每 GW 至少约 500 亿美元，认为融资选择无非是借债、稀释性增发或 Nvidia 等供应商兜底。问题在于 Nvidia 股东不会愿意无限兜底，因为一旦现货价反转，回收期就会显著拉长。几个月前市场还按四至五年回本估算：投入 500 亿，每年赚 100亿—150亿美元，前四五年收回本金，第六年才把回报率推到 20%以上。如今前沿实验室相信重大突破临近，愿为大规模连续算力支付正常价格的三至五倍；Anthropic 与 SpaceX 的交易正体现这种急迫性，OpenAI 也可能愿意购买更多。\n\n但能承担这种规模承购的客户很少，主要仍是 Anthropic、OpenAI、Nvidia；中国开放模型公司并不是 SpaceX 过剩算力或俄亥俄 10GW 项目的主要买家。Brad 判断，只要 SpaceX 能拿到内存、芯片、土地、电力和建筑外壳，未来 12—24个月的需求存在；新增 6GW虽超过 Anthropic 与 OpenAI 年初合计约 5GW，却并非完全脱离两家公司数倍至十倍的收入增长。\n\n真正的风险是联动杠杆。Kimi 的进展曾让市场担心开放模型压低前沿实验室收入，继而无人承担新算力，CoreWeave 和半导体相关股票一度下跌约 40%。新建 10GW约需 5,000 亿美元，资金可能来自二次发行、Nvidia 资产负债表或表外 SPV；Bill Gurley 将类似安排称为卖方融资或循环收入。Brad 认为市场已经认识到这种链条，因此可以实时调整，但建设速度不太可能再以当前斜率持续超过两年。一旦需求滑落，承购与融资实际上是在替客户提前建设，会令整个行业同时、剧烈下跌；信用利差持续较宽也显示债市没有忽略风险。Brad 的基准情形是未来 12—18个月看不到明显需求滑坡，但承认未知事件无法排除。\n\n## 45:44–48:01｜All-In Summit 公告（宣传内容压缩）\n\n节目宣布第五届 All-In Summit 将于 9 月 13—15日在洛杉矶举行，再次包场 Universal Studios。已公布嘉宾包括 Nvidia CEO Jensen Huang、Microsoft CEO Satya Nadella、NASA 的 Jared Isaacman、Brad Gerstner 与 Bill Gurley、SpaceX 的 Gwynne Shotwell，以及 Jake Paul、Nick Shirley 等；Martin Shkreli 是否出席仍以玩笑口吻提及，ASR待核。活动包含舞台访谈、社交、赌场之夜和待公布演出。Friedberg 称往届参会者来自 60 多个国家，活动定位不只是内容会议，而是学习、建立关系和共同体验。Brad 补充，当时点可能距中期选举约 60 天、距 Anthropic 潜在 IPO 约 30 天，因此讨论会很热烈。\n\n## 48:01–49:26｜Airtable 以峰值一折出售：交易事实与资产拆分\n\nJason 将 Airtable 交易称为“SaaS apocalypse”案例。节目给出的公司画像是：年收入约 4.8 亿美元、增长 20%、接近盈利且持有近 10 亿美元现金；Bending Spoons 以净价约 12.8 亿美元收购，若连现金计算交易价值约 22.5 亿美元，仅相当于 2021 年 117 亿美元峰值估值的约一成。Bending Spoons 是米兰公司，专门收购陷入挑战但仍有用户基础的产品，组合中包括 AOL 遗留业务、Evernote、Eventbrite、Vimeo、Meetup.com；节目称其上月刚上市，宣布 Airtable 交易后股价涨约 15%。\n\nSacks 补充，Airtable 在交易前把 AI 智能体业务 Hyperagent（名称 ASR待核）拆成独立公司。其解读是，创始人和核心人才不愿继续经营一个需要私募股权式优化的成熟产品，选择把精力放到可能创造高倍数回报的 AI 新公司；Bending Spoons 则接手现金流改造。\n\n## 49:26–53:39｜Sacks 的私募股权剧本：砍销售、回归 PLG\n\nSacks 抓住一个关键数据：Airtable 仅约 30%的销售人员完成配额。他据此反推，公司原本有成功的产品驱动增长（PLG），自然增长约 20%，但对在 117 亿美元估值投入的董事会成员来说不够快，于是董事会迫使团队叠加传统销售驱动模式。几百名销售试图“推绳子”，只带来有限增量和极低达标率。收购方因此可以像 Elon 改造 Twitter 一样削减 85%—90%成本，停止不自然的销售扩张，保留大部分产品驱动增长。\n\nJason 与 Sacks 推演，若收入约 4.8 亿美元，极端精简后利润率或达 80%—90%，年 EBITDA 约 3亿—4亿美元，收购价两三年即可收回；市场较保守的估计只有约 30% EBITDA 利润率。Sacks 认为 Airtable 有忠诚用户，维护模式足以支撑 10%—20%增长和可观现金流。\n\n为什么原公司不自行做同样重组？Sacks 的解释是组织与资本结构不允许：创始人和 VC 董事习惯追求风险投资式结果，对团队有忠诚，不愿拆掉自己建立的组织；同时，高估值轮次累积了巨额清算优先权，普通股和管理层排在后面，缺少转向现金流最大化的激励。Bending Spoons 既没有这种情感包袱，也已有中央团队管理数十项资产，可以把 Airtable 接入共同基础设施。\n\n## 53:39–56:18｜Brad 的反驳：慢增长会形成客户与人才的负反馈\n\nJason 请 Brad 回看零利率时期 Altimeter 等机构在高估值 SaaS 上的教训。Brad 的第一条结论是收入倍数压缩可以非常快：公司增长超过 50%时，高倍数看似有效，但“收入倍数”只是硅谷粗略启发式。交易表面约为两倍收入，按真实可实现自由现金流可能仍接近 30 倍。他不相信轻易就能做到 4 亿美元 EBITDA；若如此简单，原董事会理应已经完成。\n\nBrad 强调慢增长的经营动力学：公司士气恶化、客户流失上升、产品迭代放缓，三者互相强化；在 AI 热潮中，优秀销售和产品人才又更愿意离开去做 AI。他怀疑 Airtable 核心产品已经明显失速，不能仅按静态收入减成本。Sacks 同意人才会流失，却认为维护这个产品不再需要原来规模的人员。更重要的是，AI 可以快速理解代码库、重建历史知识，过去收购方因需要机构记忆而不能清空团队，现在维护模式的成本边界发生了变化。Brad 认可这是一个有意义的新洞见。\n\n## 56:18–1:00:47｜ZIRP SaaS 与 AI 投资并非同一种泡沫\n\nJason 追问零利率 SaaS 高估值与今日 AI 高市销率是否相似。Friedberg 明确区分：SaaS 时代资本按“1 美元收入乘 20 倍估值”的逻辑流入，高倍数本身驱动融资；AI 的主要资本流向基础设施建设和模型训练，其回报结构、战略与资本配置过程不同，不能简单类比。\n\nSacks 则解释旧 SaaS 被高估的两项原因：人为低利率制造了投机资产超级泡沫；投资者又把 120%净收入留存率当成永续增长年金，默认老客户净贡献每年自动增 20%。AI 证明软件会被颠覆，所谓“年金”并不稳固。但他反对从 Airtable 外推整个 SaaS：Airtable 一直是难以解释的产品，曾被包装成“新 Excel/Google Sheets”或“文字的电子表格”，却从未形成电子表格那样的普遍认知；它有邪教式忠诚用户，却没有明确到人人都知道何时必须使用的核心场景。\n\nAirtable、Retool 等无代码工具尤其脆弱：虽然不要求会写传统代码，用户仍需学习一套近似新编程语言的产品逻辑；Claude Code、Claude Cowork、Lovable 等（个别产品名受字幕影响，ASR待核）允许用户直接描述需求，省掉这层学习曲线。Sacks 因此认为无代码是 SaaS 中受冲击最重的部分，但 CRM、ERP、HR 等涉及合规的核心系统不适合被随意 vibe-code 后替换。\n\n## 1:00:47–1:05:56｜自建软件、合规护城河与清算优先权\n\nJason 与 Sacks 都举出团队一个月内 vibe-code 投资组合管理系统的案例。Jason 称若购买现成软件，可能需约 25 万美元许可费，再用两三年和约 100 万美元集成；自建系统却在一个月内完成，并能查看整个投资组合、竞品、创始人与动态。这证明部分应用软件的采购与集成成本会被 AI 快速压缩。\n\nSacks 同时提醒，押注所有 SaaS 毁灭也会失败：Leopold（姓氏/具体基金 ASR待核）不仅做多芯片股，还做空 Adobe 等 SaaS；芯片回调和软件反弹同时打击了仓位。大型企业购买 Microsoft 并非因为它写出最好的每一行代码，而是因为 Active Directory 承载身份、Excel 承载董事会数字、Teams 保留合规录音、Azure 拥有 FedRAMP High 与美国国防部 Impact Level 5 等认证。为替换每年约 100 万美元的软件而付出数千万美元迁移成本并不合理。节目还引用 Marc Benioff 当日说法：15 个内阁机构全部运行 Salesforce；政府不会把它们换成随手 vibe-code 的系统。Jason 把 Figma 归为另一类：有长期创始人和热情用户基础，可能成功转成 AI-first 产品。\n\nBrad 用市场数据收束：高增长软件 ETF IGV 近六个月约涨 20%，近五年也约涨 20%；Snowflake 近六个月涨约 88%—90%，Databricks、ClickHouse 等数据基础设施公司表现也强。这说明不能把所有软件放进同一篮子，但不少无代码和应用层软件确实应在窗口关闭前寻求出售。Airtable 的后期投资人据称在约 20亿、50亿和117亿美元轮次进入，凭 1倍清算优先权大体收回本金，早期投资人仍获利，因而这是一次对硅谷而言“相当不错的失败”。\n\n众人最后澄清条款：标准“clean terms”是 1倍非参与型清算优先权，即优先股先拿回本金，再由普通股参与剩余上行；参与型优先股才是先返本、再按持股比例“双重领取”。Sacks 表示其机构从不做惩罚创始人的参与型条款，但认为让部分股东盈利、同时让新投资人亏损也不合理，因此 1倍优先返本是合理的价值排序。\n\n## 1:05:56–1:09:46｜美国训练数据卖给中国：Sacks 主张精准管制\n\nJason 引用 Forbes 调查《这些美国初创公司正在让中国 AI 更聪明》。报道称美国数据标注/训练数据公司把数据集同时卖给 OpenAI、Anthropic、美国联邦机构和腾讯、ByteDance、Alibaba、Moonshot 等中国公司；中国头部六家实验室每年合计花约 5 亿美元购买所谓“秘密配方”，包括博士撰写内容、强化学习数据和知识流水线。字幕把两家估值均超过 200 亿美元的公司写作“Sergei”和“Meror”，应为 Surge AI 与 Mercor，ASR待核。Jason 提到自己投资的 Micro1 等公司，并称 Micro1 创始人选择不向中国出售。\n\nSacks 先要求明确政策目标：美国是要全面经济战、禁止企业与中国做生意，还是只限制具有军民两用和军事应用的关键技术转移？在他看来，普通数据标注大体是商品，中国并不缺劳动力；即使是博士级专家数据，中国也可以自己组织生产。全面禁售不会带来决定性优势，却可能招致中国对美国企业的对等限制，例如稀土。两国尚未完全相互独立，尽管他的长期目标是尽量主权化、减少依赖，短期政策仍需权衡互惠成本。\n\n他赞同能“打中要害”的精准管制，并举第一届 Trump 政府约在 2019 年限制 EUV 光刻机对华出口为成功案例。对当前数据交易，则应先证明数据真正专有、具有军民两用或军事用途、且限制后能形成战略效果，不能因为它与 AI 有关就自动升级为全面禁运。\n\n## 1:09:46–1:15:16｜领先时克制、落后时收紧：数据“秘密配方”争论至片尾\n\nBrad 首先同意 Sacks 的最大竞争原则：美国当前在前沿实验室、开放模型与较轻监管上都占优，对华关系也在多条战线上推进；节目提及习近平可能于 9 月赴美与总统举行双边会谈（人名由上下文推断，原字幕为“She”，ASR待核）。但华盛顿会把专家数据出售与模型蒸馏、芯片出口放在一起审视，担心中国实验室更容易追上美国。Brad 的政策预测是状态依赖的：只要美国还在赢，此事会通过审查；若六个月后总统询问竞争态势，顾问回答中国已经追平或超过，那么同一交易会受到远严格的限制。\n\nJason 以自己过去 60 天使用 Kimi、Qwen 和“GLM 52”（具体版本 ASR待核）的体验强调中国模型已经非常好，认为继续提供优势“不够爱国”。Sacks 追问究竟哪类数据不可替代。Jason 解释，这不是低端标注，而是美国专家处理用户点踩的高技术错误：代码、生物、科学问题由博士补入最新知识并多重验证，形成后训练数据包，使模型持续变好；美国供应商把同一包知识卖给中国，就让其与美国同步追赶。他认为这与蒸馏一起，是中国模型进步的重要原因。\n\nSacks 的反驳是，中国每年培养的数学与科学毕业生据称超过世界其他地区总和，并不缺聪明人或博士；如果确有不可复制的秘密配方，他同意不应出售，但“专有”不自动等于“不可重建”或“军民两用”。Jason 则坚持规模和人才质量有差别：若不直接购买，美国实验室汇聚的西方顶尖科学知识至少需要中国自行招募和重做，追赶会更慢。讨论没有形成一致结论，最终停留在一个可检验标准上：应进一步核查具体数据集是否真正专有、是否具有双重用途，以及限制它能否产生实质战略优势。\n\n节目在 1:13:42后进入收尾，感谢 Brad 参加，并以 Chamath 的旅行、白色高领衫周边和“收益捐给游艇基金”的玩笑结束；1:14:19至1:15:16为节目固定片尾混剪和音乐，没有新增实质论点。至此笔记覆盖完整转录结尾。\n\n## 延伸分析（不是嘉宾原话）\n\n这四段讨论可以统一成一个“稀缺性迁移”框架：通用模型权重和普通应用功能的稀缺性下降，价值向短期稀缺算力、可验证的前沿性能、既有分发、受监管系统记录、专有后训练数据与低成本融资迁移。但这些稀缺性并非永久：算力高现货价会随供给释放而回落，前沿差距会被追赶，合规护城河也可能被 AI 原生平台逐步重构。因此研究上应避免用单一收入倍数判断全行业，转而逐项跟踪质量领先期、单位经济性、客户迁移成本和资本结构。\n\n政策上，训练数据的边界比芯片更难画：芯片与光刻设备可按性能和实体流向管制，专家知识数据则具有可复制、可重建和跨境服务属性。更可行的判断顺序或许是先识别军事或关键基础设施用途，再验证数据的不可替代性与边际增益，最后比较禁售收益与对等报复成本；否则泛化管制既可能无效，也会削弱美国数据公司的收入与全球反馈回路。\n",
+      "sourceBoundary": "YouTube Transcript API auto-caption transcript from the verified official All-In Podcast video muRIXCDw-k0. This is not a human-edited transcript; speaker attribution, names, figures and technical terms may contain caption errors.",
+      "whyItMatters": "这期节目的价值,不在于四条新闻各自的热度,而在于它把 AI 产业正在形成的资本结构连在了一起:模型公司争夺最前沿智能,云与基础设施公司把算力变成高确定性的资本回报,SpaceX 试图同时经营算力、模型、卫星通信和制造能力,传统 SaaS 则在产品范式与资本结构的双重压力下重新定价。四位讨论者并未形成单一结论:David Friedberg 强调算力基础设施相对模型研发的风险收益优势;David Sacks 坚持前沿智能并未商品化,而是正在形成 Anthropic/OpenAI 双寡头;Jason Calacanis 更看重 Google 的分发与开源模型“足够好”;客座嘉宾 Brad Gerstner 则同时认可前沿模型的领先、基础设施的回报和融资链条的脆弱性。",
+      "themes": [
+        {
+          "id": "theme_e748f8750672ca8b04b2",
+          "name": "AI Agents",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_ebbd5f51fefc7fcabdf4",
+          "name": "AI Infra",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_693b1c2b5c9e35f47d43",
+          "name": "Enterprise AI",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_b4d7581efc05d1db8fe0",
+          "name": "Markets / Macro",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_7e5743d68b4cb5c76b9d",
+          "name": "Product / GTM",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_f1991dbc4cf3c8fe3860",
+          "name": "Venture / Pre-IPO",
+          "provenance": "deterministic-keyword-v1"
+        }
+      ],
+      "entities": [
+        {
+          "id": "entity_1ad9baa389d2b038b89f",
+          "type": "company",
+          "name": "Alphabet / Google",
+          "evidenceSource": "title",
+          "confidence": 0.9
+        },
+        {
+          "id": "entity_c0948307254b62bd51b1",
+          "type": "company",
+          "name": "Amazon / AWS",
+          "evidenceSource": "note",
+          "confidence": 0.9
+        },
+        {
+          "id": "entity_572c531059ad7c8ca7a2",
+          "type": "company",
+          "name": "Anthropic",
+          "evidenceSource": "note",
+          "confidence": 1
+        },
+        {
+          "id": "entity_011a22aec39be8aee508",
+          "type": "company",
+          "name": "Meta",
+          "evidenceSource": "note",
+          "confidence": 1
+        },
+        {
+          "id": "entity_5a78804e3c678d5fb398",
+          "type": "company",
+          "name": "Microsoft",
+          "evidenceSource": "note",
+          "confidence": 1
+        },
+        {
+          "id": "entity_f9825526d30e513764a0",
+          "type": "company",
+          "name": "NVIDIA",
+          "evidenceSource": "note",
+          "confidence": 1
+        },
+        {
+          "id": "entity_54f40d6e1ebcc63523d3",
+          "type": "organization",
+          "name": "OpenAI",
+          "evidenceSource": "note",
+          "confidence": 1
+        }
+      ],
+      "noteVersions": [
+        {
+          "versionLabel": "source-faithful",
+          "writingStyle": "source-faithful",
+          "charCount": 17379,
+          "language": "zh-CN",
+          "canonical": true,
+          "superseded": false
+        }
+      ]
+    },
     {
       "id": "ep_8db135879d6df07f8f8c",
       "showId": "show_d243fcc00a13e40ed763",
@@ -5344,17 +5458,17 @@
           "superseded": false
         },
         {
-          "versionLabel": "historical",
-          "writingStyle": "historical",
-          "charCount": 12903,
+          "versionLabel": "source-brief",
+          "writingStyle": "source-brief",
+          "charCount": 6735,
           "language": "zh-CN",
           "canonical": false,
           "superseded": true
         },
         {
-          "versionLabel": "source-brief",
-          "writingStyle": "source-brief",
-          "charCount": 6735,
+          "versionLabel": "historical",
+          "writingStyle": "historical",
+          "charCount": 12903,
           "language": "zh-CN",
           "canonical": false,
           "superseded": true
@@ -5382,7 +5496,7 @@
       "name": "All-In Podcast",
       "slug": "youtube-all-in",
       "tier": "priority",
-      "readyCount": 7
+      "readyCount": 8
     },
     {
       "id": "show_6710212692fd6a2f4386",
@@ -5507,12 +5621,12 @@
   "coverage": {
     "since": "2026-07-01",
     "totals": {
-      "officialEpisodes": 159,
+      "officialEpisodes": 162,
       "noteReady": 22,
       "transcriptReady": 22,
       "qcReady": 22,
-      "queued": 137,
-      "candidateAliasesMerged": 201
+      "queued": 140,
+      "candidateAliasesMerged": 207
     },
     "shows": [
       {
@@ -5521,12 +5635,12 @@
         "slug": "the-cognitive-revolution-ai",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 8,
+        "officialEpisodes": 9,
         "noteReady": 4,
         "transcriptReady": 4,
         "qcReady": 4,
-        "queued": 4,
-        "candidateAliasesMerged": 9
+        "queued": 5,
+        "candidateAliasesMerged": 11
       },
       {
         "id": "show_886e81a7ce0632f03dc8",
@@ -5573,12 +5687,12 @@
         "slug": "big-technology",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 12,
+        "officialEpisodes": 13,
         "noteReady": 1,
         "transcriptReady": 0,
         "qcReady": 1,
-        "queued": 11,
-        "candidateAliasesMerged": 8
+        "queued": 12,
+        "candidateAliasesMerged": 9
       },
       {
         "id": "show_21aa5c705384e983fae9",
@@ -5742,12 +5856,12 @@
         "slug": "20vc",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 16,
+        "officialEpisodes": 17,
         "noteReady": 7,
         "transcriptReady": 8,
         "qcReady": 7,
-        "queued": 9,
-        "candidateAliasesMerged": 28
+        "queued": 10,
+        "candidateAliasesMerged": 31
       },
       {
         "id": "show_66323af571a19fdabe95",
@@ -5785,9 +5899,9 @@
       },
       {
         "month": "2026-08",
-        "officialEpisodes": 34,
+        "officialEpisodes": 37,
         "noteReady": 3,
-        "queued": 31
+        "queued": 34
       }
     ]
   }
