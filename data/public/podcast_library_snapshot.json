@@ -1,6 +1,6 @@
 {
   "format": "podcast-library-sanitized-v1",
-  "generatedAt": "2026-08-08T23:00:07.720Z",
+  "generatedAt": "2026-08-09T23:00:17.765Z",
   "gateVersion": "library-ready-v2",
   "counts": {
     "episodes": 55
@@ -12,28 +12,28 @@
     "foreignKeyViolations": 0,
     "duplicates": 0,
     "orphans": 0,
-    "total": 200,
+    "total": 202,
     "ready": 55,
-    "blocked": 145,
+    "blocked": 147,
     "publicReady": 55,
     "reasonCounts": {
-      "canonical_note_missing": 144,
-      "deterministic_qc_failed": 144,
-      "source_boundary_missing": 144,
+      "canonical_note_missing": 146,
+      "deterministic_qc_failed": 146,
+      "source_boundary_missing": 146,
       "source_note_placeholder_or_error": 1,
-      "why_it_matters_missing": 144
+      "why_it_matters_missing": 146
     },
     "ingest": {
-      "id": "ingest_bc5c1e88eeae048106e8",
-      "startedAt": "2026-08-08T23:00:07.262Z",
-      "completedAt": "2026-08-08T23:00:07.264Z",
+      "id": "ingest_2d0571e7f1ae67f145b9",
+      "startedAt": "2026-08-09T23:00:17.300Z",
+      "completedAt": "2026-08-09T23:00:17.302Z",
       "status": "completed",
       "sourceCounts": {
         "monitoredShows": 20,
-        "officialSinceCutoff": 163,
-        "candidateRows": 382,
-        "candidateAliasesMerged": 195,
-        "radarIndexed": 385,
+        "officialSinceCutoff": 165,
+        "candidateRows": 387,
+        "candidateAliasesMerged": 197,
+        "radarIndexed": 391,
         "radarReadyImported": 33,
         "iltbCanonicalSobridgeMarkdown": 16,
         "iltbVersions": 32,
@@ -41,14 +41,14 @@
         "genericExcluded": 10,
         "attachedArtifacts": 535,
         "importedClaims": 374,
-        "inventoryFiles": 11201,
-        "canonicalEpisodes": 200,
+        "inventoryFiles": 11337,
+        "canonicalEpisodes": 202,
         "readyEpisodes": 55
       },
-      "inserted": 4,
-      "updated": 196,
-      "deduped": 328,
-      "warnings": 31,
+      "inserted": 2,
+      "updated": 200,
+      "deduped": 332,
+      "warnings": 32,
       "errorSummary": null,
       "codeVersion": "task-004-v1"
     }
@@ -5621,12 +5621,12 @@
   "coverage": {
     "since": "2026-07-01",
     "totals": {
-      "officialEpisodes": 162,
+      "officialEpisodes": 164,
       "noteReady": 22,
       "transcriptReady": 22,
       "qcReady": 22,
-      "queued": 140,
-      "candidateAliasesMerged": 207
+      "queued": 142,
+      "candidateAliasesMerged": 209
     },
     "shows": [
       {
@@ -5765,12 +5765,12 @@
         "slug": "founders",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 4,
+        "officialEpisodes": 5,
         "noteReady": 0,
         "transcriptReady": 0,
         "qcReady": 0,
-        "queued": 4,
-        "candidateAliasesMerged": 4
+        "queued": 5,
+        "candidateAliasesMerged": 5
       },
       {
         "id": "show_387b348507f326e95924",
@@ -5830,12 +5830,12 @@
         "slug": "odd-lots",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 19,
+        "officialEpisodes": 20,
         "noteReady": 0,
         "transcriptReady": 0,
         "qcReady": 0,
-        "queued": 19,
-        "candidateAliasesMerged": 21
+        "queued": 20,
+        "candidateAliasesMerged": 22
       },
       {
         "id": "show_8058fbf55a596a5862ec",
@@ -5899,9 +5899,9 @@
       },
       {
         "month": "2026-08",
-        "officialEpisodes": 37,
+        "officialEpisodes": 39,
         "noteReady": 3,
-        "queued": 34
+        "queued": 36
       }
     ]
   }
