@@ -1,9 +1,9 @@
 {
   "format": "podcast-library-sanitized-v1",
-  "generatedAt": "2026-08-10T23:00:39.565Z",
+  "generatedAt": "2026-08-11T23:00:57.471Z",
   "gateVersion": "library-ready-v2",
   "counts": {
-    "episodes": 57
+    "episodes": 58
   },
   "audit": {
     "gateVersion": "library-ready-v2",
@@ -12,48 +12,141 @@
     "foreignKeyViolations": 0,
     "duplicates": 0,
     "orphans": 0,
-    "total": 210,
-    "ready": 57,
-    "blocked": 153,
-    "publicReady": 57,
+    "total": 215,
+    "ready": 58,
+    "blocked": 157,
+    "publicReady": 58,
     "reasonCounts": {
-      "canonical_note_missing": 152,
-      "deterministic_qc_failed": 152,
-      "source_boundary_missing": 152,
+      "canonical_note_missing": 156,
+      "deterministic_qc_failed": 156,
+      "source_boundary_missing": 156,
       "source_note_placeholder_or_error": 1,
-      "why_it_matters_missing": 152
+      "why_it_matters_missing": 156
     },
     "ingest": {
-      "id": "ingest_4ecc1b82565c2a6b932d",
-      "startedAt": "2026-08-10T23:00:39.091Z",
-      "completedAt": "2026-08-10T23:00:39.093Z",
+      "id": "ingest_4d65690c6662dbcdd462",
+      "startedAt": "2026-08-11T23:00:56.990Z",
+      "completedAt": "2026-08-11T23:00:56.992Z",
       "status": "completed",
       "sourceCounts": {
         "monitoredShows": 20,
-        "officialSinceCutoff": 173,
-        "candidateRows": 404,
-        "candidateAliasesMerged": 208,
-        "radarIndexed": 408,
-        "radarReadyImported": 35,
+        "officialSinceCutoff": 177,
+        "candidateRows": 418,
+        "candidateAliasesMerged": 213,
+        "radarIndexed": 421,
+        "radarReadyImported": 36,
         "iltbCanonicalSobridgeMarkdown": 16,
         "iltbVersions": 32,
         "genericReviewed": 9,
         "genericExcluded": 10,
-        "attachedArtifacts": 545,
+        "attachedArtifacts": 550,
         "importedClaims": 374,
-        "inventoryFiles": 11455,
-        "canonicalEpisodes": 210,
-        "readyEpisodes": 57
+        "inventoryFiles": 11560,
+        "canonicalEpisodes": 215,
+        "readyEpisodes": 58
       },
-      "inserted": 8,
-      "updated": 202,
-      "deduped": 351,
-      "warnings": 34,
+      "inserted": 5,
+      "updated": 210,
+      "deduped": 358,
+      "warnings": 36,
       "errorSummary": null,
       "codeVersion": "task-004-v1"
     }
   },
   "episodes": [
+    {
+      "id": "ep_d42241df4e618454432d",
+      "showId": "show_155f53f5f64931d8bb8a",
+      "show": "Training Data",
+      "title": "How Harvey Built a Research Lab on a Budget | Gabe Pereyra",
+      "publishedAt": "2026-08-11T13:00:13.000Z",
+      "publishedDate": "2026-08-11",
+      "durationSeconds": null,
+      "duration": "",
+      "description": "How does an application company compete with frontier labs that have more money, talent, compute, and data? At Sequoia Capital’s Own Your Intelligence event, Harvey co-founder and president Gabe Pereyra shares the playbook: leverage the frontier ecosystem instead of building everything yourself. Gabe walks through how Harvey built its research lab, starting with benchmarks like LegalAgentBench and its open-sourced diligence dataset, using domain experts to guide synthetic data generation, partnering with multiple neolabs for post-training, and building t",
+      "originalUrl": "https://www.youtube.com/watch?v=MGouk8W51v0",
+      "mediaType": "youtube",
+      "materiality": "high",
+      "productionStatus": "qc_passed",
+      "readerReady": true,
+      "publicReady": true,
+      "gateVersion": "library-ready-v2",
+      "noteMarkdown": "# 节目：Sequoia Capital\n\n**原题/标题：** How Harvey Built a Research Lab on a Budget | Gabe Pereyra\n\n**发布时间：** 2026-08-11 13:00:13 UTC（北京时间 2026-08-11 21:00:13）\n\n**原始链接：** https://www.youtube.com/watch?v=MGouk8W51v0\n\n**Source boundary：** 本纪要只依据 Sequoia Capital 官方视频 `MGouk8W51v0` 的 YouTube Transcript API 字幕衍生文本制作。该文本未经人工校订；技术术语、基准名称、模型及公司名称、数字和问答归属均可能存在字幕错误。纪要不引入外部资料，不把推测写成嘉宾事实；无法仅凭字幕确认之处标为“ASR待核”。\n\n## 为什么对研究重要\n\n这场分享的研究价值，不在于 Harvey 宣称自己要复制一家基础模型公司，而在于它给出了一条更适合垂直应用公司的研发路径：不与前沿实验室正面对拼预训练资本，而是把公开或可采购的前沿生态能力，嵌入由领域基准、合成数据、后训练合作、多模型服务和生产反馈构成的闭环。Gabe Pereyra 的核心判断是，应用公司真正可能拥有的优势不是最多的算力或最通用的人才，而是对真实工作流、评价标准、产品分布、客户约束和部署反馈的理解。\n\n这也提供了一个很具体的“研究实验室最低可行系统”。第一步不是先招明星研究员或先训练模型，而是先定义任务并建立可判分的 benchmark；第二步是在无法使用客户私有数据时，让领域专家从 rubric 反向生成合成环境，再用人力扩增与现实化；第三步才是借助外部训练实验室、API 和基础设施供应商做后训练；第四步是把所得模型当作多模型系统中的一个候选，经由上线前评测、产品测试、成本与地域约束、上线后 A/B 与用户反馈逐层闸门决定去留。这里的研究不是孤立的模型指标竞赛，而是与产品、服务基础设施和商业分发绑定的系统工程。\n\n对投资研究尤其重要的，是演讲同时暴露了这条路径的边界。Harvey 不能训练客户数据，因此高度真实的合成数据仍与生产请求分布不一致；模型即便在法律 benchmark 上表现好，也可能过拟合并在通用助手场景中崩溃；8000 万 token 的数据室仍超出模型有效管理上下文的能力；最终想让每家律所基于自身工作持续学习，又必须保护每个客户事项的数据。这些不是局部工程瑕疵，而是决定垂直 AI 公司护城河、毛利结构、伙伴依赖和规模化上限的关键变量。\n\n## 一页导读\n\nGabe 把应用层公司与前沿实验室的竞争描述为一场“不公平的游戏”：后者拥有更多资金、人才、计算基础设施和数据，而应用层公司的资源最少。四年前 Harvey 创业时，很多如今可用的生态公司尚不存在或刚起步，团队只能自己搭建能力，或者干脆把有限精力用于 GTM 和产品。如今他的判断发生变化：应用公司可以利用前沿生态，在特定任务上构建接近前沿的智能，而无须追求通用前沿智能。\n\nHarvey 的顺序是“基准—数据—后训练—生产服务—反馈飞轮”。基准是起点，因为没有好 benchmark 就无法判断训练是否有效；没有可训练的目标，也谈不上生产部署。Harvey 当年发布了三套数据集：覆盖大型律所初级律师复杂任务的 Legal Agent Bench；模拟企业法务谈判的合同数据集；以及用于尽调、包含超长上下文的大型 diligence 数据集。最大数据室达到 8000 万 token，尽调输出由超过 1,000 个单元测试、配合 LLM-as-a-judge 评分。\n\n法律数据的根本障碍是保密与特权：客户数据不能放进通用模型，Harvey 甚至不能放进自己的模型。解决办法不是模糊地“生成一些假文本”，而是让懂业务、又熟悉模型的律师从评分 rubric 出发，先埋入合同不一致、材料缺失等可检查问题，再反向生成一个内部一致的数据室；模型生成尽调备忘录后，就能核对是否发现所有预埋问题。合成数据只负责启动，仍需 Mercor、Snorkel（合作方拼写部分段落 ASR待核）等供应商以人力扩展、增强真实性。\n\n后训练方面，Gabe 认为开源模型已强到值得投入。过去预训练进步太快，一轮后训练很快会被下一代基础模型吸收；现在强开源底模可以在法律等特定任务上追到前沿水平。他建议先和外部“Neo/NeMo labs”（字幕用词不一致，ASR待核）合作，因为对方已有训练基础设施、配方和数据诊断能力；若合作仍无法提升，往往意味着自有数据集有问题。Harvey 同时与多家供应商做不同项目，是因为研究项目多于内部带宽，而且每家伙伴押注、方法和擅长模型不同。与此同时，Tinker 类 API 与 Fireworks、Base 10 等基础设施让内部后训练和服务的门槛下降。\n\n真正上线前，Harvey 已经建设了一个服务多国家、多产品界面、多模型偏好与多供应商 fallback 的矩阵。任何新模型，无论闭源、开源还是自研后训练，都先过通用自动评测、通用人工 side-by-side、产品关键用户旅程、产品自动测试和产品人工测试，再结合成本、时延、区域可用性决定是否进入生产；上线后继续看 A/B、参与度、uptime、token 效率和“愤怒客户邮件”。后训练模型没有特殊通道，而是作为另一个候选模型接受同样的产品闸门。\n\nGabe 给应用公司的低风险起步法有两层：先在引用生成等不需要最大模型的局部任务上直接替换开源模型，培养混合服务能力；再做模型路由，只把适合的请求分流给开源模型。生产反馈可帮助未来数据集设计，但他明确限定：Harvey 所谓收集反馈并不等于拿客户数据训练。\n\nQ&A 进一步补充了组织、评测与产品战略。人才上，Harvey 早期曾试图争夺前沿实验室研究员，却面对超过 1 亿美元的薪酬包；如今训练与服务基础设施可外购，所需人才不再必须同时从零建完所有栈，候选池因而扩大。benchmark 的原则不是刻意设计“难倒前沿模型”的题，而是忠实复现顶级律所的真实事项；真实任务本身仍足够难。开源 benchmark 虽会帮助模型实验室“爬榜”，却也让外部团队低成本验证新技术、让客户理解模型差异，并通过社区找错。Harvey 想把更稀缺的价值留在协助律所针对私有工作方式定制系统。\n\n在产品层，Harvey 的方向也从个人生产力转向组织生产力。它想解决的不是某位律师如何更快起草一个条款，而是一个有 20–30 人、持续六个月的客户项目如何协调人、代理和外部参与方；再往上，是律所同时管理上千项目、客户、资源、计费和投标，乃至 Fortune 500 法务部门协调上千家律所和上千名内部人员。面对横向产品，Gabe 的简短答案是：在领域内做得足够垂直。\n\n## 一句话主线与 投资研究用户 关注点\n\n**一句话主线：** 垂直应用公司不必复制前沿实验室，而应以真实领域 benchmark 为控制面，用专家引导的合成数据绕过私有数据限制，借外部生态完成后训练，并以成熟的多模型生产系统把评测、部署和反馈闭成飞轮。\n\n**投资研究用户 关注点：** 重点跟踪 Harvey 是否能把“公开合成 benchmark 带来的生态协作”转化为“私有工作流定制与持续学习带来的不可替代性”；同时检验其模型改进究竟来自后训练，还是更多来自 harness engineering、上下文管理、模型路由和产品编排。另需持续观察四项风险：合成分布与生产分布的差距、超长上下文的有效利用、外部训练/推理供应商依赖，以及在不接触客户数据前提下实现每家客户持续学习的可行性。\n\n## 关键数字总表\n\n| 数字/范围 | 字幕中的含义 | 研究解读与限定 |\n|---|---|---|\n| 4 年 | Harvey 创业时间；其律师团队成员与模型协作经验也累计约四年 | 指演讲时点回溯，非精确公司注册日期 |\n| 3 套 | 当年发布的数据集：Legal Agent Bench、合同数据集、尽调数据集 | 字幕称 “this year”；具体发布日期未在素材中给出 |\n| 8,000 万 token | 最大尽调数据室的上下文规模 | 一处称 “largest data rooms”，Q&A 再次确认；不代表模型能有效处理全部上下文 |\n| 超过 1,000 个 | 尽调数据集用来评价模型输出的单元测试 | 评分使用 LLM-as-a-judge，成本会随 rollout 与大模型调用放大 |\n| 10,000 份合同 | Q&A 中对一个大型虚拟数据室复杂度的举例 | 强调合同之间必须彼此吻合，并非所有数据室固定规模 |\n| 60 个国家 | Harvey 生产系统覆盖的国家数量 | 由此产生区域可用性、多供应商和 SLA fallback 要求 |\n| 1 亿美元以上 | Harvey 早期争夺前沿研究人才时看到的薪酬包量级 | 字幕原话为 “100 million plus pay packages”；币种及薪酬结构未说明，ASR待核 |\n| 20 连胜 | 《Moneyball》场景中球队已连续赢得的比赛数 | 用来说明仅有局部战绩不够，必须最终获胜才能改变行业认知 |\n| 20–30 人 | 单个大型法律项目可能跨律所协作的团队人数 | 项目示例还包括持续六个月 |\n| 6 个月 | 单个客户项目持续时间示例 | 说明价值从一次写作转向长期项目编排 |\n| 10,000 个客户 | 大型律所需要同时服务的客户量级示例 | 与项目质量、盈利性、资源调度相关 |\n| 上千个项目 | 组织层面同时管理的项目量级示例 | 字幕为 “a thousand of these projects”，语法有误但含义可辨 |\n| 1,000 家律所、1,000 名内部人员 | Fortune 500 企业法务生态的复杂度示例 | 是口头量级举例，不应视为 Harvey 客户统计 |\n\n## 01｜0:00–1:50 开场：资源不对称，但竞争边界已经改变\n\n主持人介绍 Gabe 是 Harvey 联合创始人兼总裁，早年曾在 DeepMind 做研究科学家、之后在 Meta 工作；他把 GPT-3 的能力展示给大学室友后，两人组合最终成为 Harvey。听众多为应用公司，普遍在考虑如何开展自己的研究、对模型做后训练并搭建实验室，因此邀请他讲 Harvey Labs 的建设方式。\n\nGabe 把演讲的备选标题定为“在预算约束下建立研究实验室”。他首先承认结构性劣势：应用层公司若与前沿实验室竞争，游戏并不公平。前沿实验室拥有更多资金、更强人才、更大规模计算基础设施和更多数据；应用层位于“富团队、穷团队，然后才是我们”的资源序列底端。问题不是否认差距，而是重新定义怎样竞争。\n\n他的答案是使用“frontier ecosystem”。Harvey 四年前创立时，如今很多生态公司还不存在或刚刚起步，团队要么自行构建所有基础能力，要么就必须把注意力转向别处，例如搭建 GTM 组织和做好产品。今天外部供给已经成熟，他认为应用公司可以借助这一生态与前沿实验室竞争，并构建“frontier intelligence”。这里有明确限定：后文讲的是特定领域、特定任务的前沿能力，不是复制通用基础模型实验室。整场 playbook 将依次回答三件事：如何构建 benchmark 与训练数据，如何与外部实验室合作做后训练，以及如何在生产中服务这些模型。\n\n## 02｜2:04–3:12 从 benchmark 开始：三套法律任务环境\n\nGabe 的第一条因果链很直接：没有好 benchmark，就无法训练模型；无法训练模型，也就没有必要考虑如何把它们部署到生产。因此研究实验室的起点不是采购 GPU，而是把领域任务变成可评价的数据集和环境。\n\nHarvey 当年发布了三套自建数据集。第一套 Legal Agent Bench 是大型律所 associate 日常任务的 taxonomy，横跨多个执业领域，任务并非简单问答，而包括起草复杂的基金设立文件、开展判例法研究等。第二套是 contracting 数据集，用于让代理学习类似企业内部法务部门的谈判工作。第三套是 Gabe 最兴奋、当时刚发布的大型 diligence 数据集。他称其为已发布的最大 RL environments 之一；其中最大数据室含 8,000 万 token，因而可研究长上下文和高度复杂的任务。\n\n三套数据的区别也对应三个层次：Legal Agent Bench 定义广泛职业任务；合同数据集聚焦动态谈判；尽调数据集则把海量相互关联文件、问题发现和最终工作产品组织成可训练、可判分的环境。Gabe 真正强调的不是数据集数量，而是它们在无法直接使用真实客户资料时究竟如何被构造出来。\n\n## 03｜3:14–5:50 私有数据困境：专家引导合成、人工扩增与开源纠错\n\nHarvey 服务最大的律所和企业，其法律资料极其敏感且受特权保护。Gabe 明确说，客户数据不能放入通用模型，甚至不能放进 Harvey 自己的模型。这切断了最直觉的“拿生产语料训练垂直模型”路径，也构成法律 AI 与拥有公开 GitHub 仓库的代码领域之间的根本差异。\n\n当年开始有效的方法，是让领域专家引导 synthetic data generation。Gabe 引用 Reka 的 Brendan 的类比（人名与公司拼写据字幕，ASR待核）：就像工程师不再逐行手写代码，而是通过“vibe code”引导代码模型，Harvey 的律师也开始引导模型生成数据。他的弟弟本身是 Harvey 的律师，很擅长使用代码模型，并培训其他律师采用同样的方法。结果是领域专家可以生成高度逼真的数据集，既用于训练，也用于评价产品。\n\n但 Gabe 随即加上限定：“synthetic data isn’t good enough, but it’s a way to get started。”合成数据不是终局，只是解决冷启动。Harvey 再与 Mercor 和 Snorkel 合作，把这一流程规模化，尤其扩成更大的训练集。字幕在后续问答中把后者识别成 “Shenorcal”，应视为同一名称的 ASR 波动，具体拼写 ASR待核。\n\n数据成为 RL 环境后，评价成本又成为新瓶颈。数据集越大，rollout 越多，评价就越贵。尽调数据集中有超过 1,000 个单元测试，用 LLM-as-a-judge 给模型输出打分；若 judge 使用最大模型，再叠加 RL rollout，费用会迅速上升。Harvey 因而与 LangChain 做过提高环境效率的工作。机制上，这一步的目的不是让题目变简单，而是降低每次训练迭代的评价成本，使大环境可以被反复使用。\n\nHarvey 还做了一个当时略有争议的决定：把部分数据集开源。Gabe 的理由是，除非很多人真的拿数据训练，否则很难知道数据集是否够好。他回忆在 Google Brain 和 DeepMind 做研究时，ImageNet、CIFAR、MNIST 等最佳数据集都是开放的；广泛使用使问题暴露，维护者能收到 pull request 与修改建议。Harvey 同样得到大量 PR 和建议，模型实验室发布新模型时也越来越常用其数据集评测。至于“最重要”的成果，他以玩笑补充：Elon 转发了它。真正的推理链是：开放使用扩大检验面，检验面带来纠错和行业可比性，进而提高 benchmark 的可信度。\n\n## 04｜5:52–8:45 开源底模成熟后，如何借外部实验室完成后训练\n\n有 benchmark 后，模型训练才有目标。Gabe 判断开源模型正在变得有竞争力。过去后训练不划算，是因为预训练模型进步太快：团队刚做完的任务优化，很快就会被下一代底模吸收，专门投入的相对收益迅速消失。如今字幕列举 “Kimmy/Kimi 3、GLM 5.2、NeMo-Megatron、Inkling”等模型或项目名称，其中多个专名及版本 ASR待核；他要表达的是，强开源底模已经可以通过后训练达到前沿级别。限定仍然重要：未必达到“通用前沿智能”，但对 Harvey 这种明确特定任务而言，可以具备竞争力。\n\nGabe 建议起步时与字幕所称 “Neo labs/NeMo labs” 合作，前后用词不一致，ASR待核。此类伙伴已经拥有专业知识、训练基础设施和 recipes，能帮助客户检查训练集。如果合作后仍无法得到更好结果，常见解释不是模型必然不行，而是数据集本身可能有问题；所以外部伙伴也是数据质量诊断与研发冷启动机制。\n\nHarvey 与不同供应商做了不同实验：与 Fireworks 训练 GLM 5.1，并让字幕所称 “Fable” 或 “Opus 4.8” 充当 advisor model（模型名与版本 ASR待核）；与 Base 10 研究 “KB compaction”；与 N gram 研究企业搜索和 firm knowledge；与 Trajectory 训练 NeMo-Megatron；与 Applied Compute 围绕 Harvey 的 Vault 产品开展工作。这里不宜把每个名字都理解成已经规模化上线的商业能力，Gabe 的表述是“interesting work/results”，即研究或合作项目。\n\n为什么不只选一家？Harvey 的研究项目数量超过内部团队或单一合作实验室的带宽；各伙伴对研究方向下注不同、研究方法不同，Harvey 想训练的开源模型也不同。与更多伙伴合作，团队能学习更多。这是一种组合式研发：用多家供应商的差异化押注换取更宽的实验覆盖，而不是过早把所有技术路线锁定在单一栈上。\n\n与此同时，Harvey 正把更多后训练收回内部。Tinker 类 API，以及 Fireworks、Base 10 搭建的基础设施，降低了训练和服务门槛；市场上可招聘的后训练人才也在增加。受 Cursor 启发，Harvey 的目标是构建自己的 “Composer one”（名称/大小写 ASR待核）：把专家合成数据、Mercor 的规模化、外部实验室合作成果打包进一个模型，与闭源模型并行服务。这里的目标不是排斥闭源模型，而是在模型组合中增加一个更可定制的自有选项。\n\n## 05｜8:49–10:20 生产服务不是单一 API：60 国、多界面与 SLA fallback\n\n后训练完并不等于工作结束，把模型放入生产是“non-trivial”。Gabe 先讲服务基础设施，是为了纠正一种应用层想象：应用公司并非只调用单个模型 endpoint、外面套一个聊天界面。Harvey 四年来解决的一个大问题，是在 60 个国家、多个产品 surface、不同客户模型偏好之下，大规模服务多个闭源模型；如今 Fireworks.ai 等又使开源模型加入矩阵。\n\n对于每个模型家族，Harvey 都需同时服务多个具体模型，并在多个供应商之间设置 fallback，才能满足 SLA。地域可用性也不是附属条件：某模型即便总体表现强，如果在客户所在区域不可用，就无法成为合格生产选项。正因为如此，模型选择最终是能力、成本、时延、地域与可靠性的多变量决策，而不是 leaderboard 第一名自动胜出。\n\nGabe 进一步把顺序倒过来强调：在考虑后训练之前，就要建立生产服务与监控基础设施。因为无论新发布的是开源模型、闭源模型还是自家后训练模型，公司都必须回答两个问题：上线前凭什么把它放进生产；上线后又凭什么继续保留它。若没有统一的进入与退出机制，后训练只会增加一个无法被可靠验证和运营的模型资产。\n\n## 06｜10:21–11:54 上线前后统一闸门：评测、产品适配与“愤怒邮件”\n\n上线前，Harvey 有通用自动评测。新模型发布后，前述 lab benchmark 能快速判断它是否属于前沿模型、整体有多强、在哪些法律领域表现好。通用人工测试则通过与其他模型 side-by-side 比较补足自动分数。随后，团队还会对每个产品 surface 检验关键用户旅程、运行自动产品测试，因为一个模型可能通用能力很强，却不适合具体产品界面或工作流；最后还要进行人工产品测试。\n\n这些信号与成本、时延、地区可用性等 heuristics 共同决定是否上线。Gabe 特别强调，同一流程既适用于后训练模型，也适用于未经后训练的外部模型。应用公司应先建成这一可复用评测基础设施，再讨论是否后训练，而不是为自研模型另设宽松标准。\n\n上线后仍沿用统一思想。大改动通过 A/B test 推出，以 engagement 观察实际表现是否符合预期；运营侧还跟踪 uptime、token efficiency。最后一类叫 product feedback，Gabe 自嘲为“愤怒的客户邮件”。这句玩笑实际指出 benchmark 无法完全覆盖产品失败：真实用户会暴露意图理解、交互习惯、异常分布和工作流整合方面的问题。生产判断因此由离线指标、在线行为、系统指标和定性反馈共同构成。\n\n## 07｜11:55–13:19 两个简单开源开关，以及受约束的反馈飞轮\n\n即使服务和评测基础设施齐备，Gabe 也不建议一开始就押注复杂后训练。他提出两个“simple open-source switches”。第一，盘点产品所有模型调用点，寻找可以直接、朴素替换成开源模型的环节。例如 Harvey 产品中有负责生成 citations 的部分，不需要最大模型，就可能换成 GLM 5.2，获得成本或性能收益。直接替换本身还会培养团队把开源与闭源模型并行服务的能力。\n\n第二是 model routing。某些地方无法把闭源模型全部换掉，但可识别某类查询并只对这些请求路由至开源模型。这让公司按任务难度或特征分配模型，而不是在“全闭源”和“全开源”之间二选一。两层开关也构成渐进式风险管理：局部无损替换先验证服务能力，路由再扩大覆盖，后训练模型最后进入同一组合。\n\n完成这些步骤后，才具备建立 post-training flywheel 的条件：模型进入生产，团队收集反馈，再用反馈信号指导未来数据集与模型改进。但 Gabe 立即给出隐私限定。在 Harvey，“收集反馈”不意味着拿客户数据训练；团队得到的是用户测试及其他来源的反馈信号，用来决定下一轮数据集应该覆盖什么。换言之，飞轮传回的是问题分布和评价方向，而不是默认回流原始客户语料。\n\n## 08｜13:20–14:46 playbook 收束：《Moneyball》的预算隐喻\n\nGabe 将整套方法收束为 Harvey 建研究实验室的 playbook，并推断未来每家公司都必须在某种程度上成为 AI 公司，找出适合自己的版本。他同时认为，多数人仍在押注这条路径不会成功：他们看空应用层公司，也看空由前沿生态拼装出的研发能力。\n\n为解释为何“预算有限的团队获胜”具有行业意义，他播放《Moneyball》片段。球队虽已取得 20 连胜，Billy Beane 仍说，如果不赢得冠军，就没人会真正理解他们做成了什么；关键台词是：“如果我们用这样的预算、这样的团队赢了，我们就改变了比赛。”Gabe 把它映射到应用层 AI：局部 benchmark 或单次实验成功不够，只有在真实市场和产品中获胜，资源受限的生态化研发模式才会改变行业对竞争边界的认识。他以“Go change the game”结束正式演讲，随后进入问答。\n\n## 09｜14:48–17:05 Q&A：如何从 rubric 反向生成一个可验证的数据室\n\n第一位提问者追问：法律客户数据高度敏感，Gabe 的律师弟弟与内部专家又在做类似 vibe coding 的工作，这在实际中究竟是什么样？Gabe 用并购尽调解释输入缺口。大型律所代表公司做 M&A 时，会收到包含目标公司所有合同的数据室，此外还有谈判相关邮件和会议记录。这些都不是公开数据，法律领域没有开放 GitHub 仓库那样的对应物。训练者也许能公开找到最终成品，例如一份公开 purchase agreement，却找不到生成成品所需的全部输入。\n\n历史上，要求一群律师“造一个假数据室”非常笨重，因为数据室可能含 10,000 份合同，所有文件必须互相吻合。Gabe 的弟弟 Julio 找到的关键办法是从 rubric 开始：先定义场景中所有问题，以及最终要检查什么；然后反向生成数据室，把问题有意埋进去，例如合同之间对不上、某份合同缺失。之后再用 Mercor 与字幕所称 “Shenorcal/Snorkel”（ASR待核）让合同看起来更真实。\n\n这样便同时得到三样东西：完整输入数据集、模型要生成的尽调 memo，以及一套已知答案的检查机制。因为问题是预先埋入的，评价者可以逐项确认模型是否抓住所有问题。其机制优于只模仿最终工作产品：它恢复了“原始材料—隐藏问题—专业输出—可验证评分”的完整因果链。Gabe 也提醒，不同法律工作需要以不同方式聪明地构造，不能机械照搬同一模板。\n\n这解除的是鸡生蛋式销售与训练困境。过去 Harvey 对律所说可以用客户数据训练模型，律所要求先证明效果；Harvey 又需要先看到数据才能证明，律所因保密拒绝提供。合成环境让 Harvey 能先在不接触客户数据时证明方法，于是律所开始反过来询问：能否在他们自己的数据上做同样的事。需要注意的是，问答只说明兴趣增加，并未宣称私有数据训练已无障碍规模化上线。\n\n## 10｜17:06–18:35 Q&A：不再硬抢 1 亿美元研究员，基础设施改变人才边界\n\n第二位提问者称自己也在建设 applied AI 团队，问 Harvey 是否会与 Anthropic 等实验室争抢研究员，还是更多招聘懂领域逻辑、法律与经验的人；哪些方式有效，哪些无效？Gabe 坦言，创业初期他犯过一个大错：因为自己曾在这些实验室工作、认识许多人，便邀请他们加入 Harvey，但对方拿到的是超过 1 亿美元的 pay package。在 Harvey 当时的规模上，这种竞争不合理。数字的币种、期限与薪酬构成字幕未交代，且量级可能受 ASR 影响，ASR待核。\n\n如今变化有两层。第一，Harvey 到了更大的公司规模，虽然仍不直接争夺最顶级“frontier talent”，但越来越多博士研究者不想去大型实验室，可成为应用公司的候选。第二，更根本的是岗位能力束发生变化。早期稀缺人才不只是会做后训练，还得亲自搭建训练基础设施、服务基础设施以及其他配套系统；能把这些能力合在一个人或小团队里的研究者极其罕见。Gabe 以曾负责 OpenAI 后训练、也是他见过最佳研究者之一的旧室友为例，说明这种全栈研究能力有多稀缺。\n\n现在 Fireworks、Tinker 类 API 等把训练和服务基础设施产品化，Harvey 无须从零构建所有底层系统。因而公司真正需要招聘的能力范围变窄，人才池扩大，获取相关人才变得可行。这个回答并未在“领域律师”和“机器学习博士”之间做单选，而是说明外部基础设施把领域专家、应用研究者和平台供应商重新组合，使应用公司不必复制前沿实验室的人才结构。\n\n## 11｜18:37–20:02 Q&A：rubric 应追求真实，不应刻意为“拉开模型差距”造题\n\n第三位提问者关注 benchmark 的区分度：rubric 必须足以区分前沿模型、对最强模型构成挑战，但内部法律专家未必知道如何按模型能力设计评分标准，Harvey 如何处理？Gabe 先澄清对方所谓 “separating” 的含义，再回答他们并不主要从“怎样把前沿模型难住”出发，而是问：怎样真实代表客户所做的工作。\n\n法律领域给了 Harvey 一个有利条件。如果忠实构建顶级律所正在处理的真实 client matter，前沿模型仍然无法完成。因此区分度来自任务现实复杂度，而非人为添加刁钻项。Harvey 四年来积累的另一资产是专家—模型共同工作的经验。Julio 是最早期员工之一，与模型协作了四年，因而对模型行为、数据生成方式形成很强直觉，又把方法培训给更多律师。\n\n实际循环是：先聚焦做出真实数据室和尽调 rubric，再运行模型，从错误中发现仍有空白和改进空间。也就是说，专家先定义业务真实性，模型运行结果再验证评分标准是否暴露能力差异。Gabe 最后限定，这种方法是否天然产生足够难度取决于领域；法律任务当前本身足够复杂，不能无条件外推到所有行业。\n\n## 12｜20:03–22:48 Q&A：端到端哪里坏了？把后训练降格为大系统的一个输入\n\n下一位提问者把流程拆成数据生成、环境、训练算法与研究、基础设施，追问项目失败通常发生在哪层：是运营成本、美元成本、人力小时，还是数据、研究或 infra？又由谁编排、调试端到端 pipeline？Gabe 说这足以成为另一场演讲，并拒绝给出单一故障源。\n\nHarvey 的优势是先找到了 product-market fit，而且主要靠闭源模型把产品做进了生产。多年真实使用让团队先验证端到端系统确实工作：有用户、有稳定工作方式，也能监控模型在生产中的表现。与此同时，团队已经练成新模型接入产品的“肌肉”，不论模型是闭源还是开源，都知道如何评估、上线和监控；此外还做了大量 harness engineering、context management 等工作。\n\n在这个前提下，后训练不再是整个产品的中心，而只是更大系统中的一个小输入。研究团队训练出一个模型后，把它当作“又一个新模型”送入现有评测和服务系统，于是每一层都有信号显示哪里出错。Gabe 给出闸门式调试逻辑：如果模型在 benchmark 上就不好，通常不应继续；若 benchmark 好，再放入产品看实际体验；若用户觉得表现异常，问题可能是 benchmark 未覆盖的分布。\n\n他举出的关键反例是过拟合：模型可以在 Harvey benchmark 上得分很高，却因某种程度上过拟合，一放进更通用的 assistant-like 产品，遇到分布外请求便“散架”。因此 benchmark 是必要闸门却不是充分证明。只有完整设置基准、产品测试和生产反馈等 stages and gates，团队才能更明显地定位断点。这个回答也暗含一条组织原则：调试者不是某个万能负责人，而是由统一闸门和信号把数据、研究、产品与基础设施团队连接起来；不过字幕没有明确给出具体 owner，不能进一步推断。\n\n## 13｜22:50–24:49 Q&A：开放 benchmark 的张力，以及真正想保留的私有价值\n\n提问者提到 Harvey 早先的 Big Law Bench 与后来的 Legal Agent Bench（具体名称及两者关系 ASR待核），问其开源哲学：开放可以获得采用和社区参与，却也允许模型实验室针对它爬分；不开放又会让外界质疑 benchmark 是否真实。Gabe 承认这是一个真实张力。\n\n在公开 benchmark 之前，Harvey 已与实验室紧密合作，会向它们分享数据以改进模型，而模型变强也直接改善 Harvey 产品。开放因而不是从“完全保密”突然变成“资助竞争者”，而是把已有协作扩大到更广生态。Gabe 认为，在法律行业帮助客户理解不同模型分别擅长什么，本身具有巨大价值。\n\n他也修正了创业初期直觉。起初他以为只要构建“最好的模型”，客户自然满意；现在很清楚，每位客户偏好不同，各模型也各有所长。与此同时，frontier ecosystem 的规模远超他的预期。很多公司会联系 Harvey，声称有新技术或新方法，询问能否试验；过去 Harvey 没有带宽逐一配合，如今可直接让对方在开放数据集上测试。若结果确实有效，Harvey 再决定是否值得投入。这使开源 benchmark 成为外部研发项目的筛选接口。\n\n战略上，Harvey 认为更有价值的数据会出现在帮助律所基于自身私有数据训练系统、适配具体工作方式的过程中。公司愿意用合成数据和部分开源数据帮助所有参与者改善系统，但私有工作流定制仍是稀缺层。Gabe 没有说开源不存在被针对优化的风险，只说必须在生态收益与提问者指出的风险之间保持平衡。\n\n## 14｜24:51–26:49 Q&A：三个未解问题——分布差、超长上下文、隐私下持续学习\n\n有人追问，建立实验室之后还有哪些开放问题需要外界帮助。Gabe 首先指出最大挑战之一：Harvey 能生成高度真实的合成数据，也能用人类增强，但这些数据的分布仍不匹配生产分布。当前生成的数据某种程度上“面向未来”。例如团队可以生成非常真实的尽调数据室，可产品当下并非只被用于完整尽调；模型即使在尽调环境很好，用户拿它起草邮件时也可能表现较差。因为 Harvey 不能查看客户数据，就难以准确重建生产请求的长尾分布。如何跨越这道缺口，是他认为数据侧最大且很难的问题。\n\n第二个问题是超长上下文。最大尽调数据室有 8,000 万 token，模型并不善于管理如此大的 context。难点不只是把材料塞进窗口，而是训练模型在复杂环境中定位、压缩、关联和使用信息。Gabe 明确说这里仍有很大的 performance gap，说明公布超大环境不等于已经解决超长上下文任务。\n\n第三个问题是 continual learning。Harvey 在自行后训练方面进展不错，但终局并非造出全世界“最好的法律模型”，而是帮助每家律所或企业按自身工作类型定制。理想状态是：大型律所每处理一次客户事项，其 AI 系统就更好，同时仍保护客户数据。要把这一点运营化，必须同时解决技术、运营和 AI 问题，还要处理事项级隐私边界。三项开放问题共同指出当前飞轮的缺口：公开合成环境可训练通用法律能力，却仍缺生产分布、极端上下文管理和客户特定学习。\n\n## 15｜26:50–29:19 Q&A：从个人助手走向组织操作系统，以超垂直对抗横向产品\n\n最后一位提问者的问题受 ASR 干扰较重，提及开源模型、基础设施，以及某些横向云产品/工作流产品名称（“Coda/Coda Work”等均 ASR待核）；可辨识的核心是：从产品视角，Harvey 如何与通用横向产品在工作流、方法与效率上竞争？\n\nGabe 的答案是产品单位正在改变。Harvey 最初的产品以及字幕所称 “Coda Work” 更偏向个人，解决 individual productivity；Harvey 日益构建的是 organizational productivity。对大型律所而言，真正问题不是让单个律师更高效，而是同时拥有约 10,000 个客户、为每个客户推进项目时，确保所有项目质量很好且能盈利。因此为律所建设的基础设施，越来越像是在帮助它运营整台机器。\n\n下钻到单个客户项目，挑战也不是起草某一个章节。一项工作可能持续六个月，由全所 20–30 人参与，还需协调外部各方。产品于是越来越像 project management：编排人类与 agents、管理长期依赖和交付。在组织层面，律所又可能同时运行上千项目，需要考虑资源配置、计费以及正在 pitch 什么业务。\n\n企业端更复杂。一个 Fortune 500 公司可能与 1,000 家律所合作，内部还有 1,000 人，需要一套系统启动、分派并追踪所有工作。字幕末段把 “orchestrating” 识别成近似 “start work is trading that work”，ASR待核；结合上下文，只能确认其强调跨组织工作编排，不能据此补充具体功能。\n\n因此，Gabe 的简短竞争答案是：像企业软件历史上常见的做法一样，在自己的领域里做到 hyper-vertical，深入到横向产品不会覆盖的组织结构、项目流程、资源与经济性。正式内容到这里结束，主持人在 29:13 感谢 Gabe，29:17 起为掌声，视频总时长覆盖至 29:19。\n\n## 延伸分析（不是嘉宾原话）\n\n以下均为基于上述材料的编辑判断，不是 Gabe 或主持人的原话，也不代表 Harvey 已实现相应结果。\n\n### 1. “研究实验室”本质上是评价权与系统整合权\n\n从这套 playbook 看，Harvey Labs 的核心资产未必是某一组模型权重，而是定义任务、构造可验证环境、决定模型上线以及解释生产反馈的权力。底模与训练基础设施可从生态购买，benchmark 和产品闸门却决定外部能力如何被选择、组合并转化成法律工作成果。若这一判断成立，垂直 AI 公司的护城河更接近“评价系统 + 工作流入口 + 客户分发”，而非单独拥有一个后训练模型。\n\n反过来，这也意味着公开 benchmark 不能自动等于护城河。公开部分会被实验室和竞争者吸收，模型改进最终也可能商品化。Harvey 必须持续把任务定义推进到更贴近组织流程、私有工作方式和真实结果评价的层级，才能让公开数据成为生态接口，而不是把全部差异化免费交出去。\n\n### 2. 合成数据的优势是可控与可判分，弱点是分布真实性\n\n从 rubric 反向埋题再生成数据室，是很强的训练设计：答案在生成前已知，错误类型可控制，评价可以自动化，也避免直接接触客户数据。它比“让大模型随便写一堆合同”更像一个可审计实验环境。但同一可控性会造成偏差：生成者只会埋入自己预先想到的问题，语言和结构可能留有生成模式，模型也可能学习 benchmark 的风格而非真实业务能力。\n\nGabe 在问答中主动承认生产分布不匹配和过拟合风险，说明下一阶段重要指标不应只是 benchmark 分数，而应包括分布外稳健性、跨任务迁移、用户纠错率和真实项目结果。投资研究应要求区分“在自建环境上进步”与“在客户工作中可验证地改善”，否则训练飞轮容易成为封闭自证循环。\n\n### 3. 外部生态降低固定成本，也带来供应商与知识沉淀问题\n\n同时与多家训练实验室合作，可以用较小内部团队覆盖更多模型和研究路线，并把固定基础设施投入变成外部采购。这确实让应用公司更快进入后训练。然而多供应商也会带来实验可比性、数据治理、知识产权、复现性与推理成本管理问题。若每个伙伴使用不同 recipe 和栈，Harvey 必须确保实验结论和数据经验回流内部，否则容易形成“项目很多、核心 know-how 留在供应商”的局面。\n\n材料中 Harvey 正逐步用 API 做更多内部后训练，并希望打包成自己的 Composer 类模型，这可被视为知识内化的方向。但现有字幕没有提供训练成本、模型规模、基准提升幅度、线上采用率或毛利影响，不能仅凭合作数量判断研究效率。\n\n### 4. 多模型服务能力可能比自研模型更早产生经济价值\n\n“直接替换 + 路由”的两步法显示，Harvey 即使没有训练出最佳法律模型，也可通过把便宜模型放在引用生成等局部环节，先获得成本或性能收益。若路由做得好，复杂请求保留给高能力闭源模型，简单请求交给开源模型，整体单位经济性会比单模型方案更可控。这种能力还降低对单一模型供应商的依赖，并提高谈判空间。\n\n但收益取决于路由错误成本。法律场景的低频严重错误可能远比平均 token 节约昂贵，因此需要按任务风险分层，而不能只按表面复杂度或价格分配。演讲提到的 critical user journeys、人工产品测试和愤怒客户邮件，恰好是防止成本优化伤害专业可靠性的必要补充。\n\n### 5. 真正终局是“隐私保护的客户级学习”，也是最难兑现的部分\n\nGabe 描述的终局不是统一法律模型，而是每家律所、每个企业的系统随着工作持续变好。若能实现，这将把客户历史、组织习惯和工作成果转化成累积优势，提高切换成本。但法律数据通常具有客户事项隔离、保密、特权和地域边界；“律所层学习”与“客户事项不得互相泄露”之间存在天然张力。\n\n因此需要观察的不只是模型算法，还包括权限、数据驻留、审计、遗忘、事项隔离、谁批准反馈进入学习流程，以及改进能否在不复制原始数据的情况下验证。演讲把它称作技术、运营和 AI 的共同挑战是准确的；在这些机制公开前，持续学习应被视为研究方向，而非已兑现的产品护城河。\n\n### 6. 产品从写作助手上移到组织编排，扩张了价值也扩张了实施风险\n\n个人起草工具往往以席位、使用频率和节省时间衡量；组织级系统则触及项目管理、资源配置、计费、投标和跨机构协作，理论上可连接更大的预算并嵌入核心流程。Harvey 的超垂直路线因而可能从“律师用哪个助手”转成“律所怎样运营项目”的系统级竞争。\n\n不过上移也会使购买决策更复杂、实施周期更长，并与既有文档、财务、项目和知识管理系统发生集成。一个模型在法律推理上优秀，并不保证它能可靠协调六个月、20–30 人的项目。研究 Harvey 的后续进展，应分别追踪模型能力、工作流覆盖、组织部署深度与可量化商业结果，避免把它们合成一个模糊的“AI 能力”指标。\n\n### 7. 可验证的后续尽调清单\n\n后续若有更多一手材料，最值得验证的是：三套数据集各自的任务数、许可与社区采用；1,000 多个 unit tests 的评分一致性和 LLM judge 成本；开源或后训练模型相对闭源模型的具体提升、推理成本和线上流量占比；多供应商 fallback 对 SLA 与毛利的实际贡献；合成尽调数据到真实项目的迁移表现；以及客户级持续学习如何在法律权限边界内落地。上述问题不是对嘉宾陈述的否定，而是把本次高层 playbook 转化为可证伪、可持续跟踪的研究框架。\n",
+      "sourceBoundary": "YouTube Transcript API caption-derived transcript from the official Sequoia Capital video MGouk8W51v0. This is not a human-edited transcript; technical terms, benchmark names, figures and Q&A attribution may contain caption errors.",
+      "whyItMatters": "这场分享的研究价值,不在于 Harvey 宣称自己要复制一家基础模型公司,而在于它给出了一条更适合垂直应用公司的研发路径:不与前沿实验室正面对拼预训练资本,而是把公开或可采购的前沿生态能力,嵌入由领域基准、合成数据、后训练合作、多模型服务和生产反馈构成的闭环。Gabe Pereyra 的核心判断是,应用公司真正可能拥有的优势不是最多的算力或最通用的人才,而是对真实工作流、评价标准、产品分布、客户约束和部署反馈的理解。",
+      "themes": [
+        {
+          "id": "theme_e748f8750672ca8b04b2",
+          "name": "AI Agents",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_ebbd5f51fefc7fcabdf4",
+          "name": "AI Infra",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_693b1c2b5c9e35f47d43",
+          "name": "Enterprise AI",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_b4d7581efc05d1db8fe0",
+          "name": "Markets / Macro",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_7e5743d68b4cb5c76b9d",
+          "name": "Product / GTM",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_f1991dbc4cf3c8fe3860",
+          "name": "Venture / Pre-IPO",
+          "provenance": "deterministic-keyword-v1"
+        }
+      ],
+      "entities": [
+        {
+          "id": "entity_1ad9baa389d2b038b89f",
+          "type": "company",
+          "name": "Alphabet / Google",
+          "evidenceSource": "note",
+          "confidence": 0.9
+        },
+        {
+          "id": "entity_572c531059ad7c8ca7a2",
+          "type": "company",
+          "name": "Anthropic",
+          "evidenceSource": "note",
+          "confidence": 1
+        },
+        {
+          "id": "entity_011a22aec39be8aee508",
+          "type": "company",
+          "name": "Meta",
+          "evidenceSource": "note",
+          "confidence": 1
+        },
+        {
+          "id": "entity_54f40d6e1ebcc63523d3",
+          "type": "organization",
+          "name": "OpenAI",
+          "evidenceSource": "note",
+          "confidence": 1
+        }
+      ],
+      "noteVersions": [
+        {
+          "versionLabel": "source-faithful",
+          "writingStyle": "source-faithful",
+          "charCount": 16851,
+          "language": "zh-CN",
+          "canonical": true,
+          "superseded": false
+        }
+      ]
+    },
     {
       "id": "ep_f5d4495dc3464aae34be",
       "showId": "show_d243fcc00a13e40ed763",
@@ -5779,18 +5872,18 @@
       "name": "Training Data",
       "slug": "training-data-sequoia-capital",
       "tier": "Tier A",
-      "readyCount": 0
+      "readyCount": 1
     }
   ],
   "coverage": {
     "since": "2026-07-01",
     "totals": {
-      "officialEpisodes": 172,
+      "officialEpisodes": 176,
       "noteReady": 24,
       "transcriptReady": 24,
       "qcReady": 24,
-      "queued": 148,
-      "candidateAliasesMerged": 224
+      "queued": 152,
+      "candidateAliasesMerged": 231
     },
     "shows": [
       {
@@ -5864,12 +5957,12 @@
         "slug": "bloomberg-technology",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 32,
+        "officialEpisodes": 33,
         "noteReady": 1,
         "transcriptReady": 0,
         "qcReady": 1,
-        "queued": 31,
-        "candidateAliasesMerged": 34
+        "queued": 32,
+        "candidateAliasesMerged": 35
       },
       {
         "id": "show_f86bd475750778cc5df3",
@@ -5916,12 +6009,12 @@
         "slug": "dwarkesh",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 3,
+        "officialEpisodes": 4,
         "noteReady": 0,
         "transcriptReady": 0,
         "qcReady": 0,
-        "queued": 3,
-        "candidateAliasesMerged": 5
+        "queued": 4,
+        "candidateAliasesMerged": 8
       },
       {
         "id": "show_208664517444e126c745",
@@ -5942,12 +6035,12 @@
         "slug": "invest-like-the-best",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 5,
+        "officialEpisodes": 6,
         "noteReady": 1,
         "transcriptReady": 1,
         "qcReady": 1,
-        "queued": 4,
-        "candidateAliasesMerged": 4
+        "queued": 5,
+        "candidateAliasesMerged": 6
       },
       {
         "id": "show_ab61c3866a2f58f78b82",
@@ -6033,12 +6126,12 @@
         "slug": "a16z",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 31,
+        "officialEpisodes": 32,
         "noteReady": 7,
         "transcriptReady": 8,
         "qcReady": 7,
-        "queued": 24,
-        "candidateAliasesMerged": 42
+        "queued": 25,
+        "candidateAliasesMerged": 43
       },
       {
         "id": "show_155f53f5f64931d8bb8a",
@@ -6063,9 +6156,9 @@
       },
       {
         "month": "2026-08",
-        "officialEpisodes": 47,
+        "officialEpisodes": 51,
         "noteReady": 5,
-        "queued": 42
+        "queued": 46
       }
     ]
   }
