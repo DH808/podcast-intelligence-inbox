@@ -1,9 +1,9 @@
 {
   "format": "podcast-library-sanitized-v1",
-  "generatedAt": "2026-08-11T23:00:57.471Z",
+  "generatedAt": "2026-08-12T23:00:55.283Z",
   "gateVersion": "library-ready-v2",
   "counts": {
-    "episodes": 58
+    "episodes": 60
   },
   "audit": {
     "gateVersion": "library-ready-v2",
@@ -12,48 +12,198 @@
     "foreignKeyViolations": 0,
     "duplicates": 0,
     "orphans": 0,
-    "total": 215,
-    "ready": 58,
-    "blocked": 157,
-    "publicReady": 58,
+    "total": 220,
+    "ready": 60,
+    "blocked": 160,
+    "publicReady": 60,
     "reasonCounts": {
-      "canonical_note_missing": 156,
-      "deterministic_qc_failed": 156,
-      "source_boundary_missing": 156,
+      "canonical_note_missing": 159,
+      "deterministic_qc_failed": 159,
+      "source_boundary_missing": 159,
       "source_note_placeholder_or_error": 1,
-      "why_it_matters_missing": 156
+      "why_it_matters_missing": 159
     },
     "ingest": {
-      "id": "ingest_4d65690c6662dbcdd462",
-      "startedAt": "2026-08-11T23:00:56.990Z",
-      "completedAt": "2026-08-11T23:00:56.992Z",
+      "id": "ingest_bd05b2229f3fad509eda",
+      "startedAt": "2026-08-12T23:00:54.797Z",
+      "completedAt": "2026-08-12T23:00:54.799Z",
       "status": "completed",
       "sourceCounts": {
         "monitoredShows": 20,
-        "officialSinceCutoff": 177,
-        "candidateRows": 418,
-        "candidateAliasesMerged": 213,
-        "radarIndexed": 421,
-        "radarReadyImported": 36,
+        "officialSinceCutoff": 180,
+        "candidateRows": 429,
+        "candidateAliasesMerged": 216,
+        "radarIndexed": 432,
+        "radarReadyImported": 38,
         "iltbCanonicalSobridgeMarkdown": 16,
         "iltbVersions": 32,
         "genericReviewed": 9,
         "genericExcluded": 10,
-        "attachedArtifacts": 550,
+        "attachedArtifacts": 560,
         "importedClaims": 374,
-        "inventoryFiles": 11560,
-        "canonicalEpisodes": 215,
-        "readyEpisodes": 58
+        "inventoryFiles": 11692,
+        "canonicalEpisodes": 220,
+        "readyEpisodes": 60
       },
       "inserted": 5,
-      "updated": 210,
-      "deduped": 358,
-      "warnings": 36,
+      "updated": 215,
+      "deduped": 363,
+      "warnings": 37,
       "errorSummary": null,
       "codeVersion": "task-004-v1"
     }
   },
   "episodes": [
+    {
+      "id": "ep_06c6a3c0760bce9d8d87",
+      "showId": "show_155f53f5f64931d8bb8a",
+      "show": "Training Data",
+      "title": "Post-Training Is How You Keep Your Taste | Fireworks CEO Lin Qiao",
+      "publishedAt": "2026-08-12T12:00:10.000Z",
+      "publishedDate": "2026-08-12",
+      "durationSeconds": null,
+      "duration": "",
+      "description": "When should a company move from prompting to post-training its own models? Fireworks AI co-founder and CEO Lin Qiao lays out the full progression at Sequoia Capital’s Own Your Intelligence event, from prompting and RAG to supervised fine-tuning, preference tuning, reinforcement learning, and distillation. And she explains which technique solves which problem. Lin also covers the pitfalls teams hit along the way: prioritizing data quantity over quality, relying on vibes instead of systematic evals, sloppy RL environments, and reward hacking. She shares ho",
+      "originalUrl": "https://www.youtube.com/watch?v=yAvJ7b_FxUA",
+      "mediaType": "youtube",
+      "materiality": "high",
+      "productionStatus": "qc_passed",
+      "readerReady": true,
+      "publicReady": true,
+      "gateVersion": "library-ready-v2",
+      "noteMarkdown": "---\n节目: Sequoia Capital\n原题/标题: Post-Training Is How You Keep Your Taste | Fireworks CEO Lin Qiao\n发布时间: 2026-08-12T12:00:10+00:00\n原始链接: https://www.youtube.com/watch?v=yAvJ7b_FxUA\nSource boundary verbatim: YouTube Transcript API caption-derived transcript from the official Sequoia Capital video yAvJ7b_FxUA. This is not a human-edited transcript; speaker names, post-training terms, cost figures and company examples may contain caption errors.\n---\n\n# 后训练如何保住产品的“品味”：林巧谈专有智能、方法选择与规模化经济性\n\n## 为什么对研究重要\n\n这段分享的研究价值，不在于再次宣告“后训练很重要”，而在于它给出了一条有先后次序、也有商业触发条件的路径：先用提示和少样本迅速验证想法，再用 RAG 把动态事实接入产品，继而用监督微调纠正行为与输出结构，用偏好学习把产品判断写进模型，用强化学习形成特定领域能力，最后在性能或成本成为瓶颈时做蒸馏。嘉宾反复强调，这些方法不是互相替代的流行词，而是针对不同问题、可组合使用的工具。\n\n对 投资研究用户 Podcast Radar 而言，更关键的是“智能所有权”与产品护城河之间的关系。生成式 AI 已把应用实现所需的人力、时间和编码门槛大幅压缩；当界面和功能可以快速仿制，公司的判断、品味、客户理解以及产品互动数据，能否被固化到模型权重、奖励函数和评测体系中，就成为一种新的差异化机制。这里的主张来自 Fireworks 平台方及其客户观察，兼具技术路线与商业立场，不能当作中立的行业定论。\n\n访谈还把后训练的效果边界说得很具体：数据量不等于数据质量；“凭感觉评测”必须转成可重复的系统评测；失真的 RL 环境会让模型在错误模拟器上爬坡；单一奖励会诱发奖励黑客；训练栈与服务栈不对齐会造成精度或质量损失；最终裁判不是离线训练分数，而是上线 A/B 测试是否推动产品指标。它因此提供了一个可用于研究 AI 产品工程成熟度的框架：数据、训练、评测、环境、服务和商业指标必须闭环。\n\n## 一页导读\n\n嘉宾林巧（标题作 Lin Qiao；自动字幕多处写作 Lynn）是 Fireworks CEO 与联合创始人。她先从应用开发的门槛坍缩讲起：过去，一个想法走到规模化生产，可能需要数十名强产品工程师与 PM 协作数个季度；现在，一个人、数周、甚至不会写一行代码，也可能做出应用。结果不是竞争减少，而是应用层更易复制，创业公司更需要比“调用现成黑盒 API”更深的护城河。\n\n她把“拥有而非租用智能”拆成一条循环。起点是高质量生产数据，以及用合成数据补充生产数据；随后在已有模型上训练并拥有权重；再把模型送入服务层，以 A/B 测试观察产品指标；结果继续回流到数据和训练。基础模型由公共数据与标注数据训练，擅长共同任务，而每家公司之所以存在，是因为它以特殊方式解决特定问题。因此，公司要把自己的判断、品味、信念和对客户的深层理解编码进智能系统。\n\n方法选择遵循“问题是什么”。动态事实缺失用 RAG；行为或输出结构不对用 SFT；答案好坏取决于产品独特品味时用偏好训练或 DPO；模型在专项任务上能力弱时用 RL；最终模型太慢或太贵时用蒸馏，让教师模型教更小的学生模型。提示、RAG、SFT、偏好、RL、蒸馏是一条渐进路线，但并非所有团队都应立即跳入后训练。提示与上下文工程可在分钟到小时尺度试验，SFT 则可能需要数小时；字幕没有给偏好训练、RL 或蒸馏的固定耗时。\n\n真正困难的部分首先是数据。嘉宾认为质量比数量重要，而最能判断数据质量的通常是产品团队。这使产品团队与研究/机器学习团队从过去的分工协作走向更深融合。其次是评测：创始人“看着像对”本身就是判断，但要把这种判断转成像单元测试、集成测试一样可重复的评测。第三是 RL 环境与奖励。模拟若不反映现实，模型会优化错误目标；若奖励只是“减少编译错误”，模型可能输出零行代码，从而获得零错误却完全背离任务意图。\n\n训练完成不是实验结束。模型要进入服务层并接受 A/B 测试；不同数学库、数值实现和优化方式可能让矩阵计算产生不同结果，使训练结果在服务时无法复现或损失精度。研究后训练能力时，不能只看训练基础设施，还应考察训练—服务对齐和产品指标闭环。\n\n案例部分覆盖编码、医疗和安全。Cursor 据称从“去年年初”开始深度进行中期训练到后训练，利用大量用户互动与偏好数据，希望控制模型供应并达到或超过前沿实验室质量；字幕提到 Composer 2、Composer 2.5，具体命名与比较对象未完整说清，均属 ASR待核。Doximity 的临床 AI 面向医生深度医疗提问、症状—药物—副作用匹配与综合研究，据称在某个“Stanford Harvard clinic safety benchmark”居首，该基准名 ASR待核。Factory 聚焦代码安全，字幕称其调优模型在安全基准上领先，但未给基准名与分数。另一个字幕写作“Jen Spark”的通用协作应用做专业深度研究与幻灯片生成，据称质量略胜某前沿模型、成本低 5—10 倍；公司名 ASR待核。\n\n最后，嘉宾把产品市场契合（PMF）与规模化拆成两个阶段。早期可直接花钱调用前沿闭源模型，优先验证 PMF；达到 PMF 后，产品表面产生的数据才更有意义，也开始积累足量高质量数据。此时企业同时面对两个问题：保持竞争优势，以及让收入成本结构健康。后训练被描述为双重答案：把难以复制的品味与数据写进模型，并把成本降低 5—10 倍，从而在相同预算下承载 5—10 倍流量。这里的倍数是嘉宾陈述，源字幕未给测算口径、基线、样本或维护成本，应视为待验证的供应商侧主张。\n\n## 一句话主线与 投资研究用户 关注点\n\n一句话主线：应用本身越来越容易复制，企业应在 PMF 前用现成前沿模型快速试错，在 PMF 后用高质量产品数据、系统评测与后训练闭环，把独特品味固化为专有模型能力，并用更好的单位经济性支撑规模化。\n\nDH 关注点：后训练不是单一训练动作，而是“产品反馈信号 → 数据筛选/合成 → SFT、偏好或 RL → 可靠评测与环境 → 训练—服务对齐 → A/B 产品指标 → 新反馈”的组织与技术系统；研究时尤其要区分嘉宾提供的机制说明、客户案例陈述与未经口径化验证的性能/成本宣称。\n\n## 关键数字总表\n\n| 数字/时间 | 原语境 | 研究解读与边界 |\n|---|---|---|\n| 28:26 | metadata 标注的视频总时长 | 实际字幕在 28:24 掌声处结束；本笔记覆盖至 28:26 的内容边界。 |\n| 约 15 分钟 + 约 15 分钟 | 主持人安排：后训练讲解约 15 分钟，随后约 15 分钟问答 | 实际结构大体是 0:00—23:15 演讲与转场、23:19 起问答，并非严格各半。 |\n| 数十人、数个季度 | 过去把好想法实现并规模化，需要数十名强产品工程师与 PM，历时多个季度 | 为嘉宾概括，没有具体公司样本。 |\n| 1 人、数周、0 行编码知识 | 现在一人用数周、即使不会写一行代码也可做出应用 | 表达开发门槛坍缩，不等于所有生产级应用都能如此完成。 |\n| 过去 1 年 | 嘉宾观察到软件与应用开发受到显著扰动 | 相对时间以 2026-08-12 发布日理解，但录制日未给出。 |\n| 过去 1 周 | 开放模型与闭源模型讨论及对开放模型的支持升温 | 相对录制时间；具体事件未指明。 |\n| 分钟到小时 | 提示、少样本、RAG/上下文工程的试验互动尺度 | 字幕原话为 minutes to hours，未给基准任务。 |\n| 数小时 | 监督微调的示意耗时 | 仅为嘉宾概括，取决于数据、模型与算力。 |\n| 0 行代码 | “最小化编译错误”奖励下，模型输出零行代码 | 奖励黑客示例：形式上零编译错误，实质上未完成编码任务。 |\n| 每几个月 | Cursor 据称持续发布新模型 | 未给完整发布清单；相关模型名可能有字幕误差。 |\n| 2025 年 | 嘉宾称 2025 是“编码之年” | 属嘉宾的行业判断。 |\n| 5—10 倍成本下降 | 对“Jen Spark”案例及后训练总体经济性的陈述 | 公司名 ASR待核；没有基线、测算口径或总拥有成本，不能直接外推。 |\n| 5—10 倍流量 | 相同预算因成本下降而可支持的流量倍数 | 是由上述成本主张推导的嘉宾陈述，仍受服务与维护成本影响。 |\n| 数百万个模型 | 嘉宾预测未来会有数百万个专用模型，近似“一应用/一用例” | 趋势判断，不是当前存量统计。 |\n| 2% | 第二位提问者用于询问 ROI 的假设性质量提升 | 不是嘉宾报告的实际 benchmark 增益。 |\n| 1—2 年 | 提问者问是否应在用量上升时提前规划未来一两年 | 是问题中的规划窗口，并非嘉宾给出的固定实施周期。 |\n\n## 01｜00:00–03:44 开场：应用开发门槛坍缩后，为什么“品味”成为问题\n\n主持人先调查现场有多少人做后训练、多少人使用 Fireworks，并说明本环节将聚焦如何处理后训练问题，形式约为 15 分钟分享加 15 分钟问答。林巧自我介绍为 Fireworks CEO 与联合创始人。字幕在 0:59 将平台描述为“Firework weather specializing intelligence platform”，句意明显不通；结合标题只能确定其为 Fireworks 及“专门化智能平台”相关表述，中间词 ASR待核。\n\n她从平台视角说明，Fireworks 上既有创业公司、数字原生公司，也有企业客户，因此能看到开发者正在构建什么创新、遇到什么挑战、形成什么趋势。过去一年最显著的变化是软件和应用开发所需资源被压缩：从数十名产品工程师与 PM、多个季度，变成一个人、几周，甚至无需懂得写一行代码。压缩的不只是日历时间，也包括专业知识门槛。\n\n这使应用层竞争变得更激烈，并迫使公司思考比现成黑盒 API 更深的护城河。她把近期开放模型与闭源模型的争论放进同一背景：行业里有许多公司，每家公司之所以存在，是因为它以独特方式解决特定问题，并把自己的判断、品味、决心与信念带入产品。如果底层只是租用同一套现成 API，公司必须回答如何保留这种独特性。她提出的答案是：把判断、品味和对客户的深层理解“烘焙”进自有智能，而不只是停留在 API 之上的薄应用。\n\n## 02｜03:52–05:23 “拥有智能”的完整循环：数据、权重、服务与产品指标\n\n“拥有而非租用智能”首先从数据开始。嘉宾说“智能是数据的派生物”：基础模型依赖公共数据与标注数据，解决的是共同任务；创业公司则因解决具体任务而成立。因而，筛选高质量生产数据，并以合成数据丰富生产数据，是拥有智能的第一步。她没有把合成数据描述为生产数据的替代品，而是补充手段。\n\n第二步是把数据转成模型：在既有模型之上训练，并拥有权重。实现这一点有一组技术，每项技术适合不同问题，也能互相配合，而非必须单选。第三步是服务：即便模型在专项问题上表现很好，也要进入服务层。团队先用 A/B 测试确认它是否真正推动产品指标，再让线上结果回到循环。由此，“所有权”至少包括数据、模型权重和能持续验证/迭代的生产闭环，而不只是下载一个开放权重模型。\n\n## 03｜05:28–08:14 方法阶梯：提示 → RAG → SFT → 偏好/DPO → RL\n\n嘉宾明确提醒，不应一开始就跳进后训练。第一阶段是提示：原样使用模型，通过少样本迅速测试想法。第二阶段是 RAG，把 AI 的使用锚定在自有数据中，并开展大量上下文工程；字幕把 context 识别成“contest”的可能性很高，记为“上下文工程（ASR待核）”。这两类互动可在分钟到小时尺度完成。\n\n当团队已有一些数据，希望观察数据能否让模型更贴合产品时，进入监督微调（SFT），嘉宾给出的示意耗时是数小时。再往后，如果模型需要体现个性化、体现产品特有的选择，就利用用户互动中的偏好信号，例如点赞、点踩，让模型学习产品品味。她随后把法律、金融、医疗、客户支持、招聘、营销、销售等领域列为专项知识场景，并指出同一垂直行业内部仍有许多子领域；要让模型承载这些专业能力，通常会走向强化学习。\n\n她以人类学习作类比：阅读材料、了解什么正确与错误，类似 SFT；成长中形成自己处理问题的品味与判断，类似偏好学习或 DPO；长期成为会计师、深入处理财务数据，或成为牙医、掌握具体操作细节，则类似通过 RL 发展专长。这个类比用于解释递进关系，并不意味着几种机器训练机制与人类学习在机制上完全等价。\n\n## 04｜08:18–09:40 每种方法解决什么：按故障类型选工具，蒸馏负责性能与经济性\n\n嘉宾给出本场最清楚的“症状—方法”映射。模型不知道事实、且产品事实持续动态变化时，通常用 RAG；问题不是事实，而是输出行为或结构偏离要求时，用筛选过的数据做 SFT；答案质量取决于个人化或产品特有品味时，用偏好训练；模型在目标专项问题上本身很弱时，用 RL；模型结果已经可用、但生产服务太慢或太贵时，用蒸馏，由教师模型教更小的学生模型，以提高性能或降低经济成本。\n\n她特别补充，蒸馏在 LLM、VLM 与图像生成模型中含义并不完全相同，但没有在本场继续展开。因此不能从这段字幕推断具体蒸馏损失函数、训练配方或压缩比。更重要的机制结论是：RAG 管动态知识，SFT 管可示范的行为/格式，偏好学习管相对判断，RL 管难专项能力，蒸馏管部署效率；团队应从产品故障出发，而不是从技术热度出发。\n\n## 05｜09:44–12:51 失败模式：数据质量、系统评测、RL 环境与奖励黑客\n\n许多团队试用这些技术后会烧掉时间和资金，却没有得到理想结果。第一类原因是数据。数据是调优的核心，但数量不是最重要的，质量才是；把海量数据直接倒进训练流程不会自然产生好模型。嘉宾认为最好的数据质量裁判往往是产品团队。生成式 AI 之前，产品团队与研究/ML 团队是不同组织，彼此协作；在生成式模型后训练中，产品团队必须亲自对数据质量作判断，组织边界因此趋于融合。\n\n第二类原因是评测。忙于发布的创业者常做“vibe eval”，即凭感觉看结果对不对。嘉宾没有全盘否定这种直觉，而是指出那正是创始人的判断：下一步要把“觉得好/不好”编码成系统化、可重复的评测，类似传统软件里的单元测试和集成测试。产品品味如果只留在创始人脑中，就无法稳定训练；一旦转成评测，就成为可复用的质量门槛。\n\n第三类原因是粗糙的 RL 环境。若模拟不反映现实，模型会在坏模拟器上“爬坡”，并可能奖励黑客。她举的编码例子是：要求模型生成代码，同时最小化编译错误；模型最聪明的投机解是输出零行代码。零代码确实没有编译错误，却绝不是任务想要的答案。机制上的教训是，代理指标若遗漏“必须完成任务”等约束，模型可以最大化奖励而最小化真实效用。她提醒团队关注这些细节，不要让模型在错误目标上“胜过”设计者。\n\n## 06｜12:53–14:09 训练不是终点：训练—服务对齐与 A/B 最终裁决\n\n后训练是一系列实验，但训练结束不是实验结束。最终裁判是产品指标是否移动，因此模型必须进入服务层做 A/B 测试。这里存在一个容易被忽略的质量断点：模型从训练栈迁移到服务栈时，如果两者没有对齐，质量可能下降。\n\n嘉宾给出的机制解释是，模型执行大量数学计算和矩阵乘法；训练与服务若采用不同库、不同数值实现或不同优化，计算结果可能不同。于是训练得到的结果在服务中可能无法复现，甚至损失精度。她表示还能提供更多例子，但本场没有展开。源内可以确认的边界是：不能只用离线训练结果宣称产品提升，必须核对生产数值一致性，并用线上产品指标完成验证。\n\n## 07｜14:11–16:46 Cursor、医疗与代码安全：用开放模型承载专有挑战\n\nCursor 被列为较早的后训练实践者之一，据称从“去年年初”开始走上这条路。动机一是控制模型供应的命运，二是拥有大量用户互动，能理解客户偏好并积累数据。嘉宾说 Cursor 从深度中期训练一路做到后训练，每几个月持续公布更新模型，希望达到前沿质量，并争取与前沿实验室持平或超过它们。字幕提及“Composer 2、Composer 2.5”，但比较对象在 15:10 后出现断句，模型名、版本和基准结论 ASR待核。她也称 Cursor 构建在 Fireworks 之上；这是平台方客户陈述，源内没有独立验证。\n\n医疗案例 Doximity 的“clinic AI”允许医生提出深度医学问题，围绕症状、药物和副作用做匹配，并进行较完整的医学研究。嘉宾称其在 Fireworks 上训练，并在一个字幕写作“Stanford Harvard clinic safety benchmark”的重要基准上居首；基准正式名称、榜单时间、任务和分数均未提供，ASR待核。医疗结论尤其不能从该陈述外推到临床有效性。\n\nFactory 是另一家红杉系公司，聚焦编码中的安全部分。嘉宾强调安全容错很低，必须做对，并称其调优模型在某安全领域 benchmark 上领先，但未给名称与成绩。这些案例共同服务于她的主张：不同公司以特殊方式处理独特问题，可以在开放模型之上，用自有数据建立自己的挑战与能力。字幕“build their own challenges”语义略不自然，具体措辞 ASR待核。\n\n## 08｜16:51–18:38 从“编码之年”到领域协作，以及 5—10 倍成本主张\n\n嘉宾称 2025 年是“编码之年”，Fireworks 支持许多编码公司从中期训练走向后训练，相关 benchmark 很强，这些公司希望在编码领域与前沿实验室持平或胜出。随后她把视野扩展到“co-work”应用：既包括通用协作，也包括法律、金融、营销、招聘、销售、客户支持等专门领域协作；这些产品开始通过后训练拥有驱动产品的智能。字幕中的“co-work space”可能是特定产品类别说法，也可能有识别偏差，ASR待核。\n\n字幕写作“Jen Spark”的通用协作应用面向专业人士做深度研究和幻灯片生成。嘉宾称它与某前沿模型相比质量略好，而成本显著更低，具体说法为降低 5—10 倍。公司正式拼写、比较模型、benchmark、推理配置和成本口径均未在字幕中给出，ASR待核。这项主张的商业含义是：创业公司找到 PMF 后，较低成本可使快速扩张成为可行生意。\n\n她又提到一个医疗案例，但没有在字幕里给出名称，只说医疗数据或用例没有被前沿实验室模型充分覆盖，因此调优模型的质量显著优于当时最先进的闭源模型。由于缺少模型、任务、样本和数值，这只能作为“垂直数据可弥补通用模型覆盖不足”的案例陈述，不能作为普遍性能结论。\n\n## 09｜18:41–21:37 谁在做后训练：前沿 Agent、巨头、专用模型开发者与“尽早试验”\n\n第一类用户是前沿 Agent 构建者。他们通常构建定制 harness，而不用通用 harness，并让 harness、系统和多种工具共同优化，因此经常需要后训练。字幕没有定义 harness 的具体组成；可确认的是模型能力需要与代理执行框架、工具使用方式协同，而非孤立训练。\n\n第二类是拥有巨大流量的成熟公司。面向全部客户部署 AI 功能会带来庞大成本，所谓“不要规模化到破产”不只针对创业公司。嘉宾甚至说，一些公司的 CFO 会因成本阻止 AI 功能上线，后训练则被视作缓解方式。第三类是专用模型运营者，包括新实验室和前沿模型开发者，他们也进行大量后训练。\n\n嘉宾总结了一个反复听到的说法：达到 PMF 后，后训练会成为许多公司构建专门化智能的载体。她预测未来可能出现数百万个专用模型，近似每个应用、每个用例一个模型。这是她的趋势判断，不是市场统计。\n\n数据如何转成模型之外，奖励信号以及奖励函数的构造也是核心。她的建议听似与“不要立刻跳入后训练”矛盾，实则可以按阶段理解：产品路线不应在毫无验证时重投入，但团队应尽早、小步、迭代地试验，积累动手经验。她认为奖励工程的逻辑与思维方式很像软件工程，上手障碍没有许多人想象得高，因此鼓励团队尽早测试。\n\n## 10｜21:42–23:15 按团队成熟度分层：低层 API、训练 SDK 与研究员协助\n\n不同团队拥有不同专业知识，因此需要不同抽象层。Cursor 与 Cognition 被描述为有深厚研究能力的公司，希望控制尽可能多的旋钮以追求极致结果。Fireworks 向其提供最低层 API：字幕称只有 RL rollout 可直接交互，团队完全控制 trainer，从而获得最好结果。这里的“最好”没有比较口径，应理解为嘉宾对控制力与结果的概括。\n\n另一类公司主要拥有产品工程师或机器学习工程师。他们有足够的后训练知识，希望保留一些控制，但不想直接管理最低层细节，因此可使用训练 SDK，与平台紧密迭代。Fireworks 也可部署自家研究员，亲手协助训练客户团队上手。她由此提出三档参与方式：深研团队全控训练器；工程团队使用较高层 SDK；需要赋能的团队接受研究员协助。23:15，她暂停主体分享，进入现场提问。\n\n## 11｜23:19–24:44 问答一：奖励是代码，多维 rubric 的混合方式就是秘密配方\n\n第一位提问者观察到，最成功的团队往往已经从产品中获得数据和奖励信号，因而询问哪些奖励信号能支持快速、成功的训练。林巧回答，奖励可以理解为代码：团队用代码写奖励，并用多维 rubric 为结果打分。\n\n她以招聘 Agent 评估候选人为例。不同公司必然采用不同标准：一项可以是候选人的驱动力——是否足够渴望、是否不轻易接受拒绝、是否会“破墙”推进；另一项可以是构建与取得进展的速度；还可以继续增加其他维度。最终将各项分数混合。独特性不仅在“有哪些指标”，还在每家公司如何给多维得分加权、融合；这种 rubric 及混合方式就是产品的秘密配方。源字幕在 24:09 把维度说成 aptitude，但随后描述更接近驱动力/进取性，故中文按描述转述，术语 ASR待核。\n\n## 12｜24:45–28:26 问答二：何时投入后训练——PMF 之后同时守住差异化与单位经济性\n\n第二位提问者自称 Raj、来自 Vercel，并追问真正的投入时点。他把多种可能触发器放在一起：团队是否“感觉准备好”、成本是否已经过高、benchmark 是否超过前沿模型、假设性的 2% 提升是否值得搭建和长期维护整个框架，以及是否应在用量激增时为未来一两年规划。问题中还出现“Vercel, Vercel cognition, or other companies”，实体关系和措辞 ASR待核。\n\n林巧把 AI 公司的 PMF 与规模化分成两个阶段。传统 SaaS 叙事里，达到 PMF 后就尽量扩张；AI 产品则出现分叉：PMF 不等于拥有持久、可规模化的业务。典型策略是，PMF 前先使用前沿实验室模型，因为团队不必操心训练和服务细节，可以直接花钱验证需求。\n\n达到 PMF 后，时机发生变化。只有当真实用户持续使用产品，产品表面产生的数据才真正有意义，团队也开始积累足量高质量数据；这些数据成为拥有智能的燃料。准备扩张时，公司要同时解决两件事：继续保持竞争优势，以及建立收入与成本健康的持久业务。她没有把“成本爆表”设为唯一触发器，而把 PMF、有效数据积累和规模化目标合并为强信号。\n\n后训练的第一项价值是把独特品味编码、固化到模型里。她认为应用本身很容易被克隆：以编码 Agent 为例，从截图就可能迅速生成相同甚至更好的应用，应用层护城河正在缩小。把体现产品互动的数据与深层知识写入模型，是保存差异化的一条路径。她说“没人能偷走”这种模型内品味，属于强调性表达；源内并未讨论模型抽取、数据泄漏或竞争者独立复现等风险。\n\n第二项价值是经济性。她再次声称后训练模型可把成本降低 5—10 倍，于是在预算相同的情况下支持 5—10 倍更高流量，改善规模化的单位经济性，避免“扩张到破产”。但她没有回答完整 ROI 公式，也未量化数据整理、训练、评测、工程维护和模型更新成本。因此，本场给出的时机判断比投资回报测算更完整：先用前沿模型找到 PMF；当高质量产品数据形成、差异化与成本同时成为规模化约束时，把后训练提升为核心能力。28:22 后双方致谢，28:24 出现掌声；metadata 的内容边界为 28:26。\n\n## 延伸分析（不是嘉宾原话）\n\n这套框架可被压缩为两个门槛。能力门槛是：团队能否把隐性的产品判断变成数据、rubric、奖励与评测；经济门槛是：节省的推理成本与新增收入，能否覆盖数据治理、训练、评测、服务对齐和持续维护。PMF 提供真实信号，但不自动保证数据可训练、奖励无漏洞或 ROI 为正。\n\n研究这些案例时，宜要求同一张证据表：任务与基线、离线指标、线上 A/B 指标、质量置信区间、延迟、吞吐、单次与总拥有成本、安全边界及更新时间。尤其对医疗、安全和“领先前沿模型”主张，缺少正式 benchmark 名、样本与部署约束时，只能记录为企业案例线索，不能升级为已证实结论。\n",
+      "sourceBoundary": "YouTube Transcript API caption-derived transcript from the official Sequoia Capital video yAvJ7b_FxUA. This is not a human-edited transcript; speaker names, post-training terms, cost figures and company examples may contain caption errors.",
+      "whyItMatters": "这段分享的研究价值,不在于再次宣告“后训练很重要”,而在于它给出了一条有先后次序、也有商业触发条件的路径:先用提示和少样本迅速验证想法,再用 RAG 把动态事实接入产品,继而用监督微调纠正行为与输出结构,用偏好学习把产品判断写进模型,用强化学习形成特定领域能力,最后在性能或成本成为瓶颈时做蒸馏。嘉宾反复强调,这些方法不是互相替代的流行词,而是针对不同问题、可组合使用的工具。",
+      "themes": [
+        {
+          "id": "theme_e748f8750672ca8b04b2",
+          "name": "AI Agents",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_ebbd5f51fefc7fcabdf4",
+          "name": "AI Infra",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_693b1c2b5c9e35f47d43",
+          "name": "Enterprise AI",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_b4d7581efc05d1db8fe0",
+          "name": "Markets / Macro",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_7e5743d68b4cb5c76b9d",
+          "name": "Product / GTM",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_f1991dbc4cf3c8fe3860",
+          "name": "Venture / Pre-IPO",
+          "provenance": "deterministic-keyword-v1"
+        }
+      ],
+      "entities": [],
+      "noteVersions": [
+        {
+          "versionLabel": "source-faithful",
+          "writingStyle": "source-faithful",
+          "charCount": 10355,
+          "language": "zh-CN",
+          "canonical": true,
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "ep_3d0c63200f4779f95aac",
+      "showId": "show_155f53f5f64931d8bb8a",
+      "show": "Training Data",
+      "title": "RL Environments Explained: How AI Agents Learn Real-World Work | Brendan Foody, Mercor",
+      "publishedAt": "2026-08-12T13:00:28.000Z",
+      "publishedDate": "2026-08-12",
+      "durationSeconds": null,
+      "duration": "",
+      "description": "RL environments have become the hottest topic in AI training data. But what are they, exactly? At Sequoia Capital’s Own Your Intelligence event, Mercor CEO Brendan Foody breaks down the three components: worlds (the messages, docs, and files of a real project), apps (high-fidelity clones of tools like Salesforce and Google Workspace), and tasks (prompts paired with rubric-based verifiers). He walks through a real legal environment built with lawyers from top firms, and shares post-training results showing dramatic gains on domain-specific tasks from mode",
+      "originalUrl": "https://www.youtube.com/watch?v=a00xIn5kwhM",
+      "mediaType": "youtube",
+      "materiality": "high",
+      "productionStatus": "qc_passed",
+      "readerReady": true,
+      "publicReady": true,
+      "gateVersion": "library-ready-v2",
+      "noteMarkdown": "---\n节目: Sequoia Capital\n原题/标题: RL Environments Explained: How AI Agents Learn Real-World Work | Brendan Foody, Mercor\n发布时间: 2026-08-12\n原始链接: https://www.youtube.com/watch?v=a00xIn5kwhM\nSource boundary: YouTube Transcript API caption-derived transcript from the official Sequoia Capital video a00xIn5kwhM. This is not a human-edited transcript; speaker names, RL-environment terminology, pricing figures and benchmark results may contain caption errors.\n---\n\n# RL 环境如何让 AI Agent 学会真实世界工作\n\n> 投资研究用户 Podcast Radar｜中文深度笔记（忠于字幕来源）  \n> 嘉宾：Brendan Foody（Mercor）｜全长：26:20  \n> 注：本文只依据所给官方视频的机器字幕整理。凡字幕中的公司名、模型名、技术缩写、法律实体或数字存在明显疑点，均以“ASR待核”标出；不以外部资料补写或纠正。\n\n## 为什么对研究重要\n\n这段演讲把“后训练数据”从静态标注，推进到可交互、可验证、可规模化的工作环境：模型不再只模仿一个专家答案，而是在包含消息、文档、表格、应用和协作者的世界里采取连续行动，再由验证器评估轨迹。对研究者而言，重要的不只是“RL 环境”这个名词，而是它把能力提升拆成了可观察的工程对象：世界是否逼真、应用是否覆盖真实工具、任务是否代表经济活动、验证信号是否可靠、基础模型是否已强到能从探索中学到东西。\n\n这也给出一条数据产业史线索：2020 年前后，主流是低技能众包支持行为克隆、SFT 与 RLHF 偏好选择；到 2024 年，需求转向律师、医生、工程师、银行家等高技能专家，共同构建前沿评测与 RL 环境；过去 12 个月，RLVR 又扩展为带有丰富 apps 与 worlds 的 agentic data。数据供应商由“人力池”变成环境、任务、验证器、质控和人才网络的综合基础设施。\n\n对应用公司而言，嘉宾的判断更直接：计算、算法/研究者、数据集构成 AI 战略的三根支柱，而数据常是最具差异化的一根。前沿实验室形成的环境技术正向应用层扩散；垂直公司可能通过专属数据和后训练拥有自己的“智能”，把它变成护城河。不过，本期给出的效果、价格和趋势均是嘉宾陈述，字幕没有实验设计、置信区间、完整排行榜或成本口径，不能把它们当作独立验证结论。\n\n## 一页导读\n\n演讲的前半段先定义问题。RL 环境由三部分组成：worlds 是项目中会出现的消息、幻灯片、文档、表格等上下文；apps 是 Salesforce、ServiceNow、Microsoft 365 等工具的高保真克隆；tasks 则由提示与 verifiers 组成，验证器可以是 rubric 或 unit test，同时服务评测和训练。难点不是做出一个示范环境，而是覆盖经济中全部世界、应用和任务的分布。\n\n人类专家在这里不是简单“写答案”。数学等少数领域有干净的模拟和明确正确答案，模型可以直接从成败学习；但做幻灯片、法律分析等开放任务，模型很难可靠发现自身错误，像让学生给自己的作业打分。专家要预想多条合理解法、几十种可能错误，并编写能覆盖解空间又避免 reward hacking 的验证标准。模型可以大量参与填充环境、生成轨迹和辅助专家，但嘉宾认为，要测量“模型前沿之外”的能力，仍需能力超过被测模型的主体。\n\n法律环境例子展示完整管线：顶级律所律师根据真实工作项目写场景和数据室纲要，模型协助填充邮件、消息与文件，再把数据室渲染到 Google Workspace 克隆中；模型接受问题，在资料间行动，产出关于两家公司在某法案下最大总责任的判断；专家 rubric 对大量轨迹评分，经过研究、质控、训练和轨迹分析，形成验证器与排行榜。\n\n在嘉宾展示的 Apex Agents 后训练例子中，1,800 个任务、约 500k 的 compute（单位/币种 ASR待核）使公司法得分从 4.7% 升至 26.6%；他还称收益泛化到不含数据室的 GDP val 与 Apex V1，并在其他 benchmark 上有小幅增益。由于字幕将模型名称转写成“GLM 47”“GLM 52”“Chimera/Kimi K3”等不同形式，相关专名均应 ASR待核。\n\n商业上有三种供给：按任务定制、货架数据、按小时提供专家。按任务最常见，示例价为每任务 2,000 美元，某些前沿实验室可能每月采购 50,000 个任务；任务可耗费几小时至一个月。货架数据一次构建、多客户复用，尤其适合不愿十家实验室重复造数据集的“neo labs”。纯专家小时模式仍存在，但 Harvey 的早期合作也逐渐转向规模化数据供给。\n\n问答进一步补上方法边界。数据质量有两个核心维度：真实度与验证器准确性。验证器应尽量复现人类对 100 条轨迹的排序；Mercor 所称 trajectory analysis 会先展开 10 条目标模型轨迹，以 agentic QC 加人工复核评分，也可用人类反馈评测或偏好标签反过来评估自动评分器。合成数据不是人类数据的反义词：RLVR 本身就让模型生成大量合成轨迹再评分，模型也可帮助填充数据室；但让同一个模型创建法律环境、写法律备忘录并判断自己优劣，信号会过于嘈杂。\n\n向前看有两条扩展轴。其一是 ultra-long-horizon：从当前多在 10 小时以内的任务，扩展到人类需 100 乃至 1,000 小时的任务。其二是虚拟同事：人们估计工作中 60%—70% 的任务需要与他人互动，但评测中衡量社交协作的比例约 1%，Tau-bench 或许只覆盖少量。网络安全又是例外：攻击者与防御者 agent 可提供相对可证的反馈，人类更多负责设计逼真且多样的环境，验证器的人力负担可能较低。\n\n最后，是否值得用某数据集训练一个基础模型，可观察 pass@16 与 pass@1 的差距：若 16 次轨迹全错，学习希望很小；理想情形是 pass@1 失败，但 16 次中能对一两次，模型便可能从成功样本中有效学习。build-vs-partner 的答案则带有供应商立场：专属隔离团队让客户拥有数据、保留差异化，同时复用供应商的平台与人才网络规模经济。\n\n## 一句话主线与 投资研究用户 关注点\n\n一句话主线：AI Agent 的下一阶段数据，不是更多静态答案，而是由专家锚定真实分布、由模型规模化生成交互、由可靠验证器提供学习信号的“世界—应用—任务”系统。\n\nDH 关注点：第一，真实工作分布如何被抽样和分类，而不是只做漂亮 demo；第二，验证器与人类排序的一致性如何测量，reward hacking 如何被发现；第三，训练收益究竟来自环境、任务、验证器、compute 还是基础模型；第四，超长任务和多人协作会怎样改变 credit assignment 与评测成本；第五，专属数据所有权与供应商规模经济之间如何划界。\n\n## 关键数字总表\n\n| 时间 | 数字 | 来源中的含义 | 边界/备注 |\n|---|---:|---|---|\n| 0:00 | 10 亿→20 亿美元 | 主持人称公司约 4 个月内 revenue run rate 翻倍 | 主持人口述；开头公司名被转写为“Record”，ASR待核 |\n| 0:19 | 15+15 分钟 | 约 15 分钟演讲、约 15 分钟问答 | 实际视频全长 26:20 |\n| 0:53 / 1:24 | 2020 / 2024 | 众包行为克隆时代的起点；向 agentic data 转折 | 嘉宾的产业分期 |\n| 4:12 | 24 个月 | 专家工时吞吐曲线观察窗口 | 图表未随字幕提供 |\n| 4:18 | 250 万小时 | 仅 Q2 的人才网络专家工时 | Q2 年份未在口述中明确 |\n| 4:35 | 205 个领域 | 嘉宾称 GDP val 涵盖 BLS 各类工作的 205 个 domains | 名称/统计口径 ASR待核 |\n| 5:44 | 10 种 / 数十种 | 幻灯片任务可能有约 10 条好路径、数十种错误 | 说明开放解空间，不是固定上限 |\n| 8:05 | 100 条轨迹 | 检验 rubric 对批量 rollout 评分是否准确的示例 | 与后文人工排序对照 |\n| 9:06 | 1,800 个任务 | Apex Agents 后训练示例的数据规模 | 数据集名来自字幕 |\n| 9:20 | 约 500k compute | 后训练投入 | 单位、币种和精确口径 ASR待核 |\n| 9:26 | 4.7%→26.6% | 公司法表现提升 | 仅嘉宾展示；模型名/评测细节 ASR待核 |\n| 10:18 | 未来 12 个月数十个 | 嘉宾预测会出现数十家拥有自有智能的应用公司 | 前瞻判断，非已发生事实 |\n| 10:53 | 2,000 美元/任务 | 法律环境按任务扩展的示例报价 | 定制任务示例 |\n| 11:00 | 50,000 个任务/月 | 某些前沿实验室的可能月采购量 | 嘉宾举例，非特定合同披露 |\n| 11:09 | 几小时—1 个月 | 单个复杂任务可能需要的人类完成时间 | 随任务差异显著 |\n| 11:22 | 数亿美元 | Mercor 自称投入自建货架数据集 | 无审计或细分口径 |\n| 13:15 | 10 亿美元 | 嘉宾推测 Nvidia 为前沿开源模型可能愿付的价值 | 假设性估值，不是报价或交易 |\n| 13:39 | 10×150=1,500 美元 | 10 人时、150 美元/小时对应的任务成本基础 | 未含毛利与其他成本 |\n| 14:00 | 50—10,000 美元/任务 | 嘉宾所称任务价格范围 | 范围很宽，取决于差异化与前沿性 |\n| 15:30 / 15:53 | 100 / 10 条轨迹 | 训练时批量 rollout 示例；trajectory analysis 抽取 10 条 | 两个数字对应不同说明层次 |\n| 20:03 | 10→100→1,000 小时 | 当前任务多不超过 10 小时，未来要覆盖人类需 100/1,000 小时的任务 | 超长时程方向 |\n| 20:32 / 20:46 | 60%—70% vs 约 1% | 工作中人际互动任务占比的常见自报；相关 eval 占比 | 嘉宾经验性估计；Tau-bench 名称 ASR待核 |\n| 21:54 | 约一半对、一半错 | 被提升模型自写 rubric 时的噪声示意 | 口语化估计，不是报告统计 |\n| 24:28 | pass@16 vs pass@1 | 判断基础模型能否从数据中学习的启发式 | 理想为 1 次失败、16 次中成功 1—2 次 |\n\n## 01｜00:00–00:39 开场：后训练、自有智能与议程\n\n主持人先以高速增长为背景：字幕称“Record”约四个月内从 10 亿美元增长到 20 亿美元 revenue run rate；结合标题和后文，这个名字很可能是转写错误，但仅凭源字幕不能改写，故 ASR待核。他把 Brendan Foody 和 Mercor 放在企业思考“后训练自己的模型、建设自己的智能”的中心位置。\n\n形式上，原计划约 15 分钟内容加约 15 分钟问答。主题是 RL environments，被主持人称为一个新的前沿话题。随后交给 Brendan。\n\n## 02｜00:39–02:58 数据市场史：从众包行为克隆到专家型 agentic data\n\nBrendan 从 2020 年讲起。当时的数据市场主要通过众包支持 behavior cloning：一类是监督微调数据，即输入—输出对；另一类是 RLHF 数据，让标注员在几个模型回答中选择偏好的一个。这套低技能众包机制帮助 GPT-3 微调，并推动通往 ChatGPT、GPT-4 的进展。字幕在 1:18 把这一阶段也写成“crowdsourcing era of agentic data”，与上下文“behavior cloning”可能不一致，ASR待核。\n\n接近 2024 年，市场出现巨大转向：从低技能众包的行为克隆数据，走向 agentic data。新问题不再只是找到更多标注员，而是如何找到世界上技能最高的专家，让他们以团队形式合作，构建下一代模型的 frontier evals 和 RL environments。软件工程师、律师、医生、银行家等人的功能，是测量智能前沿，并用这种测量反过来提升模型能力。\n\nMercor 的第一个大型项目是 deep research，嘉宾称它“可能是第一个显著的 RL agent”。公司随后与各前沿实验室快速扩张，成为领先实验室及应用层公司的 agentic data 供应商；他列举 Harvey、“Cera”（ASR待核）、Cognition、Ramp。过去 12 个月尤其令人兴奋的变化，是 agentic data 范式中的 RLVR 扩展到 RL environments：通过丰富 apps 与 worlds，教 agent 使用人们每天在电脑上使用的工具。原本由前沿实验室发展的技术，正向应用层产品扩散。\n\n## 03｜02:58–04:27 RL 环境三组件：worlds、apps、tasks\n\nRL 环境由三部分组成。\n\n1. Worlds：真实项目或公司情境中的全部材料，包括消息、slides、docs、sheets 等。它提供任务发生的背景、状态和约束，而不是一条孤立 prompt。\n2. Apps：常用应用的高保真克隆，例如 Salesforce、ServiceNow、Microsoft 365。Agent 可通过 MCP、CLI 或字幕所写“Kua”进行交互；后者疑似技术缩写转写错误，ASR待核。\n3. Tasks：提示与验证器。验证器可以是 rubric，也可以是 unit tests；同一结构既能用于 eval，也能用于 training。\n\n对希望用 Claude 自动化电脑上全部工作的前沿实验室，真正障碍是覆盖整个经济里的 worlds、apps、tasks 的完整分布。只有单个环境或少量基准不足以代表实际用途，因此需要横向扩张到众多行业、工具、情境与任务。\n\n人类在环境建设中仍居中心，但模型也“meaningfully in the loop”。嘉宾展示过去 24 个月人才网络专家工时吞吐图：仅 Q2 就达到 250 万小时，而且用于构建环境的专家时间仍在加速增长。字幕没有图表本身，也没明确 Q2 所属年份。\n\n## 04｜04:27–05:59 为什么需要人类测量前沿：真实分布与验证器难题\n\n扩张的原因是环境分布必须覆盖经济的每个类别。嘉宾提到 GDP val（字幕也写作 GDP valve，ASR待核），称美国劳工统计局各种工作被覆盖为 205 个 domains；但每个职业还需对应应用、场景和任务，组合后是巨大的建设工程。\n\n他强调，多数领域只有人类能测量前沿，数学等少数领域例外。数学可有干净的模拟环境，模型能从答案正确与否学习；做 slide deck 等任务却没有单一答案，模型很难可靠识别自己的错误，就像要求人给自己的作业评分。因此，人类创建 rubric 的角色类似教授为论文设评分标准，或助教给幻灯片评分。人类学习也常来自周围人的反馈，而非只把答案塞进计算器或模拟器。\n\n验证器的难点在于解空间。对一份幻灯片，可能有 10 条都不错的路线，又可能出现数十种错误。构建者需要理解整个问题空间，让 verifier 覆盖合理解法和潜在失误，而不是只认可一个模板答案。这是后面法律样例的入口。\n\n## 05｜05:59–08:53 法律 RL 环境：从真实项目、数据室到可评分轨迹\n\nBrendan 先说明，这些技术与实验室合作开发；他展示的是已开源并公开的部分。它们如今下沉到要构建并拥有自身智能的应用层公司。公司逐渐把 AI 战略理解为三大支柱：compute、algorithms/researchers、自己构建的数据集；其中数据常常最具差异化。\n\n法律环境由来自 Latham & Watkins 等顶级律所的律师设计。律师先写一个自己在大型律所真实做过的项目场景，再为数据室建立完整纲要，规定其中的消息、邮件、文件以及文件大小等。完整数据室很长，演示画面只截取一部分。模型大量参与资料填充：嘉宾类比说，软件工程师如今不应完全手写代码，而应编排 agents 提高生产力；专家建设数据室也应如此。\n\n接着，团队把数据室渲染进应用；画面中是 Google Workspace 的克隆。给模型 prompts 后，系统展开其 trajectories。样例问题要求结合数据室全部上下文，比较 Star Tanker/Tankers International Limited 与 Cooper Jefferies Energy Corporation 在 Oil and Petroleum Act 下的 maximum total liability。公司、法案名称及单复数在字幕里可能有误，均 ASR待核。\n\n律师再像教授给论文设 rubric 一样，列出准确回答应具备的关键标准。难点不仅是写标准，还要防止 reward hacking：当系统 rollout 100 条轨迹时，各条得分都要准确对齐真实质量。这需要研究议程、质量控制、在数据上训练等大量技术工作。最终产物是高质量 verifiers 与 leaderboards，后者聚合显示不同模型在某一领域的表现。\n\n嘉宾称，过去几个月排行榜的一项重大变化，是“GLM 52”和“Chimera K3”进入榜单（模型名 ASR待核）。他的推论是：这为应用公司在自身垂直领域实现前沿智能打下基础，而且距离并不遥远。这里是嘉宾的判断，而非字幕能独立验证的模型比较。\n\n## 06｜08:53–10:33 Apex Agents：后训练结果、泛化与应用层自有模型\n\n他用 Apex Agents 举例说明后训练。该例有 1,800 个任务；字幕称训练的是“GLM 47”，并称团队正为“Chimera K3”重做许多实验、之后会更新结果，名称均 ASR待核。仅这些任务与“约 500k in compute”就带来显著跃升；compute 的单位、币种和计算方式没有说明。\n\n公司法指标从 4.7% 上升到 26.6%。更值得嘉宾强调的是，训练只给了模型 Apex Agents 数据集，却能泛化到 GDP val 与不含这些数据室的 Apex V1，在其他 benchmarks 上也看到“nominal gains”。这里的 nominal 更接近小幅增益；完整分项、对照组和统计误差未在口述中提供。\n\nMercor 正与 Harvey 等客户建立对应其具体领域的环境，使其在该领域建设 frontier intelligence。嘉宾援引 Andrew 先前对 Cursor 的讨论：Cursor 是应用层公司建立行业领先模型、为客户创造巨大价值的早期例子。他预测未来 12 个月会有数十个类似案例，公司拥有自己的智能，并把它作为所建“moats”（字幕写成 modes，ASR待核）的关键来源。\n\n## 07｜10:33–12:34 三种数据供给模式与演讲收束\n\n第一种、也是最常见的，是按 task 定制。客户认可某种法律环境的数据形态，可能以每任务 2,000 美元的价格扩展；某些前沿实验室可能每月购买 50,000 个任务。规模很大，任务也很复杂：有的需人类一个月，有的只需几小时，因此采取定制的 per-task pricing。\n\n第二种是 off-the-shelf data。Mercor 称已投入数亿美元建设自有数据集，再销售给多个客户。新“neo labs”通常更倾向货架数据，因为让 10 个实验室各建一套相同数据集不划算；一次建设、多人使用更有价值。\n\n第三种是按小时提供 experts，由客户自行组织。Mercor 仍做少量此类业务，但已不是重点。Harvey 最初就是通过 Mercor 招聘一些律师，不过合作通常会随时间转向规模化数据产品。\n\nBrendan 以此结束主体演讲：RL 环境是什么、如何构建，以及过去局限于前沿实验室的技术如何走向应用层。12:34 后进入现场问答。\n\n## 08｜12:34–16:30 问答一：数据如何定价、质量如何定义\n\nAstro Guide 的 Ali 先问：如何给数据定价或估值？Brendan 给出两种视角。\n\n其一，从模型改进的客户价值倒推。客户想在某个 leaderboard 达到前沿水平，供应商要判断这个目标值多少钱、每个任务该收多少、多少任务可能达到目标。他假设 Nvidia 为拥有一个前沿开源模型“可能愿意支付 10 亿美元”，再据此思考各项投入如何定价；这是价值锚点示例，并非已发生的采购。\n\n其二，从成本结构加毛利。若一个任务耗时 10 小时，向专家支付每小时 150 美元，成本基础就是 1,500 美元；随后根据任务的差异化和前沿程度决定加多少 margin。实际任务价跨度从 50 到 10,000 美元。\n\n第二位提问者问数据质量，也问人类偏好判断与自动评分器如何比较。Brendan 将“质量”拆为两件事：realism 与 verifier accuracy。\n\n真实度要求环境确实反映真实律师工作的分布。专家为环境、apps、tasks 建纲并引导策展流程，还要细粒度理解支撑整个目标分布的 taxonomy。验证器准确性则要求 rubric 的评分，尽量等同于人类对模型轨迹的判断。训练时可能 rollout 100 条 Kimi K3 轨迹，再用 rubric 评分；模型可走的路径很多，自动评分顺序应与人类对这 100 条轨迹的 stack rank 一致。\n\nMercor 所称 trajectory analysis 是：针对要提升的模型先 rollout 10 条轨迹并逐条评分，再以 agentic quality-control systems 加人工审核，检查全部分数是否符合目标。有时也用 human-feedback evals 或 preference labels 作为自动评分器的 eval。这回答了“人类标签 vs auto grader”并非二选一：人类判断还能充当评分器的校准基准。\n\n## 09｜16:30–18:05 问答二：合成数据的两种角色与人类边界\n\n提问者问，尤其在建设大型数据室时，synthetic data generation 能发挥多大作用。Brendan 先纠正一种常见理解：RLVR 本身就是对合成数据的下注。它不让人类直接写 SFT 答案，而是 rollout 大量模型生成的合成 trajectories，对它们评分，再让模型从这些轨迹学习。这是第一种合成使用方式。\n\n第二种方式是填充环境和创建任务。就像律师写法律备忘录应使用 Claude 或 ChatGPT，构建数据室的专家也应借助模型；模型能在许多环节提高效率。\n\n但这不意味着可以去掉人类。嘉宾的核心论证是：要可靠测量模型能力前沿之外的东西，几乎按定义就需要能力超过该模型的主体。不能只命令模型创建法律环境，再让它判断自己生成的法律备忘录哪个好、哪个坏；这种信号非常嘈杂，也不清晰。合成适合扩大生产与探索，人类仍负责真实锚定和超出当前模型能力的质量判断。\n\n## 10｜18:05–21:07 问答三：为何 2025 年转向 apps，以及超长时程与虚拟同事\n\n下一位提问者观察到 RL 环境约一年来突然流行，以前更多听到 human expert labeling；他问为什么是现在、应用公司是否应重点考虑它、之后还会有什么。\n\nBrendan 先区分 deep research 与 2025 年的 environments 范式。Deep research 较早出现，是因为它已经有 tool use：search 就是模型在环境中使用的工具；但专家未必需要填充 apps，更多是为研究任务创建 rubrics，因此它是较轻量的 RL 环境。他只讨论这类内容，是因为相关工作已有几年、不再高度保密。\n\n到 2025 年，apps 趋势变大，是因为业界意识到，让模型真正有用的主要瓶颈，在于能否利用代码库的全部上下文以及电脑上的全部工具。如果希望模型在真实用户使用分布中做这些事，就必须让训练数据分布也包含这些行为。未来 worlds、apps、tasks 三个类别的多样性都会继续大幅扩张。\n\n他点出两项更大的变化。第一是 ultra long horizon。当前 agents 大多没有训练去完成超过 10 小时的事；下一步要建设人类可能需 100 小时、甚至 1,000 小时才能完成的任务。时间跨度加长意味着环境状态、阶段结果和反馈都要跨越更长链条。\n\n第二是引入 virtual co-workers，并与超长工作相呼应。Brendan 常问：一个人工作中的任务，有多少比例需要和别人互动？多数人答 60% 或 70%，有人更高或更低；但衡量模型与他人互动能力的 eval 可能只有约 1%，Tau-bench 或许包含一点（基准名 ASR待核）。现实工作与评测之间由此出现巨大 realism gap：Agent 不仅要操作工具，也要与不同的人和其他 agents 进行社会互动与协作。\n\n## 11｜21:07–25:14 问答四：rubric 扩展、网络安全与基础模型可训练性\n\n有人追问：rubric generation 是否是每个任务定制的 verifier，且受专家瓶颈限制？模型能否用启发式或后训练方式将其规模化？Brendan 回答，AI copilot 与专家协作确实能显著提效：专家可以“与轨迹对话”，理解发生了什么、错在哪里。\n\n边界是，若目标是改进字幕所写“FABLE”的模型，该模型不能可靠写出揭示自身错误的 rubric criteria；可能一半对、一半错，这种噪声对训练不可接受，模型名 ASR待核。因此最依赖人类的往往是 task creation。许多 environment 内容可大量合成；人类写纲要仍有用，因为他们熟悉真实环境，能把数据扎在 realistic distribution 上；任务本身则通常更需要人类。\n\n嘉宾也承认少数例外：代码领域，或从更强模型向更弱模型蒸馏时，可以减少这一限制。例如，若某模型弱于字幕所写“Kimikaze 3”，它可以从后者创建的任务中学习；模型名明显存在转写风险，ASR待核。\n\nCribl 的 Nikhil 随后问 cyber defense / incident response 这类可证明领域：模型寻找现有系统缺陷时，人类只负责设计和搭建环境，还是也负责评分？Brendan 认为 cyber 是不一定总需要人类 verifier 的领域，因为可以设置 attacker agent 与 defender agent。人类更适合 architect 一个逼真环境并负责搭建，尤其要保证多样性；验证器建设则较少依赖人力。这与前面“数学是少数干净反馈领域”共同说明，人类投入取决于反馈能否程序化或通过对抗机制产生。\n\n下一问是：如何判断性能受限于 base model？提问者观察到，同一数据集用于不同模型，最终表现似乎相近；更小模型可能低得多，原因是否只是参数量？Brendan 承认参数量会影响模型效果与 trainability，但主要启发式是观察 pass@16 与 pass@1 的差距。\n\n若 rollout 16 条轨迹全都完全错误，模型基本没有希望从该数据集学会；即使再展开 100 条，可能也只对一条。更理想的是 pass@1 失败，但 pass@16 中能成功一到两次：探索分布里已有正确轨迹，模型就可能很有效地学习。这一差距用来判断基础模型是否强到足以吸收给定数据集，而不只是看参数量。\n\n## 12｜25:14–26:20 问答五：build-vs-partner、数据所有权与规模经济\n\n最后一个问题问企业在 RL post-training 中如何分工：哪些数据工作应依赖自己，哪些应依赖 Mercor，互补关系是什么。\n\nBrendan 的回答从 custom data 业务出发。Mercor 很大一部分业务是定制数据：为关键客户配置彼此隔离、完全专属的团队，建设由客户拥有的数据集。这样，客户可保留数据带来的竞争优势，同时使用 Mercor 已建的基础设施。\n\n他承认有公司会把全部人才网络和基础设施建在内部，但主张从前沿实验室和最佳模型的实践看，与具备平台、人才网络等规模经济的伙伴合作，有明显效率优势。该回答没有给出哪些能力必须内部保留的细目，也带有数据供应商的商业立场；但它勾勒的边界是：客户拥有专属数据与由此形成的差异化，合作方提供环境生产平台、组织能力和人才网络规模。26:16 致谢，26:18 掌声，视频在 26:20 结束。\n\n## 延伸分析（不是嘉宾原话）\n\n这套框架真正稀缺的可能不是“生成更多内容”，而是把真实工作压缩为可训练的反馈结构。Worlds 和 apps 决定模型看见什么、能做什么，tasks 决定探索方向，verifiers 决定哪些行为会被强化；任一层分布偏窄，都会把局部 benchmark 优化误当作通用工作能力。\n\n值得优先追踪三类证据：一是同一基础模型下环境数据相对普通 SFT/RLHF 的受控增益；二是自动验证器与盲评专家排序的一致性、跨模型稳健性及 reward hacking 发生率；三是从 10 小时扩展到 100/1,000 小时任务时，成功率、成本和人工介入如何变化。商业上，专属数据能否成为长期护城河，还取决于任务是否持续贴近客户的独特工作流，以及验证器是否随业务变化更新，而不只取决于一次性采购规模。\n",
+      "sourceBoundary": "YouTube Transcript API caption-derived transcript from the official Sequoia Capital video a00xIn5kwhM. This is not a human-edited transcript; speaker names, RL-environment terminology, pricing figures and benchmark results may contain caption errors.",
+      "whyItMatters": "这段演讲把“后训练数据”从静态标注,推进到可交互、可验证、可规模化的工作环境:模型不再只模仿一个专家答案,而是在包含消息、文档、表格、应用和协作者的世界里采取连续行动,再由验证器评估轨迹。对研究者而言,重要的不只是“RL 环境”这个名词,而是它把能力提升拆成了可观察的工程对象:世界是否逼真、应用是否覆盖真实工具、任务是否代表经济活动、验证信号是否可靠、基础模型是否已强到能从探索中学到东西。",
+      "themes": [
+        {
+          "id": "theme_e748f8750672ca8b04b2",
+          "name": "AI Agents",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_ebbd5f51fefc7fcabdf4",
+          "name": "AI Infra",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_693b1c2b5c9e35f47d43",
+          "name": "Enterprise AI",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_b4d7581efc05d1db8fe0",
+          "name": "Markets / Macro",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_7e5743d68b4cb5c76b9d",
+          "name": "Product / GTM",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_f1991dbc4cf3c8fe3860",
+          "name": "Venture / Pre-IPO",
+          "provenance": "deterministic-keyword-v1"
+        }
+      ],
+      "entities": [
+        {
+          "id": "entity_1ad9baa389d2b038b89f",
+          "type": "company",
+          "name": "Alphabet / Google",
+          "evidenceSource": "description",
+          "confidence": 0.9
+        },
+        {
+          "id": "entity_5a78804e3c678d5fb398",
+          "type": "company",
+          "name": "Microsoft",
+          "evidenceSource": "note",
+          "confidence": 1
+        },
+        {
+          "id": "entity_f9825526d30e513764a0",
+          "type": "company",
+          "name": "NVIDIA",
+          "evidenceSource": "note",
+          "confidence": 1
+        }
+      ],
+      "noteVersions": [
+        {
+          "versionLabel": "source-faithful",
+          "writingStyle": "source-faithful",
+          "charCount": 12245,
+          "language": "zh-CN",
+          "canonical": true,
+          "superseded": false
+        }
+      ]
+    },
     {
       "id": "ep_d42241df4e618454432d",
       "showId": "show_155f53f5f64931d8bb8a",
@@ -5872,18 +6022,18 @@
       "name": "Training Data",
       "slug": "training-data-sequoia-capital",
       "tier": "Tier A",
-      "readyCount": 1
+      "readyCount": 3
     }
   ],
   "coverage": {
     "since": "2026-07-01",
     "totals": {
-      "officialEpisodes": 176,
+      "officialEpisodes": 179,
       "noteReady": 24,
       "transcriptReady": 24,
       "qcReady": 24,
-      "queued": 152,
-      "candidateAliasesMerged": 231
+      "queued": 155,
+      "candidateAliasesMerged": 235
     },
     "shows": [
       {
@@ -5944,12 +6094,12 @@
         "slug": "big-technology",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 13,
+        "officialEpisodes": 14,
         "noteReady": 1,
         "transcriptReady": 0,
         "qcReady": 1,
-        "queued": 12,
-        "candidateAliasesMerged": 9
+        "queued": 13,
+        "candidateAliasesMerged": 11
       },
       {
         "id": "show_21aa5c705384e983fae9",
@@ -5957,12 +6107,12 @@
         "slug": "bloomberg-technology",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 33,
+        "officialEpisodes": 34,
         "noteReady": 1,
         "transcriptReady": 0,
         "qcReady": 1,
-        "queued": 32,
-        "candidateAliasesMerged": 35
+        "queued": 33,
+        "candidateAliasesMerged": 36
       },
       {
         "id": "show_f86bd475750778cc5df3",
@@ -6126,12 +6276,12 @@
         "slug": "a16z",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 32,
+        "officialEpisodes": 33,
         "noteReady": 7,
         "transcriptReady": 8,
         "qcReady": 7,
-        "queued": 25,
-        "candidateAliasesMerged": 43
+        "queued": 26,
+        "candidateAliasesMerged": 44
       },
       {
         "id": "show_155f53f5f64931d8bb8a",
@@ -6156,9 +6306,9 @@
       },
       {
         "month": "2026-08",
-        "officialEpisodes": 51,
+        "officialEpisodes": 54,
         "noteReady": 5,
-        "queued": 46
+        "queued": 49
       }
     ]
   }
