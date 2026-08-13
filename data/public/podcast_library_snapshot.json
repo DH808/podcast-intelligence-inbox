@@ -1,9 +1,9 @@
 {
   "format": "podcast-library-sanitized-v1",
-  "generatedAt": "2026-08-12T23:00:55.283Z",
+  "generatedAt": "2026-08-13T23:00:33.271Z",
   "gateVersion": "library-ready-v2",
   "counts": {
-    "episodes": 60
+    "episodes": 61
   },
   "audit": {
     "gateVersion": "library-ready-v2",
@@ -12,48 +12,127 @@
     "foreignKeyViolations": 0,
     "duplicates": 0,
     "orphans": 0,
-    "total": 220,
-    "ready": 60,
-    "blocked": 160,
-    "publicReady": 60,
+    "total": 223,
+    "ready": 61,
+    "blocked": 162,
+    "publicReady": 61,
     "reasonCounts": {
-      "canonical_note_missing": 159,
-      "deterministic_qc_failed": 159,
-      "source_boundary_missing": 159,
+      "canonical_note_missing": 161,
+      "deterministic_qc_failed": 161,
+      "source_boundary_missing": 161,
       "source_note_placeholder_or_error": 1,
-      "why_it_matters_missing": 159
+      "why_it_matters_missing": 161
     },
     "ingest": {
-      "id": "ingest_bd05b2229f3fad509eda",
-      "startedAt": "2026-08-12T23:00:54.797Z",
-      "completedAt": "2026-08-12T23:00:54.799Z",
+      "id": "ingest_3331160665e57b671463",
+      "startedAt": "2026-08-13T23:00:32.786Z",
+      "completedAt": "2026-08-13T23:00:32.788Z",
       "status": "completed",
       "sourceCounts": {
         "monitoredShows": 20,
-        "officialSinceCutoff": 180,
-        "candidateRows": 429,
-        "candidateAliasesMerged": 216,
-        "radarIndexed": 432,
-        "radarReadyImported": 38,
+        "officialSinceCutoff": 182,
+        "candidateRows": 446,
+        "candidateAliasesMerged": 218,
+        "radarIndexed": 447,
+        "radarReadyImported": 39,
         "iltbCanonicalSobridgeMarkdown": 16,
         "iltbVersions": 32,
         "genericReviewed": 9,
         "genericExcluded": 10,
-        "attachedArtifacts": 560,
+        "attachedArtifacts": 565,
         "importedClaims": 374,
-        "inventoryFiles": 11692,
-        "canonicalEpisodes": 220,
-        "readyEpisodes": 60
+        "inventoryFiles": 11816,
+        "canonicalEpisodes": 223,
+        "readyEpisodes": 61
       },
-      "inserted": 5,
-      "updated": 215,
-      "deduped": 363,
-      "warnings": 37,
+      "inserted": 7,
+      "updated": 216,
+      "deduped": 367,
+      "warnings": 40,
       "errorSummary": null,
       "codeVersion": "task-004-v1"
     }
   },
   "episodes": [
+    {
+      "id": "ep_bb1f5819339f8173b5af",
+      "showId": "show_155f53f5f64931d8bb8a",
+      "show": "Training Data",
+      "title": "When to Build Your Own Agent Harness | Harrison Chase, LangChain",
+      "publishedAt": "2026-08-13T12:00:01.000Z",
+      "publishedDate": "2026-08-13",
+      "durationSeconds": null,
+      "duration": "",
+      "description": "An agent is a harness orchestrating a model and context. If you want to own your intelligence, you probably want to own all three. LangChain co-founder and CEO Harrison Chase focuses on the harness: the loop that brings the right context to the model at the right time, and how to customize it with middleware, hooks, and sub-agents. At Sequoia Capital's Own Your IntelligenceI event, Harrison explains when an off-the-shelf harness is enough and when to build your own (the more out-of-distribution your task, the more customization you'll want) and why even ",
+      "originalUrl": "https://www.youtube.com/watch?v=HI2q3ci3Iuc",
+      "mediaType": "youtube",
+      "materiality": "high",
+      "productionStatus": "qc_passed",
+      "readerReady": true,
+      "publicReady": true,
+      "gateVersion": "library-ready-v2",
+      "noteMarkdown": "# 当你该自建 Agent Harness：Harrison Chase 谈 Harness、评测与智能所有权\n\n- **节目：** Sequoia Capital\n- **原题 / 标题：** *When to Build Your Own Agent Harness | Harrison Chase, LangChain* / 当你该自建自己的 Agent Harness\n- **发布时间：** 2026-08-13 12:00:01 UTC\n- **原始链接：** https://www.youtube.com/watch?v=HI2q3ci3Iuc\n- **Source boundary：** 本纪要仅依据 Sequoia Capital 官方视频的 YouTube Transcript API 字幕衍生逐字稿整理。它不是人工校订稿；agent harness 术语、benchmark 名称、延迟/成本表述及 Q&A 归属可能有字幕错误。本文不引入源外事实；无法仅凭字幕确认处标为“ASR待核”。\n\n## 为什么对研究重要\n\n这场分享把 Agent 的竞争拆成三个可分别拥有、替换和优化的层：模型、上下文与 harness。对 AI 工程研究，价值在于 Harrison Chase 没把“自建或采购”处理成二元选择，而是给出一条从通用现成 harness、hooks/middleware，到定制 cognitive architecture 的连续谱，并用任务是否落在模型训练分布内、组织对可预测性和控制的要求来决定位置。对投资研究，更关键的是评测与 trace 数据被描述为组织的私有资产：私有 benchmark 定义“好”，observability 找到失效原因，反馈与实验再回写模型、上下文或 harness，从而形成可复利的数据飞轮。\n\n## 一页导读\n\n- Agent 的最小结构是“LLM 循环调用工具”；harness 的核心工作，是在正确时点把固定与动态上下文送入模型，并接住工具产生的新上下文。\n- “拥有智能”不仅是拥有模型权重，还包括模型可切换、组织上下文可控，以及 harness 可观察、可定制。\n- 定制有两条路：在通用循环的模型调用前后、工具调用前后插入 middleware/hooks；或用显式 cognitive architecture 规定分解、并行、检查与门控步骤。\n- 起步建议是先用通用现成 harness，以较短 time-to-value 验证任务；任务越偏离模型训练分布，越应定制。即使总体任务分布外，也应保留模型已被强化学习训练过的局部能力接口。\n- 私有 benchmark 同时比较模型、harness 与 reasoning effort；不能只看准确率，还要看延迟、token 与成本。\n- Agent 失效有两类直接原因：模型能力不够，或送入模型的上下文不够好。Harrison 判断后者更常见，因此 trace 必须能还原上下文如何逐步累积。\n- 数据飞轮是“运行 Agent → 收集 traces → 筛选/归因 → 做实验 → 修复”。修复对象可以是 harness、模型或上下文。\n- Engine demo 把 trace 筛选、问题聚类、证据链接和修复建议交给后台 Agent；团队也用 Harbor 格式的 Issue Bench 持续比较不同模型与 harness，并把竞品行为学回自家 Engine。\n- Q&A 的结论不是“所有 harness 都会统一”：通用能力会收敛，但文件编辑接口等小机制仍受模型训练方式影响；金融服务等强控制场景会主动选择更显式的流程。\n\n## 一句话主线与 投资研究用户 关注点\n\n**一句话主线：** 先用通用 harness 快速获得价值，再以私有 benchmark、全链路 traces 和反馈闭环识别分布外环节，把必要的 middleware、认知流程或模型专属接口逐步内生化。\n\n**投资研究用户 关注点：** 研究 Agent 公司时，不只问用了哪个模型，还要追问其私有任务集与 verifier 是否真实、trace/反馈是否可积累、准确率—成本—延迟如何共同决策、harness 是否能跨模型切换，以及垂直领域的控制需求究竟形成了数据与工程壁垒，还是只是对通用 coding harness 的薄封装。\n\n## 关键数字总表\n\n| 数字 / 范围 | 对应内容 | 研究含义 / 限定 |\n|---|---|---|\n| 3 个部分 | 模型、上下文、harness | Harrison 对 Agent/“拥有智能”的基本拆分；本场重点是 harness |\n| 1 个核心循环 | LLM 生成 → 调工具 → observation 回传 → 再生成 | 被称为当下几乎所有 Agent 的核心架构；高级能力多是在循环上加改动 |\n| 2023–2024 | 早期常用 bespoke cognitive architecture | 原因是当时模型不足以稳定跑通开放循环；不是说该架构已失效 |\n| 2 类 LLM 调用失效原因 | 模型不够好；上下文不够好 | Harrison 判断第二类更常见，但未给出比例 |\n| 约 2 周前 | Harrison 提到 Satya 发布相关文章 | 人名与文章指代仅来自字幕，ASR待核 |\n| 4 类可比变量/指标组 | harness、模型、reasoning effort；以及 accuracy、latency、tokens/cost | 前三者是实验变量；后者是评估维度，不能只看准确率 |\n| 4 个 Harbor task 组件 | environment、solution、test、instruction.md | test 可运行代码、单测、LLM judge 或 Agent judge |\n| 7 次 tool calls | 可观测性界面示例中被折叠显示 | 仅为界面示例，不是推荐上限或 benchmark 结果 |\n| 3 个可更新对象 | harness、模型、上下文 | 分别可通过 harness engineering、fine-tuning、memory 等方式更新 |\n| 约 15 + 15 分钟 | 主持人预告的演讲与 Q&A 格式 | 实际视频总长 23:54，演讲约到 19:15，随后 Q&A |\n| 23:54 | 元数据中的视频时长 | 逐字稿末尾掌声约在 23:52，本文覆盖至此 |\n\n## 00:00–01:05｜问题设定：从自动补全到“拥有自己的智能”\n\n**问题：** 模型如何不只做 autocomplete，而成为虚拟协作者或 Agent？主持人回顾 Harrison 自 2022 年 GPT-3 时期就围绕模型构建完整 harness，并把本场主题定为 harness 与 evals。**回答：** Harrison 用“owning your own intelligence”统领讨论。**机制：** Agent 由模型、上下文、harness 三部分组成；若组织要拥有自己的智能，原则上三者都要掌握。**例子：** 模型层不仅涉及开放权重，也包括在更好模型出现时切换，类似过去的 cloud agnostic。**限定：** 本场不展开模型所有权，重点转向 harness。\n\n## 01:05–02:42｜三层资产：模型可切换、上下文可控制、Harness 负责编排\n\n**问题：** “拥有 harness”到底意味着什么？**回答：** harness 的主要工作，是在正确时点把上下文带给模型。**机制：** 它组织固定上下文与动态上下文，将其放入 context window，取得模型响应，再对响应采取动作；外部系统返回的新信息继续进入循环。**例子：** 上下文可以是 memory、semantic knowledge 或过去对话，用来个性化并引导 Agent；模型可切换既避免 lock-in，也便于采用当下最优模型。**限定：** Agent 还要执行大量领域专属工作，三层拆分并不抹平领域差异。\n\n## 02:42–04:25｜最小 Agent：LLM 循环调用工具，差异来自插入点\n\n**问题：** 各种 Agent 看似不同，底层是否有共同架构？**回答：** 最简 Agent 就是 LLM 在循环中调用工具；请求进入后，模型生成可能包含 tool call，工具 observation 再回传模型。**机制：** 差异来自循环不同阶段的可插入点：Agent 调用前、每次 model call 前后，以及 tool call 前后都能包装或运行代码。**例子：** LangChain 被描述为基础、最小 harness；Deep Agents 是模型无关、较通用的版本，连接文件系统、skills 与 sub-agents。字幕在此出现“Quad Code”，ASR待核。**限定：** Harrison 承认还有其他定制方式；此处强调的是已在 coding agents 中以 hooks/plugins 形式出现的 middleware 路径。\n\n## 04:25–05:40｜Middleware 如何承载 Sandbox、记忆、摘要与上下文卸载\n\n**问题：** 一个简单循环如何变成高级 harness？**回答：** 不必改变核心循环，可通过 middleware 修改循环周边行为。**机制：** model call 前检查 context 是否过长并摘要；tool call 外层可截获大型结果并把内容卸载，避免全部塞回上下文。**例子：** 同一机制还能接入 sandbox、文件系统、sub-agents、memory 和 summarization，也能为某类 tool calls 添加专门处理。**限定：** 这些能力仍运行在同一个“模型—工具—观察”循环上；“高级”不等于另起一种基础架构。\n\n## 05:40–06:54｜显式认知架构：从早期必需品变成高控制工具\n\n**问题：** 何时需要比 middleware 更强的结构？**回答：** 可以建立显式 cognitive architecture，用 bespoke steps 规定 Agent 的思考与执行路径。**机制：** 深度研究流程先生成 sub-questions，再 fan-out 并执行；code review bot 则走另一套明确步骤。**例子：** Harrison 说 2023–2024 年常这样构建，因为当时模型还不足以可靠地在开放循环中运行；如今不少步骤已可吸收到 harness。**限定：** 对非常具体的流程，显式架构仍有价值。建议先从通用 harness 起步以缩短 time-to-value，确定要做到卓越的用例后，再加 gates 与 checks。\n\n## 06:54–09:05｜自建还是现成：以“是否分布内”为核心判据\n\n**问题：** 何时自建 harness，何时采用 off-the-shelf？**回答：** 任务越接近模型训练分布，现成 harness 越可能有效；越偏离分布，越需要调 harness。**机制：** 总任务与局部动作要分开判断：垂直任务可能分布外，但其中某些动作已被模型以特定接口做过强化学习训练，应贴近模型层保留。**例子：** legal AI 整体可能分布外，file editing 却是主流模型已 RL 过的能力；OpenAI 与 Claude 模型在各自 harness 中以不同方式编辑文件。Deep Agents 因此用 model profiles，按当前模型切换 edit-file 实现。**限定：** 自定义总体 harness 不意味着所有组件都重造；分布内局部能力应尽量沿用模型擅长的实现。\n\n## 09:05–10:30｜私有评测：组织自己定义“什么叫好”\n\n**问题：** 为什么拥有模型、上下文和 harness 仍不够？**回答：** 组织必须看见系统内部发生什么，并能评估调整是否真的变好。**机制：** 私有 eval 定义组织内部的好坏；组织保留 memory、traces、feedback、decisions 与 institutional context，再以 continuous learning loop 持续 hill climbing。**例子：** Harrison 引用约两周前 Satya 的一篇 Twitter 文章中的三点来说明 eval、observability 与学习闭环；具体文章与人名 ASR待核。**限定：** 这些工具不仅用于自定义 harness，也可用于自定义模型和上下文。\n\n## 10:30–12:28｜Harbor Benchmark：把任务、环境和 Verifier 封装起来\n\n**问题：** mission-critical Agent 的 benchmark 应怎样落地？**回答：** 每家公司都会为关键 Agent 建 benchmark，用于捕捉 regression 或在其上 hill climb；Harrison 称 Harbor 正成为行业常见的定义/运行方式。**机制：** Agent 对数据集中的多项任务运行，任务通常各自在 sandbox 中，可并行；每项任务含 environment、golden solution、test/verifier 与 instruction.md。环境由 Dockerfile 定义；test 可运行代码、unit tests、LLM-as-a-judge 或 Agent-as-a-judge。**例子：** Harbor 由 Terminal Bench 2 的制作者创建；演示还提到 Frontier Bench，用来比较不同 harness、模型与 reasoning effort。**限定：** “行业标准/常见”是嘉宾判断；golden solution 主要用于 sanity check，真正评分逻辑在 test。\n\n## 12:28–13:03｜Benchmark 不是单一准确率：成本与延迟必须同表比较\n\n**问题：** 跑完 Harbor 任务后应比较什么？**回答：** 不能只看 accuracy/reward，还要同时跟踪 latency、tokens 与 cost。**机制：** LangSmith 与 Harbor 集成，把多次 experiments 的 feedback scores 与资源指标放在一起，并能下钻到数据集中的单项任务。**例子：** 演示场景使用单一 reward function，但平台也展示延迟和 token。**限定：** 字幕没有给出具体分数、美元成本或毫秒延迟，因此本文不补造数值；token 是成本代理之一，不等同于完整成本。\n\n## 13:03–14:38｜Observability：多数问题可能出在上下文，而非模型\n\n**问题：** Agent 出错时该先看哪里？**回答：** 一次 LLM call 失败，直接原因要么是模型不够好，要么是收到的 context 不够好；Harrison 认为后者更常见。**机制：** 调试必须看进入 context window 的具体内容、上下文如何累积、运行了哪些步骤与工具。用户友好视图可折叠工具调用便于扫读，完整 trace 则允许点进单步查看模型内部输入输出。**例子：** 演示界面把 7 次 tool calls 折叠显示；trajectory 被解释为人类消息、连续工具消息和 Agent 回复组成的 message list，类似 coding agent 的交互过程。**限定：** trajectory 便于理解路径，但不足以完成深度调试，仍需完整 trace。\n\n## 14:38–16:19｜数据飞轮：从 Traces 中获得环境反馈与合成反馈\n\n**问题：** eval 与 observability 如何让智能复利？**回答：** 运行 Agent、收集大量 traces、筛选 trace 数据，再在整理出的数据上做实验。**机制：** 关键是 feedback：一类来自环境与用户行为，另一类来自在线 evaluator 的合成判断。良好的 UX 可以把用户的自然操作转成隐式反馈，因为用户通常不会主动点赞/点踩。**例子：** 对每条 trace 都运行 Opus 级 judge 会带来高账单；团队曾为此 fine-tune SLM，以更便宜、更快地判断，也可用现成模型加定制 prompt，简单规则甚至可直接写代码。Harrison 提到与 Harvey 的实验显著降低此类成本，但未给具体数值。**限定：** 合成反馈不是唯一方案；方法应由判定复杂度与成本/速度约束决定。\n\n## 16:19–17:58｜闭环更新对象：Harness、模型、上下文都可被修复\n\n**问题：** trace 数据最终改什么？**回答：** 三层都能更新：harness 做 harness engineering，模型做 fine-tuning，上下文通过 memory 等机制改善。**机制：** 不同团队可以共享同一流程——跑 Agent、拿 traces、利用数据改系统——只是选择的更新层不同。LangChain 更聚焦 harness engineering；Harrison 预告后续 Trajectory 分享会讨论 fine-tuning。**例子：** 端到端流程先筛 traces、做 experiments，再对三层之一提出修复。**限定：** 流程概念简单但执行复杂、耗时，因此自动化是近几个月重点；“Trajectory”作为名称/指代来自字幕，ASR待核。\n\n## 17:58–19:18｜Engine Demo：让一个 Agent 在 Traces 之上找问题并建议修复\n\n**问题：** 如何自动化“筛 trace—找模式—修复”？**回答：** LangSmith Engine 是运行在 traces 之上的后台 Agent，会建立 issue boards。**机制：** 底层是可访问 LangSmith CLI 的 coding agent；CLI 按 feedback 等条件过滤 traces，Agent 获得较长 prompt 和 sub-agents，探索数据、聚类常见问题、生成描述，并链接支持性 traces。**例子：** demo 中的 issue 给出证据链接，建议修改 prompts/instructions（上下文），也添加进入 harness 的代码。Harrison 将其概括为“Run agent, get traces, see patterns, fix”。**限定：** 这是一次现场 demo；字幕没有展示自动建议的验收率，也没有证明所有修复都应自动上线。\n\n## 19:18–20:43｜Q&A 1：Engine 能否评测自己，以及从竞品轨迹学习\n\n**主持人问题：** Engine 本身也是拿 prompt 搜索 traces 的 Agent，那么是否把 Engine 用在 Engine 自己身上？**回答：** 团队让它持续运行，并接入 Slack 发送关于自身的报告，以此 dogfood。**机制：** 另建 Harbor 格式的 Issue Bench，持续比较不同模型和 harness；benchmark 使团队能观察不同系统的具体策略，再把有效策略移植回核心 harness。**例子：** 团队用自家 Deep Agents、Codex 与 Claude Code 跑同一 benchmark，看到 Codex 很积极地编写许多小脚本分析 traces，表现很好；随后做了一轮“Codexification”（字幕词形 ASR待核），把这种做法纳入 Engine。**限定：** 嘉宾未披露分数、样本规模、成本或显著性，只说明观察到的策略与工程响应。\n\n## 20:43–22:40｜Q&A 2A：Harness 是收敛还是分化——答案是一条连续谱\n\n**观众问题：** harness 最终会统一，用户和模型都围绕一种方式适配，还是每家公司都会形成自己的最优方式？**回答：** Harrison 的诚实答案是“不知道”，但当前观察是：通用 harness 已足以覆盖许多基础任务和起步阶段。**机制：** 建议先用 Deep Agents、Codex 或 Claude Code 等现成方案；随着任务越来越分布外，再逐级增加 hooks/middleware，直至完整 cognitive architecture。**例子：** 文件系统访问、sub-agents 等已成为通用 harness 的有效能力。金融服务客户因需要可预测性和控制，会觉得开放式 Deep Agents “太可怕”，更愿意采用可明确控制的认知架构。**限定：** 选择不是二元开关，而是由分布偏离程度与控制要求共同决定的光谱。\n\n## 22:40–23:52｜Q&A 2B：通用编码能力会收敛，模型专属小机制仍可能分化\n\n**问题延伸：** 即使模型实验室都在强化 coding，harness 是否仍会保留差异？**回答：** 可能同时收敛与分化：各家都朝擅长 coding 发展，coding harness 的大方向会靠近；但实际 file editing 方式仍有细小而真实的差别。**机制：** 模型在特定 harness 接口上训练，局部动作会与接口共同适配；若某家实验室进一步聚焦 bio 等新领域，相应 harness 也可能随之专业化。**例子：** OpenAI 与 Anthropic 的文件编辑方式不同；字幕提到有人/某 benchmark 认为一种方式严格优于另一种，但指代不清，ASR待核。**限定：** Harrison 多次强调尚无定论、领域移动很快；正因如此，必须用 evals 与 observability 实测，而不能靠抽象判断。23:49 后主持人致谢，23:52 为掌声。\n\n## 延伸分析（不是嘉宾原话）\n\n1. **Harness 的壁垒更像闭环速度，而非循环本身。** “LLM 循环调用工具”已高度通用，差异更可能来自私有任务定义、verifier 质量、trace 可解释性，以及从失败到安全修复的周期。\n2. **垂直 Agent 的自建边界应按动作粒度划分。** 法律、金融等总体任务可以分布外，但检索、编辑文件、运行代码等子动作可能已分布内。有效架构不是全面重造，而是保留模型熟悉的局部协议，并在领域特有决策处加约束。\n3. **评估指标需要形成 Pareto 视图。** 若只用单一 reward 选型，可能把更慢、更贵的系统误判为全面胜出。研究或采购时应要求按准确率、尾延迟、token/总成本、失败类型同时拆分。\n4. **自动修复本身必须进入评测闭环。** Engine-on-Engine 展示了递归改进的潜力，也意味着问题发现、修改建议、回归验证和上线权限应分层；否则“能提出修复”不等于“能安全部署修复”。\n5. **收敛与分化可发生在不同层级。** 通用循环、文件系统和 sub-agent 能力可能收敛；模型专属工具协议、受监管行业的控制流，以及领域 benchmark 则可能持续分化。投资判断应区分基础设施商品化与领域数据/验证体系的累积。\n",
+      "sourceBoundary": "YouTube Transcript API caption-derived transcript from the official Sequoia Capital video HI2q3ci3Iuc. This is not a human-edited transcript; agent-harness terminology, benchmark names, latency/cost figures and Q&A attribution may contain caption errors.",
+      "whyItMatters": "这场分享把 Agent 的竞争拆成三个可分别拥有、替换和优化的层:模型、上下文与 harness。对 AI 工程研究,价值在于 Harrison Chase 没把“自建或采购”处理成二元选择,而是给出一条从通用现成 harness、hooks/middleware,到定制 cognitive architecture 的连续谱,并用任务是否落在模型训练分布内、组织对可预测性和控制的要求来决定位置。对投资研究,更关键的是评测与 trace 数据被描述为组织的私有资产:私有 benchmark 定义“好”,observability 找到失效原因,反馈与实验再回写模型、上下文或 harness,从而形成可复利的数据飞轮。",
+      "themes": [
+        {
+          "id": "theme_e748f8750672ca8b04b2",
+          "name": "AI Agents",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_ebbd5f51fefc7fcabdf4",
+          "name": "AI Infra",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_693b1c2b5c9e35f47d43",
+          "name": "Enterprise AI",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_b4d7581efc05d1db8fe0",
+          "name": "Markets / Macro",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_7e5743d68b4cb5c76b9d",
+          "name": "Product / GTM",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_f1991dbc4cf3c8fe3860",
+          "name": "Venture / Pre-IPO",
+          "provenance": "deterministic-keyword-v1"
+        }
+      ],
+      "entities": [
+        {
+          "id": "entity_572c531059ad7c8ca7a2",
+          "type": "company",
+          "name": "Anthropic",
+          "evidenceSource": "note",
+          "confidence": 1
+        },
+        {
+          "id": "entity_54f40d6e1ebcc63523d3",
+          "type": "organization",
+          "name": "OpenAI",
+          "evidenceSource": "note",
+          "confidence": 1
+        }
+      ],
+      "noteVersions": [
+        {
+          "versionLabel": "source-faithful",
+          "writingStyle": "source-faithful",
+          "charCount": 9241,
+          "language": "zh-CN",
+          "canonical": true,
+          "superseded": false
+        }
+      ]
+    },
     {
       "id": "ep_06c6a3c0760bce9d8d87",
       "showId": "show_155f53f5f64931d8bb8a",
@@ -4031,7 +4110,7 @@
       "showId": "show_0da4183fe4339afdc81d",
       "show": "No Priors: Artificial Intelligence | Technology | Startups",
       "title": "How Nuclear Will Unlock Energy Abundance with Valar Atomics Founder Isaiah Taylor",
-      "publishedAt": "2026-07-02T15:00:00.000Z",
+      "publishedAt": "2026-07-02T10:00:00.000Z",
       "publishedDate": "2026-07-02",
       "durationSeconds": 3686,
       "duration": "3686",
@@ -5865,17 +5944,17 @@
           "superseded": false
         },
         {
-          "versionLabel": "source-brief",
-          "writingStyle": "source-brief",
-          "charCount": 6735,
+          "versionLabel": "historical",
+          "writingStyle": "historical",
+          "charCount": 12903,
           "language": "zh-CN",
           "canonical": false,
           "superseded": true
         },
         {
-          "versionLabel": "historical",
-          "writingStyle": "historical",
-          "charCount": 12903,
+          "versionLabel": "source-brief",
+          "writingStyle": "source-brief",
+          "charCount": 6735,
           "language": "zh-CN",
           "canonical": false,
           "superseded": true
@@ -6022,18 +6101,18 @@
       "name": "Training Data",
       "slug": "training-data-sequoia-capital",
       "tier": "Tier A",
-      "readyCount": 3
+      "readyCount": 4
     }
   ],
   "coverage": {
     "since": "2026-07-01",
     "totals": {
-      "officialEpisodes": 179,
+      "officialEpisodes": 181,
       "noteReady": 24,
       "transcriptReady": 24,
       "qcReady": 24,
-      "queued": 155,
-      "candidateAliasesMerged": 235
+      "queued": 157,
+      "candidateAliasesMerged": 237
     },
     "shows": [
       {
@@ -6107,12 +6186,12 @@
         "slug": "bloomberg-technology",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 34,
+        "officialEpisodes": 35,
         "noteReady": 1,
         "transcriptReady": 0,
         "qcReady": 1,
-        "queued": 33,
-        "candidateAliasesMerged": 36
+        "queued": 34,
+        "candidateAliasesMerged": 37
       },
       {
         "id": "show_f86bd475750778cc5df3",
@@ -6146,12 +6225,12 @@
         "slug": "decoder-with-nilay-patel",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 12,
+        "officialEpisodes": 13,
         "noteReady": 0,
         "transcriptReady": 0,
         "qcReady": 0,
-        "queued": 12,
-        "candidateAliasesMerged": 13
+        "queued": 13,
+        "candidateAliasesMerged": 14
       },
       {
         "id": "show_ea0877583838baf97fca",
@@ -6159,12 +6238,12 @@
         "slug": "dwarkesh",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 4,
+        "officialEpisodes": 0,
         "noteReady": 0,
         "transcriptReady": 0,
         "qcReady": 0,
-        "queued": 4,
-        "candidateAliasesMerged": 8
+        "queued": 0,
+        "candidateAliasesMerged": 0
       },
       {
         "id": "show_208664517444e126c745",
@@ -6224,12 +6303,12 @@
         "slug": "no-priors",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 5,
+        "officialEpisodes": 6,
         "noteReady": 1,
         "transcriptReady": 1,
         "qcReady": 1,
-        "queued": 4,
-        "candidateAliasesMerged": 15
+        "queued": 5,
+        "candidateAliasesMerged": 16
       },
       {
         "id": "show_1cd6aecdd31c0ae82c2c",
@@ -6237,12 +6316,12 @@
         "slug": "odd-lots",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 21,
+        "officialEpisodes": 22,
         "noteReady": 0,
         "transcriptReady": 0,
         "qcReady": 0,
-        "queued": 21,
-        "candidateAliasesMerged": 23
+        "queued": 22,
+        "candidateAliasesMerged": 24
       },
       {
         "id": "show_8058fbf55a596a5862ec",
@@ -6263,12 +6342,12 @@
         "slug": "20vc",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 18,
+        "officialEpisodes": 19,
         "noteReady": 8,
         "transcriptReady": 9,
         "qcReady": 8,
-        "queued": 10,
-        "candidateAliasesMerged": 34
+        "queued": 11,
+        "candidateAliasesMerged": 37
       },
       {
         "id": "show_66323af571a19fdabe95",
@@ -6276,12 +6355,12 @@
         "slug": "a16z",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 33,
+        "officialEpisodes": 34,
         "noteReady": 7,
         "transcriptReady": 8,
         "qcReady": 7,
-        "queued": 26,
-        "candidateAliasesMerged": 44
+        "queued": 27,
+        "candidateAliasesMerged": 47
       },
       {
         "id": "show_155f53f5f64931d8bb8a",
@@ -6300,15 +6379,15 @@
     "months": [
       {
         "month": "2026-07",
-        "officialEpisodes": 125,
+        "officialEpisodes": 124,
         "noteReady": 19,
-        "queued": 106
+        "queued": 105
       },
       {
         "month": "2026-08",
-        "officialEpisodes": 54,
+        "officialEpisodes": 57,
         "noteReady": 5,
-        "queued": 49
+        "queued": 52
       }
     ]
   }
