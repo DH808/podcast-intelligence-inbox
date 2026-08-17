@@ -1,9 +1,9 @@
 {
   "format": "podcast-library-sanitized-v1",
-  "generatedAt": "2026-08-16T23:00:32.512Z",
+  "generatedAt": "2026-08-17T23:00:23.859Z",
   "gateVersion": "library-ready-v2",
   "counts": {
-    "episodes": 63
+    "episodes": 64
   },
   "audit": {
     "gateVersion": "library-ready-v2",
@@ -12,48 +12,141 @@
     "foreignKeyViolations": 0,
     "duplicates": 0,
     "orphans": 0,
-    "total": 236,
-    "ready": 63,
-    "blocked": 173,
-    "publicReady": 63,
+    "total": 242,
+    "ready": 64,
+    "blocked": 178,
+    "publicReady": 64,
     "reasonCounts": {
-      "canonical_note_missing": 172,
-      "deterministic_qc_failed": 172,
-      "source_boundary_missing": 172,
+      "canonical_note_missing": 177,
+      "deterministic_qc_failed": 177,
+      "source_boundary_missing": 177,
       "source_note_placeholder_or_error": 1,
-      "why_it_matters_missing": 172
+      "why_it_matters_missing": 177
     },
     "ingest": {
-      "id": "ingest_90d5fc8eb68dce0cd9b9",
-      "startedAt": "2026-08-16T23:00:32.018Z",
-      "completedAt": "2026-08-16T23:00:32.020Z",
+      "id": "ingest_b301a7886f57f814f816",
+      "startedAt": "2026-08-17T23:00:23.351Z",
+      "completedAt": "2026-08-17T23:00:23.353Z",
       "status": "completed",
       "sourceCounts": {
         "monitoredShows": 20,
-        "officialSinceCutoff": 193,
-        "candidateRows": 468,
-        "candidateAliasesMerged": 231,
-        "radarIndexed": 470,
-        "radarReadyImported": 41,
+        "officialSinceCutoff": 199,
+        "candidateRows": 479,
+        "candidateAliasesMerged": 239,
+        "radarIndexed": 481,
+        "radarReadyImported": 42,
         "iltbCanonicalSobridgeMarkdown": 16,
         "iltbVersions": 32,
         "genericReviewed": 9,
         "genericExcluded": 10,
-        "attachedArtifacts": 575,
+        "attachedArtifacts": 580,
         "importedClaims": 374,
-        "inventoryFiles": 12141,
-        "canonicalEpisodes": 236,
-        "readyEpisodes": 63
+        "inventoryFiles": 12290,
+        "canonicalEpisodes": 242,
+        "readyEpisodes": 64
       },
-      "inserted": 2,
-      "updated": 234,
-      "deduped": 389,
-      "warnings": 40,
+      "inserted": 6,
+      "updated": 236,
+      "deduped": 403,
+      "warnings": 41,
       "errorSummary": null,
       "codeVersion": "task-004-v1"
     }
   },
   "episodes": [
+    {
+      "id": "ep_c673501bc0d3ba94cf1f",
+      "showId": "show_66323af571a19fdabe95",
+      "show": "The a16z Show",
+      "title": "Stripe’s AI Strategy: Build More, Not Less",
+      "publishedAt": "2026-08-17T10:00:00.000Z",
+      "publishedDate": "2026-08-17",
+      "durationSeconds": 3276,
+      "duration": "00:54:36",
+      "description": "a16z General Partner David George is joined by Will Gaybrick, President of Product & Business at Stripe, to discuss how AI is changing the way Stripe builds products, organizes teams, and thinks about the future of internet commerce. Stripe has evolved from a payments company into a multi-product financial infrastructure platform, while a new generation of AI companies is growing and monetizing faster than previous software cohorts. Will explains why Stripe sees AI productivity as an opportunity to build more rather than simply cut costs, including how its internal coding agents now generate thousands of pull requests each week. They discuss creating founder-like agency inside large companies, building smaller and flatter teams, and why Stripe believes dramatically more software will be created as the cost of building continues to fall. They also look ahead to agentic commerce, why checkout pages could disappear, the potential return of micropayments, stablecoins as infrastructure for a global economy, and a future where AI agents increasingly buy software and services from other machines. Resources: Follow Will Gaybrick on LinkedIn: https://www.linkedin.com/in/william-gaybrick-5730347/ Follow Will on X: https://x.com/gaybrick Follow David George on X: https://x.com/DavidGeorge83 Follow Stripe on X: https://x.com/stripe Stay Updated: Find a16z on YouTube: YouTube Find a16z on X Find a16z on LinkedIn Listen to the a16z Show on Spotify Listen to the a16z Show on Apple Podcasts Follow our host: https://twitter.com/eriktorenberg &nbsp; Please note that the content here is for informational purposes only; should NOT be taken as legal, business, tax, or investment advice or be used to evaluate any investment or security; and is not directed at any investors or potential investors in any a16z fund. a16z and its affiliates may maintain investments in the companies discussed. For more details please see a16z.com/disclosures. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
+      "originalUrl": "https://a16z.simplecast.com/episodes/stripes-ai-strategy-build-more-not-less-0w7FfhZZ",
+      "mediaType": "podcast",
+      "materiality": "high",
+      "productionStatus": "qc_passed",
+      "readerReady": true,
+      "publicReady": true,
+      "gateVersion": "library-ready-v2",
+      "noteMarkdown": "# Stripe：Tokens Are the New Dollars｜a16z 访谈深度纪要\n\n- **节目：** a16z\n- **原题/标题：** Tokens Are the New Dollars | Stripe with a16z\n- **发布时间：** 2026-08-17 14:30:20 UTC\n- **原始链接：** https://www.youtube.com/watch?v=P5iICDVn5gc\n- **节目时长：** 53:36\n- **Source boundary：** YouTube Transcript API caption-derived transcript from the official video P5iICDVn5gc. This is not a human-edited transcript; speaker attribution, names, financial/operating figures, and technical terminology may contain caption errors and are marked ASR待核 where uncertain.\n\n> 编辑说明：本文是按节目原始时间顺序整理的 source-faithful 深度纪要，不是逐字稿。只压缩了片头预告、寒暄和逐句重复；所有归因、数字、名称与术语均以提供的字幕为边界。字幕未给出可靠的完整人物介绍，因此正文不补写嘉宾或主持人的身份；片尾称嘉宾为 Will（ASR待核）。\n\n## 为什么对研究重要\n\n这场访谈的研究价值，不只在于 Stripe 又发布了多少产品，而在于它把 AI 对企业的影响拆成了三层相互咬合的机制。第一层是供给：agentic coding 让一个资深工程师能承担过去两个团队的工作量，代码生产速度骤增，企业真正的瓶颈开始从“写代码”转向定价页、销售培训、上线流程、合规与跨团队协调。第二层是需求：AI 不只是提高旧软件的生产率，也创造了此前做不出来的新产品，并让软件公司的单位经济发生变化——推理与 token 成为直接成本，免费试用滥用、用量计费、模型选择、全球税务等问题因此进入核心产品栈。第三层是交易基础设施：当 agent 能自主调用服务、购买数据和算力时，现有的人类网页结账、月度订阅和法币跨境网络都显得过重，机器支付协议、一次性微消费、稳定币和 token 风控成为缺失的 primitives。\n\n对数字人文（投资研究用户）与 AI 基础设施研究而言，这是一份难得的“组织—产品—市场”同屏材料。它没有把 AI 效率简单等同于裁员，而是提出 founder-like agency：让组织内部的个人拥有接近创始人的端到端行动权，再用模板、模拟环境和自动化评审扩大这种行动权。它也提示研究者，所谓“agentic commerce”并非一个单点支付功能，而是身份、授权、预算、服务发现、计量、结算、争议处理和风控共同组成的新制度层。最后，Stripe 对 taste 的回答又把技术能力拉回组织文化：产出速度越快，越需要反复申明质量、真实使用产品并通过模拟进入用户处境。\n\n## 一页导读\n\n访谈先从 Stripe 的自我定义开始。它不再把自己描述成“支付公司加若干附加功能”，而是把价值主张倒转为覆盖收入与现金流的多产品金融基础设施：支付、Billing、订阅、发票、Connect、Radar、Tax、Treasury 等共同服务于两个目标——减少摩擦、提高企业行动能力。AI 公司让这一平台逻辑更清晰：它们全球化快、推理成本高、商业模式变化快，平均采用的 Stripe 产品更多；同时，免费试用不再只是几乎无成本的获客工具，而可能被多账号和模型蒸馏式行为消耗真实算力。\n\n接着，讨论转向 Stripe 的产品速度。公司过去从 Google、Microsoft、Apple 以及 Alan Mali（ASR待核）等组织吸收管理机制，但当单个工程师的能力跨越式提高时，已经没有现成的大公司模板可抄。Stripe 的选择不是用 AI 单纯缩减成本，而是“build everything”：清理多年积压的用户需求，把公司变成内部创始人的平台。其代表性工具 Stripe Minions 是一次性任务式 coding agent：收到 prompt 后完成构建、CI/CD 与测试，再交给人审查；字幕称其产出的 PR 从每周 1,200 个增至 7,000 个，最近一周约占总 PR 的 30%（均 ASR待核）。但访谈强调，工具只是半边：如果代码合并速度增加，而销售系统、定价、培训和发布机制不变，后台流程会成为新的关键路径。\n\n组织上，Stripe 倾向更扁平、更小的团队，让工程师兼具工程、产品与设计职责。一名资深工程师可同时编排 16 个 agents（ASR待核）；一个原本做一件事的八人线管团队，可能在人数不变时同时推进三件事（ASR待核）。内部知识工具 Kai（ASR待核）由两人约六个月前构建，周活跃率约 83%、日活跃率约 60%，并使销售生产率提升约 20%（均 ASR待核）。Stripe 的结论不是减少销售，而是销售的回收效率更好，因此可以配置更多销售。这是访谈用 Javon's paradox（ASR待核）表达的逻辑：资源效率上升会扩大使用量，而非必然减少投入。\n\nagentic commerce 部分则明确承认市场仍在早期：尚未出现类似 Opus 4.5（字幕为“Opus 45”，ASR待核）时刻的“寒武纪爆发”，原因之一是缺少机器可原生使用的支付与采购 primitives。Stripe 与 Tempo（ASR待核）做的 machine payments protocol（ASR待核）允许服务返回 402，说明机器如何购买内容；Link agent wallet 与 Link CLI（均 ASR待核）让 agent 在人类授权范围内调用支付凭据；Stripe Projects（ASR待核）则尝试让 agent 无需访问供应商网页即可配置 B2B 服务。受访者认为，最先落地的可能不是宏大的自主购物，而是消灭结账页、自动采购托管或浏览器服务，以及让 agent 在预算内组合多个一次性服务。\n\n由此引出 micropayments。过去，一篇文章的微支付会被订阅制或广告免费模式夹击；而长任务 agent 像“蜂鸟”一样从多个站点各取一点数据、存储和算力，需要临时、轻量、无需逐站开户的结算方式。稳定币使低额机器支付在技术上更可行，因为 agent 不在意法币与稳定币之间的后台切换。稳定币的更大论点是：UPI、Pix 等本国网络可以很快很便宜，但全球经济仍需要各方可共同采用的协调点。Stripe 将稳定币原生纳入 Treasury，并把 Tempo 定位为支付专用链，强调隐私、持续吞吐和费用不随交易拥堵而飙升；不过嘉宾也明确说项目仍处早期。\n\n最后，token 被重新定义为近似货币。通用 token 消费平台遭遇的多账号和盗用攻击越来越像金融欺诈；未来某些服务工作会从“用美元付给多人”变成“由更少的人借助 agent、并消耗 token 完成”。Stripe 因而认为自身不仅要帮助客户安全、合规地移动货币，也要管理 token 的采购、存储、风控和美元兑换。token 管理又分两类：一类是研发和运营开支，另一类是产品效能，即在不同模型之间调度，寻找质量与成本的最优组合。节目以 taste 收束：AI 可能最终也有 taste，因此人类不能靠这个词自我安慰；组织能做的是自上而下反复要求质量、让管理者和团队持续使用产品，并通过去除 PII、随机化增长率的账户模拟，重现争议、退款、季节性等真实体验。\n\n## 一句话主线与 投资研究用户 关注点\n\n**一句话主线：** AI 把软件生产的稀缺环节从编码迁移到组织行动权、产品化与交易基础设施；Stripe 的应对是以 founder-like agency 扩大供给，以多产品金融栈承接 AI 公司的新成本结构，并为 agent、稳定币与 token 经济补齐机器商业 primitives。\n\n**投资研究用户 关注点：** 应重点追踪“agent 作为经济行动者”如何改变账户、身份、授权与预算的文本制度；研究 token 从技术计量单位向准货币对象的语义迁移；区分嘉宾陈述的当前运营数据、未来判断与主持人的投资叙事；同时观察 Minions、模板文件、模拟账户等工具如何把组织知识编码成可复用的操作结构。字幕来源不是人工校订稿，因此以下所有被标记的专名与数字不宜直接作为二手数据库的确定事实。\n\n## 关键数字总表\n\n| 时间 | 数字/规模 | 对应含义 | 限定 |\n|---|---:|---|---|\n| 01:04–02:24 | AI 公司平均使用 11 个 Stripe 产品；Sessions 有 288 次独立产品发布 | 主持人用来说明 Stripe 已从单一支付走向多产品平台 | 两项均为主持人口径，ASR待核 |\n| 02:14–02:24 | 约 25–30 个品牌级产品，之下有数百乃至数千项功能 | Stripe 对自身产品面的非正式估算 | 嘉宾明确说“不实际计数”，ASR待核 |\n| 03:06–03:56 | 约每 6 名试用者有 1 名滥用；ElevenLabs 每天拦截 2,000 名滥用者 | AI 软件的算力成本使免费试用风控成为收入问题 | 公司名、比例与日拦截数均 ASR待核 |\n| 04:30–05:02 | 100+ 个地区 | Managed Payments（ASR待核）帮助数字产品覆盖长尾市场 | 产品名与地区数 ASR待核 |\n| 07:13–07:27 | 接近但未达到 Fortune 500 的一半 | Stripe 的大型企业覆盖 | 嘉宾不记得精确比例，ASR待核 |\n| 08:00–09:26 | 上半年注册同比 +50%；2026 cohort 收入较可比 2025 cohort +50%；2025 cohort 较 2024 cohort +70% | AI 扩大软件机会并降低开发成本，Billing 使用增长高于 Stripe 整体 | 年份、cohort 定义和全部增幅 ASR待核 |\n| 11:18–11:23 | 1 名工程师≈两年前 2 个工程团队 | agentic coding 改变组织设计的核心判断 | 比较口径未定义，ASR待核 |\n| 15:26–15:41 | Minions 从每周 1,200 个 PR 增至 7,000 个；最近一周约占 PR 的 30% | 一次性 coding agent 的内部渗透 | 时间点、数量与占比 ASR待核 |\n| 17:25–18:42 | 1 名资深工程师编排 16 个 agents；8 人团队可能做过去 3 倍的事项 | 更扁平、更小团队的生产率例子 | 工具/人名未辨明；数字 ASR待核 |\n| 19:45–20:18 | Kai 由 2 人约 6 个月前开发；周活约 83%、日活约 60%；销售生产率 +20% | 内部知识 AI 提高全员效率，但不导向减员 | 工具名、时间与指标均 ASR待核 |\n| 21:09–21:30 | 2026 年新 SaaS 平台 cohort 较 2025 年大 103% | 反驳“SaaS 平台会因 AI 普遍萎缩”的即时观察 | cohort 与增幅 ASR待核 |\n| 24:05–24:40 | 全球报税功能耗时约为美国报税功能的 1/3 | agent 工程压缩更复杂产品的交付周期 | 无绝对工期；比例 ASR待核 |\n| 30:25–30:38 | Link 约 4 亿用户 | 用已有凭据层消除人类与 agent 的结账步骤 | 主持人口径，ASR待核 |\n| 33:17–34:00 | 单项订阅约 9.99/10.99 美元；agent 示例预算 15 美元 | 说明一次性微消费优于为偶发任务创建月订阅 | 示例性价格与预算，ASR待核 |\n| 38:07–38:21 | 印度 UPI 中 5 美元以下付款约占 86%；美国卡支付对应比例为个位数 | 国家级低成本网络与美国卡网络的结构差异 | 嘉宾多次使用“I think”，ASR待核 |\n| 39:38–40:19 | 法币可用约 60 国；稳定币可用约 150 国；2 名工程师可建立强 AI 公司 | 稳定币扩大 Stripe 与全球软件创业的覆盖 | 嘉宾不记得精确数，均 ASR待核 |\n| 40:44–41:30 | Felix/Felix Bogar（ASR待核）数年内占美墨汇款走廊 5%–10% | 稳定币跨境汇款的采用例子 | 公司名、走廊描述和份额 ASR待核 |\n| 43:17–43:25 | Stripe 处理量超过 2 万亿美元 | 主持人引出 token economy | 口径与期间未说明，ASR待核 |\n| 47:44–48:20 | ElevenLabs 使用 14 个 Stripe 产品 | 软件公司采用更多金融基础设施产品 | 公司名与产品数 ASR待核 |\n\n## 00:00–01:00｜片头把三条线并置：组织行动权、产品扩张与 token\n\n片头不是完整论证，而是把后续三条主线剪在一起。第一条是组织生产率：若企业真想“交付更多、构建更快”，仅有更强 coding agent 不够，还必须在公司内部创造 founder-like agency；单个工程师的能力已可与两年前两个工程团队相比（ASR待核）。第二条是资本配置：不少公司把 agentic efficiency 当成优化成本结构的工具，Stripe 的回答却是略带挑衅的“build everything”，因为 AI 同时扩大了可做的软件市场。第三条是新商业基础设施：agentic commerce 尚未出现 Opus 4.5 式寒武纪爆发（ASR待核），Stripe 一方面用 Minions 加快内部 PR，另一方面把视线放到 token 获取、机器支付和超过 2 万亿美元处理量（主持人口径，ASR待核）所连接的未来金融栈。\n\n这段预告也先行暴露了访谈的因果顺序：代码合并更多，会先压迫所有既有系统；当内部交付流程被重塑后，同一套“机器能够独立完成任务”的能力会外溢到商业网络，要求机器能发现服务、支付并消费 token。它不是把 AI、支付和稳定币当三个热门话题，而是把它们串成“生产者变成 agent-enhanced，消费者也逐步变成 agent”的一条连续变化。\n\n## 01:00–05:22｜从支付处理器倒转为多产品金融基础设施\n\n开场问题用两个观察定义“Stripe 今天是什么”：早期投资时它是支付处理器；如今平均 AI 公司使用 11 个 Stripe 产品，Sessions 有 288 项不同发布（均为主持人口径，ASR待核）。回答并未按产品清单自夸，而是说 Stripe 已“倒转”价值主张：过去是支付主产品加附属功能，如今是围绕收入与现金的多产品平台，目的在于减少摩擦并增加企业 agency，使客户能改变商业模式、进入更多国家并更快行动。支付之后扩展出的 Billing、订阅、发票、平台/市场用的 Connect、反欺诈 Radar、Tax 等，约有 25–30 个品牌级产品，之下还有数百到数千功能；嘉宾明确说公司并不实际计数，因此这些规模只能作粗略口径（ASR待核）。\n\nAI 公司说明了为何“多产品”不是横向堆砌。此前软件免费试用浪费的计算资源很小，但生成式 AI 让软件拥有明显的单位使用成本。Cursor（ASR待核）被称为较早提出问题的用户：大约每六个免费试用用户就有一个滥用者（ASR待核），可能不断注册新账号，甚至从事模型蒸馏式行为。Stripe 与客户在一个周末搭起管线：以自身 foundation model、全网信号和 embeddings 识别关联，再在上层加入推理，向客户给出“为何判为滥用”的信号。ElevenLabs（字幕为“11 labs”，ASR待核）据称每天借助 Stripe 信号拦截 2,000 名免费试用滥用者（ASR待核）。机制上的关键不是少给试用，而是在控制假阳性的同时，避免公司因怕滥用而放弃能创造收入的试用。\n\n“增加 agency”的另一面是全球化。数字商品公司可以瞬间获得跨国需求，却必须在许多司法辖区注册、计算并汇缴税。AEFs（ASR待核）被用作 Managed Payments（字幕作“strike managed payments”，ASR待核）的例子：公司在美国、欧洲等自有实体市场作为 seller of record；在哈萨克斯坦及亚太长尾市场等无实体地区，由 Stripe 充当 merchant of record，承担税务计算与汇缴，从而合规覆盖 100 多个地区（ASR待核）。这与反滥用共同说明平台效应：一个客户识别出的异常行为可通过网络信号帮助其他客户，而合规能力又能被多家公司复用。\n\n## 05:22–09:30｜“赢得创业公司，再赢一次”：上行企业与 AI cohort\n\n主持人追问，Stripe 起源于创业公司，曾在 DoorDash、Instacart 仍处 YC 阶段时获得客户并伴随其成长，那么今天如何同时服务创业公司和大企业。回答借 Colin at Clerk（ASR待核）在 X 上的概括：“赢下所有创业公司，然后再赢它们一次。”创业公司不只是未来大客户的种子，也是下一轮需求的金丝雀；更微妙的是，它们往往标准最高。大型企业习惯传统供应商，可能认为 Stripe 报表已远胜其他系统；创业公司却会直接说报表糟糕、必须修复。这种高要求迫使 Stripe 改善产品，再把同样“surprisingly great”的标准带到企业市场。\n\n公司已服务接近但不到一半的 Fortune 500（嘉宾不记得准确比例，ASR待核），并提到 Amazon、Microsoft 等客户。企业销售周期、签约后的激活工作与创业公司自助上线不同，但底层方法仍是靠近用户、识别其需求，并在其关心的指标上证明产品更好。所谓“再赢一次”，不是默认锁定早期客户，而是在它们变成复杂组织后用另一套交付能力重新取得选择。\n\n随后主持人给出 AI cohort 的增长数据：上半年注册同比增长 50%；2026 年中位 cohort 产生的收入比可比 2025 cohort 高 50%；2025 cohort 又比 2024 cohort 高 70%（年份与口径均 ASR待核）。解释包含需求和供给两端：Suno、Higsfield（字幕分别为“sunno”“Higsfield”，均 ASR待核）式产品四年前无法做，或只能做出远弱版本，说明 AI 扩大了机会地形；agentic coding 又让较少工程师完成更多软件，降低供给成本。结果不是旧软件简单替代，而是新软件创建爆发。Stripe Billing 的同比使用增长高于 Stripe 整体，被解释为 Billing 更集中服务软件公司，因此更直接承接这轮创建潮。\n\n## 09:32–13:17｜没有现成组织可复制：从制度拼装到内部创始人平台\n\n面对“为何 Stripe 能发布如此多产品”，回答先把速度放在仅次于无止境用户关注的位置。Stripe 长期研究组织进步：目标制定借鉴 Google OKR，销售组织类似 Microsoft，责任文化和产品评审参考 Apple 的“DRRi”（字幕术语，ASR待核），日常经营机制则借自 Ford 与 Boeing Aviation 前负责人 Alan Mali（ASR待核）。这些例子指向一种制度拼装观：持久机构是创业活动的容器，组织不必从零发明每个机制。\n\n但 agentic coding 带来断点：当一个工程师可以做两年前两个团队的工作（ASR待核），历史大公司没有现成答案。Stripe 因而把自身想成“内部创始人的平台”，对应其长期作为外部创业者平台的身份。访谈列举多位被收购公司的创始人在 Stripe 承担更大职责：Metronome、Privy、Bridge、OpenUSD、Lemon Squeezy 等名称，以及 Scott Woody、Henry、Zach、AA、JR Far 等人名均可能受字幕影响（全部 ASR待核）；核心信息是，收购后的创始型人才并未被同化成窄职能，而是在 Billing、crypto、Treasury 等业务中继续负责较完整的领域。\n\n资深工程师能力增强后，组织有两条路：减少工程师，或扩大可建之物。访谈承认市场上已有公司用 agent 效率削减运营费用和裁员，但 Stripe 选择“build everything”。其理由并非成本不重要，而是最有效的成本结构优化是增长：公司积压着多年未满足的用户请求，更高生产率首先意味着可以更快兑现它们。这也为后文的 founder-like agency 铺路——若个人仍被中央流程包围，模型能力不会自动转化为用户手中的产品。\n\n## 13:17–18:45｜Minions 从 1,200 到 7,000 PR：代码加速后，关键路径移向后台\n\n“交付更多”要求把 founder-like agency 具体化。当前最拖慢 Stripe 的并非编码本身，而是代码合并激增后承压的后台：新产品如何进入 seller systems，如何上定价页，销售人员来不及培训时如何推向市场。Stripe 因此重新审视从用户请求、产品构想到进入用户手中的整条 critical path。组织机制要让每个人像 founder 或 creative 一样行动，减少中央化流程的泥沼；开发生产率团队则不断改善底层工具。这两部分缺一不可，否则 agent 只会在上游制造更大的发布队列。\n\nStripe Minions 是工具侧代表。它不是与人多轮讨论方案的辅助聊天工具，而是 one-shot：人给出 prompt，系统完成构建、CI/CD 和测试，再由人审查；任务发出者不反复迭代，也不先进入 planning mode，而是表达“我想要这个，去做”。Stripe 把 Minions 生成的 PR 数量及占比作为重要内部指标，因为它衡量的是 agent 能否独立穿过工程管线。字幕称，在一月或二月公开介绍时，Minions 每周约做 1,200 个 PR；最近一周达到约 7,000 个，并占当周全部 PR 的约 30%（时间和数字均 ASR待核）。增长幅度说明，公司的目标不是仅加快补全，而是把更完整的执行回路交给 agent。\n\n组织随之更扁平、更小。工程师原本就是 Stripe 的重要产品领导者，因为核心用户长期是工程师；他们常同时承担 engineer、PM、designer 的一部分职责。如今工具使工程师可自行完成更多前端开发和设计，过去用于编排工作的层级不再同样必要。Stripe Projects（ASR待核）被描述为一名 PM、一名资深工程师加少量支援人员数周完成，多数 PR 来自一个人；该工程师现在在一个屏幕上编排 16 个 agents（ASR待核）。访谈没有规定标准团队人数，因为“更宽的管理跨度”与“每件事所需人数减少”同时发生；一个八人团队未必缩到更少，也可能保持人员比率而同时做三件事（ASR待核）。\n\n## 18:47–23:20｜build more 而非只 cut cost：效率提升为何扩大资源需求\n\n主持人把市场上的两种 AI 用法对置：一种面向客户，用新能力造产品；另一种面向后台，把每个人的工作写成 Markdown 再极致优化成本。Stripe 不否认后台提效，而是把重点放在“让现有人更有生产力”。内部知识 AI 工具 Kai（ASR待核）据称约六个月前由两人构建，达到 83% 周活和约 60% 日活，并让销售生产率提高 20%（均 ASR待核）。公司的反应不是“需要更少销售”，而是销售回收更好，所以可以有更多销售；运营团队同时减少手工工作，日常体验也更好。\n\n这被类比为 Javon's paradox（字幕拼法，ASR待核）：资产效率越高，需求可能越大。工程师已经明显更高产，但 Stripe 不认为世界会因此需要更少工程师。它援引自身数据说，2026 年新 SaaS platform cohort 比 2025 年大 103%（ASR待核），与九个月前“垂直 SaaS 平台会普遍受损”的叙事相反。更准确的区分是：完成已经在做的事情需要更少人，但可做的事情急剧增加。\n\n因此 Stripe 对应届和早期工程师的角色设想也变化了：公司更像孵化器，让人找到高 agency、能帮助用户的项目；平台提供 paved paths，然后让执行者快速前进。产品必须是能与现有业务复利的邻接，而非随机扩张。例子是 spend management 与 Treasury 相邻，本来可能排在两年后，如今一名工程师主动接下并推进；嘉宾说自己写了第一个 commit，之后交给更有能力的人继续。最终口径是“用现有资源做更多，长期以更多资源做更多”，而不是把生产率红利一次性变成裁员。\n\n## 23:20–28:02｜资源背压、全球 Tax 与 Treasury：把时间压缩投向用户积压\n\n主持人用投资语言把创始人称作资产类别，并将“新产品收入还是降成本”视作资本配置选择。嘉宾补充了限定：此刻管理者仍应制造一定 resourcing back pressure，让团队更充分、更聪明地使用新工具；不能因为潜在生产率上升就无条件扩张。未来预算流程或许仍类似过去——先证明现有资源能做很多，再据此增加资源——但当前阶段适合逼迫组织把已有工具用深。\n\n用户需求为这股压力提供方向。Stripe Tax 的客户长期要求全球自动报税。美国报税已很难，因为各州接收申报的方式不同；在此基础上，更复杂的全球报税却只用了美国功能约三分之一的时间（ASR待核）。例子意在证明 agent 工程不是只缩短简单任务，而是在模式可复用后显著压缩复杂集成。只要继续以用户为先，需求清单近乎无限，效率红利自然流向产品面。\n\nStripe Treasury 则体现银行功能的拆分。Stripe 强调自己不是银行、也不想成为银行，但希望提供客户的 banking portal 和全球资金移动能力，让用户在多个国家持有数十种货币（ASR待核），呈现“银行门户本应做到的事”。交付速度背后的工程类比是注塑：战后消费品与玩具扩张，依赖四十年代把塑料均匀熔化并注入模具的工艺；agent 工程也依赖先制造 molds、templates，以及每个 repo 中的 agent files（术语 ASR待核）。一旦金融机构集成模式被编码，大量实现可交给 agents，人主要在后端 code review；而 agents 也越来越能参与评审。结论是：降成本的上限有限，等于做空自身未来潜力；把现金再投资于更多、更快的构建，则是在做多未来。\n\n## 28:02–30:54｜agentic commerce 尚未爆发：缺的是机器原生 primitives\n\n话题转向 agents 在互联网交易。嘉宾先泼冷水：agentic commerce 尚未出现 Opus 4.5（字幕为“Opus 45”，ASR待核）式寒武纪爆发，也没有大量反复出现的 canonical use cases。第一道瓶颈是缺 primitives。Stripe 与 Tempo（ASR待核）创建 machine payments protocol（ASR待核），让服务表明需要支付什么、如何支付；出售图片或内容的服务可对请求返回 HTTP 402，并携带购买方法。这个机制把“机器会向机器购买”从愿景落实为可寻址、可报价、可结算的接口。\n\n但 agent checkout 的原生形态仍未定。浏览器自动化越来越好，agents 或许可以像人一样穿过现有表单；主持人称这只是 skeuomorphic version（字幕术语，ASR待核），未来应有 native version。访谈没有假装已经知道答案，而把当前阶段定义为试做 primitives，并同步观察哪种 agent commerce 真比非 agent commerce 更好。\n\n最低风险的改善是让 checkout page 消失。Link、Shop Pay（ASR待核）已让填写结账页很容易，但用户在商品页发出“购买”命令后，理论上不应再进入独立页面。主持人提到 Link 约有 4 亿用户（ASR待核）；Stripe 新推出 Link agent wallet 和 Link CLI（均 ASR待核），允许 agent 在 human-in-the-loop 的授权边界内取得 Link credentials 并使用。这里的重点不是完全移除人，而是把人从每次表单输入提升到对凭据用途和权限的上层控制。\n\n## 30:54–34:22｜B2B 自动采购与一次性 token 消费：agent 如何成为买方\n\nStripe 更兴奋的早期场景是 B2B。Stripe Projects（字幕偶作“straight projects”，ASR待核）狭义上用于 scaffold apps，更重要的用途是 agentically provision B2B services：agent 可以采用 Versell（字幕拼写，ASR待核）的托管服务，而人无需访问供应商网站。主持人说，这已影响其开发者工具投资框架：假设未来 shopper 是 agent，那么要问的不是人最喜欢哪个界面，而是 agent 会选择哪项服务。agent 还可采用 Browserbase（ASR待核）等工具。\n\n现场例子是 agent 通过 Browserbase 打开 ESPN、研究并填写 NCAA bracket（专名均 ASR待核）。结果并未评估，嘉宾明确说不知道表现如何，因此不能把它写成“胜过人类”；它只说明 agents 已能串联服务、浏览与提交。更可能先普及的是功利型 B2B/B2C 服务采购，因为目标和验收比开放式消费任务清楚。长时 consumer tasks 尚未解决，访谈在这里保持了限定。\n\n另一个例子是为侄女生日作歌。嘉宾尝试使用“cloud code”（字幕术语，ASR待核）完成过去不会投入时间的任务，也可能用 Suno 或 Higsfield（均 ASR待核）。障碍不在生成，而在不愿为偶发使用分别创建每月 9.99 或 10.99 美元账户（ASR待核）。理想形态是 micro consumption API：服务允许非匿名但短暂的一次性消费，agent 获得 15 美元预算后，自行发现并组合所需服务（示例金额 ASR待核）。主持人以十岁孩子制作 rap 并上传 Spotify 的经历呼应生成质量，但也区分歌词、音乐质量与执行质量，没有由此推出普遍商业结论。\n\n## 34:22–37:20｜micropayments 为什么现在可能成立：从文章付费到“蜂鸟式”任务\n\n微支付自互联网早期就被反复讨论，问题是为什么今天不同。回答首先从 human agency 出发：作歌、填 NCAA bracket 等任务若没有 agent，需要很多时间，还要创建多个账户；agent 使服务可以短暂、轻量地被调用。若这成为常态，microtransactions 不是锦上添花，而是复杂任务跨服务运行的必要结算形式。\n\n过去的反例主要来自内容。单篇文章收费总被订阅制与广告支持的免费模式夹击：订阅能捕获高频用户剩余价值，广告则让边际访问免费，逐篇付费很难胜出。嘉宾承认这一判断过去可能正确，但 agent 的消费形态不同。长任务中的 agent 像“蜂鸟”，在互联网各处取少量数据，在另一处用短暂存储，再到第三处做一点计算。个人不应逐项了解每个供应商、逐站开户；人只需要确信服务安全，并设定总预算或权限。于是市场从“人是否愿为一篇文章付几分钱”变成“机器能否为组合任务自动采购许多微小投入”。\n\n稳定币使另一半条件成立。对人而言，稳定币仍不够自然，需要跨过多个步骤；agent 却可以在预算内把美元换成稳定币，或使用共享的 stored balance，再完成结账，它不介意后台在两种价值载体间来回。主持人进一步把软件商业模式从 seats/subscriptions 向 consumption 的变化作类比：更细的消费计量可能让用户接触更多服务，也让企业触达订阅门槛之外的人。这里仍是对未来机制的判断，而非已验证的市场规模。\n\n## 37:20–41:32｜稳定币作为全球协调点：更快、更便宜、更广，但采用不会一夜完成\n\n谈未来五年稳定币时，嘉宾先从基础设施而非资产投机出发：稳定币是更好的资金移动平台。印度 UPI、巴西 Pix（字幕为“Picks”，ASR待核）等国家级系统可以廉价快速；嘉宾估计，印度 UPI 中 5 美元以下支付约占 86%，美国卡支付的相应比例则为个位数（均 ASR待核）。但国家系统不能自然成为全球共同标准，全球经济需要一个 Schelling point（字幕为“shelling point”，ASR待核），即不同参与方都能接受的协调点。crypto rails 的价值在于跨政治边界工作；若所有人一夜之间都持有稳定币，全球金融系统理论上会更快、更便宜、摩擦更少。\n\n嘉宾也承认，这可能属于“应该如此，却未必自动发生”的问题。Stripe 的实践是把稳定币原生加入 Treasury，使客户像持有 USD、EUR、GBP 一样持有稳定币余额。机会被归纳为更快、更便宜、更全球化的资金移动。字幕称，Stripe 法币服务约覆盖 60 国，稳定币服务约覆盖 150 国；嘉宾明确说记不清准确数字（均 ASR待核）。这能让更多地区进入在线经济，并与 AI 公司交易；两名工程师在泰国、美国或巴西都可能建立强 AI 公司（人数为举例，ASR待核），资金网络不应成为其地理障碍。\n\n采用路径不会要求企业一次性抛弃法币。主持人认为，Stripe 同时拥有法币关系和完整产品面，允许企业按自身速度迁移；嘉宾用 Felix/Felix Bogar（字幕不稳，ASR待核）说明全栈采用的可能性：该公司从美墨汇款起步并扩展其他走廊，以稳定币建设，数年内据称占美墨这条全球最大汇款走廊的 5%–10%（全部 ASR待核）。其意义是新基础设施达到可见份额的时间可能短于传统法币网络，但访谈没有给出独立验证或绝对交易量。\n\n## 41:32–43:10｜Tempo 的支付专用链逻辑：隐私、吞吐与可预测费用\n\n被问及 Tempo（ASR待核）的进展与抱负，嘉宾先限定：市场已有很好的 blockchains，除支付外没有显而易见的理由再造一条链。支付专用链之所以可能成立，是因为通用公链的优先级与支付不同。第一是 privacy：公开账本容易被反向分析交易，支付需要把隐私做成 first-class primitive。第二是 throughput：公链大量用于交易，重大交易事件会使性能下降，支付却要求持续可用。第三是 transaction fees：浮动 gas fee 会随其他活动飙升，支付基础设施需要一致、低廉且可预测的成本。\n\nTempo 因而被概括为尽可能高效、稳定、便宜地移动资金。项目仍在建设早期，这是嘉宾直接给出的限定；同时字幕称其已有不错 traction，并与 DoorDash 等公司合作（ASR待核）。在 Stripe 内，它被做成默认但不是唯一的 blockchain，意味着平台倾向提供首选路径，却没有宣称封闭其他链。这个定位与前面的“全球协调点”相接：专用链尝试把稳定币的理论优势变成企业能依赖的性能与隐私保证。\n\n## 43:10–46:54｜tokens are the new dollars：购买、计量、风控与兑换开始合流\n\n主持人以 Stripe 超过 2 万亿美元处理量（ASR待核）引出 token economy，并询问未来如何访问模型和 token。回答从词义入手：token 听起来本就像 money 的近似物，而现实正在让两者边界变模糊。前面提到的免费试用滥用、多账号，以及对 Cursor、Replet（字幕拼写，ASR待核）等通用 token 消费平台的攻击，已像针对 Stripe 用户的盗款攻击一样复杂。因为 token 能在通用平台上完成多种有价值任务，盗取或滥用 token 不再只是“多用一点软件”，而接近夺取可转移的经济能力。\n\nStripe 过去帮助用户安全、合规地移动、储存和发送资金，现在感到有 mandate 用类似方式保护 token。未来长时 agent tasks 会替代一部分服务流程：例如“帮我关账”过去以美元支付给多人，未来可能由更少的人借 agent 完成，并消耗 token。字幕在此句有明显自我纠正，不能据此断言薪酬会直接以 token 支付；较稳妥的机制是，服务交付成本从纯人力美元支出变成人力与模型 token 的组合。Stripe 的目标是让 token 与美元之间的移动像美元与欧元兑换一样顺畅、安全，但嘉宾明确说这段旅程刚开始。\n\n主持人称 Stripe 有“right to play”，嘉宾特意把权利改成 mandate：与客户从创业初期到企业阶段的关系，不自动赋予公司特权，而是形成帮助客户解决新问题的责任。这个措辞也延续“赢得，再赢一次”：token 产品仍需重新证明价值。\n\ntoken 管理随后分为两类。第一类是 build things 的开支管理，即研发或运营费用：客户使用 Treasury，需要理解花了多少、如何降低、支出如何连到收入。第二类是 product efficacy：token 本身嵌入客户产品，企业必须判断 token-driven 产品是否有效，以及如何在模型之间切换以获得更好效果。于是未来的基础设施不仅售卖或计量 token，还可能成为编排层，在成本、质量和控制之间做选择。访谈提出方向，但未披露具体产品形态或收费方案。\n\n## 46:54–49:00｜软件会商品化吗：眼前证据却是创建、变现与产品采用同时增长\n\n讨论承认“软件将严重商品化”是合理假设。若模型递归生成模型，未来接近 singularity 的状态很难估计，嘉宾没有否认长期不确定性。但 Stripe 当前观察恰好相反：软件创建正在爆发，客户变现比过去更快；2026 cohort 比 2025 cohort 大 50% 且增长更快，后者又比 2024 cohort 大 70% 且增长更快（年份与指标 ASR待核）。这不是对永久趋势的证明，只是用近期平台数据反驳“软件价值已经立刻坍缩”的说法。\n\n与此同时，客户采用的 Stripe 产品也更多。ElevenLabs 据称使用 14 个 Stripe 产品（ASR待核），访谈以“可惜不是 11、那就争取 22”的玩笑压缩带过。严肃机制是：软件商业不只是把代码造出来，还要让抽象贯穿整个业务、持续更新；内部系统会随维护者离开而退化，知识也会流失。外部基础设施可以把这些能力制度化，覆盖 revenue stack、现金管理、收入管理、关账、增长与全球化。因而 coding 越便宜，不一定越不需要 Stripe；如果软件公司数量、变现速度和运营复杂性同步增加，对多产品基础设施的机会反而更大。\n\n## 49:00–53:36｜规模化 taste：反复申明质量，用模拟产品进入用户现场\n\n收尾问题直指 Stripe 常被认可的 taste：当公司规模更大、更多工作由 AI 完成时，如何维持它。回答先对“taste”热潮保持怀疑。犬儒解释是，人类手指的生产价值下降后，便用一个模糊词为自己的未来价值辩护，声称模型永远不会有 taste；嘉宾认为这大概并不成立。因此，Stripe 的质量机制不能建立在“人类天然拥有、模型永远没有”的自我安慰上。\n\n更直接的回答是，产品质量是 Stripe 文化和身份的核心。它首先服务用户：精心制作、surprisingly great 的工具能让创业者更快，并让艰难的建公司过程稍微愉快。它也服务团队自身：经历长夜与周末后，看见真正出色的产品，比勉强拼出一个能运行的东西更有成就感。质量既是外部效用，也是吸引人持续投入的内部动力。\n\n规模化 taste 有两个动作。第一是 top-down 反复说，像“赢创业公司，再赢一次”一样不断谈质量，让它成为资源分配标准，而不是发布前的装饰。第二是使用产品，并让使用变得容易。访谈用航空模拟说明，不能先让飞机飞起来再希望它工作；又以 Nvidia（ASR待核）从等待晶圆厂芯片到模拟芯片性能为例，说明模拟如何缩短真实反馈之前的验证周期。Stripe 因此大量投入产品使用模拟。\n\n具体做法是从某类真实账户生成相似但安全的环境：移除 PII，随机化增长率以隐藏真实规模，同时保留业务的日常波动、季节性、争议与退款等结构；模拟中的 dispute 和 refund 并非真实交易，却让团队体验用户每天面对的界面与节奏。Engineering managers（字幕称 EMs，ASR待核）被要求主导使用，因为他们控制资源，能在发现体验不佳时决定下一 sprint 提升质量。于是“scale taste”最终落在三件事：文化中的质量要求、帮助人发现问题的工具，以及每天亲自使用产品、进入问题的工作节律。\n\n片尾回顾了产品速度、agent commerce 与稳定币，并用一个内部命题结束：如何确保“下一个 Stripe 在 Stripe 内部被建出来”。这句话把全场重新扣回 founder-like agency——真正目标不是让现有 Stripe 更便宜地重复自己，而是让组织仍能容纳一次新的创业级跃迁。53:32 的致谢结束节目，至此覆盖到完整时长 53:36。\n\n## 延伸分析（不是嘉宾原话）\n\n以下判断仅由访谈材料推演，不属于嘉宾原话，也不构成投资建议。\n\n1. **Stripe 的 AI 战略更像“需求扩张赌注”，而非纯自动化赌注。** Minions 的 PR 数最醒目，但更关键的领先指标可能是从用户请求到定价、销售激活和合规上线的总周期。如果后台关键路径没有同步缩短，PR 增长可能只制造库存；访谈对 seller systems 和培训的强调，说明 Stripe 已意识到这一二阶瓶颈。\n2. **多产品采用既是护城河，也可能增加整合风险。** AI 公司同时需要支付、用量计费、反滥用、税务、资金管理和 token 编排，使单一平台拥有交叉销售优势；但产品越多，质量标准、接口一致性与组织协调难度越高。片尾的模拟系统可视为应对复杂度的质量基础设施，而不只是设计文化。\n3. **agentic commerce 的近期观察指标应落到 primitives，而非购物 demo。** 可追踪的信号包括：机器可读报价与 402 响应是否形成采用、agent wallet 的授权粒度、一次性服务的转化率、微交易真实单位经济，以及争议与退款如何归责。仅能自动填写网页不等于出现了原生机器商业。\n4. **token 的“准货币化”会把 FinOps、支付风控与模型路由合并。** 当 token 同时是产品原料、研发开支和被盗目标，企业需要把模型质量评估、预算控制、身份风控与法币结算放到同一观察面。Stripe 是否能从资金编排延伸到模型编排，取决于它能否证明自己不仅看到付款，也能理解 token 使用与收入效果之间的联系。\n5. **稳定币论证的核心是全球可组合性，而非单纯降费。** UPI、Pix 的例子反而说明，本地系统可在本国做得非常好；稳定币的差异化在跨国共同采用、机器友好和低额结算。但监管、法币出入金、隐私与链上费用稳定性仍决定理论优势能否转化为日常采用，访谈本身也多次承认仍在早期。\n",
+      "sourceBoundary": "YouTube Transcript API caption-derived transcript from the official video P5iICDVn5gc. This is not a human-edited transcript; speaker attribution, names, financial/operating figures, and technical terminology may contain caption errors and are marked ASR待核 where uncertain.",
+      "whyItMatters": "这场访谈的研究价值,不只在于 Stripe 又发布了多少产品,而在于它把 AI 对企业的影响拆成了三层相互咬合的机制。第一层是供给:agentic coding 让一个资深工程师能承担过去两个团队的工作量,代码生产速度骤增,企业真正的瓶颈开始从“写代码”转向定价页、销售培训、上线流程、合规与跨团队协调。第二层是需求:AI 不只是提高旧软件的生产率,也创造了此前做不出来的新产品,并让软件公司的单位经济发生变化——推理与 token 成为直接成本,免费试用滥用、用量计费、模型选择、全球税务等问题因此进入核心产品栈。第三层是交易基础设施:当 agent 能自主调用服务、购买数据和算力时,现有的人类网页结账、月度订阅和法币跨境网络都显得过重,机器支付协议、一次性微消费、稳定币和 token 风控成为缺失的 primitives。",
+      "themes": [
+        {
+          "id": "theme_e748f8750672ca8b04b2",
+          "name": "AI Agents",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_ebbd5f51fefc7fcabdf4",
+          "name": "AI Infra",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_693b1c2b5c9e35f47d43",
+          "name": "Enterprise AI",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_b4d7581efc05d1db8fe0",
+          "name": "Markets / Macro",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_7e5743d68b4cb5c76b9d",
+          "name": "Product / GTM",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_f1991dbc4cf3c8fe3860",
+          "name": "Venture / Pre-IPO",
+          "provenance": "deterministic-keyword-v1"
+        }
+      ],
+      "entities": [
+        {
+          "id": "entity_1ad9baa389d2b038b89f",
+          "type": "company",
+          "name": "Alphabet / Google",
+          "evidenceSource": "note",
+          "confidence": 0.9
+        },
+        {
+          "id": "entity_c0948307254b62bd51b1",
+          "type": "company",
+          "name": "Amazon / AWS",
+          "evidenceSource": "note",
+          "confidence": 0.9
+        },
+        {
+          "id": "entity_5a78804e3c678d5fb398",
+          "type": "company",
+          "name": "Microsoft",
+          "evidenceSource": "note",
+          "confidence": 1
+        },
+        {
+          "id": "entity_f9825526d30e513764a0",
+          "type": "company",
+          "name": "NVIDIA",
+          "evidenceSource": "note",
+          "confidence": 1
+        }
+      ],
+      "noteVersions": [
+        {
+          "versionLabel": "source-faithful",
+          "writingStyle": "source-faithful",
+          "charCount": 17790,
+          "language": "zh-CN",
+          "canonical": true,
+          "superseded": false
+        }
+      ]
+    },
     {
       "id": "ep_6a035ba009cf144ef93e",
       "showId": "show_ab61c3866a2f58f78b82",
@@ -6130,17 +6223,17 @@
           "superseded": false
         },
         {
-          "versionLabel": "source-brief",
-          "writingStyle": "source-brief",
-          "charCount": 6735,
+          "versionLabel": "historical",
+          "writingStyle": "historical",
+          "charCount": 12903,
           "language": "zh-CN",
           "canonical": false,
           "superseded": true
         },
         {
-          "versionLabel": "historical",
-          "writingStyle": "historical",
-          "charCount": 12903,
+          "versionLabel": "source-brief",
+          "writingStyle": "source-brief",
+          "charCount": 6735,
           "language": "zh-CN",
           "canonical": false,
           "superseded": true
@@ -6280,7 +6373,7 @@
       "name": "The a16z Show",
       "slug": "a16z",
       "tier": "Tier A",
-      "readyCount": 7
+      "readyCount": 8
     },
     {
       "id": "show_155f53f5f64931d8bb8a",
@@ -6293,12 +6386,12 @@
   "coverage": {
     "since": "2026-07-01",
     "totals": {
-      "officialEpisodes": 192,
-      "noteReady": 24,
-      "transcriptReady": 24,
-      "qcReady": 24,
-      "queued": 168,
-      "candidateAliasesMerged": 252
+      "officialEpisodes": 198,
+      "noteReady": 25,
+      "transcriptReady": 25,
+      "qcReady": 25,
+      "queued": 173,
+      "candidateAliasesMerged": 262
     },
     "shows": [
       {
@@ -6372,12 +6465,12 @@
         "slug": "bloomberg-technology",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 36,
+        "officialEpisodes": 37,
         "noteReady": 1,
         "transcriptReady": 0,
         "qcReady": 1,
-        "queued": 35,
-        "candidateAliasesMerged": 38
+        "queued": 36,
+        "candidateAliasesMerged": 39
       },
       {
         "id": "show_f86bd475750778cc5df3",
@@ -6398,12 +6491,12 @@
         "slug": "capital-allocators",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 10,
+        "officialEpisodes": 11,
         "noteReady": 0,
         "transcriptReady": 0,
         "qcReady": 0,
-        "queued": 10,
-        "candidateAliasesMerged": 11
+        "queued": 11,
+        "candidateAliasesMerged": 12
       },
       {
         "id": "show_62ceb010467efd56f2ee",
@@ -6411,12 +6504,12 @@
         "slug": "decoder-with-nilay-patel",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 13,
+        "officialEpisodes": 14,
         "noteReady": 0,
         "transcriptReady": 0,
         "qcReady": 0,
-        "queued": 13,
-        "candidateAliasesMerged": 14
+        "queued": 14,
+        "candidateAliasesMerged": 15
       },
       {
         "id": "show_ea0877583838baf97fca",
@@ -6502,12 +6595,12 @@
         "slug": "odd-lots",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 23,
+        "officialEpisodes": 24,
         "noteReady": 0,
         "transcriptReady": 0,
         "qcReady": 0,
-        "queued": 23,
-        "candidateAliasesMerged": 25
+        "queued": 24,
+        "candidateAliasesMerged": 26
       },
       {
         "id": "show_8058fbf55a596a5862ec",
@@ -6528,12 +6621,12 @@
         "slug": "20vc",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 20,
+        "officialEpisodes": 21,
         "noteReady": 8,
         "transcriptReady": 9,
         "qcReady": 8,
-        "queued": 12,
-        "candidateAliasesMerged": 38
+        "queued": 13,
+        "candidateAliasesMerged": 41
       },
       {
         "id": "show_66323af571a19fdabe95",
@@ -6541,12 +6634,12 @@
         "slug": "a16z",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 35,
-        "noteReady": 7,
-        "transcriptReady": 8,
-        "qcReady": 7,
+        "officialEpisodes": 36,
+        "noteReady": 8,
+        "transcriptReady": 9,
+        "qcReady": 8,
         "queued": 28,
-        "candidateAliasesMerged": 48
+        "candidateAliasesMerged": 51
       },
       {
         "id": "show_155f53f5f64931d8bb8a",
@@ -6571,9 +6664,9 @@
       },
       {
         "month": "2026-08",
-        "officialEpisodes": 67,
-        "noteReady": 5,
-        "queued": 62
+        "officialEpisodes": 73,
+        "noteReady": 6,
+        "queued": 67
       }
     ]
   }
