@@ -1,6 +1,6 @@
 {
   "format": "podcast-library-sanitized-v1",
-  "generatedAt": "2026-08-22T23:00:21.970Z",
+  "generatedAt": "2026-08-23T23:00:09.941Z",
   "gateVersion": "library-ready-v2",
   "counts": {
     "episodes": 67
@@ -12,28 +12,28 @@
     "foreignKeyViolations": 0,
     "duplicates": 0,
     "orphans": 0,
-    "total": 258,
+    "total": 263,
     "ready": 67,
-    "blocked": 191,
+    "blocked": 196,
     "publicReady": 67,
     "reasonCounts": {
-      "canonical_note_missing": 190,
-      "deterministic_qc_failed": 190,
-      "source_boundary_missing": 190,
+      "canonical_note_missing": 195,
+      "deterministic_qc_failed": 195,
+      "source_boundary_missing": 195,
       "source_note_placeholder_or_error": 1,
-      "why_it_matters_missing": 190
+      "why_it_matters_missing": 195
     },
     "ingest": {
-      "id": "ingest_dea5d9f1e44f6c95961d",
-      "startedAt": "2026-08-22T23:00:21.457Z",
-      "completedAt": "2026-08-22T23:00:21.460Z",
+      "id": "ingest_dedbd0bf224bdae2d623",
+      "startedAt": "2026-08-23T23:00:09.440Z",
+      "completedAt": "2026-08-23T23:00:09.442Z",
       "status": "completed",
       "sourceCounts": {
         "monitoredShows": 20,
-        "officialSinceCutoff": 215,
-        "candidateRows": 527,
-        "candidateAliasesMerged": 258,
-        "radarIndexed": 528,
+        "officialSinceCutoff": 220,
+        "candidateRows": 532,
+        "candidateAliasesMerged": 265,
+        "radarIndexed": 535,
         "radarReadyImported": 45,
         "iltbCanonicalSobridgeMarkdown": 16,
         "iltbVersions": 32,
@@ -41,13 +41,13 @@
         "genericExcluded": 10,
         "attachedArtifacts": 595,
         "importedClaims": 374,
-        "inventoryFiles": 12798,
-        "canonicalEpisodes": 258,
+        "inventoryFiles": 12894,
+        "canonicalEpisodes": 263,
         "readyEpisodes": 67
       },
-      "inserted": 8,
-      "updated": 250,
-      "deduped": 437,
+      "inserted": 5,
+      "updated": 258,
+      "deduped": 448,
       "warnings": 46,
       "errorSummary": null,
       "codeVersion": "task-004-v1"
@@ -6520,17 +6520,17 @@
           "superseded": false
         },
         {
-          "versionLabel": "source-brief",
-          "writingStyle": "source-brief",
-          "charCount": 6735,
+          "versionLabel": "historical",
+          "writingStyle": "historical",
+          "charCount": 12903,
           "language": "zh-CN",
           "canonical": false,
           "superseded": true
         },
         {
-          "versionLabel": "historical",
-          "writingStyle": "historical",
-          "charCount": 12903,
+          "versionLabel": "source-brief",
+          "writingStyle": "source-brief",
+          "charCount": 6735,
           "language": "zh-CN",
           "canonical": false,
           "superseded": true
@@ -6683,12 +6683,12 @@
   "coverage": {
     "since": "2026-07-01",
     "totals": {
-      "officialEpisodes": 214,
+      "officialEpisodes": 219,
       "noteReady": 28,
       "transcriptReady": 28,
       "qcReady": 28,
-      "queued": 186,
-      "candidateAliasesMerged": 285
+      "queued": 191,
+      "candidateAliasesMerged": 294
     },
     "shows": [
       {
@@ -6814,12 +6814,12 @@
         "slug": "dwarkesh",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 0,
+        "officialEpisodes": 4,
         "noteReady": 0,
         "transcriptReady": 0,
         "qcReady": 0,
-        "queued": 0,
-        "candidateAliasesMerged": 0
+        "queued": 4,
+        "candidateAliasesMerged": 8
       },
       {
         "id": "show_208664517444e126c745",
@@ -6827,12 +6827,12 @@
         "slug": "founders",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 6,
+        "officialEpisodes": 7,
         "noteReady": 0,
         "transcriptReady": 0,
         "qcReady": 0,
-        "queued": 6,
-        "candidateAliasesMerged": 6
+        "queued": 7,
+        "candidateAliasesMerged": 7
       },
       {
         "id": "show_387b348507f326e95924",
@@ -6955,15 +6955,15 @@
     "months": [
       {
         "month": "2026-07",
-        "officialEpisodes": 124,
+        "officialEpisodes": 125,
         "noteReady": 19,
-        "queued": 105
+        "queued": 106
       },
       {
         "month": "2026-08",
-        "officialEpisodes": 90,
+        "officialEpisodes": 94,
         "noteReady": 9,
-        "queued": 81
+        "queued": 85
       }
     ]
   }
