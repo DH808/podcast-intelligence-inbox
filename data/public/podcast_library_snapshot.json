@@ -1,6 +1,6 @@
 {
   "format": "podcast-library-sanitized-v1",
-  "generatedAt": "2026-08-24T23:01:00.599Z",
+  "generatedAt": "2026-08-25T23:00:46.746Z",
   "gateVersion": "library-ready-v2",
   "counts": {
     "episodes": 68
@@ -12,28 +12,28 @@
     "foreignKeyViolations": 0,
     "duplicates": 0,
     "orphans": 0,
-    "total": 269,
+    "total": 274,
     "ready": 68,
-    "blocked": 201,
+    "blocked": 206,
     "publicReady": 68,
     "reasonCounts": {
-      "canonical_note_missing": 200,
-      "deterministic_qc_failed": 200,
-      "source_boundary_missing": 200,
+      "canonical_note_missing": 205,
+      "deterministic_qc_failed": 205,
+      "source_boundary_missing": 205,
       "source_note_placeholder_or_error": 1,
-      "why_it_matters_missing": 200
+      "why_it_matters_missing": 205
     },
     "ingest": {
-      "id": "ingest_d48c7ea2a8be685cb7ad",
-      "startedAt": "2026-08-24T23:01:00.065Z",
-      "completedAt": "2026-08-24T23:01:00.067Z",
+      "id": "ingest_86d1807d78c817234276",
+      "startedAt": "2026-08-25T23:00:46.222Z",
+      "completedAt": "2026-08-25T23:00:46.225Z",
       "status": "completed",
       "sourceCounts": {
         "monitoredShows": 20,
-        "officialSinceCutoff": 227,
-        "candidateRows": 544,
-        "candidateAliasesMerged": 273,
-        "radarIndexed": 548,
+        "officialSinceCutoff": 232,
+        "candidateRows": 565,
+        "candidateAliasesMerged": 281,
+        "radarIndexed": 568,
         "radarReadyImported": 46,
         "iltbCanonicalSobridgeMarkdown": 16,
         "iltbVersions": 32,
@@ -41,14 +41,14 @@
         "genericExcluded": 10,
         "attachedArtifacts": 600,
         "importedClaims": 374,
-        "inventoryFiles": 13029,
-        "canonicalEpisodes": 269,
+        "inventoryFiles": 13332,
+        "canonicalEpisodes": 274,
         "readyEpisodes": 68
       },
-      "inserted": 6,
-      "updated": 263,
-      "deduped": 465,
-      "warnings": 46,
+      "inserted": 5,
+      "updated": 269,
+      "deduped": 477,
+      "warnings": 49,
       "errorSummary": null,
       "codeVersion": "task-004-v1"
     }
@@ -6769,12 +6769,12 @@
   "coverage": {
     "since": "2026-07-01",
     "totals": {
-      "officialEpisodes": 225,
+      "officialEpisodes": 230,
       "noteReady": 29,
       "transcriptReady": 29,
       "qcReady": 29,
-      "queued": 196,
-      "candidateAliasesMerged": 303
+      "queued": 201,
+      "candidateAliasesMerged": 314
     },
     "shows": [
       {
@@ -6848,12 +6848,12 @@
         "slug": "bloomberg-technology",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 42,
+        "officialEpisodes": 43,
         "noteReady": 1,
         "transcriptReady": 0,
         "qcReady": 1,
-        "queued": 41,
-        "candidateAliasesMerged": 44
+        "queued": 42,
+        "candidateAliasesMerged": 45
       },
       {
         "id": "show_f86bd475750778cc5df3",
@@ -6900,12 +6900,12 @@
         "slug": "dwarkesh",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 4,
+        "officialEpisodes": 5,
         "noteReady": 0,
         "transcriptReady": 0,
         "qcReady": 0,
-        "queued": 4,
-        "candidateAliasesMerged": 8
+        "queued": 5,
+        "candidateAliasesMerged": 11
       },
       {
         "id": "show_208664517444e126c745",
@@ -6926,12 +6926,12 @@
         "slug": "invest-like-the-best",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 7,
+        "officialEpisodes": 8,
         "noteReady": 1,
         "transcriptReady": 1,
         "qcReady": 1,
-        "queued": 6,
-        "candidateAliasesMerged": 8
+        "queued": 7,
+        "candidateAliasesMerged": 9
       },
       {
         "id": "show_ab61c3866a2f58f78b82",
@@ -7017,12 +7017,12 @@
         "slug": "a16z",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 42,
+        "officialEpisodes": 43,
         "noteReady": 9,
         "transcriptReady": 10,
         "qcReady": 9,
-        "queued": 33,
-        "candidateAliasesMerged": 59
+        "queued": 34,
+        "candidateAliasesMerged": 62
       },
       {
         "id": "show_155f53f5f64931d8bb8a",
@@ -7030,12 +7030,12 @@
         "slug": "training-data-sequoia-capital",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 6,
+        "officialEpisodes": 7,
         "noteReady": 0,
         "transcriptReady": 0,
         "qcReady": 0,
-        "queued": 6,
-        "candidateAliasesMerged": 15
+        "queued": 7,
+        "candidateAliasesMerged": 18
       }
     ],
     "months": [
@@ -7047,9 +7047,9 @@
       },
       {
         "month": "2026-08",
-        "officialEpisodes": 100,
+        "officialEpisodes": 105,
         "noteReady": 10,
-        "queued": 90
+        "queued": 95
       }
     ]
   }
