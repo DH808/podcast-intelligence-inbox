@@ -1,9 +1,9 @@
 {
   "format": "podcast-library-sanitized-v1",
-  "generatedAt": "2026-08-25T23:00:46.746Z",
+  "generatedAt": "2026-08-26T23:00:31.410Z",
   "gateVersion": "library-ready-v2",
   "counts": {
-    "episodes": 68
+    "episodes": 69
   },
   "audit": {
     "gateVersion": "library-ready-v2",
@@ -12,48 +12,127 @@
     "foreignKeyViolations": 0,
     "duplicates": 0,
     "orphans": 0,
-    "total": 274,
-    "ready": 68,
-    "blocked": 206,
-    "publicReady": 68,
+    "total": 279,
+    "ready": 69,
+    "blocked": 210,
+    "publicReady": 69,
     "reasonCounts": {
-      "canonical_note_missing": 205,
-      "deterministic_qc_failed": 205,
-      "source_boundary_missing": 205,
+      "canonical_note_missing": 209,
+      "deterministic_qc_failed": 209,
+      "source_boundary_missing": 209,
       "source_note_placeholder_or_error": 1,
-      "why_it_matters_missing": 205
+      "why_it_matters_missing": 209
     },
     "ingest": {
-      "id": "ingest_86d1807d78c817234276",
-      "startedAt": "2026-08-25T23:00:46.222Z",
-      "completedAt": "2026-08-25T23:00:46.225Z",
+      "id": "ingest_aba1d6bfbd71e7a7e6e2",
+      "startedAt": "2026-08-26T23:00:30.869Z",
+      "completedAt": "2026-08-26T23:00:30.871Z",
       "status": "completed",
       "sourceCounts": {
         "monitoredShows": 20,
-        "officialSinceCutoff": 232,
-        "candidateRows": 565,
-        "candidateAliasesMerged": 281,
-        "radarIndexed": 568,
-        "radarReadyImported": 46,
+        "officialSinceCutoff": 236,
+        "candidateRows": 577,
+        "candidateAliasesMerged": 286,
+        "radarIndexed": 579,
+        "radarReadyImported": 47,
         "iltbCanonicalSobridgeMarkdown": 16,
         "iltbVersions": 32,
         "genericReviewed": 9,
         "genericExcluded": 10,
-        "attachedArtifacts": 600,
+        "attachedArtifacts": 605,
         "importedClaims": 374,
-        "inventoryFiles": 13332,
-        "canonicalEpisodes": 274,
-        "readyEpisodes": 68
+        "inventoryFiles": 13640,
+        "canonicalEpisodes": 279,
+        "readyEpisodes": 69
       },
       "inserted": 5,
-      "updated": 269,
-      "deduped": 477,
-      "warnings": 49,
+      "updated": 274,
+      "deduped": 484,
+      "warnings": 51,
       "errorSummary": null,
       "codeVersion": "task-004-v1"
     }
   },
   "episodes": [
+    {
+      "id": "ep_29dc2f5f61b4ffd40019",
+      "showId": "show_ab61c3866a2f58f78b82",
+      "show": "Latent Space: The AI Engineer Podcast",
+      "title": "🔬 The Physical World Is More Forgiving Than You Think — Anima Anandkumar, Caltech",
+      "publishedAt": "2026-08-26T16:37:33.000Z",
+      "publishedDate": "2026-08-26",
+      "durationSeconds": null,
+      "duration": "",
+      "description": "Most of AI is pointed at language. Anima Anandkumar points it at the physical world, weather, fusion, materials, the systems physics writes down as equations, and finds the usual playbook breaks. There isn't enough data, the resolution is brutal, and no transformer is big enough. Her way through is older than deep learning: build the structure of the world into the model. It already produces weather forecasts that rival the supercomputers on a single GPU. Co-founder of Accelerated Understanding, Anima has spent two decades in AI, from the theory that pre",
+      "originalUrl": "https://www.youtube.com/watch?v=79mIutht1f4",
+      "mediaType": "youtube",
+      "materiality": "high",
+      "productionStatus": "qc_passed",
+      "readerReady": true,
+      "publicReady": true,
+      "gateVersion": "library-ready-v2",
+      "noteMarkdown": "节目：Latent Space\n\n原题/标题：🔬 The Physical World Is More Forgiving Than You Think — Anima Anandkumar, Caltech\n\n发布时间：2026-08-26T16:37:33+00:00\n\n原始链接：https://www.youtube.com/watch?v=79mIutht1f4\n\nSource boundary：YouTube Transcript API automatic-caption-derived transcript from the official Latent Space video 79mIutht1f4. It is not a human-edited transcript; speaker attribution, scientific names, mathematical terminology, model names and performance claims may contain caption errors, so uncertain details must be marked ASR待核.\n\n官方 YouTube companion 链接：https://www.youtube.com/watch?v=79mIutht1f4\n\n## 为什么对研究重要\n\n这期节目的研究价值，不只在于展示“AI 也能做天气”这一结果，而在于给出一条贯穿形式验证、偏微分方程求解、天气与气候、聚变等离子体、碳封存、空气动力学和芯片逆向设计的方法论：科学 AI 面对的是数据稀缺、高维高分辨率、跨尺度、长时外推和物理有效性，不能原样照搬语言模型的规模化路径。Anima Anandkumar 的核心办法，是把几何、守恒律、方程和函数空间结构作为归纳偏置放进模型，同时利用数据学习传统数值求解器不易显式发现的低维结构。\n\n节目尤其重要的一点，是它没有把“预测准确”当作终点。TorchLean 讨论神经网络本身如何进入形式验证环；神经算子讨论如何在不同离散分辨率之间学习函数到函数的映射；FourCastNet 系列进一步暴露了短期天气与长期气候之间的稳定性、概率校准和物理约束问题；聚变案例则把快速代理模型推向数字孪生与闭环控制。由此形成的研究议程是：模拟、验证、设计与控制必须逐渐合流。\n\n## 一句话主线与 投资研究用户 关注点\n\n一句话主线：语言模型擅长提出想法，但科学突破的瓶颈是把想法放进真实物理世界中验证；神经算子以函数空间、非局部结构、领域几何和物理约束弥补纯数据路线，在有限数据下实现高分辨率模拟、长时外推、逆向设计和可验证控制。\n\nDH 关注点：FourCastNet 的公共天气基础设施意义；“地球是球体”这一几何归纳偏置怎样改变长滚动稳定性；再分析数据如何把观测与传统物理解算器的知识隐式注入训练；极端事件为何可能因清晰物理特征而比直觉中更可学；以及嘉宾为何反对把面向科学的 AI 与聊天机器人放进同一种监管框架。\n\n## 一页导读\n\n开场用天气模型建立冲突：2021 年天气科学家认为，AI 很难超越经过数十年打磨的自底向上物理预报；团队仍用神经算子训练，得到接近传统模型准确度、却快数万倍的模型，而且可在消费级 GPU 上运行。随后嘉宾把研究总纲定义为“AI 与科学”：语言模型可以生成假设，但真实瓶颈是测试、验证以及保证系统在物理世界中可靠工作。\n\n前半段的两条技术线互为补充。TorchLean 让 PyTorch 式神经网络可在 Lean 中形式化，并把 CROWN（名称据字幕，ASR待核）等认证鲁棒性算法纳入证明框架，用于输入扰动—输出扰动界、有限精度误差、安全性和稳定性分析；但 Lean 仍以 CPU 为主，大模型验证的可扩展性远未解决。神经算子则针对物理信息神经网络（PINNs）的优化困难：PINN 常对每个方程实例从头优化，遇到时间依赖、湍流和混沌时容易失败；神经算子先从多个解实例学习，再在测试时快速给出新解，并能同时使用数据与物理损失。\n\n神经算子与普通神经网络的关键差别，是输入输出不是固定尺寸向量，而是可在任意离散化上求值的连续函数。Fourier 神经算子用 Fourier 变换高效建立全局联系，以近线性复杂度处理非局部现象；层间的非线性、残差连接和通道升维又避免了“只用固定 Fourier 基做线性展开”的表达力限制。这是对 transformer 的直接回应：物理模拟可能是三维空间加时间，每维数百乃至上千网格点，完整上下文规模可达数千亿至万亿量级，无法简单依靠全连接注意力。\n\n中段以 FourCastNet 展示上述原则。训练资料是 ECMWF 提供的全球再分析数据，约 50,000 个高分辨率全球天气样本；输入当前风、湿度等场，每 6 小时自回归预测下一状态。早期版本证明 AI 天气预报可行并开源，后续版本把地球的球面几何写进架构，用球谐基处理空间，从而显著改善数月滚动稳定性，并以概率训练支持极端天气和集合预报。嘉宾同时明确承认：长期气候模拟怎样持续满足物理约束仍是开放问题，球面模型在无物理护栏的极长外推中也并非不会出错，极区尤其困难。\n\n后半段把同一框架扩展到聚变数字孪生、地下二氧化碳迁移、车辆与飞机空气动力学、不同几何之间的潜空间映射，以及光刻掩膜、量子点栅极和非线性光子学的逆向设计。共同逻辑是先学一个可信而快速的正向物理模拟器，再在模拟环内优化设计；未来目标不是更多彼此隔离的窄代理模型，而是可组合多种耦合物理、支持模拟与设计的物理基础模型。\n\n结尾转向制度和行动。嘉宾希望在联合国科学咨询委员会中推动全球可及的 AI、天气—气候—农业能力以及有科学证据的风险治理；她强调 AI for science 与可能操纵人的语言模型具有不同用途与风险，不应一刀切。她认为研究最直接的瓶颈仍是算力，并呼吁研究者从开源 neural operator 库、架构、配方与案例入手，真正让 AI 理解并模拟、设计、控制物理世界。\n\n## 关键数字总表\n\n| 数字/时间 | 对应语境 | 嘉宾表述中的含义与限定 |\n|---|---|---|\n| 1:23:26 | 节目总时长 | metadata.json 给出的完整时长；纪要覆盖至最终致谢窗口。 |\n| 超过 20 年 | 嘉宾职业经历 | 她称自己在深度学习兴起前已开始从事 AI，早期研究概率模型理论基础。 |\n| 2021 年 | AI 天气工作的起点语境 | 当时天气科学家警告传统预报已积累数十年，AI 很难赶上。 |\n| 约 50,000 个样本 | FourCastNet 训练数据 | 是高分辨率的全球天气图，不是 50,000 个孤立地点；数据量远少于语言训练。 |\n| 数万倍 | AI 天气推理加速 | 相对大型超级计算机上的传统天气模型；嘉宾同时称准确度接近传统模型。 |\n| 1 张消费级 GPU | 早期天气模型运行 | 嘉宾用来强调模型小、快且可部署；未给出 GPU 型号。 |\n| 接下来约 2 周 | 短期天气可预测窗口 | 更长期要转向概率集合与气候统计，不能要求单条轨迹精确。 |\n| 每 6 小时 1 步 | 天气模型训练与滚动 | 由当前风、湿度等全球状态预测下一状态，再自回归滚动；另有少量多步微调。 |\n| 数十个集合成员 | FourCastNet 3 展示规模 | 嘉宾说“a few tens or something”，具体数量 ASR待核；理论上可做更大集合。 |\n| 数月 | 球面模型长滚动 | 嘉宾称已展示由仅训练 6 小时预测的模型稳定滚动数月，但长期物理有效性仍是研究问题。 |\n| 0.25 度 | 全球天气数据空间分辨率 | 嘉宾说 quarter / 0.25 degrees；后续“约 700×几千”网格量级为即席估计，ASR待核。 |\n| 每维约 1,000 网格点 | 工业级物理模拟的示意尺度 | 三维空间加时间会形成数千亿至万亿上下文；这是论证 transformer 不可承受的量级说明。 |\n| 2023 年秋、两年多前 | ECMWF 公开展示模型 | 嘉宾对上线时间的回忆性表述，具体日期 ASR待核。 |\n| 提前数天 | Hurricane Lee 登陆预测 | 嘉宾称 FourCastNet 比标准天气模型提前数天正确预测登陆；未在口述中给精确天数。 |\n| 几千个样本 | 聚变等离子体 | 嘉宾强调样本很少仍能预测 disruption（破裂/失稳事件）；“几千”是概数量。 |\n| 100 万倍 | 聚变等离子体模拟加速 | 相对传统模拟的嘉宾表述；具体基准、硬件和误差条件未在节目中展开。 |\n| 数十年 | 地下碳封存演化 | 模拟二氧化碳扩散、压力积累及其在储层中的长期迁移。 |\n\n## 完整详细纪要\n\n### 0:00–3:47｜冷开场、嘉宾经历与节目问题意识\n\n冷开场直接给出天气案例。团队因为天气数据开放而决定尝试；天气科学家在 2021 年提醒他们，传统天气预报经过数十年发展，依赖谨慎、自底向上的流体动力学建模，AI 不太可能击败这套体系。团队仍训练了神经算子，结果在准确度上接近传统天气模型，速度却快数万倍；原本需要大型超级计算机的运算，可以用消费级 GPU 跑一个较小模型。嘉宾认为，这个“快、准、小”的组合改变了领域看法。\n\n主持人介绍节目为 Latent Space 的 AI for science 部分，并说明两位主持人的 RNA 治疗、空间转录组学背景。嘉宾介绍自己从事 AI 超过二十年：深度学习之前做概率模型的理论基础；深度学习兴起后同时在工业界与学界工作；曾在 NVIDIA 领导 AI 研究，也曾在 Amazon Web Services 帮助创立云 AI 团队并建设早期云 AI 产品。她把这段经历概括为：既学习如何把 AI 做到大规模，也坚持让它有原则、有理论依据。\n\n主持人由她长期用机器学习建模微分方程和物理系统切入，表示后面会讨论 neural operators 与天气，但先问最近的 TorchLean 如何接入这套总研究计划。\n\n### 3:48–6:40｜科学 AI 的瓶颈：从生成想法到验证真实世界\n\n嘉宾将自己的总纲概括为 AI 与科学的结合。语言模型能做假设生成、提供许多想法，但“有想法”并不够；真正的瓶颈是测试和验证它们在现实世界是否成立。因此，她近期关注怎样让 AI 对物理世界或科学领域中的行为给出保证。\n\n这形成两条路线。第一条是正确建模物理世界并保留物理规律，神经算子属于这里。第二条是符号验证：若声称某个定理正确，就用 Lean 这样的形式语言核验；语言模型与 Lean 的结合已成为数学推理研究的前沿。TorchLean 将这个思路再向前推一步：需要验证的不只是数学陈述，还包括神经网络自己声称能够做到的事情。\n\n她举控制回路为例：无人机或核反应堆若把深度学习系统放入控制环，工程上需要鲁棒性、安全性与稳定性。TorchLean 的目标，是让神经网络成为形式验证回路中的原生组成部分，而非验证系统外部一个不可处理的黑箱。主持人追问：神经网络看起来约束很少，这里的“证明”究竟是输入输出的界，还是别的保证？\n\n### 6:41–12:03｜TorchLean 能证明什么，以及规模化的现实限制\n\n嘉宾解释，TorchLean 是一个总体框架：研究者可用类似 PyTorch 的抽象在 Lean 中写神经网络，使网络本身被完整形式化；随后可把认证鲁棒性算法纳入同一环境。字幕把其中一个算法记作 CROWN（ASR待核），其作用是通过不同松弛技术计算扰动界，界的紧致程度取决于所用算法。这样既能简洁定义网络层，也能对网络作正式陈述并验证。\n\n面对“怎样保证核反应堆不熔毁”的具体问法，她给出的自然例子是认证鲁棒性或敏感性分析：当输入在某个范围内受到扰动时，输出最多会改变多少。对不同架构自动获得这类界，可以把安全、稳定和鲁棒性同控制性能一起考虑。另一类问题来自用 PINNs 求偏微分方程：实际训练采用有限精度，有限精度造成的偏差或缺陷能否被界定，也可进入 Lean 中实现的验证算法。\n\n主持人问 TorchLean 的描述能力是否足够覆盖任意网络。嘉宾说，它提供的是 PyTorch 式定义网络层的方式，Lean 后端负责形式化和证明。但“框架能表达”不等于“大模型能高效证明”。对于 transformer 之类的大网络，Lean 目前仍有明显可扩展性问题，主要基于 CPU，把工作迁到 GPU 有很多细节；团队现在首先搭起框架，超大规模效率仍需要大量工作，而且这也是 Lean 更广泛的共同限制。\n\n主持人用研究生数值分析作类比：传统方法会对离散化误差和解给出界，而 AI 求解微分方程常像“荒野”。他问 TorchLean 是否能说明 PINN 的适用域、证明解会收敛，还是神经网络里没有同样受控的收敛概念。这个问题把话题带到 PINN 本身为何经常不工作。\n\n### 12:04–16:07｜PINNs 为什么失败，神经算子怎样绕开逐实例优化\n\n嘉宾把经典 PINN 描述为：写下偏微分方程，希望优化成功并得到答案。如果优化不是问题，它当然可普遍求解；但现实中优化尤其困难，时间依赖系统更糟。流体动力学可能湍流、长期演化可能混沌，细微尺度效应会显著改变结果。在这种优化地形中，要求一个神经网络每次都从头求解所有时间点的方程，她认为并不可行。\n\n神经算子的动机正是克服这一点。团队不再只靠物理约束从零求解，而是利用已有的大量数据：天气不仅能由方程产生合成数据，也有真实观测。神经算子在训练阶段看到许多不同方程实例及其解，学习“怎样产生解”；测试时像监督学习一样，对新实例直接预测。物理约束仍可作为引导，因此方法不是“数据替代物理”，而是数据驱动与物理信息共同作用。\n\n两者的机制差异是：经典 PINN 往往针对每个指定方程实例重新启动优化，成败受该实例的优化地形支配；神经算子通过训练把跨实例求解成本摊销掉，训练时知道正确答案，测试时不必重新陷入同样的从零搜索。数据让模型更可能落在正确解附近，物理约束则限制可接受解的范围。\n\n### 16:08–19:40｜函数空间、任意分辨率与零样本超分辨率的边界\n\n神经算子和普通神经网络都从数据学习，但普通网络通常固定输入输出尺寸：语言固定词表，视觉和视频通常固定分辨率，训练完成后不能随意改变。物理世界却天然多尺度；天气资料也许只有粗分辨率，但现象在更细尺度发生，之后可能加入更细观测或在更细网格上施加物理约束。因此不应在建模前就把世界锁定在一个分辨率。\n\n神经算子把输入和输出表示为连续函数，学习函数空间之间的映射，也就是“operator”一名的来源。连续函数可采用不同、理论上任意细的离散化；推理时可在与训练不同的分辨率输入或输出，于是模型能“放大、缩小”，而不只复现训练像素。\n\n主持人指出这会欠约束：许多函数都能拟合相同数据，容易过拟合。嘉宾承认，从未见过的更细分辨率直接预测，即所谓 zero-shot super-resolution，本质上含有猜测，模型只能尝试平滑延拓。提升可信度的办法，是在更细分辨率加入额外信息，例如偏微分方程、守恒律等；即使数据较粗，细尺度物理约束也能指导输出。她的限定很清楚：神经算子总能“产生”高分辨率结果，不等于结果天然有效；需要更细尺度的物理约束来保证高保真。\n\n### 19:41–26:49｜Fourier 神经算子：非局部性、复杂度与潜空间\n\nFourier neural operator 是团队早期架构之一。它成功的原因被概括为效率与表达力的折中。自然现象的解往往非局部：微分算子本身局部，但求逆类似积分，远处信息会共同决定解；流体、材料形变和量子化学都有这种性质。Fourier 空间能高效建立全局联系，而 Fourier 变换本身计算有效。\n\n这并不是把世界线性地投到固定 Fourier 基后结束。经典数值方法也做频谱展开，但为达到精度往往需要很细离散。Fourier 神经算子在 Fourier 层之间加入非线性和残差连接，并把信号提升到更高维通道空间，让模型学习适合数据的特征基。若类比 transformer，可把 attention map 换成 Fourier 操作，同时保留非线性、残差和通道升维等成熟部件。\n\n复杂度是关键。全注意力在高分辨率下有二次复杂度；Fourier 变换接近线性复杂度，却仍提供全局联系。天气中某地当前状态可能稍后影响远方；短期可讨论具体天气轨迹，长期则更多是区域平均与气候统计。嘉宾用这一区分回应“芝加哥今天会不会决定旧金山一个月后的天气”：精确轨迹受蝴蝶效应限制，但较大区域的热浪可能提高另一时段温度高于平均值的概率。\n\n主持人继续问频率截断：线性信号表示有最高可表达频率，有限 modes 如何足够？嘉宾的回答是，非线性决定表达力。模型先把二维或三维信号非线性提升到更高维潜空间，再在潜空间中做 Fourier 操作，并在各层之间继续非线性变换；有限频率模式由此不再等同于原始信号上的固定低通展开，而是参与学习更合适的隐表示。\n\n### 26:50–32:38｜旧数学与深度学习的折中，以及物理分辨率为何压垮 transformer\n\n主持人回顾嘉宾在神经网络兴起前的研究经历，问正交多项式、函数展开等经典严谨数学是否仍能指导真实世界建模。嘉宾提到，自己二十多年前的本科论文就是 fractional Fourier transform。她并不主张退回“石器时代”技术：现代模型需要特征学习、灵活性、表达力和可优化性；但物理数据永远不会像语言数据那么充足。\n\n她以天气为例：约 50,000 个高分辨率全球天气图已算条件不错，但远不能和语言数据相比；其他科学领域的模拟成本更高，真实数据更少。因此必须更认真地设计归纳偏置并加入物理约束。第二个差异是计算规模。语言是一维序列，百万级 context 已经困难；物理模拟常是二维、三维甚至三维加时间的四维问题。每维几百个网格点只是起步，工业规模可能每维约一千点，组合后相当于数千亿甚至一万亿级 context。她据此断言，全世界算力也不足以用普通 transformer 直接处理，而且算力还须共址。\n\n主持人以视觉—视频语言模型反驳，认为它们也学习真实世界到潜空间的压缩。嘉宾的限定是：这类视频模型通常以“看起来好”为目标，分辨率较低，且自回归只生成下一步；精确物理模拟不能随意丢弃细节。流体、等离子体与材料形变需要高保真输入和推理，不能把每维降到 50 或 100 个网格点后仍期待正确物理。因此，潜空间压缩可以用，但必须先有能力处理、保留并推理高分辨率资料。\n\n### 32:39–36:12｜FourCastNet 的首次突破、开放数据与天气能力民主化\n\n团队最初从偏微分方程出发，但神经算子原则上适用于任何时空、多尺度数据。天气成为试验场，是因为 ECMWF 公开了被字幕记为“the five”的资料名称（ASR待核；节目此处没有清晰拼写），团队因此直接尝试。领域专家的反对理由是：传统天气体系积累数十年、自底向上求解流体方程，AI 不可能轻易超过。\n\n首次结果不是宣称全面击败传统体系，而是“准确度几乎接近，同时快数万倍”。模型较小、可放在消费级 GPU 上，改变了大家对 AI 天气预报可行性的判断。嘉宾称 DeepMind、Huawei 等在约一年后推出自己的模型；团队则率先以宽松许可开源 FourCastNet，使企业、天气机构和其他团队能够在其上继续开发。\n\n她强调的社会结果是能力下沉：过去只有大型天气机构能提供的高保真预报，现在全球南方的小型机构也有机会使用。天气机构开始采纳 AI 模型，领域由“AI 不可靠”转向把 AI 当作一种可用预报路径。主持人追问：真正的认知转变是否只是相信数据里有足够结构，后来者又以别的方法学到同样结构？这引出 FourCastNet 各版本从“证明可行”走向“统一天气与气候”的设计。\n\n### 36:13–42:39｜一个地球、一个模型：球面几何、天气到气候与尚未解决的验证\n\n嘉宾把第一阶段总结为：传统方法每次重新解偏微分方程，AI 则从历史数据学模式，以接近准确度换来极大速度。下一阶段的问题是扩大任务范围。短期天气大致指未来两周内可预测的具体轨迹；更长则进入次季节乃至气候，需要概率分布和统计。传统体系为不同时间尺度造不同模型，她的出发点却是“只有一个地球”：物理基础模型应同时覆盖短期和长期。\n\nFourCastNet 3 为此加入地球球面几何。很多短期架构把世界摊成矩形，几天预测尚可，连续滚动数月或一年会迅速发散。球面神经算子把几何写进模型，因而可以把同一模型用于更长期滚动。嘉宾称 Allen AI Institute 基于其 neural operator 架构建立了气候模型，并称这是能作为 AI emulator 工作的架构；这一较强比较性主张在节目里没有展开基准细节，应按嘉宾口述理解。\n\n训练不是只看某个地区：资料覆盖全球。模型输入当前风、湿度等状态，每 6 小时预测下一状态，再自回归滚动。原则上可以一直滚动，但确定性天气的可预测窗口有限；数月到数年的气候需要对多个轨迹做集合，获得概率统计，而不是相信一条精确轨迹。传统气候模拟一次长时高分辨率运行就很昂贵，集合计算更加困难，这也是高分辨率气候变化预测稀缺的原因。\n\n主持人问怎样验证长期气候。嘉宾没有把问题说成已经解决：长滚动必须持续满足物理约束；若强行保留所有细节，细节可能物理无效，若把它们平均掉，又会失去精度。怎样既保留细尺度、又在每一步施加正确物理，仍是团队正在研究的开放问题。因此“球面模型可长滚动”是稳定性进步，不是对长期气候可信度的最终证明。\n\n### 42:40–46:18｜极端事件与“物理世界比想象中宽容”\n\n主持人以美国西南部极端热浪询问模型是否正确预测。嘉宾说自己没有该特定事件的信息，没有把其他实验结果冒充直接答案；但 FourCastNet 3 已测试多类极端天气。极端事件不能只给一个确定性输出，需要经过仔细校准的概率预测，团队也以此目标训练模型。\n\n令人意外的是，早期模型在飓风和风暴可视化中也表现良好。按通常机器学习直觉，稀有事件样本少，应比典型事件难学；嘉宾提出另一种解释：飓风虽极端，却以非常特定的物理方式极端，拥有清晰物理特征，所以未必需要海量样本。她由此说“物理世界可能更宽容”——自然系统包含大量结构，数据驱动模型能学习这种潜在结构，而传统数值方法首先追求在任意场景下正确求解方程，未必显式利用可学习的分布结构。\n\n聚变等离子体为同一论点提供另一个例子：即便只有几千个样本，团队也能较准确预测 disruption，并声称比传统模拟快 100 万倍。这里的“快”和“准确”都没有在口述中给具体基准与阈值，应保留为嘉宾的案例性结论。主持人以 AlphaFold 类比：蛋白结构受物理强约束，可能正因如此成为复杂生物学中少数巨大成功之一；由微分方程良好建模的问题，也许尤其适合把结构化 AI 与物理结合。\n\n### 46:19–50:32｜从原子到行星的多尺度表示，以及怎样加入物理损失\n\n嘉宾展示的总图把原子、蛋白质直到行星天气放在不同尺度上，神经算子的目标是统一处理这些尺度的数据。传统视觉和视频生成只需视觉上可信，较低分辨率和短自回归序列往往够用；工业物理模拟则会因观察分辨率不同而显现不同现象，缺少高分辨率就会直接漏掉机制。\n\n她用放大图解释神经网络与神经算子的区别：固定像素图放大后只会模糊，不存在额外细节；函数空间表示则允许继续改变离散尺度，并通过更高分辨率数据或更细网格物理约束补入相关信息。主持人问“物理约束”具体是什么。答案可以是不可压缩流体的守恒律、材料怎样拉伸，也可以是完整偏微分方程。\n\n施加方式通常是加入损失函数，因为硬约束往往不可 tractably 强制。由此又产生课程与权重问题：有些物理规律容易作为 loss，有些很难；物理损失还必须与数据损失适当平衡。嘉宾把“选哪些物理、何时加入、怎样平衡”视为正在研究的 curriculum，而不是一个统一现成配方。\n\n天气可视化中的 atmospheric rivers 横跨数千英里，在加州会带来大型风暴；它们说明非局部模型为何重要。若模型只看邻近点，很难直接表示如此大跨度的耦合；神经算子的全局联系正适合捕捉这一类空间结构。\n\n### 50:33–55:57｜再分析数据、ECMWF、Hurricane Lee 与概率集合预报\n\n天气训练资料并非单一卫星或地面传感器数据，而是“再分析数据”：天气机构将历史原始卫星等观测，与物理解算器提供的信息结合、同化，形成统一全球资料。主持人将其理解为先汇总全球较粗观测，再以短时传统物理模拟补齐细节；嘉宾认可这一描述，并指出训练数据本身已带有模拟与物理，因此模型可能被“隐式物理信息化”，这也可能帮助它处理极端天气。\n\n嘉宾说 ECMWF 两年多前、约 2023 年秋（回忆性时间，ASR待核）向公众提供 AI 天气模型，是公众建立信任的重要节点。Hurricane Lee 期间，人们可以直接比较模型表现；她称 FourCastNet 比标准天气模型提前数天正确预测飓风登陆。更早的极端事件预警会影响生命安全和经济损失，公开运行也使天气科学家获得更多实际证据。\n\n集合预报的机制是从多个略有不同的初始条件出发。例如飓风在加勒比海形成时，真实测量含噪，模型对初态添加不同噪声，分别滚动可能路径，再计算不同地区登陆概率，供风险评估。传统模型每个成员都要做昂贵模拟；AI 快数万倍，因而能运行更大的集合，这可能比只追求一条轨迹更实际地提升风险判断。\n\n主持人问是否用历史飓风校准概率。嘉宾说 FourCastNet 3 论文包含极端事件和集合预测指标，模型训练目标也专门包含概率校准。版本演进上，第一版使用 Fourier neural operators，却未显式表示球面；标准投影对短期尚可，但长期会因畸变积累。后续加入球面几何提高长滚动稳定性；第三版进一步从确定性预测转向把集合分布训练正确。\n\n### 55:58–1:04:05｜集合成员、球谐基、0.25 度分辨率与长滚动失稳\n\n每个天气滚动步长为 6 小时，想预测多远就重复多少步。集合规模是选择项；嘉宾即席说当前展示“大约几十个”，原话带不确定语气，具体数量 ASR待核，也可以做更大集合。主持人以为时间越长必然需要更多成员，嘉宾纠正：重点不只是数量，而是集合是否校准、分布是否有正确 spread。对于非常长的滚动，物理约束仍需进一步研究；她只主张当前球面模型比忽略球面等领域结构的模型滚得更久。\n\n物理约束应逐个施加到每个集合成员，而不是只要求集合平均满足物理。每条轨迹单独预测并保持有效，最后才对集合做统计；若只约束粗粒化平均，可能丢失高分辨率结构。球面空间用 spherical harmonics，即球谐基。主持人认为这比 Mercator 式矩形投影自然，嘉宾借此重申：数据有限且任务要求超越训练分布时，必须编码领域几何。\n\n一个关键反差是训练与外推：模型只训练下一 6 小时预测，加少量多步微调，却被要求滚动数月；并没有用完整气候长轨迹直接训练，因为代价太大。标准 transformer 不会“神奇”完成这种外推，球面几何和物理约束正是使其更可能成立的额外结构。空间采用 Fourier/球谐表示，而时间在这个例子中仍是自回归，并非也在 Fourier 域中整体处理。\n\n资料分辨率约为 0.25 度。嘉宾把相应网格即席估为“约 700×几千”（ASR待核），并未记起具体保留多少球谐 modes。她强调实际 modes 取决于数据分辨率；未来可把更高分辨率合成气候模拟与观测结合。模型可以输出比输入更细的超分辨率，但有效性仍需要额外物理约束。\n\n可视化对比中，把世界当矩形的模型很快爆炸，把世界当球体的模型保持稳定更久；主持人仍看到球面结果存在类似奇点的问题。嘉宾承认极长滚动没有物理护栏，完全外推仍会出错，球面假设只是“显著稳定”，不是消除错误；两极尤其是困难区域。\n\n### 1:04:06–1:07:52｜聚变等离子体数字孪生：从 MHD 模拟到控制共设计\n\n聚变案例针对 tokamak（字幕在一处截成“tok”，按节目语境名称仍可能受 ASR 影响），模型复杂等离子体演化，并据嘉宾说法比传统模拟快 100 万倍。主持人确认所模拟的是 magnetohydrodynamics，即 MHD 方程。目标是形成等离子体数字孪生，再由预测走向控制。\n\ndisruption 是关键风险：主持人描述等离子体可能集中成细小强束并打向容器，损伤反应堆；嘉宾补充，一旦预见风险就必须提前停机，也就无法维持可持续聚变。物理实验昂贵，因此数字孪生若能在保持物理有效性的前提下复现过程，就能在数字环境里尝试控制和设计。\n\n下一步是控制与模拟共同设计：当失稳前兆出现时，调整磁场以重新约束、稳定等离子体。该项目曾与 UK Atomic Energy Authority 合作，也在与美国其他团队合作。研究不只覆盖 tokamak，还包括 stellarator。嘉宾刻意不预先押注单一聚变路线；AI 的高速数字实验可以让团队承担更多风险、并行探索多个方案，而现实建造因成本高常被迫过早淘汰不确定路线。\n\n### 1:07:53–1:13:01｜职业回环：理论、工业规模化，再回到有原则的深度学习\n\n主持人观察到，嘉宾早期集中于机器学习数学基础，约六到八年前开始广泛进入应用，问这种变化的原因。她说自己像是与 AI 一起成长：神经网络尚未因数据和计算成熟而奏效时，必须建理论基础，希望理论导出可工作的算法。她举 tensor methods 为例：在深度学习前，latent Dirichlet allocation 等概率主题模型求解困难，张量方法既能并行、规模化，又有良好理论基础。\n\n深度学习在实践中奏效后，虽然理论理解仍不充分，她认为理论不应成为限制，而应成为赋能工具。于是她在 AWS、NVIDIA 把系统真正做大，积累工程经验。现在路线又形成完整回环：纯数据方法开始显出饱和，一方面要提升硬件与能源效率；另一方面，物理世界数据不足，却要求强外推。\n\n她给“发现”下了一个操作性定义：发现天然就是外推，因为新的发现不可能已有训练数据。要让 AI 做发现，就必须重新认真设计架构、算法和损失，把深度学习已证明有效的部分保留，再使它更有原则。\n\n主持人列出电磁电路、材料、散热器、流体、扩散和 MHD 等潜在领域。嘉宾回应应用几乎无穷，并举地下碳封存：模拟二氧化碳在储层中的扩展、压力积累和数十年迁移；以及车辆、飞机空气动力学。面对复杂几何，可以把汽车等形状映射到“甜甜圈”式潜在几何，在较规则域中建模，再映回原形状，从而让同一模型跨多种几何泛化。\n\n### 1:13:02–1:18:07｜物理基础模型、多物理迁移与逆向设计\n\n嘉宾把未来目标定义为 physics foundation model。当前语言、视觉有基础模型，物理领域仍主要是窄代理；理想模型应覆盖多个现象，并处理多物理耦合，因为真实世界不是一条孤立方程，而是多种物理共同作用。模型既要模拟，也要设计。\n\n逆问题把“给定设计求结果”倒转为“为目标寻找最佳设计”。旧流程是人先提出设计，再做模拟、风洞或实物测试；新流程可让 AI 在物理护栏内直接搜索优化设计，可信正向模拟器则为候选设计提供验证。嘉宾的愿景不是绕过验证，而是把验证器嵌入生成与优化回路。\n\n主持人追问多物理是否能迁移到未见物理。嘉宾明确设限：若物理完全未见、例如超出 standard model 且没有任何数据，就不可能迁移。较可行的情形是组合已经分别学过的机制：模型见过热传播，也见过材料拉伸；当热引起形变时，可用更少联合样本微调。耦合高度非线性，不能指望零样本从头解决，但预训练单项机制可降低样本需求。她称多篇工作已看到这种“课程式”累积证据：先学模块，再系统组合。\n\n具体逆向设计包括 inverse lithography 的掩膜设计、量子点栅极和 nonlinear photonics。共同结构是先有正向物理模型，再优化反向设计。人不擅长凭直觉处理高度非线性耦合，例如判断多个 gate 怎样共同拉动电子形成 quantum gate；AI 可以提出更高效设计，而正向模拟已在回路中检查它是否工作。嘉宾把这视为从加速模拟走向新设计、新发现的关键。\n\n主持人问领域专家如何快速使用这些成果。嘉宾说 neural operators 有开源库，已进入 PyTorch 生态，被研究人员与企业采用，并提供多种架构、例子、配方和文档，可作为实践入口。\n\n### 1:18:08–1:23:26｜联合国、分类监管、算力瓶颈与最终行动号召\n\n主持人问嘉宾加入 UN Scientific Advisory Board 的缘由和希望完成什么。她说自己并非地缘政治专家，但在复杂时期，决策桌上应有科学家；她希望用尽可能不偏不倚的科学证据讨论 AI。议题包括让 AI 收益覆盖全球、民主化访问、控制非预期后果和有害影响。天气和气候又可连接农业与粮食，联合国的专门机构和全球在地人员能把模型能力同实际需求连接。\n\n主持人认为她偏好具体问题、比很多 AI 从业者更乐观，问这会带来何种独特视角。她回答，AI 的有益面常在只讨论危害时被忽视，尤其是 AI for science。很多监管框架把 AI 等同于语言模型；语言模型确有操纵人等伤害，需要控制，但科学 AI 用于发现、模拟和设计，性质不同。“one size fits all”的监管会造成问题。她主张让全球研究者既能享受成果，也能获得工具自行创新。\n\n被问“若能魔法般消除一个瓶颈，会选什么”，她回答更多算力，并承认这是容易甚至显得懒的答案。虽然 NVIDIA 等推动算力较数年前大幅增长、国家实验室也在建设超级计算机，研究者仍需要更多可实验算力；没有实验就难以创新，她认为这一点怎么强调都不为过。\n\n最后的行动号召有两层。实践上，去 neural operator 开源库亲手试架构、配方和用例。观念上，不要把 AI for science 缩减为语言模型与 agent；它们仍像外部 wrapper。若 AI 只把世界理解为符号，却不能依据物理来模拟、设计和控制，就缺失了核心一块。节目在主持人表示想亲自尝试 neural operators、嘉宾感谢两位深入追问后结束，最终致谢持续到 1:23:23，属于总时长 1:23:26 的末尾窗口。\n\n## 来源边界与核验提示\n\n本文只依据 metadata.json、transcript_timestamped.txt 与 transcript_plain.txt。源转写来自官方 Latent Space 视频的 YouTube 自动字幕，不是人工校订稿；说话人归属、科学术语、数学名词、模型名称和性能数字均可能存在字幕错误。文中依据 metadata 可明确拼写的节目名、标题、嘉宾名与 FourCastNet 等采用 metadata 信息；无法从三个源文件内部稳妥确认的算法拼写、网格估算、集合数量和日期已标 ASR待核。\n\n所有性能比较均按节目中的口述范围保留，不能自动理解为在相同硬件、相同误差阈值和相同任务定义下的通用结论。特别是天气“数万倍”、聚变“100 万倍”、Hurricane Lee “提前数天”、长气候滚动及其他架构比较，节目没有给出足以独立复核的完整基准条件。嘉宾也明确给出若干限制：长期气候物理有效性仍是开放问题；球面几何改善稳定性但不消除极长滚动错误；超分辨率输出需要细尺度物理约束；完全未见且无数据的新物理不能靠迁移凭空获得。\n",
+      "sourceBoundary": "YouTube Transcript API automatic-caption-derived transcript from the official Latent Space video 79mIutht1f4. It is not a human-edited transcript; speaker attribution, scientific names, mathematical terminology, model names and performance claims may contain caption errors, so uncertain details must be marked ASR待核.",
+      "whyItMatters": "这期节目的研究价值,不只在于展示“AI 也能做天气”这一结果,而在于给出一条贯穿形式验证、偏微分方程求解、天气与气候、聚变等离子体、碳封存、空气动力学和芯片逆向设计的方法论:科学 AI 面对的是数据稀缺、高维高分辨率、跨尺度、长时外推和物理有效性,不能原样照搬语言模型的规模化路径。Anima Anandkumar 的核心办法,是把几何、守恒律、方程和函数空间结构作为归纳偏置放进模型,同时利用数据学习传统数值求解器不易显式发现的低维结构。",
+      "themes": [
+        {
+          "id": "theme_e748f8750672ca8b04b2",
+          "name": "AI Agents",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_ebbd5f51fefc7fcabdf4",
+          "name": "AI Infra",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_693b1c2b5c9e35f47d43",
+          "name": "Enterprise AI",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_7e5743d68b4cb5c76b9d",
+          "name": "Product / GTM",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_1a6b68a422bb7b15451d",
+          "name": "Robotics / Physical AI",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_f1991dbc4cf3c8fe3860",
+          "name": "Venture / Pre-IPO",
+          "provenance": "deterministic-keyword-v1"
+        }
+      ],
+      "entities": [
+        {
+          "id": "entity_c0948307254b62bd51b1",
+          "type": "company",
+          "name": "Amazon / AWS",
+          "evidenceSource": "note",
+          "confidence": 0.9
+        },
+        {
+          "id": "entity_f9825526d30e513764a0",
+          "type": "company",
+          "name": "NVIDIA",
+          "evidenceSource": "note",
+          "confidence": 1
+        }
+      ],
+      "noteVersions": [
+        {
+          "versionLabel": "source-faithful",
+          "writingStyle": "source-faithful",
+          "charCount": 14462,
+          "language": "zh-CN",
+          "canonical": true,
+          "superseded": false
+        }
+      ]
+    },
     {
       "id": "ep_c0cd4ab46af054e91663",
       "showId": "show_d243fcc00a13e40ed763",
@@ -384,7 +463,7 @@
       "publishedDate": "2026-08-19",
       "durationSeconds": 2559,
       "duration": "00:42:39",
-      "description": "a16z General Partner David George is joined by Grant LaFontaine, co-founder of Whatnot, to unpack how a marketplace that started with collectibles evolved into one of the world's leading live shopping platforms. Grant traces the company's origins from selling Pokémon cards online as a kid to discovering live commerce by watching Whatnot's earliest customers hack together sales on social media. They discuss why Whatnot thinks less like a traditional e-commerce marketplace and more like a digital shopping mall, where discovery, entertainment, community, and commerce all happen at once. Today, users spend roughly 95 minutes a day on the platform, and most aren't even buying something on a given day. They also explore how Whatnot is enabling small businesses to reach global audiences, expanding from collectibles into categories like fashion, food, and golf, and using AI to make sellers more efficient without replacing the human connection at the center of the experience. Resources: Follow Grant LaFontaine on X: https://x.com/GrantLaFontaine Follow David George on X: https://x.com/DavidGeorge83 Follow Whatnot on X: https://x.com/whatnot Stay Updated: Find a16z on YouTube: YouTube Find a16z on X Find a16z on LinkedIn Listen to the a16z Show on Spotify Listen to the a16z Show on Apple Podcasts Follow our host: https://twitter.com/eriktorenberg &nbsp; Please note that the content here is for informational purposes only; should NOT be taken as legal, business, tax, or investment advice or be used to evaluate any investment or security; and is not directed at any investors or potential investors in any a16z fund. a16z and its affiliates may maintain investments in the companies discussed. For more details please see a16z.com/disclosures. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
+      "description": "a16z General Partner David George is joined by Grant LaFontaine, co-founder of Whatnot, to unpack how a marketplace that started with collectibles evolved into one of the world's leading live shopping platforms. Grant traces the company's origins from selling Pokémon cards online as a kid to discovering live commerce by watching Whatnot's earliest customers hack together sales on social media. They discuss why Whatnot thinks less like a traditional e-commerce marketplace and more like a digital shopping mall, where discovery, entertainment, community, and commerce all happen at once. Today, users spend roughly 95 minutes a day on the platform, and most aren't even buying something on a given day. They also explore how Whatnot is enabling small businesses to reach global audiences, expanding from collectibles into categories like fashion, food, and golf, and using AI to make sellers more efficient without replacing the human connection at the center of the experience. Resources: Follow Grant LaFontaine on X: https://x.com/GrantLaFontaine Follow David George on X: https://x.com/DavidGeorge83 Follow Whatnot on X: https://x.com/whatnot Stay Updated: Find a16z on YouTube: YouTube Find a16z on X Find a16z on LinkedIn Listen to the a16z Show on Spotify Listen to the a16z Show on Apple Podcasts Follow our host: https://twitter.com/eriktorenberg Please note that the content here is for informational purposes only; should NOT be taken as legal, business, tax, or investment advice or be used to evaluate any investment or security; and is not directed at any investors or potential investors in any a16z fund. a16z and its affiliates may maintain investments in the companies discussed. For more details please see a16z.com/disclosures. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "originalUrl": "https://a16z.simplecast.com/episodes/how-whatnot-built-a-global-marketplace-DoonwHjN",
       "mediaType": "podcast",
       "materiality": "high",
@@ -446,7 +525,7 @@
       "publishedDate": "2026-08-17",
       "durationSeconds": 3276,
       "duration": "00:54:36",
-      "description": "a16z General Partner David George is joined by Will Gaybrick, President of Product & Business at Stripe, to discuss how AI is changing the way Stripe builds products, organizes teams, and thinks about the future of internet commerce. Stripe has evolved from a payments company into a multi-product financial infrastructure platform, while a new generation of AI companies is growing and monetizing faster than previous software cohorts. Will explains why Stripe sees AI productivity as an opportunity to build more rather than simply cut costs, including how its internal coding agents now generate thousands of pull requests each week. They discuss creating founder-like agency inside large companies, building smaller and flatter teams, and why Stripe believes dramatically more software will be created as the cost of building continues to fall. They also look ahead to agentic commerce, why checkout pages could disappear, the potential return of micropayments, stablecoins as infrastructure for a global economy, and a future where AI agents increasingly buy software and services from other machines. Resources: Follow Will Gaybrick on LinkedIn: https://www.linkedin.com/in/william-gaybrick-5730347/ Follow Will on X: https://x.com/gaybrick Follow David George on X: https://x.com/DavidGeorge83 Follow Stripe on X: https://x.com/stripe Stay Updated: Find a16z on YouTube: YouTube Find a16z on X Find a16z on LinkedIn Listen to the a16z Show on Spotify Listen to the a16z Show on Apple Podcasts Follow our host: https://twitter.com/eriktorenberg &nbsp; Please note that the content here is for informational purposes only; should NOT be taken as legal, business, tax, or investment advice or be used to evaluate any investment or security; and is not directed at any investors or potential investors in any a16z fund. a16z and its affiliates may maintain investments in the companies discussed. For more details please see a16z.com/disclosures. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
+      "description": "a16z General Partner David George is joined by Will Gaybrick, President of Product & Business at Stripe, to discuss how AI is changing the way Stripe builds products, organizes teams, and thinks about the future of internet commerce. Stripe has evolved from a payments company into a multi-product financial infrastructure platform, while a new generation of AI companies is growing and monetizing faster than previous software cohorts. Will explains why Stripe sees AI productivity as an opportunity to build more rather than simply cut costs, including how its internal coding agents now generate thousands of pull requests each week. They discuss creating founder-like agency inside large companies, building smaller and flatter teams, and why Stripe believes dramatically more software will be created as the cost of building continues to fall. They also look ahead to agentic commerce, why checkout pages could disappear, the potential return of micropayments, stablecoins as infrastructure for a global economy, and a future where AI agents increasingly buy software and services from other machines. Resources: Follow Will Gaybrick on LinkedIn: https://www.linkedin.com/in/william-gaybrick-5730347/ Follow Will on X: https://x.com/gaybrick Follow David George on X: https://x.com/DavidGeorge83 Follow Stripe on X: https://x.com/stripe Stay Updated: Find a16z on YouTube: YouTube Find a16z on X Find a16z on LinkedIn Listen to the a16z Show on Spotify Listen to the a16z Show on Apple Podcasts Follow our host: https://twitter.com/eriktorenberg Please note that the content here is for informational purposes only; should NOT be taken as legal, business, tax, or investment advice or be used to evaluate any investment or security; and is not directed at any investors or potential investors in any a16z fund. a16z and its affiliates may maintain investments in the companies discussed. For more details please see a16z.com/disclosures. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "originalUrl": "https://a16z.simplecast.com/episodes/stripes-ai-strategy-build-more-not-less-0w7FfhZZ",
       "mediaType": "podcast",
       "materiality": "high",
@@ -1147,7 +1226,7 @@
       "publishedDate": "2026-08-10",
       "durationSeconds": 2240,
       "duration": "00:37:20",
-      "description": "Angela Strange and Gabriel Vasquez are joined by Alejandro Maza Ayala, Chief Product & AI Officer at Kavak, to unpack how the Latin American used-car marketplace rebuilt itself around AI agents, with 96% of customer interactions and 95% of transactions now handled by agents. Alejandro explains why Kavak decided that simply giving employees AI tools wasn't enough, and instead redesigned the company's systems, teams, and customer experience around agents. They discuss why Kavak spends as much engineering effort on evals as it does building agents, how its AI sellers outperform its human teams, and an experiment where an AI \"CEO\" increased profits in one city by 50% in its first month. The conversation also explores what happens to organizational structure when agents do most of the work, why Kavak trains everyone from executives to mechanics to build with AI, and Alejandro's argument that companies looking for incremental AI adoption may be missing the larger opportunity: redesigning the organization itself. Resources: Follow Alejandro Maza Ayala on X: https://x.com/alehandromz Follow Angela Strange on X: https://x.com/astrange Follow Gabriel Vasquez on X: https://x.com/GEVS94 Stay Updated: Find a16z on YouTube: YouTube Find a16z on X Find a16z on LinkedIn Listen to the a16z Show on Spotify Listen to the a16z Show on Apple Podcasts Follow our host: https://twitter.com/eriktorenberg &nbsp; Please note that the content here is for informational purposes only; should NOT be taken as legal, business, tax, or investment advice or be used to evaluate any investment or security; and is not directed at any investors or potential investors in any a16z fund. a16z and its affiliates may maintain investments in the companies discussed. For more details please see a16z.com/disclosures. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
+      "description": "Angela Strange and Gabriel Vasquez are joined by Alejandro Maza Ayala, Chief Product & AI Officer at Kavak, to unpack how the Latin American used-car marketplace rebuilt itself around AI agents, with 96% of customer interactions and 95% of transactions now handled by agents. Alejandro explains why Kavak decided that simply giving employees AI tools wasn't enough, and instead redesigned the company's systems, teams, and customer experience around agents. They discuss why Kavak spends as much engineering effort on evals as it does building agents, how its AI sellers outperform its human teams, and an experiment where an AI \"CEO\" increased profits in one city by 50% in its first month. The conversation also explores what happens to organizational structure when agents do most of the work, why Kavak trains everyone from executives to mechanics to build with AI, and Alejandro's argument that companies looking for incremental AI adoption may be missing the larger opportunity: redesigning the organization itself. Resources: Follow Alejandro Maza Ayala on X: https://x.com/alehandromz Follow Angela Strange on X: https://x.com/astrange Follow Gabriel Vasquez on X: https://x.com/GEVS94 Stay Updated: Find a16z on YouTube: YouTube Find a16z on X Find a16z on LinkedIn Listen to the a16z Show on Spotify Listen to the a16z Show on Apple Podcasts Follow our host: https://twitter.com/eriktorenberg Please note that the content here is for informational purposes only; should NOT be taken as legal, business, tax, or investment advice or be used to evaluate any investment or security; and is not directed at any investors or potential investors in any a16z fund. a16z and its affiliates may maintain investments in the companies discussed. For more details please see a16z.com/disclosures. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "originalUrl": "https://a16z.simplecast.com/episodes/how-kavak-rebuilt-itself-around-ai-agents-alejandro-maza-ayala-lp7LuwGh",
       "mediaType": "podcast",
       "materiality": "high",
@@ -1753,7 +1832,7 @@
       "publishedDate": "2026-07-31",
       "durationSeconds": 4836,
       "duration": "01:20:36",
-      "description": "Sarah Wang and Kimberly Tan are joined by Jesse Zhang and Ashwin Sreenivas, co-founders of Decagon, to discuss the evolution of enterprise AI agents, why the company increasingly relies on open-source models, and how it is helping some of the world’s largest companies deploy AI in production. Decagon has become one of the fastest-growing AI companies by building agents that automate customer support, sales, and operational workflows. Jesse, Decagon’s CEO, and Ashwin, its president, explain how the company is building enterprise AI at scale. They unpack why Decagon moved most of its inference to open-source models, how latency, evaluation, and fine-tuning shape production AI systems, and why enterprise AI requires far more than simply plugging into frontier models. The conversation also explores forward-deployed engineering, enterprise sales, AI’s impact on jobs, and why application companies will continue to thrive alongside the foundation model labs. Resources: Follow Jesse Zhang on X: https://x.com/thejessezhang Follow Ashwin Sreenivas on X: https://x.com/AshwinSreenivas Follow Sarah Wang on X: https://x.com/sarahdingwang Follow Kimberly Tan on X: https://x.com/kimberlywtan Stay Updated: Find a16z on YouTube: YouTube Find a16z on X Find a16z on LinkedIn Listen to the a16z Show on Spotify Listen to the a16z Show on Apple Podcasts Follow our host: https://twitter.com/eriktorenberg &nbsp; Please note that the content here is for informational purposes only; should NOT be taken as legal, business, tax, or investment advice or be used to evaluate any investment or security; and is not directed at any investors or potential investors in any a16z fund. a16z and its affiliates may maintain investments in the companies discussed. For more details please see a16z.com/disclosures. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
+      "description": "Sarah Wang and Kimberly Tan are joined by Jesse Zhang and Ashwin Sreenivas, co-founders of Decagon, to discuss the evolution of enterprise AI agents, why the company increasingly relies on open-source models, and how it is helping some of the world’s largest companies deploy AI in production. Decagon has become one of the fastest-growing AI companies by building agents that automate customer support, sales, and operational workflows. Jesse, Decagon’s CEO, and Ashwin, its president, explain how the company is building enterprise AI at scale. They unpack why Decagon moved most of its inference to open-source models, how latency, evaluation, and fine-tuning shape production AI systems, and why enterprise AI requires far more than simply plugging into frontier models. The conversation also explores forward-deployed engineering, enterprise sales, AI’s impact on jobs, and why application companies will continue to thrive alongside the foundation model labs. Resources: Follow Jesse Zhang on X: https://x.com/thejessezhang Follow Ashwin Sreenivas on X: https://x.com/AshwinSreenivas Follow Sarah Wang on X: https://x.com/sarahdingwang Follow Kimberly Tan on X: https://x.com/kimberlywtan Stay Updated: Find a16z on YouTube: YouTube Find a16z on X Find a16z on LinkedIn Listen to the a16z Show on Spotify Listen to the a16z Show on Apple Podcasts Follow our host: https://twitter.com/eriktorenberg Please note that the content here is for informational purposes only; should NOT be taken as legal, business, tax, or investment advice or be used to evaluate any investment or security; and is not directed at any investors or potential investors in any a16z fund. a16z and its affiliates may maintain investments in the companies discussed. For more details please see a16z.com/disclosures. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "originalUrl": "https://a16z.simplecast.com/episodes/decagons-playbook-for-building-enterprise-ai-applications-VB3G3VC1",
       "mediaType": "podcast",
       "materiality": "high",
@@ -1960,7 +2039,7 @@
       "publishedDate": "2026-07-30",
       "durationSeconds": 3538,
       "duration": "00:58:58",
-      "description": "Alex Rampell and Olivia Moore speak with Lassie cofounders Steijn Pelle and Frédéric Renken about bringing AI to one of the most overlooked parts of the economy: small businesses. Inspired by time spent working inside dental practices, Pelle and Renken set out to automate the administrative work that keeps healthcare providers away from patients. They discuss how AI agents are changing billing, insurance claims, patient payments, and other operational workflows, allowing practices to spend less time on paperwork and more time delivering care. The conversation explores AI agents, software that performs work rather than simply storing information, onboarding AI into real-world businesses, and why healthcare administration offers one of the biggest opportunities for automation. Along the way, they discuss product design, go-to-market strategy, and what it takes to build AI systems that operate reliably in complex business environments. Resources: Follow Steijn Pelle on X: https://x.com/steijnpelle Follow Frédéric Renken on X: https://x.com/fredericrenken Follow Alex Rampell on X: https://x.com/arampell Follow Olivia Moore on X: https://x.com/omooretweets Stay Updated: Find a16z on YouTube: YouTube Find a16z on X Find a16z on LinkedIn Listen to the a16z Show on Spotify Listen to the a16z Show on Apple Podcasts Follow our host: https://twitter.com/eriktorenberg &nbsp; Please note that the content here is for informational purposes only; should NOT be taken as legal, business, tax, or investment advice or be used to evaluate any investment or security; and is not directed at any investors or potential investors in any a16z fund. a16z and its affiliates may maintain investments in the companies discussed. For more details please see a16z.com/disclosures. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
+      "description": "Alex Rampell and Olivia Moore speak with Lassie cofounders Steijn Pelle and Frédéric Renken about bringing AI to one of the most overlooked parts of the economy: small businesses. Inspired by time spent working inside dental practices, Pelle and Renken set out to automate the administrative work that keeps healthcare providers away from patients. They discuss how AI agents are changing billing, insurance claims, patient payments, and other operational workflows, allowing practices to spend less time on paperwork and more time delivering care. The conversation explores AI agents, software that performs work rather than simply storing information, onboarding AI into real-world businesses, and why healthcare administration offers one of the biggest opportunities for automation. Along the way, they discuss product design, go-to-market strategy, and what it takes to build AI systems that operate reliably in complex business environments. Resources: Follow Steijn Pelle on X: https://x.com/steijnpelle Follow Frédéric Renken on X: https://x.com/fredericrenken Follow Alex Rampell on X: https://x.com/arampell Follow Olivia Moore on X: https://x.com/omooretweets Stay Updated: Find a16z on YouTube: YouTube Find a16z on X Find a16z on LinkedIn Listen to the a16z Show on Spotify Listen to the a16z Show on Apple Podcasts Follow our host: https://twitter.com/eriktorenberg Please note that the content here is for informational purposes only; should NOT be taken as legal, business, tax, or investment advice or be used to evaluate any investment or security; and is not directed at any investors or potential investors in any a16z fund. a16z and its affiliates may maintain investments in the companies discussed. For more details please see a16z.com/disclosures. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "originalUrl": "https://a16z.simplecast.com/episodes/ai-for-americas-small-businesses-lassie-bwImYMRh",
       "mediaType": "podcast",
       "materiality": "high",
@@ -2217,7 +2296,7 @@
       "publishedDate": "2026-07-28",
       "durationSeconds": 2584,
       "duration": "00:43:04",
-      "description": "Last week, World Labs announced its acquisition of SceniX, bringing together two teams working on one of AI's biggest unsolved problems: how to give machines a true understanding of the physical world. Martin Casado sits down with Fei-Fei Li, co-founder and CEO of World Labs, creator of ImageNet, and pioneer of spatial intelligence, alongside Yunzhu Li, co-founder of SceniX and assistant professor at Columbia University. They discuss why World Labs acquired SceniX, how simulation can unlock the next generation of robotics, and why training robots may require a fundamentally different approach than training language models. The conversation explores real-to-sim-to-real pipelines, world models, robotics foundation models, evaluation, synthetic data, and why the future of AI depends not just on understanding language—but on understanding and interacting with the physical world. Resources: Follow Fei-Fei Li on X: https://x.com/drfeifei Follow Yunzhu Li on X: https://x.com/YunzhuLiYZ Follow Martin Casado on X: https://x.com/martin_casado Stay Updated: Find a16z on YouTube: YouTube Find a16z on X Find a16z on LinkedIn Listen to the a16z Show on Spotify Listen to the a16z Show on Apple Podcasts Follow our host: https://twitter.com/eriktorenberg &nbsp; Please note that the content here is for informational purposes only; should NOT be taken as legal, business, tax, or investment advice or be used to evaluate any investment or security; and is not directed at any investors or potential investors in any a16z fund. a16z and its affiliates may maintain investments in the companies discussed. For more details please see a16z.com/disclosures. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
+      "description": "Last week, World Labs announced its acquisition of SceniX, bringing together two teams working on one of AI's biggest unsolved problems: how to give machines a true understanding of the physical world. Martin Casado sits down with Fei-Fei Li, co-founder and CEO of World Labs, creator of ImageNet, and pioneer of spatial intelligence, alongside Yunzhu Li, co-founder of SceniX and assistant professor at Columbia University. They discuss why World Labs acquired SceniX, how simulation can unlock the next generation of robotics, and why training robots may require a fundamentally different approach than training language models. The conversation explores real-to-sim-to-real pipelines, world models, robotics foundation models, evaluation, synthetic data, and why the future of AI depends not just on understanding language—but on understanding and interacting with the physical world. Resources: Follow Fei-Fei Li on X: https://x.com/drfeifei Follow Yunzhu Li on X: https://x.com/YunzhuLiYZ Follow Martin Casado on X: https://x.com/martin_casado Stay Updated: Find a16z on YouTube: YouTube Find a16z on X Find a16z on LinkedIn Listen to the a16z Show on Spotify Listen to the a16z Show on Apple Podcasts Follow our host: https://twitter.com/eriktorenberg Please note that the content here is for informational purposes only; should NOT be taken as legal, business, tax, or investment advice or be used to evaluate any investment or security; and is not directed at any investors or potential investors in any a16z fund. a16z and its affiliates may maintain investments in the companies discussed. For more details please see a16z.com/disclosures. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "originalUrl": "https://a16z.simplecast.com/episodes/fei-fei-li-on-spatial-intelligence-and-robotics-j8HvsWJf",
       "mediaType": "podcast",
       "materiality": "high",
@@ -2689,7 +2768,7 @@
       "publishedDate": "2026-07-26",
       "durationSeconds": 1955,
       "duration": "00:32:35",
-      "description": "Ben Horowitz joins Theo Jaffee and Sofia Puccini to discuss one of the biggest debates in AI today: the future of open-source models. They examine the growing push to restrict open models, why Ben believes open source is critical for security, innovation, and competition, and what happens if a handful of frontier labs come to dominate the AI ecosystem. They also discuss distillation, AI monopolies, China's role in open-source AI, robotics, manufacturing, the economics of frontier models, and why Ben believes the AI market is still in its earliest stages. The conversation closes with a look at AI-generated art, creativity, and whether new tools will spark the next cultural renaissance. Resources: Follow Ben Horowitz on X: https://x.com/bhorowitz Follow Theo Jaffee on X: https://x.com/theojaffee Follow Sofia Puccini on X: https://x.com/schisofrenia Stay Updated: Find a16z on YouTube: YouTube Find a16z on X Find a16z on LinkedIn Listen to the a16z Show on Spotify Listen to the a16z Show on Apple Podcasts Follow our host: https://twitter.com/eriktorenberg &nbsp; Please note that the content here is for informational purposes only; should NOT be taken as legal, business, tax, or investment advice or be used to evaluate any investment or security; and is not directed at any investors or potential investors in any a16z fund. a16z and its affiliates may maintain investments in the companies discussed. For more details please see a16z.com/disclosures. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
+      "description": "Ben Horowitz joins Theo Jaffee and Sofia Puccini to discuss one of the biggest debates in AI today: the future of open-source models. They examine the growing push to restrict open models, why Ben believes open source is critical for security, innovation, and competition, and what happens if a handful of frontier labs come to dominate the AI ecosystem. They also discuss distillation, AI monopolies, China's role in open-source AI, robotics, manufacturing, the economics of frontier models, and why Ben believes the AI market is still in its earliest stages. The conversation closes with a look at AI-generated art, creativity, and whether new tools will spark the next cultural renaissance. Resources: Follow Ben Horowitz on X: https://x.com/bhorowitz Follow Theo Jaffee on X: https://x.com/theojaffee Follow Sofia Puccini on X: https://x.com/schisofrenia Stay Updated: Find a16z on YouTube: YouTube Find a16z on X Find a16z on LinkedIn Listen to the a16z Show on Spotify Listen to the a16z Show on Apple Podcasts Follow our host: https://twitter.com/eriktorenberg Please note that the content here is for informational purposes only; should NOT be taken as legal, business, tax, or investment advice or be used to evaluate any investment or security; and is not directed at any investors or potential investors in any a16z fund. a16z and its affiliates may maintain investments in the companies discussed. For more details please see a16z.com/disclosures. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "originalUrl": "https://a16z.simplecast.com/episodes/ben-horowitz-the-fight-over-open-source-ai-RnXTUEqk",
       "mediaType": "podcast",
       "materiality": "high",
@@ -2782,7 +2861,7 @@
       "publishedDate": "2026-07-24",
       "durationSeconds": 1384,
       "duration": "00:23:04",
-      "description": "Sriram Krishnan joins Theo Jaffee and Sofia Puccini just after concluding his tenure as Senior White House Policy Advisor on AI to discuss one of the biggest weeks yet for open-source AI. They unpack the rapid release of models including Kimi K3 and Qwen, why open models are putting pressure on frontier labs, and what it means for pricing, competition, and the future of AI infrastructure. They also discuss AI policy, distillation, cybersecurity, the role of open-weight models, whether the U.S. should respond to China's growing AI capabilities, and how governments and frontier labs should navigate the next phase of AI development. Resources: Follow Sriram Krishnan on X: https://x.com/sriramk Follow Theo Jaffee on X: https://x.com/theojaffee Follow Sofia Puccini on X: https://x.com/schisofrenia Stay Updated: Find a16z on YouTube: YouTube Find a16z on X Find a16z on LinkedIn Listen to the a16z Show on Spotify Listen to the a16z Show on Apple Podcasts Follow our host: https://twitter.com/eriktorenberg &nbsp; Please note that the content here is for informational purposes only; should NOT be taken as legal, business, tax, or investment advice or be used to evaluate any investment or security; and is not directed at any investors or potential investors in any a16z fund. a16z and its affiliates may maintain investments in the companies discussed. For more details please see a16z.com/disclosures. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
+      "description": "Sriram Krishnan joins Theo Jaffee and Sofia Puccini just after concluding his tenure as Senior White House Policy Advisor on AI to discuss one of the biggest weeks yet for open-source AI. They unpack the rapid release of models including Kimi K3 and Qwen, why open models are putting pressure on frontier labs, and what it means for pricing, competition, and the future of AI infrastructure. They also discuss AI policy, distillation, cybersecurity, the role of open-weight models, whether the U.S. should respond to China's growing AI capabilities, and how governments and frontier labs should navigate the next phase of AI development. Resources: Follow Sriram Krishnan on X: https://x.com/sriramk Follow Theo Jaffee on X: https://x.com/theojaffee Follow Sofia Puccini on X: https://x.com/schisofrenia Stay Updated: Find a16z on YouTube: YouTube Find a16z on X Find a16z on LinkedIn Listen to the a16z Show on Spotify Listen to the a16z Show on Apple Podcasts Follow our host: https://twitter.com/eriktorenberg Please note that the content here is for informational purposes only; should NOT be taken as legal, business, tax, or investment advice or be used to evaluate any investment or security; and is not directed at any investors or potential investors in any a16z fund. a16z and its affiliates may maintain investments in the companies discussed. For more details please see a16z.com/disclosures. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "originalUrl": "https://a16z.simplecast.com/episodes/sriram-krishnan-on-open-source-ais-biggest-week-yet-1yfA3ln5",
       "mediaType": "podcast",
       "materiality": "high",
@@ -4843,7 +4922,7 @@
       "publishedDate": "2026-07-02",
       "durationSeconds": 2475,
       "duration": "00:41:15",
-      "description": "What does it take to build a global mobility company from a country of just 1.3 million people? Markus Villig, founder and CEO of Bolt, joins the show to share how he scaled from Estonia to 50+ countries, navigating early scrappy days, a near-bankruptcy from expanding too fast, and the hard-won lessons behind Bolt’s capital-efficient growth. They also discuss building in Europe vs. the U.S., competing against much better-funded rivals, and why culture and ambition matter more than regulation. Finally, Markus lays out what’s next: autonomy, robotaxis, and why the future of mobility will be a hybrid of human drivers and self-driving fleets. Resources: Find Markus on X: https://x.com/villigm Find Gabriel on X: https://x.com/GEVS94 Stay Updated: Find a16z on YouTube: YouTube Find a16z on X Find a16z on LinkedIn Listen to the a16z Show on Spotify Listen to the a16z Show on Apple Podcasts Follow our host: https://twitter.com/eriktorenberg &nbsp; Please note that the content here is for informational purposes only; should NOT be taken as legal, business, tax, or investment advice or be used to evaluate any investment or security; and is not directed at any investors or potential investors in any a16z fund. a16z and its affiliates may maintain investments in the companies discussed. For more details please see a16z.com/disclosures. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
+      "description": "What does it take to build a global mobility company from a country of just 1.3 million people? Markus Villig, founder and CEO of Bolt, joins the show to share how he scaled from Estonia to 50+ countries, navigating early scrappy days, a near-bankruptcy from expanding too fast, and the hard-won lessons behind Bolt’s capital-efficient growth. They also discuss building in Europe vs. the U.S., competing against much better-funded rivals, and why culture and ambition matter more than regulation. Finally, Markus lays out what’s next: autonomy, robotaxis, and why the future of mobility will be a hybrid of human drivers and self-driving fleets. Resources: Find Markus on X: https://x.com/villigm Find Gabriel on X: https://x.com/GEVS94 Stay Updated: Find a16z on YouTube: YouTube Find a16z on X Find a16z on LinkedIn Listen to the a16z Show on Spotify Listen to the a16z Show on Apple Podcasts Follow our host: https://twitter.com/eriktorenberg Please note that the content here is for informational purposes only; should NOT be taken as legal, business, tax, or investment advice or be used to evaluate any investment or security; and is not directed at any investors or potential investors in any a16z fund. a16z and its affiliates may maintain investments in the companies discussed. For more details please see a16z.com/disclosures. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "originalUrl": "https://a16z.simplecast.com/episodes/outsmarting-uber-why-bolt-wins-in-europe-EfFQWvrq",
       "mediaType": "podcast",
       "materiality": "selective",
@@ -6714,7 +6793,7 @@
       "name": "Latent Space: The AI Engineer Podcast",
       "slug": "latent-space",
       "tier": "Tier A",
-      "readyCount": 7
+      "readyCount": 8
     },
     {
       "id": "show_f9022c3635cf95b54bb9",
@@ -6769,12 +6848,12 @@
   "coverage": {
     "since": "2026-07-01",
     "totals": {
-      "officialEpisodes": 230,
+      "officialEpisodes": 234,
       "noteReady": 29,
       "transcriptReady": 29,
       "qcReady": 29,
-      "queued": 201,
-      "candidateAliasesMerged": 314
+      "queued": 205,
+      "candidateAliasesMerged": 321
     },
     "shows": [
       {
@@ -6783,12 +6862,12 @@
         "slug": "the-cognitive-revolution-ai",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 12,
+        "officialEpisodes": 13,
         "noteReady": 4,
         "transcriptReady": 4,
         "qcReady": 4,
-        "queued": 8,
-        "candidateAliasesMerged": 15
+        "queued": 9,
+        "candidateAliasesMerged": 17
       },
       {
         "id": "show_886e81a7ce0632f03dc8",
@@ -6835,12 +6914,12 @@
         "slug": "big-technology",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 17,
+        "officialEpisodes": 18,
         "noteReady": 1,
         "transcriptReady": 0,
         "qcReady": 1,
-        "queued": 16,
-        "candidateAliasesMerged": 14
+        "queued": 17,
+        "candidateAliasesMerged": 15
       },
       {
         "id": "show_21aa5c705384e983fae9",
@@ -6848,12 +6927,12 @@
         "slug": "bloomberg-technology",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 43,
+        "officialEpisodes": 44,
         "noteReady": 1,
         "transcriptReady": 0,
         "qcReady": 1,
-        "queued": 42,
-        "candidateAliasesMerged": 45
+        "queued": 43,
+        "candidateAliasesMerged": 46
       },
       {
         "id": "show_f86bd475750778cc5df3",
@@ -7017,12 +7096,12 @@
         "slug": "a16z",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 43,
+        "officialEpisodes": 44,
         "noteReady": 9,
         "transcriptReady": 10,
         "qcReady": 9,
-        "queued": 34,
-        "candidateAliasesMerged": 62
+        "queued": 35,
+        "candidateAliasesMerged": 65
       },
       {
         "id": "show_155f53f5f64931d8bb8a",
@@ -7047,9 +7126,9 @@
       },
       {
         "month": "2026-08",
-        "officialEpisodes": 105,
+        "officialEpisodes": 109,
         "noteReady": 10,
-        "queued": 95
+        "queued": 99
       }
     ]
   }
