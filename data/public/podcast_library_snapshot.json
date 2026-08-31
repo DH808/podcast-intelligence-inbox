@@ -1,6 +1,6 @@
 {
   "format": "podcast-library-sanitized-v1",
-  "generatedAt": "2026-08-30T23:00:57.745Z",
+  "generatedAt": "2026-08-31T23:00:38.599Z",
   "gateVersion": "library-ready-v2",
   "counts": {
     "episodes": 73
@@ -12,28 +12,28 @@
     "foreignKeyViolations": 0,
     "duplicates": 0,
     "orphans": 0,
-    "total": 315,
+    "total": 324,
     "ready": 73,
-    "blocked": 242,
+    "blocked": 251,
     "publicReady": 73,
     "reasonCounts": {
-      "canonical_note_missing": 241,
-      "deterministic_qc_failed": 241,
-      "source_boundary_missing": 241,
+      "canonical_note_missing": 250,
+      "deterministic_qc_failed": 250,
+      "source_boundary_missing": 250,
       "source_note_placeholder_or_error": 1,
-      "why_it_matters_missing": 241
+      "why_it_matters_missing": 250
     },
     "ingest": {
-      "id": "ingest_600414cde7448c1fb3a7",
-      "startedAt": "2026-08-30T23:00:57.171Z",
-      "completedAt": "2026-08-30T23:00:57.173Z",
+      "id": "ingest_57b187f3a1c5d0252453",
+      "startedAt": "2026-08-31T23:00:38.021Z",
+      "completedAt": "2026-08-31T23:00:38.023Z",
       "status": "completed",
       "sourceCounts": {
         "monitoredShows": 20,
-        "officialSinceCutoff": 269,
-        "candidateRows": 619,
-        "candidateAliasesMerged": 310,
-        "radarIndexed": 619,
+        "officialSinceCutoff": 279,
+        "candidateRows": 639,
+        "candidateAliasesMerged": 322,
+        "radarIndexed": 638,
         "radarReadyImported": 51,
         "iltbCanonicalSobridgeMarkdown": 16,
         "iltbVersions": 32,
@@ -41,14 +41,14 @@
         "genericExcluded": 10,
         "attachedArtifacts": 628,
         "importedClaims": 374,
-        "inventoryFiles": 14180,
-        "canonicalEpisodes": 315,
+        "inventoryFiles": 14305,
+        "canonicalEpisodes": 324,
         "readyEpisodes": 73
       },
-      "inserted": 28,
-      "updated": 287,
-      "deduped": 524,
-      "warnings": 49,
+      "inserted": 9,
+      "updated": 315,
+      "deduped": 547,
+      "warnings": 50,
       "errorSummary": null,
       "codeVersion": "task-004-v1"
     }
@@ -7092,17 +7092,17 @@
           "superseded": false
         },
         {
-          "versionLabel": "historical",
-          "writingStyle": "historical",
-          "charCount": 12903,
+          "versionLabel": "source-brief",
+          "writingStyle": "source-brief",
+          "charCount": 6735,
           "language": "zh-CN",
           "canonical": false,
           "superseded": true
         },
         {
-          "versionLabel": "source-brief",
-          "writingStyle": "source-brief",
-          "charCount": 6735,
+          "versionLabel": "historical",
+          "writingStyle": "historical",
+          "charCount": 12903,
           "language": "zh-CN",
           "canonical": false,
           "superseded": true
@@ -7255,12 +7255,12 @@
   "coverage": {
     "since": "2026-07-01",
     "totals": {
-      "officialEpisodes": 267,
+      "officialEpisodes": 276,
       "noteReady": 30,
       "transcriptReady": 31,
       "qcReady": 30,
-      "queued": 237,
-      "candidateAliasesMerged": 349
+      "queued": 246,
+      "candidateAliasesMerged": 363
     },
     "shows": [
       {
@@ -7334,12 +7334,12 @@
         "slug": "bloomberg-technology",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 46,
+        "officialEpisodes": 48,
         "noteReady": 1,
         "transcriptReady": 0,
         "qcReady": 1,
-        "queued": 45,
-        "candidateAliasesMerged": 48
+        "queued": 47,
+        "candidateAliasesMerged": 50
       },
       {
         "id": "show_f86bd475750778cc5df3",
@@ -7360,12 +7360,12 @@
         "slug": "capital-allocators",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 12,
+        "officialEpisodes": 13,
         "noteReady": 0,
         "transcriptReady": 0,
         "qcReady": 0,
-        "queued": 12,
-        "candidateAliasesMerged": 14
+        "queued": 13,
+        "candidateAliasesMerged": 16
       },
       {
         "id": "show_62ceb010467efd56f2ee",
@@ -7373,12 +7373,12 @@
         "slug": "decoder-with-nilay-patel",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 17,
+        "officialEpisodes": 18,
         "noteReady": 0,
         "transcriptReady": 0,
         "qcReady": 0,
-        "queued": 17,
-        "candidateAliasesMerged": 18
+        "queued": 18,
+        "candidateAliasesMerged": 19
       },
       {
         "id": "show_ea0877583838baf97fca",
@@ -7386,12 +7386,12 @@
         "slug": "dwarkesh",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 5,
+        "officialEpisodes": 6,
         "noteReady": 0,
         "transcriptReady": 0,
         "qcReady": 0,
-        "queued": 5,
-        "candidateAliasesMerged": 11
+        "queued": 6,
+        "candidateAliasesMerged": 14
       },
       {
         "id": "show_208664517444e126c745",
@@ -7399,12 +7399,12 @@
         "slug": "founders",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 7,
+        "officialEpisodes": 8,
         "noteReady": 0,
         "transcriptReady": 0,
         "qcReady": 0,
-        "queued": 7,
-        "candidateAliasesMerged": 7
+        "queued": 8,
+        "candidateAliasesMerged": 8
       },
       {
         "id": "show_387b348507f326e95924",
@@ -7464,12 +7464,12 @@
         "slug": "odd-lots",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 29,
+        "officialEpisodes": 30,
         "noteReady": 0,
         "transcriptReady": 0,
         "qcReady": 0,
-        "queued": 29,
-        "candidateAliasesMerged": 31
+        "queued": 30,
+        "candidateAliasesMerged": 32
       },
       {
         "id": "show_8058fbf55a596a5862ec",
@@ -7490,12 +7490,12 @@
         "slug": "20vc",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 26,
+        "officialEpisodes": 27,
         "noteReady": 11,
         "transcriptReady": 12,
         "qcReady": 11,
-        "queued": 15,
-        "candidateAliasesMerged": 51
+        "queued": 16,
+        "candidateAliasesMerged": 52
       },
       {
         "id": "show_66323af571a19fdabe95",
@@ -7503,12 +7503,12 @@
         "slug": "a16z",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 48,
+        "officialEpisodes": 49,
         "noteReady": 9,
         "transcriptReady": 10,
         "qcReady": 9,
-        "queued": 39,
-        "candidateAliasesMerged": 73
+        "queued": 40,
+        "candidateAliasesMerged": 76
       },
       {
         "id": "show_155f53f5f64931d8bb8a",
@@ -7533,9 +7533,9 @@
       },
       {
         "month": "2026-08",
-        "officialEpisodes": 132,
+        "officialEpisodes": 141,
         "noteReady": 11,
-        "queued": 121
+        "queued": 130
       }
     ]
   }
