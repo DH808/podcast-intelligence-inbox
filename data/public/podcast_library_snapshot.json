@@ -1,9 +1,9 @@
 {
   "format": "podcast-library-sanitized-v1",
-  "generatedAt": "2026-09-01T23:00:34.514Z",
+  "generatedAt": "2026-09-02T23:00:25.530Z",
   "gateVersion": "library-ready-v2",
   "counts": {
-    "episodes": 72
+    "episodes": 73
   },
   "audit": {
     "gateVersion": "library-ready-v2",
@@ -12,48 +12,155 @@
     "foreignKeyViolations": 0,
     "duplicates": 0,
     "orphans": 0,
-    "total": 311,
-    "ready": 72,
-    "blocked": 239,
-    "publicReady": 72,
+    "total": 315,
+    "ready": 73,
+    "blocked": 242,
+    "publicReady": 73,
     "reasonCounts": {
-      "canonical_note_missing": 238,
-      "deterministic_qc_failed": 238,
-      "source_boundary_missing": 238,
+      "canonical_note_missing": 241,
+      "deterministic_qc_failed": 241,
+      "source_boundary_missing": 241,
       "source_note_placeholder_or_error": 1,
-      "why_it_matters_missing": 238
+      "why_it_matters_missing": 241
     },
     "ingest": {
-      "id": "ingest_c11c5f3ee16b62c637e3",
-      "startedAt": "2026-09-01T23:00:33.959Z",
-      "completedAt": "2026-09-01T23:00:33.961Z",
+      "id": "ingest_4643e7a77b7582e20f82",
+      "startedAt": "2026-09-02T23:00:24.944Z",
+      "completedAt": "2026-09-02T23:00:24.946Z",
       "status": "completed",
       "sourceCounts": {
         "monitoredShows": 20,
-        "officialSinceCutoff": 267,
-        "candidateRows": 654,
-        "candidateAliasesMerged": 323,
-        "radarIndexed": 653,
-        "radarReadyImported": 50,
+        "officialSinceCutoff": 270,
+        "candidateRows": 663,
+        "candidateAliasesMerged": 326,
+        "radarIndexed": 662,
+        "radarReadyImported": 51,
         "iltbCanonicalSobridgeMarkdown": 16,
         "iltbVersions": 32,
         "genericReviewed": 9,
         "genericExcluded": 10,
-        "attachedArtifacts": 620,
+        "attachedArtifacts": 625,
         "importedClaims": 374,
-        "inventoryFiles": 14433,
-        "canonicalEpisodes": 311,
-        "readyEpisodes": 72
+        "inventoryFiles": 14589,
+        "canonicalEpisodes": 315,
+        "readyEpisodes": 73
       },
-      "inserted": 7,
-      "updated": 304,
-      "deduped": 552,
+      "inserted": 4,
+      "updated": 311,
+      "deduped": 558,
       "warnings": 56,
       "errorSummary": null,
       "codeVersion": "task-004-v1"
     }
   },
   "episodes": [
+    {
+      "id": "ep_3e57966c620d29c31940",
+      "showId": "show_ab61c3866a2f58f78b82",
+      "show": "Latent Space: The AI Engineer Podcast",
+      "title": "The Inference Frontier: from 100 to 10,000 tokens per second — Sean Lie, Cerebras CTO",
+      "publishedAt": "2026-09-02T17:05:14.000Z",
+      "publishedDate": "2026-09-02",
+      "durationSeconds": null,
+      "duration": "",
+      "description": "From pushing inference beyond 4,000 tokens per second to working with OpenAI on a new generation of ultra-fast AI infrastructure, Cerebras is betting that speed doesn’t just make models faster, it makes entirely new kinds of AI possible. In this episode, Cerebras co-founder and CTO Sean Lie joins swyx and Vibhu fresh off Hot Chips to unpack CS4, preview CS5, and explain why 100–200 tokens per second may soon feel like “batch mode.” We go deep on Cerebras’ wafer-scale architecture, its partnership with OpenAI, and the emerging hardware stack for frontier ",
+      "originalUrl": "https://www.youtube.com/watch?v=3uSI8q_RN-o",
+      "mediaType": "youtube",
+      "materiality": "high",
+      "productionStatus": "qc_passed",
+      "readerReady": true,
+      "publicReady": true,
+      "gateVersion": "library-ready-v2",
+      "noteMarkdown": "- 节目：Latent Space\n- 原题/标题：The Inference Frontier: from 100 to 10,000 tokens per second — Sean Lie, Cerebras CTO\n- 发布时间：2026-09-02T17:05:14+00:00\n- 原始链接：https://www.youtube.com/watch?v=3uSI8q_RN-o\n- Source boundary：Official YouTube auto-caption transcript acquired with youtube-transcript-api from the official Latent Space video 3uSI8q_RN-o. Captions are machine-generated rather than a human-edited transcript; speaker attribution, proper names, figures, and quotations may contain errors, so uncertain details are marked ASR待核.\n\n## 为什么对研究重要\n\n这期访谈的研究价值，不在于又多了一组“tokens/s”跑分，而在于 Sean Lie 把超高速推理的竞争拆成了一条较完整的因果链：系统级供电、互连和机架密度决定晶圆能跑多快；低延迟又改变 agent 能在给定时间内完成的推理循环数；当需求从单次生成转向多轮 agent、交互式设计和事故响应时，速度不再只是体验指标，而可能改变模型能完成的任务种类。Cerebras 因而把 CS4 的 4,400+ tokens/s 和 CS5 的 10,000 tokens/s 目标解释成“能力供给”，而不仅是同一工作负载的加速。\n\n第二个价值是它展示了前沿推理栈可能从通用加速器走向异构、解耦的路线。Sean 的判断是，推理已不是单一 workload：prefill、decode、KV cache 装载、attention、MoE expert 的分布与负载均衡，各自对计算、内存和 I/O 的需求不同。在数百兆瓦至吉瓦、甚至多吉瓦部署规模上，为不同环节配置专门硬件的收益足以覆盖复杂度，数据中心会越来越像“一台巨型计算机”。这为研究 GPU、晶圆级 SRAM、专用吞吐芯片、互连和内存厂商之间的价值分配提供了明确框架。\n\n第三个价值是供给侧信息。Sean 明说 Cerebras 当前“基本卖光正在建设的一切”，每一兆瓦都要战略性部署，其中相当一部分给 OpenAI；OpenAI 已把超高速推理用于事故响应和关键研究，并只把一部分开放给企业客户。这说明超高速推理仍受容量约束，公开产品只是内部需求、商业化与基础设施爬坡三者平衡后的结果。访谈还把下一阶段瓶颈从单芯片推进到封装、3D 内存、供电、散热、良率与规模化可靠制造，提示研究不能只盯算力芯片规格。\n\n**延伸分析，不是演讲者原话（投资研究用户 关注点）：**可把后续验证分为四组。其一，CS4/CS5 宣称的 TPS 是否在相同模型、精度、batch、上下文长度和质量条件下成立，速度提升是否转化为单位任务成本或任务成功率提升；其二，“容量售罄”究竟对应已签合同、预留兆瓦还是实际上线收入，OpenAI 的集中采购是否带来客户集中风险；其三，prefill/decode/attention/expert routing 的解耦会让价值向芯片、互连、内存、软件调度中的哪一层迁移；其四，Cerebras 的 3D DRAM 项目、CS5 与 OpenAI Jalapeño（名称依字幕，ASR待核）能否按“明年”的口径落地。上述是研究问题，不应视为 Sean 已给出的答案。\n\n## 一句话主线与 投资研究用户 关注点\n\n主线是：Sean 认为 100–200 tokens/s 正迅速变成新的“batch mode”，Cerebras 以晶圆级集成和系统级供电/互连把推理推进到 4,400+，再以 CS5 瞄准 10,000 tokens/s；真正的竞争将转向异构推理解耦、模型—硬件协同设计，以及内存、3D 集成、供电、散热和规模化交付。投资研究用户 应重点核验可比跑分、产能兑现、OpenAI 依赖、专用硬件分工和封装/内存路线的商业化节奏。\n\n## 一页导读\n\n访谈从 Hot Chips 会后的行业观感开始。Sean 将当下称为硬件的“黄金时代”：创新同时发生在芯片、互连、系统、软件、光学、设计方法和工具链，而不只是 AI 带来的芯片需求。主持人随后要求他解释 CS4。Sean 说 CS4 不是简单换芯，而是采用新的模块化 Nexus 平台（名称依字幕，ASR待核）：前部模块化电源、后部称为 backpack 的模块化服务器，为晶圆提供上一代两倍功率、两倍互连带宽和一半延迟，并提高机架密度。Hot Chips 演示中，GPTOSS（疑指 GPT-OSS，ASR待核）超过 4,400 TPS；Sean 将意义落在实时化、更多 agent 循环和更多推理上。\n\n公司叙事也从“证明晶圆级芯片能造出来”转到“把能力规模化”。Sean 回忆第一代主要是技术展示，外界曾认为晶圆级路线不可能；现在 Cerebras 已用 OpenAI 的高能力模型展示约正常 GPU 速度的 14 倍，任务转为扩充容量、覆盖用户关心的模型、持续推出更快硬件。CS4 平台为多代产品设计；下一年的 CS5 晶圆芯片预期在 CS4 的约 2 倍提升之上再提高约 2 倍，使中型模型 GPTOSS/Gemma 达到最高 10,000 TPS，Kimi、DeepSeek 及字幕所称“GPT56 Soul”（ASR待核）等前沿模型达到最高 5,000 TPS。\n\n但短期约束不是需求而是供给。Sean 表示公司当前基本售罄，每一兆瓦都要配置给最具战略意义的用途，相当多容量流向最大合作伙伴 OpenAI。OpenAI 已在事故响应中使用速度优势，因为停机时每秒、每分钟都重要；也用于关键研究，以额外推理换取更智能的响应。企业客户已有入口，但双方承诺继续扩容，CS4/CS5 都是扩大普及面的组成部分。对于 OpenAI 为何不把能力全留给内部，Sean不替伙伴发言，只从外部观察其同时平衡使命与商业需求。\n\nOpenAI 的 Jalapeño 芯片是下一段焦点。Sean 认为最重要的不是其相对 Nvidia 的性能数字，而是 AI-first 的芯片设计方法：用 AI 工具更快完成设计并取得有竞争力的结果。他把 Jalapeño 描述为兼顾吞吐和延迟、但更偏高吞吐的“更好的 GPU”，没有声称它专门为 prefill 设计。其设想是明年 Jalapeño 与 CS5 同时可用后，形成完整的快速推理组合，并可能进一步做 prefill/decode 解耦；Cerebras 也与 OpenAI 在 AI 设计工具上协作，用其工具推进芯片和软件。\n\n争议部分集中于 Groq（字幕多处作 Grock，ASR待核）。Sean欢迎 SRAM 架构进入主流，也认为 Nvidia 采纳 SRAM 说明传统 GPU 难以进入超低延迟区间；但他质疑 Groq 新产品为何只展示未解耦的 31B 模型，且没有兑现 GTC 语境中的 attention/FFN 解耦叙事。他的推断是，非晶圆级 SRAM 芯片单颗内存不足，若要容纳数万亿参数前沿模型，就要数千颗 LPU 仅用于放权重，因此产品可能被迫聚焦较小模型。相较之下，他称 Cerebras 单颗芯片的内存约为对方的 100 倍，从而把晶圆级集成解释为聚合足量 SRAM 的必要条件。这是竞争方 CTO 的判断，不是经访谈独立验证的结论。\n\nSean 同时避免把市场说成赢家通吃。他认为产品层面要同时满足速度与容量；架构层面则应将推理拆成 prefill、decode、KV cache、attention、expert routing 等子任务，再为计算、内存、I/O 分配最匹配的硬件。小规模时这种组合不划算，但在数百兆瓦到多吉瓦规模上可以成立。更大的未开发机会是模型—硬件协同：现有模型通常围绕某一款 Nvidia GPU（字幕举 B200、GB200、“MBL72”，后者 ASR待核）设计，Cerebras 即使运行这种为别的架构设计的模型也能宣称约 14 倍速度；若稍改模型结构或进一步协同设计，Sean 认为还有巨大空间。\n\n在传统厂商与初创公司比较中，他说 Nvidia 的路线合理，因为市场确实需要更多、更便宜的 token；但 100–200 TPS 会像隔夜 batch 一样，只适合 prompt processing、高并行任务等场景。AMD、Trainium（字幕作 Tranium，ASR待核）和 TPU 等在他看来都像是在造“更好的 Rubin”（字幕作 Reuben，ASR待核），有巨大价值，却没有沿其他性能向量推边界。对 Etched，他认为公开信息和 benchmark 太少，叙事也发生过变化；他看不懂“分布式存储因为分布式而更快”的说法，也暂时看不出超越传统 GPU 的差异化，不过承认其展示了机架，显然在做东西。\n\n他希望 Etched 及行业把创新推进到芯片之外：节点、机架、封装、互连、工厂、调度和流水线才是大模型时代集成更多计算、内存和互连的关键。他特别提到 D-Matrix（字幕作 Dmatrix/Datrix，ASR待核）的 3D DRAM 封装，以及 Samsung 的“ZHBM”（ASR待核）。Cerebras 的 backpack 把电力直接送到晶圆正面，可类比为紧凑 3D 电源封装；公司两年前也启动了 DRAM stacking 项目。Sean 最后的工程判断是，晶圆级最难的实际使能因素并非只有 die 连接和良率，而是供电、散热与可靠规模制造；3D DRAM 同样会经历从 PowerPoint 结构图到实际供电、冷却、封装和良率的鸿沟。\n\n末段转向中美竞争。主持人以 GLM、Huawei 等举例，称中国模型甚至在非美国芯片上运行。Sean先夸张地说开源模型市场“100% 中国”，经主持人纠正后改称约 95%；核心意思是多数大型、高质量开放模型来自中国实验室。开放分享让全球受益，但模型依赖具有战略风险，与此同时中国自己的硬件基础设施也在形成。他主张美国继续推进边界、保持竞争力，且问题无法由单家公司或单座 fab 解决，需要政府和国家利益层级的行动。最后主持人祝贺 Cerebras IPO；Sean称其为史上最大的半导体 IPO（嘉宾自述，ASR待核、未在本纪要外部核验），双方以用户希望获得更多超高速容量作结。\n\n## 关键数字总表\n\n| 数字/术语 | 原文语境与主体 | 研究解读及核验状态 |\n|---|---|---|\n| 100–200 tokens/s | Sean 两次称过去认为很快的速度正迅速成为新的“batch mode”或“overnight”；适合 prompt processing 和高度并行工作负载，但不足以覆盖所有实时、agentic 用途。00:00 处字幕先出现“1,000 uh 100 or 200”，32:32 处作“1,00 or 200”，均有口误/转写歧义。 | 核心判断为 100–200；邻近的 1,000/“1,00”按原字幕保留，`ASR待核`。 |\n| 1,000 tokens/s | 开场 hook 出现“like 1,000 uh 100 or 200 tokens per second”，语法显示可能是嘉宾自我修正；没有后续机制或独立 benchmark 支撑。 | 原文含糊，`ASR待核`，不可静默当作独立性能档位。 |\n| 2 小时 vs 20 小时 | 主持人用 eval（开场字幕一度作 emails，32:54 明确作 evals）从 20 小时降到 2 小时，说明即使 batch 式加速也有价值。 | 例子由主持人提出；开场“emails”系 `ASR待核`。 |\n| 30× faster than GPUs | 主持人在询问 CS4 时概括“30x faster the GPUs”，Sean未在随后回答中给出可比配置。 | 主持人转述，非 Sean 在本段验证；模型、GPU、精度和 batch 未交代。 |\n| CS4：2× 功率、2× 互连带宽、1/2 延迟 | Sean 说新模块化系统平台让每片晶圆获得上一代两倍功率、两倍互连带宽，并把延迟减半；这些是系统架构层改进。 | 明确区分平台指标与端到端模型 TPS；基线未详述。 |\n| CS4：再快 2× | Sean称 CS4 会把 Cerebras 当前产品的速度边界再推高一倍，即“another two times faster”。 | 公司口径，需核对相同模型和服务条件。 |\n| 4,400+ TPS / 4,000+ TPS | Hot Chips 演示的 GPTOSS（疑为 GPT-OSS，`ASR待核`）超过 4,400 TPS；谈 agent 循环时概括为超过 4,000 tokens/s。 | 访谈核心实测宣称；未给精度、上下文、并发、硬件数量和输出质量。 |\n| 14× | Sean称 Cerebras 运行 OpenAI 当前最大、最有能力/最智能模型时，比其正常 GPU 速度快 14 倍；31:16 再提即使模型为别的架构设计也已快 14 倍。 | 嘉宾/公司判断；具体模型名与比较条件未披露。 |\n| CS5 / 下一年 | Sean说 Nexus（`ASR待核`）平台从一开始支持多代产品，并与“明年”到来的下一代晶圆芯片共同设计。 | “明年”相对节目发布时间即约 2027 年，但这是推算而非嘉宾给出的绝对日期。 |\n| CS5：再快 2× | 在 CS4 当年约 2× 提升后，下一代 CS5 目标再带来约 2× 性能提升。 | 路线图宣称，不宜直接相乘为所有 workload 固定 4×。 |\n| 10,000 TPS | Sean称 CS5 可让 GPTOSS 或 Gemma 等中型模型达到最高 10,000 TPS；也用来描述 Cerebras 一侧的“insane latency”。 | “最高”目标；CS5 尚未按访谈内容上市。 |\n| 5,000 TPS | Sean称 Kimi、DeepSeek 及“GPT56 Soul”等前沿模型在 CS5 上最高可达 5,000 TPS。 | “GPT56 Soul”无法从字幕可靠识别，`ASR待核`；其余也是路线图口径。 |\n| 容量基本售罄 | Sean称 Cerebras “basically sold out of everything that we're building”，并战略性安排每一兆瓦，相当大部分给 OpenAI。 | 没有合同金额、期限、上线容量或确认收入拆分；“售罄”边界需财务核验。 |\n| 每一兆瓦 / 数百 MW 至 GW、多 GW | 前者是 Cerebras 当前部署取舍单位；后者是 Sean 论证异构专用硬件在超大规模上足以摊薄复杂度的量级。 | 两组数字不是披露 Cerebras 自身装机总量。 |\n| Jalapeño + CS5 | Sean预期两者均在“明年”可用，组成比当前 GPU baseline 更完整的快速推理 portfolio，并有机会进一步做 prefill/decode 解耦。 | Jalapeño 名称、时间均依自动字幕，`ASR待核`；这是前瞻设想。 |\n| Groq 31B | Sean质疑 Groq 为何只公布未解耦的 31 billion parameter 模型结果，且未展示此前讨论的 attention/FFN disaggregation。 | 字幕多作 Grock，结合节目标题/描述按 Groq 记录并标 `ASR待核`；竞争方评论。 |\n| 数万亿参数 / 数千颗 LPU | Sean推理：若前沿模型有“几万亿参数”，非晶圆级 SRAM 方案可能需数千颗 Groq LPU，仅为容纳权重。 | 举例与架构判断，非具体部署披露。 |\n| 约 100× 内存 / 两个数量级 | Sean称 Cerebras 一颗芯片拥有对方单颗约 100 倍内存，因此在模型规模上“免费”获得约两个数量级差异。 | 对方芯片代际与绝对容量未给出，需同代规格核验。 |\n| prefill / decode | Sean支持异构、解耦推理；认为这只是最浅层的工作负载划分，也设想 Jalapeño 吞吐与 CS5 低延迟组合。 | 原文明确机制，不等于已宣布具体联合产品。 |\n| KV cache / attention / expert routing | 更深一层拆分包括加载 KV cache、执行 attention、把 experts 分散到不同硬件并做负载均衡，各环节可采用定制硬件。 | “expert routing”是对嘉宾所述分布与 balancing 的忠实概括。 |\n| B200 / GB200 / “MBL72” | Sean举例说模型往往围绕某一款 Nvidia GPU/系统设计。 | “MBL72”疑为其他 Nvidia 系统名，`ASR待核`，不静默修正。 |\n| Etched：$20 billion | 主持人说“at the same time, like $20 billion now”，未说明是估值、融资还是其他口径。 | 主体和单位语义含糊，`ASR待核`；不可当作已验证估值。 |\n| DRAM stacking：两年前启动 | Sean称 Cerebras 两年前启动 DRAM stacking program，理由是3D集成将解锁下一次大幅进步。 | 相对时间按访谈口径；项目阶段和商用日期未披露。 |\n| compute / interconnect / memory 三要素 | Sean概括 AI 芯片构建的三大项；低延迟场景中 memory bandwidth 是关键。 | 供电和散热随后被明确为实现这些能力的关键使能因素，不能遗漏。 |\n| 100%→约 95% | Sean先称开源模型市场“100% Chinese”，主持人纠正“not 100%”，他改称“almost, okay, 95%”。 | 明显是现场概括而非统计数据，`ASR待核`且需外部核验。 |\n| “史上最大半导体 IPO” | Sean在收尾称 Cerebras IPO 是历史最大半导体 IPO。 | 嘉宾自述；无交易所、日期、募资额，`ASR待核`且本纪要未外部核验。 |\n\n## 完整详细纪要\n\n### [00:00–01:21] 速度门槛前移：100–200 TPS 正变成新 batch mode\n\n节目先用后文片段作 hook。Sean 的核心判断是，过去被认为很快的 100–200 tokens/s 正迅速变成新的批处理档位；字幕在前面还出现“1,000 uh 100 or 200”，看起来像口误或自我修正，故 1,000 的含义 `ASR待核`。他并未否认这一档位的价值：prompt processing 和高度并行任务仍适合它。主持人用“我的 emails 要 20 小时，按一次按钮能变成 2 小时”举例，后文同一例子明确说的是 evals，因此此处 emails `ASR待核`。Sean认同十倍缩时有用，但强调只会加快 prompt processing 还不够，因为市场正在从离线吞吐走向实时交互与连续推理。00:34–01:17 是主持人的订阅提示，除说明节目无广告、靠订阅维持外没有研究信息；01:22 才进入正式访谈。\n\n### [01:22–03:39] Hot Chips 之后：硬件创新从小圈子进入产业中心\n\n主持人在 Cerebras 总部（字幕作“Crisis HQ”，ASR待核）欢迎 CTO Sean Lie（字幕口播姓名作“Sha Lee”，ASR待核），背景是 Hot Chips 次日，现场有 Apple M6、Cerebras CS4、即将讨论的 CS5 和 OpenAI Jalapeño 等发布或预告。主持人问，作为长期从业者，Sean怎么看今年的密集发布。Sean 回忆十至二十年前 Hot Chips 主要是一群计算机架构师讨论 speeds and feeds；如今它成为足以改变产业的硬件发布场。其最强感受是芯片设计和硬件正处于“黄金时代”。原因不只在 AI 需求爆发或大公司自研芯片，而是创新同时跨越芯片本体、互连、系统设计、软件、光学、方法论和工具链。按他的经验，半导体历史上很少见到所有层级同时被推动；会场内外的兴奋感来自整个技术栈共同变化，而不是某颗芯片孤立提速。\n\n### [03:40–07:06] CS4 的系统级改造：供电、互连、延迟共同推到 4,400+\n\n主持人先引用“比 GPU 快 30 倍”的说法，请 Sean 解释 CS4 新在哪里；该 30× 是主持人转述，后续没有给出相同模型、GPU 型号或运行条件。Sean说 CS4 的目标是让 wafer scale 从技术奇观变成主流、进入 hyperscale，并解决高密度数据中心的实际难题。为此，Cerebras 设计了全新的模块化系统平台：给晶圆的功率是上一代两倍，互连带宽两倍，延迟减半，同时提高机架内密度；他特意说这些进步发生在系统架构层，而非只靠晶圆芯片改版。\n\nSean据此宣称，Cerebras 当前产品已是 ultra-fast inference 的“无可争议领导者”，CS4 又会把速度推进约 2×。Hot Chips 展示的 GPTOSS（疑为 GPT-OSS，ASR待核）超过 4,400 TPS，快到“几乎像假的”。但他的论证没有停在大数字：当离线、批处理任务变成实时，用户体验会发生质变；agentic framework 需要 agent 一遍遍经过循环，若模型超过 4,000 tokens/s，就能在相同等待时间内完成更多循环和更多推理，从而得到更有能力、更智能的 agent。他把因果链明确设为“系统供给更多速度→等待窗口内循环增加→推理预算增加→能力和新应用出现”，而不是简单说文本吐得更快。访谈没有给出该演示的精度、上下文长度、batch、并发或质量条件，研究时需保留这一限定。\n\n### [07:07–10:12] 从“不可能的晶圆”到 OpenAI：公司任务转为规模化交付\n\n主持人回顾 Cerebras 多年坚持“大芯片/晶圆级”路线，早期外界没有认真对待，如今 OpenAI 已推出与其合作的 ultra-fast mode；他问 AI boom 之后几代产品的研发是否已接近模型—芯片协同设计。Sean回答，最大的变化是第一代晶圆级芯片主要承担技术证明：团队要先向自己和外界证明这种东西确实能制造。公司早期告诉别人这是未来，常得到“你们疯了、不可能”的反应，因此 CS1 一类早期工作的中心是解决使晶圆级可行的基础技术。\n\n在制造和性能都得到展示后，问题变成这种架构究竟能开启什么。Sean把 OpenAI 的 ultra-fast 发布当作转折证据：Cerebras 正运行 OpenAI 最大、最强、最智能的前沿模型，并宣称达到其正常 GPU 速度的 14 倍。最智能模型与硬件速度结合后，价值从技术演示转向解决真实问题、产生新能力。公司随之把重点移到扩大规模和容量、运行用户真正关心的模型，并通过持续发布更快硬件维持飞轮。Sean认为现实展开得甚至比最初设想更理想：已证明的硬件能力正好与模型和应用成熟相遇；当前首要目标是尽快扩容。这里的“14×”仍是嘉宾/公司口径，具体模型和比较环境未公开。\n\n### [10:13–12:04] CS5 路线图：模块化 Nexus 承接两代，瞄准 10,000 TPS\n\n主持人要求为不了解背景的听众复述 CS5 预告。Sean先回到 CS4 的 RAS 平台 Nexus（名称依自动字幕，ASR待核）：其前面是模块化电源，后面是名为 backpack 的模块化服务器。这套平台不只提供 CS4 所展示的约 2× 性能，也从零开始为多代产品设计，并与下一年到来的下一代晶圆芯片共同规划。因此，CS4 当年把表现提高约 2× 后，CS5 还要再提高约 2×。\n\n对应到模型层，他给出两档前瞻目标：GPTOSS 或 Gemma 等中型模型最高 10,000 TPS；Kimi、DeepSeek 和字幕所称“GPT56 Soul”的前沿模型最高 5,000 TPS，后一个名称无法可靠辨认，`ASR待核`。Sean称其为 game-changing，并强调世界刚开始理解 ultra-fast inference 的价值，因此即便 10,000 TPS 也可能只是起点。需要区分的是，4,400+ 是他所述 CS4 演示数字，10,000/5,000 是 CS5 路线图的“最高可达”，访谈没有提供已交付实测。\n\n### [12:05–14:52] 容量售罄：OpenAI 先用于事故响应和关键研究\n\n主持人追问 rollout：Cerebras 与 OpenAI 有未来数年的协议，但用户何时能用到 Kimi、DeepSeek 等大模型？Sean直言目前公司“基本卖光了正在建设的一切”，每一兆瓦都必须投向最具战略价值的部署；相当大部分容量给 OpenAI。OpenAI 不只是最大商业伙伴，双方还有共同设计的精神，希望形成“模型更快→利用速度让模型更智能→继续迭代”的飞轮。\n\n这些容量不是全部等待公开上线。Sean确认 OpenAI 已经在内部使用，其中一个关键场景是事故响应：当服务发生 outage，每一秒、每一分钟都有价值，低延迟能直接缩短处理链。另一个场景是关键研究应用，额外推理可产生明显更智能的响应。因此相当大容量先被内部消化。与此同时，OpenAI 与 Cerebras 已开始向企业客户开放，让超高速能力服务最苛刻、价值最高的应用；长期双方承诺增加足够容量，使其覆盖更广人群。Sean把 CS4、CS5 都放进该扩容承诺，目标不仅是更快 token，也要有更多总吞吐来满足多种用例。访谈没有拆分售罄对应的合同、预留、已上线或收入确认，也没有回答具体公众开放日期。\n\n### [14:53–16:19] 为什么不全留内部：OpenAI 在使命与商业之间取舍\n\n主持人意识到，OpenAI 本可以不向企业客户暴露这项稀缺能力，全部留作自身优势，于是从商业分析角度追问 Sean 是否参与决定。Sean明确划边界：他不能评论 OpenAI 内部思考，容量如何使用最终是 OpenAI 的决定。他只能从外部解释这种选择为何合理——OpenAI 的使命是继续推动可能性的边界，内部使用超高速推理有助于使命；但它也已是商业公司，并存在 IPO 讨论，因此需要同时平衡研究使命和商业化。他认为这套平衡也体现在 ultra-fast 产品上。\n\n主持人随即把讨论转向 Hot Chips 的系统分工，用“prefill Jalapeño、decode Cerebras？”概括一种可能架构。Sean称这是理性的结论，并说所有发布中 Jalapeño 也许最令他兴奋，不过理由与多数人不同。这里仍只是进入架构讨论的提问，不代表双方已正式宣布按 prefill/decode 分工的联合产品。\n\n### [16:20–20:10] Jalapeño 的意义：AI-first 设计法与 CS5 的互补可能\n\n主持人让芯片专家解释，除了 tokens/s 之外真正值得看什么。Sean承认 Jalapeño 的性能显著优于 Nvidia GPU，但他首先把它归类为“显著更好的 GPU”；这本身已很难，因为 Nvidia 占据市场有其技术原因。他真正兴奋的是设计方法：OpenAI 显然采用了截然不同的 AI-first methodology，用 AI 工具更快设计芯片并取得很强结果。Sean断言这是芯片行业“100% 的未来”，OpenAI 率先实践也符合其一贯方式。\n\n在工作负载上，他认为 Jalapeño 同时推动 throughput 与 latency，进入传统 GPU 达不到的延迟区间；即使摘掉 Cerebras 身份，这也会让整个行业受益。更具体的合作想象是，当 Jalapeño 和 CS5 都在下一年可用时，OpenAI 与 Cerebras 可以提供一套完整的快速推理 portfolio，比当前产品、尤其基础 GPU 栈更不同、更强。主持人插话指出 Jalapeño 并没有专门为 prefill 设计，Sean同意，但强调它为吞吐做了优化；配合 CS5 最高 10,000 TPS 的低延迟能力，架构师可以构造多种产品，并进一步探索 prefill/decode disaggregation 等整合。\n\n合作还涉及工具链。Sean说 Cerebras 正大量使用 AI，也与 OpenAI 紧密合作，用其 AI 工具推动芯片设计、软件等工作。他因此把两层互补并列：一层是 Jalapeño 的吞吐与 Cerebras 的低延迟/速度组合；另一层是 OpenAI 的 AI 设计工具帮助 Cerebras继续推进硬件与软件。所有这些均为 Sean 的合作愿景；访谈没有给出双方产品拓扑、接口、资源配比或正式交付承诺。\n\n### [20:11–24:43] Groq 争议：31B 展示是否暴露非晶圆级 SRAM 的容量限制\n\n主持人寻找 Hot Chips 上更有争议的观点，先提出行业可能更重视 performance per watt 而非纯 tokens/s，并问台下都在争什么。Sean没有正面给出每瓦性能数字，而是转向 Groq 新芯片。字幕多处把公司写作 Grock，依据节目标题/描述记录为 Groq，`ASR待核`。他总体欢迎 SRAM 设计主流化：Cerebras 多年都在谈这条路线，如今连 Nvidia 也拥抱 SRAM，等于承认传统 GPU 难以达到 ultra-fast 区间。主持人问 Groq 被收购后竞争感受有无变化，Sean说一阶来看没有，重点仍是架构变得更可获得。\n\n他的质疑有两层。第一，为什么新产品在 30B/31B 参数模型上发布，而不是更大的前沿模型？第二，Jensen 曾在 GTC 花很长时间解释 attention 与 FFN 的解耦、不同部分跑在何处，但此次量产产品只展示未解耦的 31B 结果，没有相应 disaggregation。字幕将相关 Nvidia 产品/策略名转成 Reuben、LPX 等，均 `ASR待核`。Sean称这一缺口“很可疑”，并推断非晶圆级 SRAM 设计的每颗芯片没有足够内存；若模型达到几万亿参数，可能需要数千颗 Groq LPU 才能仅仅装下权重。于是只展示 30B 可能不是偶然，而是产品最终会聚焦更小模型的架构后果。\n\n他用 Cerebras 作对比：一颗 Cerebras 芯片据称拥有 Groq 单颗约 100 倍内存，即两个数量级的规模差，使其能够运行世界最大模型；晶圆级集成的必要性正是聚合足够 SRAM，使其对大模型真正有用。主持人提醒市场足够大、两家公司面对的市场可能不同；Sean随后接受多架构共存。应注意，本段是 Cerebras CTO 对竞争者发布的解读，没有 Groq 方回应，也没有给两边芯片的绝对 SRAM 容量、网络开销或同条件 benchmark；“31B 暴露局限”是 Sean 的推断，不是访谈独立证明的事实。\n\n### [24:44–29:40] 异构推理：从 prefill/decode 深入到 KV、attention 与 expert routing\n\n主持人说 Cerebras 已成为这一领域经营时间最长的 incumbent，并追问超高速前沿推理之外还有哪些 workload bucket。Sean先强调市场很大，不同硬件都有角色；Cerebras选择的是 frontier ultra-fast，但公司强烈相信 heterogeneous、disaggregated ecosystem，而非一套硬件包办。产品视角其实简单：速度越高，就能打开更多应用、用例、能力和更智能的模型/agent，甚至出现今天无法想象的产品；但只追求最快不够，客户还必须拿到足以服务实际需求的容量。因此竞争关键是找到速度与供给所需的正确架构组合。\n\n计算机架构视角则把整个推理过程重画成资源分配问题。有人担心 disaggregation 会强迫数据中心固定切分不同硬件数量，过于受限；Sean反驳说，芯片设计本来每天都在决定硅面积给 memory、compute 还是 I/O。prefill 与 decode 只是最简单的切分，往下还有加载 KV cache、实际执行 attention、把 MoE experts 分散到各种硬件并做负载均衡。不同环节具有不同瓶颈，可以用更定制的硬件和架构处理。这一段正面覆盖了 prefill、decode、attention、expert routing 的机制关系，而不是把它们当营销标签。\n\nSean承认，小规模时为了一个问题拼接多种硬件不经济；但讨论的部署已达数百兆瓦到吉瓦、乃至多吉瓦，专门化收益很容易覆盖额外复杂度。到那时，整个数据中心可以像一台计算机或一颗芯片来设计：分配一部分能力快速跑 attention，另一部分高效做 prefill，再由系统把它们拼接。这是他所谓“计算机架构师的梦想”——工具箱中有足够多异构部件，能按 workload 的真实资源需求组合，而不是先选通用芯片再让所有阶段迁就它。\n\n### [29:41–31:59] 模型—硬件协同：现有模型围绕 Nvidia 设计，替代架构仍有未取收益\n\n主持人把异构硬件进一步连接到模型架构：除 reasoning model 外，还有 voice、diffusion 和更互动的模型；与 OpenAI 合作是否让 Cerebras 能看到这些方向？Sean说 ultra-fast 带来的互动用例会让模型类型混合，例如交互式图形设计过程中，图像或视频 diffusion 可以直接嵌入创作流，不再是单独离线步骤。由此，硬件分工不仅服务文本 token，也可能服务多模态生成工作流。\n\nSean认为 Cerebras 乃至整个非 Nvidia 社区最大的未开发机会是：大家今天跑的模型本来就是为 Nvidia GPU 设计的，往往甚至针对某个具体平台，如 B200、GB200 和字幕所称“MBL72”（ASR待核）。Cerebras 展示约 14× 更快时，跑的仍是为完全不同架构设计的模型；若允许哪怕轻微调整模型架构，就可能获得巨大增益，若进一步做深度 co-design，空间几乎没有上限。这也是他看重与 OpenAI 等客户紧密合作的原因。主持人补充，人们低估了 AI code generation 用于生成 kernel 的潜力；Sean明确表示非常认同。这里的“巨大/无限”是方向性判断，未量化协同设计相对软件编译优化、精度变化或硬件扩容各自贡献。\n\n### [32:00–33:43] Nvidia、AMD、TPU、Trainium：更多更便宜 token 有价值，但不是全部边界\n\n在转向 Etched 前，主持人询问 Sean 对 AMD、Nvidia 等传统厂商的评价。Sean说 Nvidia 正在做所有人预期它会做的事，而且大体是正确路线：行业确实需要更多 token，也需要更便宜的 token。随后他重申开场判断：100–200 TPS 正快速成为新的 batch mode、甚至新的 overnight，适合 prompt processing 和高度并行工作负载。主持人把同一例子说清楚为“evals 原本要 20 小时，现在按按钮两小时跑完”，Sean同意这种加速有价值，却坚持只提高 prompt processing 仍“不太够”。\n\n他把 Nvidia、AMD、Trainium（字幕作 Tranium，ASR待核）、TPU 等传统架构放在同一条 treadmill 上：都试图造一个更好的“Rubin”（字幕作 Reuben，ASR待核）。这种优化并非坏事，且蕴含巨大市场价值；但 Sean 认为行业还应沿别的性能向量推进，Cerebras 选择的就是极低延迟/超高速前沿。这个比较不是说传统方案无用，而是明确区分 throughput、成本、prompt 并行处理与低延迟 agent 循环之间的需求差异。\n\n### [33:44–35:29] 对 Etched 的保留：公开数据少，差异化仍看不清\n\n主持人以“spicy chips”引出 Etched，批评其页面没有数字和 benchmark，请 Sean评价。Sean说 Etched 对实际工作披露很少，且现在的说法相比最初已有明显变化；主持人补充公司自己也承认这一点。Sean接受环境变化会促使公司 pivot、寻找位置，但看公开图片时，他首先看到的是出色的 graphic design，而没有看到超越“更好的传统 GPU”的明确技术路线。\n\n他特别提到 Etched 曾声称拥有一种 distributed storage，因为分布式所以更快；Sean说自己不理解其中机制，希望公司解释。他也暂时看不出真正的差异化。另一方面，他注意到 Etched 在 Hot Chips 似乎展示了一个机架，因此承认对方显然在造东西，只是距离清晰、可验证的产品仍显得较远。主持人随后说“与此同时，like $20 billion now”，但未说明是估值、融资还是别的口径，故 `ASR待核`；并要求 Sean不要只批评，而是 steelman：最佳情况下，他希望 Etched 往哪个方向创新？\n\n### [35:30–38:30] 下一突破在芯片之外：机架、封装、互连和 3D DRAM\n\nSean希望 Etched 或其他公司推动“芯片之外”的更创新方案。他认为 AI compute 下一阶段取决于更好的外部集成：节点、机架、封装、互连，乃至主持人补充的 factory，以及调度、流水线等算法。理由是模型和问题已大到单芯片无法独立承载，核心问题变为怎样聚合更多 compute、memory 和 interconnect。此处他摘掉 Cerebras 立场，把“跳出单芯片思维”称为整个行业最令人兴奋的方向。\n\nHot Chips 的展示中，他特别提到 D-Matrix（字幕先后作 Dmatrix、Datrix，ASR待核）更深入采用 DRAM 与 3D DRAM packaging，虽不全是新消息，却是行业需要加码的路线。主持人觉得 CS4 backpack 与内存厂商的做法相似；Sean说确有类比：Cerebras 的 backpack 与供电系统构成紧凑 3D package，把电力直接送到芯片/晶圆正面，而 DRAM 3D stacking 做的是类似空间集成，只是送达的是内存而非电力。\n\nSean还说 Cerebras “昨天”宣布了相关内容，并称公司两年前已启动 DRAM stacking program，正是因为这种集成可能解锁下一次重大跨越。他不知道 Etched 内部具体在做什么，但若问行业最值得期待的东西，答案是更有创造力的集成、封装和芯片外系统思维，而不只是又一颗算术单元更多的芯片。\n\n### [38:31–40:41] 内存带宽、供电与散热：从 PowerPoint 结构走到可靠量产\n\n主持人请 Sean再给几个线索。Sean提到 Samsung 对“ZHBM”的讨论（型号依字幕，ASR待核）。主持人发现例子全来自内存领域，Sean解释 AI 芯片最终有三大基本项：compute、interconnect、memory；尤其在低延迟空间，memory 和 memory bandwidth 是关键。主持人继续问 power、cooling 是否同样重要，并以 Cerebras 刚完成的大改版提醒他。Sean答“绝对重要”，它们正是前述能力得以运行的基础。\n\n他用 Cerebras 自身历史说明工程难点如何转移。早期做 wafer scale 时，外界以为最大挑战是连接所有 die、解决整片良率；这些确实是必须攻克的基础问题，但最终最大的使能因素变成怎样供电、怎样散热，以及怎样可靠地规模制造。Sean判断 3D DRAM 技术也会经历同样路径：在 PowerPoint 上画 DRAM 与 logic 堆叠很容易，真正让它工作则必须处理供电、冷却、封装和可靠性。Cerebras 试图把晶圆级积累的能力转移到 DRAM stacking：他说公司已经解决规模良率，也解决了三维封装，但 Samsung、D-Matrix 等参与者仍都要面对相似问题。此处不能把“已解决”扩大理解为某个 3D DRAM 商用品已量产；Sean只说相关 expertise 和 approach 正被复用。\n\n### [40:42–43:03] 中国开放模型与本土硬件栈：Sean 呼吁国家级竞争方案\n\n最后一个主题是美国半导体供应链与中国逐步独立。主持人以“vision GLM”、Huawei、OpenRouter 上表现不错的模型为例，强调这些模型甚至可能没有运行在美国芯片上；具体名字和运行栈均来自快速口述，`ASR待核`。他问 Hot Chips 的行业人士是否认真讨论这一变化。Sean说当然，这是非常困难的处境。他先用夸张口径称开源模型市场“100% Chinese”，主持人立即纠正“不至于 100%”，Sean改成“几乎，95%”：其真正论点是，大多数大型、高质量开放模型正来自中国实验室。\n\nSean承认开放分享使全球社区受益，但认为模型层高度依赖中国在战略上很棘手；与此同时，支撑这些中国模型的独立硬件基础设施也在后台逐步形成。他主张全球、尤其美国必须继续推动技术边界、竞争并保持领先。对手“知道自己在做什么”，因此这不是一家企业或一座 fab 能解决的问题，而需要政府层面、国家利益层面的 initiative。主持人半开玩笑问 Hot Chips 是否有行业领袖的“秘密房间”来处理此事；Sean说 Cerebras 一直积极推动并支持任何延续美国在该领域主导地位的行动。这里的 95% 是现场修正后的概括，不是有口径定义的市场统计。\n\n### [43:04–43:58] IPO、更多容量与责任边界：基础设施由 Cerebras 提供，开放由 OpenAI 决定\n\n主持人因 Sean 要离场而收尾，祝贺 Cerebras 的成功和 IPO。Sean说自己有时仍要提醒自己公司已经 IPO，并把它称作“历史上最大的半导体 IPO”；主持人回应“仍然很早”。该 IPO 说法没有日期、交易所、募资额等支持，且现实时间线可能受自动字幕或访谈语境影响，故 `ASR待核`，本纪要不作外部事实确认。\n\n两位主持人最后代表用户提出最直接的需求：给更多 ultra-fast、更大的模型和更多容量，也把这种能力交给普通用户。Sean说或许可以帮助他们在 OpenAI 那里排队；当主持人担心此前讨论会让 OpenAI 更倾向全部内部保留时，Sean再次重申责任边界——是否开放是 OpenAI 的决定，Cerebras 只是提供基础设施。主持人继续点名想要 GLM、“Dec”（可能指 DeepSeek，ASR待核），甚至建议给他们一整机架自行运行。访谈在感谢中结束，最终没有新的交付日期或容量数字；留下的结论是需求已明确超过当下可供给容量，而公开范围取决于 Cerebras 扩建与 OpenAI 产品决策的共同推进。\n\n## 来源边界与核验提示\n\n本纪要的唯一事实来源是节目 `metadata.json` 所界定的官方 YouTube 自动字幕，未把节目 description 中比字幕更完整的营销表述当作嘉宾新增原话，也未用外部资料静默修正模型名、芯片名、公司名或数字。字幕为机器生成，存在 Sean Lie 被写成“Sha Lee”、Cerebras 被写成“Crisis/Cerebrus”、Groq 被写成“Grock”、D-Matrix 被写成“Dmatrix/Datrix”等情况；能够依元数据明确对应的主体已在正文说明，无法可靠对应的“GPT56 Soul”“MBL72”“ZHBM”“Dec”等均标为 `ASR待核`。\n\n所有性能数字都应视为访谈中的公司或主持人口径，而不是本纪要独立复现的 benchmark。尤其应核对模型版本、参数量、稀疏/稠密结构、数值精度、上下文长度、输出长度、batch、并发、首 token 延迟、单用户/集群口径、硬件数量、功耗和输出质量。4,400+ TPS 是 Sean 所述 CS4 演示；CS5 的 10,000/5,000 TPS 是前瞻目标；30× 来自主持人提问；14× 来自 Sean但未披露比较配置。不要把这些数字直接放进同一横向排名。\n\n竞争比较也需保留身份边界。Groq SRAM 容量限制、31B 展示含义、数千 LPU 和约 100× 内存均是 Cerebras CTO 的分析；Etched 缺乏差异化、传统厂商都在造“更好的 Rubin”也是 Sean 的判断，并非被评论公司在节目中确认。OpenAI 内部事故响应、关键研究用途及 Jalapeño/CS5 的潜在组合由 Sean 转述或展望，没有 OpenAI 方在本段逐项确认。\n\n最后，容量“售罄”、Etched“$20 billion”、中国开放模型“95%”、Cerebras“史上最大半导体 IPO”都缺少可审计口径，必须进一步查合同、财务披露、产品文档、公开 benchmark、交易文件或市场数据。本纪要中的 投资研究用户 段落已明确标为延伸分析，不属于 Sean 或主持人原话。\n",
+      "sourceBoundary": "Official YouTube auto-caption transcript acquired with youtube-transcript-api from the official Latent Space video 3uSI8q_RN-o. Captions are machine-generated rather than a human-edited transcript; speaker attribution, proper names, figures, and quotations may contain errors, so uncertain details are marked ASR待核.",
+      "whyItMatters": "这期访谈的研究价值,不在于又多了一组“tokens/s”跑分,而在于 Sean Lie 把超高速推理的竞争拆成了一条较完整的因果链:系统级供电、互连和机架密度决定晶圆能跑多快;低延迟又改变 agent 能在给定时间内完成的推理循环数;当需求从单次生成转向多轮 agent、交互式设计和事故响应时,速度不再只是体验指标,而可能改变模型能完成的任务种类。Cerebras 因而把 CS4 的 4,400+ tokens/s 和 CS5 的 10,000 tokens/s 目标解释成“能力供给”,而不仅是同一工作负载的加速。",
+      "themes": [
+        {
+          "id": "theme_e748f8750672ca8b04b2",
+          "name": "AI Agents",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_ebbd5f51fefc7fcabdf4",
+          "name": "AI Infra",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_693b1c2b5c9e35f47d43",
+          "name": "Enterprise AI",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_b4d7581efc05d1db8fe0",
+          "name": "Markets / Macro",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_7e5743d68b4cb5c76b9d",
+          "name": "Product / GTM",
+          "provenance": "deterministic-keyword-v1"
+        },
+        {
+          "id": "theme_f1991dbc4cf3c8fe3860",
+          "name": "Venture / Pre-IPO",
+          "provenance": "deterministic-keyword-v1"
+        }
+      ],
+      "entities": [
+        {
+          "id": "entity_b54d3e843a4cc19fc8f3",
+          "type": "company",
+          "name": "AMD",
+          "evidenceSource": "note",
+          "confidence": 1
+        },
+        {
+          "id": "entity_51ea09628499962f920c",
+          "type": "company",
+          "name": "Cerebras",
+          "evidenceSource": "title",
+          "confidence": 1
+        },
+        {
+          "id": "entity_f9825526d30e513764a0",
+          "type": "company",
+          "name": "NVIDIA",
+          "evidenceSource": "note",
+          "confidence": 1
+        },
+        {
+          "id": "entity_54f40d6e1ebcc63523d3",
+          "type": "organization",
+          "name": "OpenAI",
+          "evidenceSource": "description",
+          "confidence": 1
+        },
+        {
+          "id": "entity_b2e65c24bfff0cca60b4",
+          "type": "company",
+          "name": "Samsung",
+          "evidenceSource": "note",
+          "confidence": 1
+        },
+        {
+          "id": "entity_ee770334976dd592bf01",
+          "type": "person",
+          "name": "Shawn Wang",
+          "evidenceSource": "description",
+          "confidence": 0.9
+        }
+      ],
+      "noteVersions": [
+        {
+          "versionLabel": "source-faithful",
+          "writingStyle": "source-faithful",
+          "charCount": 18656,
+          "language": "zh-CN",
+          "canonical": true,
+          "superseded": false
+        }
+      ]
+    },
     {
       "id": "ep_dda7ea468fd70292adcd",
       "showId": "show_d243fcc00a13e40ed763",
@@ -6978,17 +7085,17 @@
           "superseded": false
         },
         {
-          "versionLabel": "historical",
-          "writingStyle": "historical",
-          "charCount": 12903,
+          "versionLabel": "source-brief",
+          "writingStyle": "source-brief",
+          "charCount": 6735,
           "language": "zh-CN",
           "canonical": false,
           "superseded": true
         },
         {
-          "versionLabel": "source-brief",
-          "writingStyle": "source-brief",
-          "charCount": 6735,
+          "versionLabel": "historical",
+          "writingStyle": "historical",
+          "charCount": 12903,
           "language": "zh-CN",
           "canonical": false,
           "superseded": true
@@ -7086,7 +7193,7 @@
       "name": "Latent Space: The AI Engineer Podcast",
       "slug": "latent-space",
       "tier": "Tier A",
-      "readyCount": 8
+      "readyCount": 9
     },
     {
       "id": "show_f9022c3635cf95b54bb9",
@@ -7141,12 +7248,12 @@
   "coverage": {
     "since": "2026-07-01",
     "totals": {
-      "officialEpisodes": 264,
+      "officialEpisodes": 267,
       "noteReady": 29,
       "transcriptReady": 29,
       "qcReady": 29,
-      "queued": 235,
-      "candidateAliasesMerged": 366
+      "queued": 238,
+      "candidateAliasesMerged": 369
     },
     "shows": [
       {
@@ -7207,12 +7314,12 @@
         "slug": "big-technology",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 19,
+        "officialEpisodes": 20,
         "noteReady": 1,
         "transcriptReady": 0,
         "qcReady": 1,
-        "queued": 18,
-        "candidateAliasesMerged": 16
+        "queued": 19,
+        "candidateAliasesMerged": 17
       },
       {
         "id": "show_21aa5c705384e983fae9",
@@ -7220,12 +7327,12 @@
         "slug": "bloomberg-technology",
         "tier": "Tier B",
         "active": true,
-        "officialEpisodes": 49,
+        "officialEpisodes": 50,
         "noteReady": 1,
         "transcriptReady": 0,
         "qcReady": 1,
-        "queued": 48,
-        "candidateAliasesMerged": 51
+        "queued": 49,
+        "candidateAliasesMerged": 52
       },
       {
         "id": "show_f86bd475750778cc5df3",
@@ -7389,12 +7496,12 @@
         "slug": "a16z",
         "tier": "Tier A",
         "active": true,
-        "officialEpisodes": 50,
+        "officialEpisodes": 51,
         "noteReady": 9,
         "transcriptReady": 10,
         "qcReady": 9,
-        "queued": 41,
-        "candidateAliasesMerged": 77
+        "queued": 42,
+        "candidateAliasesMerged": 78
       },
       {
         "id": "show_155f53f5f64931d8bb8a",
@@ -7425,9 +7532,9 @@
       },
       {
         "month": "2026-09",
-        "officialEpisodes": 7,
+        "officialEpisodes": 10,
         "noteReady": 0,
-        "queued": 7
+        "queued": 10
       }
     ]
   }
